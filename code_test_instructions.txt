@@ -1,0 +1,35 @@
+UI Engineer Code Challenge
+
+You should have by now been given all the code to begin this code challenge. 
+(/codetest) The end goal is to make a simple commenting/posting engine that stores the data into local storage and then pushes it later on (depending on internet connection) to an external data source.
+
+What we are looking to get out of this challenge is to test your aptitude in several areas:
+	Ability to bind into/use existing markup/css/models
+	Take a screenshot of the design with some dimensions and create the css markup and layout from it.
+	Determine how you layout your code and what frameworks you�re using.
+	See how you deal with MVC style of programming
+
+
+
+The following are the conditions we want you to fulfill
+	Write the html and css need to finish the mock. see styles.css and index.html. you don't have to keep these files
+	Create posts and comments while offline - pretend that you have a spotty connection
+	Display the data contained in posts.json and users.json on the page
+	Be able to create a new post
+	Be able to leave a new comment on any post
+	Store new comments and posts in localstorage (in theory the data in localstorage should be able to be sent to the server once there is a stable connection)
+
+
+Here are some of the assumptions of the challenge.
+	You are logged in as user id 5.
+	the models for the posts and user data are in the /data folder (posts.json, users.json)
+	There needs to be an "interface" for the following:
+		post
+		comment
+		user
+
+
+
+You are free to use any framework(s) of your choice. Also feel free to structure your code in any way. 
+
+Check in resources for box.js its a localstorage framework. it works for anything that supports window.localstorage its kinda buggy for anything else but will get the job done. Or roll up your own if you wish.
