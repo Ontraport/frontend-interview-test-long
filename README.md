@@ -6,15 +6,15 @@ Ontraport 'Front End Long Test'. We use it to gain an understanding of your fron
 abilities before we meet face to face. 
 
 We are trying to ascertain your skill level in all areas of front end development (HTML, CSS, 
-Javascript, App Development). We are looking for candidates for all sorts of positions at all levels. 
+Javascript, App Development). We are looking for candidates to fill all sorts of positions at all levels. 
 Do your best and don't worry if your skills set is better suited for some parts of test than others. 
 Try and have fun with it, show us what you can do!
 
 ###Some things we are looking for specifically:
-    1. Ability to bind into/use existing markup/CSS/models
+    1. Ability to bind into/use existing markup/CSS/models.
     2. Take a design screenshot with some dimensions and create the CSS, markup, and layout from it.
     3. Determine how you layout your code and what frameworks you choose to use / are familiar with.
-    4. See how you deal with MFC style of programming
+    4. See how you deal with MFC style of programming.
 
 ###Test description
 Your job is to finish coding a post / comment list engine for a web app. Imagine that your user 
