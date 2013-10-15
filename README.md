@@ -25,7 +25,7 @@ facilitates adding new posts via a from in a light box. If you have time, the en
 in local storage so it can push it later on (depending on internet connection) to some fictitious 
 external data source.
 
-![Ontraport Front End Long Test](design/img.jpg)
+![Ontraport Front End Long Test](design.png)
 
 ###The test git repo contains: 
     /codetest
