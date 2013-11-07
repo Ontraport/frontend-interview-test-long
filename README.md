@@ -17,7 +17,7 @@ Try and have fun with it, show us what you can do!
 3. Determine how you layout your code and what frameworks you choose to use / are familiar with.
 4. See how you deal with MVC style of programming.
 
-###Test description
+### Description
 Your job is to finish coding a post / comment list engine for a web app. Imagine that your user 
 has already logged in and is viewing a list of posts from other users and them self. The engine has 
 a two column layout. In the left column the user can see their profile. In the right column the user 
@@ -54,12 +54,15 @@ external data source.
 
 
 
-###Test assumptions:
+### Assumptions:
 1. You are logged in as user id 5.
 2. The models for the posts and user data are in the /data folder (posts.json, users.json)
 3. There needs to be an "interface" for posts comments and users
 
-###Test Requirements:
+### Requirements
+
+Fork this repo into your own github account and complete the following:
+
 1. Write the HTML and CSS needed to finish the engine. See styles.css and index.html (you don't 
 have to use these files put we think its a good starting point). Try to make the finished product look as close to the design spec as possible (design.png)
 2. Load / render the user and post data from the json files in the data folder. Again loaded 
@@ -75,7 +78,7 @@ data should look as close to design.png as possible.
 1. User can comment on any post. 
 2. Save the user and post data to local storage so if you refresh the page the new posts and comments are reloaded  (Imagine the temporarily doesn't have a network connection. In theory the data in local storage should be able to be sent to the server once there is a stable connection).
 
-###Test parameters:
+###Test Parameters:
 1. The test doesn't have a time limit, but we are interested in how long it takes you to complete
 as much as you did. A general it took me _ hours will do.
 2. Extra Credit Requirements are not required for submission.
