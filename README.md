@@ -89,8 +89,8 @@ as much as you did. A general it took me _ hours will do.
        
 ###Example:
 Here is video example of a working test
-[![ScreenShot](https://raw.github.com/Ontraport/frontend-interview-test-long/master/codetest/images/exampleVideoProfile.png)](https://www.youtube.com/watch?v=PYsH5xcyewI&feature=youtu.be)
-
+[![ScreenShot](/codetest/images/exampleVideoProfile.png)](https://www.youtube.com/watch?v=PYsH5xcyewI&feature=youtu.be)
+https://raw.github.com/Ontraport/frontend-interview-test-long/master/codetest/images/exampleVideoPreview.png
 
 
 Good Luck!
