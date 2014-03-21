@@ -5,7 +5,7 @@ Congratulations, you passed the first test! There is just one more hoop to jump 
 ONTRAPORT 'Front-end Long Test'. We use it to gain an understanding of your front-end programming 
 abilities before we meet face to face. 
 
-We are trying to ascern your skill level in all areas of front end development (HTML, CSS, 
+We are trying to ascertain your skill level in all areas of front end development (HTML, CSS, 
 Javascript, and App Development). We are looking for candidates to fill all sorts of positions at all levels. 
 Do your best and don't worry if your skills set is better suited for some parts of the test than others. 
 Try and have fun with it!
@@ -80,11 +80,11 @@ data should look as close to design.png as possible.
 
 ###Test Parameters:
 1. This test doesn't have a time limit, but we are interested in how long it takes you to complete
-as much as you did. A general it took me _ hours will do.
+as much as you did. A general: 'it took me _ hours' will do.
 2. Extra Credit Requirements are not required for submission.
 3. You are free to use any framework(s) of your choice as long as all requirements are met. 
 4. Feel free to structure your code in any way you want. We want to see how you do things.
-5. If you want to attempt the extra credit: Check in /resources for box.js its a localstorage framework. It works for anything that supports window.localstorage its kinda buggy for anything else but will get the job done. You don't have to use it but it there if you want to.
+5. If you want to attempt the extra credit: Check in /resources for box.js it's a localstorage framework. It works for anything that supports window.localstorage its kinda buggy for anything else but will get the job done. You don't have to use it but it there if you want to.
        
        
 ###Example:
