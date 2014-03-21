@@ -1,21 +1,21 @@
-Ontraport Front End Evaluation, Long Test
+ONTRAPORT Front-end Evaluation, Long Test
 ============================
 
-Congratulations! You passed the first test, just one more hoop to jump through. This is the 
-Ontraport 'Front End Long Test'. We use it to gain an understanding of your front end programming 
+Congratulations, you passed the first test! There is just one more hoop to jump through. This is the 
+ONTRAPORT 'Front-end Long Test'. We use it to gain an understanding of your front-end programming 
 abilities before we meet face to face. 
 
-We are trying to ascertain your skill level in all areas of front end development (HTML, CSS, 
+We are trying to ascern your skill level in all areas of front end development (HTML, CSS, 
 Javascript, and App Development). We are looking for candidates to fill all sorts of positions at all levels. 
-Do your best and don't worry if your skills set is better suited for some parts of test than others. 
-Try and have fun with it, show us what you can do!
+Do your best and don't worry if your skills set is better suited for some parts of the test than others. 
+Try and have fun with it!
 
 ###Some things we are looking for specifically:
 
 1. Ability to bind into/use existing markup/CSS/models.
-2. Take a design screenshot with some dimensions and create the CSS, markup, and layout from it.
-3. Determine how you layout your code and what frameworks you choose to use / are familiar with.
-4. See how you deal with MVC style of programming.
+2. Take a design screenshot with some dimensions and create the CSS, markup and layout from it.
+3. Determine how you layout your code and what frameworks you choose to use and are familiar with.
+4. See how you use the MVC software pattern.
 
 ### Description
 Your job is to finish coding a post / comment list engine for a web app. Imagine that your user 
@@ -26,7 +26,7 @@ facilitates adding new posts via a textarea in a light box. If you have time, th
 in local storage so it can push it later on (depending on internet connection) to some fictitious 
 external data source.
 
-![Ontraport Front End Long Test](design.png)
+![ONTRAPORT Front End Long Test](design.png)
 
 ###The test git repo contains: 
     /codetest
@@ -55,7 +55,7 @@ external data source.
 
 
 ### Assumptions:
-1. You are logged in as user id 5.
+1. You are logged in as user ID 5.
 2. The model data for the posts and user is in the /data folder (posts.json, users.json).
 3. There needs to be an "interface" for posts, comments, and users.
 
