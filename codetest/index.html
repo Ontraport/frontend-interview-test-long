@@ -1,32 +1,95 @@
 <!DOCTYPE HTML >
 <html>
+<meta charset="utf-8">
 <head>
-	<title>The network</title>
-	
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>The network</title>
+    <script src="./app/bower_components/jquery/dist/jquery.js"></script>
+    <script src="./app/bower_components/underscore/underscore.js"></script>
+    <script src="./app/bower_components/backbone/backbone.js"></script>
+    <script src="./app/bower_components/moment/min/moment.min.js"></script>
+    <script src="./app/bower_components/jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
-	
-	<div id="header">
-		<div id="logo">
-			<img src="images/logo.png" alt="the network"/>
-		</div>	
-		<div id="search">
-			<form method="get" action="#">
-				<input type="search" name="terms" placeholder="Search...."/>
-				<input type="submit" value="Go"/>
-			</form>
-		</div>
-	</div>
-	
-	<div id="page">
 
-	</div>
-	
-	<div>
-		<p>This is a footer mesage</p>
-	</div>
-		
+<div id="header">
+    <div id="logo">
+        <img src="./images/logo.png" alt="the network"/>
+    </div>
+    <div id="search">
+        <form method="get" action="#">
+            <input type="search" name="terms" placeholder="Search...."/>
+            <input type="submit" value="Go"/>
+        </form>
+    </div>
+    <div id="headerView">
+
+    </div>
+</div>
+
+<div id="main">
+    <div id="userview">User details</div>
+    <div id="page">
+        <h4>Update</h4>
+        <div id="posts">
+        </div>
+    </div>
+    <div id="footer">
+        <p>This is a footer message</p>
+    </div>
+</div>
+
+
+<script type="text/template" id="headerTemplate">
+    <a class="postUpdate" href="#">Home</a>
+    <a class="postUpdate" href="#">Post an update</a>
+    <img class="postImage" src="<%- pic %>"/>
+</script>
+
+<script type="text/template" id="userTemplate">
+    <img class="postImage" src="<%- user.get('pic') %>"/>
+    <a><%- user.get('username') %></a>
+</script>
+
+<script type="text/template" id="postTemplate">
+    <div id="<%= id %>">
+        <img class="postImage" src="<%- author.get('pic') %>"/>
+        <label><%- author.get('username') %></label>
+        <span><%= content %></span>
+
+        <div class="commentList">
+            <ul>
+                <% comments.each(function(comment) { %>
+                <li class="listItem">
+                    <img class="commentImage" src="<%= comment.get('author').get('pic') %>"/>
+                    <label><%- comment.get('author').get('username') %></label>
+                    <span> <%= comment.get('content') %> </span>
+                    <label class="dateTime"> <%= comment.get('date') %> </label>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+    <input class="commentText" type="text" placeholder="post a comment"/>
+    </div>
+</script>
+
+<!--<div id="dialog" title="Basic dialog">-->
+<!--<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized-->
+<!--and closed with the 'x' icon.</p>-->
+<!--</div>-->
+
+<script src="./app/scripts/main.js"></script>
+<script src="./app/scripts/models/post.js"></script>
+<script src="./app/scripts/models/comment.js"></script>
+<script src="./app/scripts/models/user.js"></script>
+<script src="./app/scripts/collections/posts.js"></script>
+<script src="./app/scripts/collections/comments.js"></script>
+<script src="./app/scripts/collections/users.js"></script>
+<script src="./app/scripts/views/postview.js"></script>
+<script src="./app/scripts/views/postsview.js"></script>
+<script src="./app/scripts/views/Userview.js"></script>
+<script src="./app/scripts/views/Headerview.js"></script>
 </body>
 </html>
