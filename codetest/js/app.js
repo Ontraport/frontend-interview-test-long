@@ -3,29 +3,18 @@
   'use strict';
 
   // Module declaration and dependencies
-  var app = angular.module('app', ['ngStorage', 'posts']);
+  var app = angular.module('app', ['ngStorage', 'posts', 'users', 'comments']);
   app.controller('dataStorage', function($scope, $http, $localStorage) {
 
     $scope.dataPlug = $localStorage.$default({users: [], posts: []});
 
-    $http.get('data/users.json').success(function(data){
-        $scope.dataPlug.users = data;
-    })
-    .error(function(status) {
-      console.log("Error: " + status);
-    });
+    $scope.showUpdateForm = function() {
+        $('#postUpdateWrapper').toggle();
+    };
 
-
-
-    
-    $scope.text = '';
-    $scope.submit = function() {
-      if ($scope.text) {
-        var seconds = new Date().getSeconds();
-        $scope.postList.push({text: this.text, second: seconds});
-        $scope.text = '';
-      }
-    }
+    $scope.hideForm = function() {
+        $('#postUpdateWrapper').toggle();      
+    };
 
   });
 

@@ -8,29 +8,65 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-controller="dataStorage">
-	
-	<header>
-		<div class="container">
+	<div id="postUpdateWrapper" ng-keyup="$event.keyCode == 27 && hideForm()">
+		<section id="postUpdate">
+		<h3>Status Update</h3>
+		<form>
+
+			<!-- Unsure why required is not working, able to submit empty update.  Proceeding, for the sake of time, without resolving this issue. -->
+
+			<textarea ng-keyup="$event.keyCode == 13 && postUpdate()" ng-model="newUpdate" type="text" name="update" required autofocus></textarea>
+
+		</form>
+		<p>Hit enter to post update.</p>
+		<button ng-click="hideForm()">Close</button>
+		</section>
+	</div>	
+	<header id="header">
+
 			<div class="row">
-				<div class="col-sm-6" id="logo">
+				<div class="col-sm-4" id="logo">
 					<img src="images/logo.png" alt="the network"/>
 				</div>	
-				<div class="col-sm-6" id="search">
+				<div class="col-sm-4" id="search" class="row-centered">
 					<form ng-submit="submit()">
-						<input id="inputField" type="text" ng-model="text" name="post" placeholder="thoughts?" required />
-						<input type="submit" name="submit" value="Post"/>
+						<input id="inputField" type="text" ng-model="text" name="post" placeholder="Search..." required />
+						<input type="submit" name="submit" value="Go"/>
 					</form>
 				</div>
+
+				<nav class="col-sm-4 row-right">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><div ng-click="showUpdateForm()">Post an update</div></li>
+						<li><a href="#user"><img src="{{userIndex[loggedKey].pic}}" alt="Logged in as {{userIndex[loggedKey].pic}}" /></a><li>
+					</ul>
+
+				</nav>
+
+
 			</div>
-		</div>
+
 	</header>
 
-	<div class="container">
-		<section id="page">
-			<h1>Updates</h1>
-			<posts></posts>
+	<div class="content container">
+		<aside class="col-sm-3">
+			<section id="userSide">
+				<user></user>
+			</section>
+		</aside>
+		<section class="col-sm-9">
+			<div id="postsWrapper">
+				<h3 id="postsHeader">Updates</h3>
+				<posts></posts>
+
+			</div>
+		<footer>This is a footer message</footer>
 		</section>
 	</div>
+
+
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
@@ -39,6 +75,8 @@
 <script src="js/vendor/ngStorage.js"></script>
 <script src="js/app.js"></script>
 <script src="js/posts.js"></script>
+<script src="js/users.js"></script>
+<script src="js/comments.js"></script>
 
 
 </body>

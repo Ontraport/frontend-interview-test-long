@@ -1,0 +1,18 @@
+<section class="col-sm-11 col-xs-12 col-sm-offset-1 updateComments" ng-repeat="comment in post.comments">
+	<aside class="col-xs-2 col-sm-1">
+	<img src="{{ userIndex[comment.userId].pic}}" />
+	</aside>
+	
+	<section class="col-xs-10">
+		<header class="userName">
+			{{ userIndex[comment.userId].username}}
+		</header>
+		<p class='commentContent'>{{comment.content}}</p>
+	</section>
+</section>
+<section class="col-sm-11 col-xs-12 col-sm-offset-1 postUpdateComment">
+	<form>
+			<span class="currentPostId">{{post.id}}</span>
+			<textarea class="currentCommentField" ng-keyup="$event.keyCode == 13 && postComment()" rows="1" ng-model="commentUpdate" type="text" name="updateComment" placeholder="add a comment..." required></textarea>
+	</form>
+</section>

@@ -1,8 +1,23 @@
-<article ng-repeat="post in dataPlug.posts">
+<article class="col-xs-12 posts" ng-repeat="post in dataPlug.posts">
+
+	<aside class="col-xs-2 col-sm-1 updatePic">
+		<img src="{{ userIndex[post.userId].pic }}" alt="{{userIndex[post.userId].username}}"/>
+	</aside>
+	<section class="col-xs-10">
+		<header class="userName">
+			{{userIndex[post.userId].username}}
+		</header>
+		<p>{{post.content}}</p>
 
 
-<!--<button ng-click="updateThis()"></button>-->
-	<img src="{{post.posterPic}}" />
-	{{post.content}}
+
+
+	</section>
+
+	<comments></comments>
+
+
+
 
 </article>
+<div class="clearfix"></div>
