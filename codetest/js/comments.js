@@ -7,20 +7,17 @@
       templateUrl: 'comments.html',
       controller: function($scope, $http) {
 
-        
+        $scope.newComment = "";
 
-        $scope.postComment = function() {
+        $scope.getPostId = function (a) {
+          $scope.postId = $scope.dataPlug.posts.map(function(e) { return e.id; }).indexOf(a.postId);
+        };
+
+        $scope.postComment = function(postId) {
 
           //get current post id#
-          $scope.newComment = "";
-
-          {{post.id}}
-
-
-
-
-
-
+          $scope.postId = "";
+          $scope.getPostId(postId);
 
           //Find highest comment id#
           var max = [];
@@ -32,8 +29,8 @@
           };
           $scope.nextCommentId = Math.max.apply(null, max) + 1;
 
-
-          $scope.dataPlug.posts[$scope.currentPostId].comments.push(
+          //push comment
+          $scope.dataPlug.posts[$scope.postId].comments.push(
             {
               id: $scope.nextCommentId,
               userId: $scope.loggedKey,
@@ -41,6 +38,7 @@
               content: $scope.newComment
             }
           );
+
           $scope.newComment = "";
 
         };

@@ -3,10 +3,12 @@
   'use strict';
 
   // Module declaration and dependencies
-  var app = angular.module('app', ['ngStorage', 'posts', 'users', 'comments']);
+  var app = angular.module('app', ['ngStorage','users', 'posts', 'comments']);
   app.controller('dataStorage', function($scope, $http, $localStorage) {
 
-    $scope.dataPlug = $localStorage.$default({users: [], posts: []});
+    $scope.$storage = $localStorage.$default({users: [], posts: []});
+    $scope.dataPlug = $scope.$storage;
+
 
     $scope.showUpdateForm = function() {
         $('#postUpdateWrapper').toggle();
