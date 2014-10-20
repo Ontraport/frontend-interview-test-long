@@ -1,4 +1,4 @@
-ONTRAPORT Front-end Evaluation, Long Test
+Long Test: It took me about 10 hours, difficulty with $localStorage
 ============================
 
 Congratulations, you passed the first test! There is just one more hoop to jump through. This is the 
