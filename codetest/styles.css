@@ -3,9 +3,6 @@
  * 
  */
 
-html{
-	height: 100%;
-}
 
 body{
 	background: rgb(167,199,220); /* Old browsers */
@@ -19,76 +16,262 @@ body{
 
 	
 	font-size: 13px;
-	min-width: 800px;
-	
 }
 
 br{
 	clear: left;
 }
 
+footer {
+	margin: 20px 0;
+	padding-left: 50px;
+}
 
-#header{
+nav {
+	color: #FFF;
+	margin-top: 1em;
+	text-shadow: 1px 1px 1px #000;
+}
+
+nav img {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	left: 10px;
+}
+
+nav ul li{
+	display: inline-block;
+	text-decoration: none;
+	margin: 5px 5px 0 5px;
+	transition: transform 1s;
+	cursor: pointer;
+}
+
+nav ul li:hover {
+	transform: scale(1.1, 1.1);
+}
+
+nav ul li a {
+	color: #FFF;
+}
+
+nav ul li a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.row-right {
+	text-align: right;
+}
+
+.row-centered {
+	text-align: center;
+}
+
+/* Disable firefox "required" border */
+:invalid {
+  box-shadow: none;
+}
+
+:-moz-submit-invalid {
+  box-shadow: none;
+}
+
+:-moz-ui-invalid {
+  box-shadow:none;
+}
+
+/*page content*/
+
+@media screen and (max-width: 768px) {
+		.content.container {
+			padding: 0!important;
+			margin: 0 !important;
+		}
+
+		.col-sm-3, .col-sm-9 {
+			padding: 0!important;
+			margin: 0!important;
+		}
+
+		#postsWrapper, #userSide {
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+		}
+}
+
+.commentContent {
+	float: left;
+}
+
+.content {
+	margin-top: 20px;
+}
+
+#header {
 	background: rgba( 0, 0, 0, 0.7);
-	padding: 10px 5px;
+	padding: 10px 30px;
 	box-shadow: 0px 1px 5px #fff;
 }
 
+#postsHeader  {
+	padding-left: 10px;
+}
 
-/*logo in header*/
-#logo{
-	display: inline-block;
+#postsWrapper, #userSide{
+	background: #F7F7F7;
+	-webkit-border-radius: 5px; /* add multibrowser support later */
+	margin-top: 10px;
+	padding-top: 5px;
+}
+
+#postsWrapper article {
+	margin: 15px 0;
+}
+
+
+#postUpdateWrapper {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 999;
+}
+
+#postUpdate {
+	width: 400px;
+	height: 250px;
+	padding: 20px 30px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -125px;
+	background-color: #EDEDED;
+	-webkit-border-radius: 5px;
+
+}
+
+#postUpdate form {
+	margin: 10px 0;
+}
+
+#postUpdate textarea {
+	width: 100%;
+	height: 100px;
+	-webkit-border-radius: 2px;
+}
+
+.postUpdateComment {
+    background-color: #EDEDED;
+    padding: 5px 2px 0 2px!important;	
+
+}
+
+.postUpdateComment input[name="updateComment"] {
+	width: 100%;
+	padding: 2px;
+}
+
+.updateComments {
+    background-color: #EDEDED;
+    border-bottom: 1px solid lightgray;
+    padding-top: 20px;
+    padding-left: 0 !important;
+}
+
+.updateComments img {
+	width: 25px;
+	height: 25px;
 	float: left;
+	margin-right: 10px;
+}
+
+.updatePic {
+	margin-left: 0;
+	padding-left: 0 !important;
+}
+
+.userAbout {
+	padding-left: 5px;
+	font-size: .9em;
+	line-height: .8em;
+	font-style: italic;
+	color: #B0B0B0 ;
+}
+
+.userName {
+	color: #0279C9;
+	font-weight: bold;
+}
+
+#userSide img {
+	margin-bottom: 5px;
 }
 
 /*search in header*/
 
 #search{
-
-	display: inline;
-    float: left;
-    left: 50%;
-    margin-left: -25%;
-    position: relative;
-    width: 300px;
     margin-top: 1em;
 }
-#search input[name="terms"]{
-	width: 250px;
+#search input[name="post"]{
+	height: 30px;
+	max-width: 300px;
+	width:80%;
 	padding: 2px 3px;
 	border: 2px solid #A2C4DA;
 	font-size: 1.2em;
 }
 
-#search input[type="submit"]{
-	width: 30px;
+#search input[name="post"]:focus {
+	box-shadow: 0 0 20px #FFF;
+}
+
+#search input[name="submit"]{
+	height: 30px;
+	width: 18%;
+	max-width: 30px;
 	padding: 4px;
 	vertical-align: top;
 	font-weight: bold;
 	text-shadow: 1px 1px 1px #fff;
 	border: 1px solid #6FD6F7;
-
-
-
+	background: #7edcfb;
+	background: -moz-linear-gradient(top,  #7edcfb 0%, #0daee1 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7edcfb), color-stop(100%,#0daee1));
+	background: -webkit-linear-gradient(top,  #7edcfb 0%,#0daee1 100%);
+	background: -o-linear-gradient(top,  #7edcfb 0%,#0daee1 100%);
+	background: -ms-linear-gradient(top,  #7edcfb 0%,#0daee1 100%);
+	background: linear-gradient(to bottom,  #7edcfb 0%,#0daee1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7edcfb', endColorstr='#0daee1',GradientType=0 );
 }
 
-#search input[type="submit"]:hover{
-	
+#search input[name="submit"]:hover {
+	background: #0daee1;
+	background: -moz-linear-gradient(top,  #0daee1 0%, #7edcfb 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0daee1), color-stop(100%,#7edcfb));
+	background: -webkit-linear-gradient(top,  #0daee1 0%,#7edcfb 100%);
+	background: -o-linear-gradient(top,  #0daee1 0%,#7edcfb 100%);
+	background: -ms-linear-gradient(top,  #0daee1 0%,#7edcfb 100%);
+	background: linear-gradient(to bottom,  #0daee1 0%,#7edcfb 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0daee1', endColorstr='#7edcfb',GradientType=0 );	
+}
+
+#search input.ng-valid.ng-dirty {
+	border-color: #78FA89;
 }
 
 
 
 
 
-/*page content*/
 
-#page{
-	width: 800px;
-	
-	/*background: rgba( 255, 255, 255, 0.3 );
-	border: 1px solid #ffffff;*/
-	margin: 10px auto 0px;
-	padding: 1em 2em;
-}
+
+
 
 
