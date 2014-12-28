@@ -1,0 +1,15 @@
+{
+  "name": "OntraportTest",
+  "version": "0.0.1",
+  "description": "An extensive test for Ontraport",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emilguareno/frontend-interview-test-long.git"
+  },
+  "author": "Emil Guareno",
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-util": "^2.2.20",
+    "gulp-webserver": "^0.8.1"
+  }
+}

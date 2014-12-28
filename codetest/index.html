@@ -1,28 +1,61 @@
 <!DOCTYPE HTML >
-<html>
+<html ng-app="myApp">
 <head>
 	<title>The network</title>
 	
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
 </head>
 <body>
 	
-	<div id="header">
+	<div id="header" class="cf">
 		<div id="logo">
 			<img src="images/logo.png" alt="the network"/>
-		</div>	
+		</div><!-- logo -->
 		<div id="search">
 			<form method="get" action="#">
-				<input type="search" name="terms" placeholder="Search...."/>
+				<input type="search" name="terms" ng-model="name" placeholder="Search...."/>
 				<input type="submit" value="Go"/>
-			</form>
+			</form><!-- search -->
 		</div>
-	</div>
+	</div><!-- header -->
 	
-	<div id="page">
+	<div id="page" class="cf">
 
+	<div id="posts" ng-controller="getPostController">
+	<h1>Updates</h1>
+	<div class="post" ng-repeat="post in postObj">
+		<div class="user-image" ng-repeat="user in users | filter:{'id': post.userId}:true">
+		<img src="{{user.pic}}" ng-class="user-image" alt="{{user.username}}">
+		</div>
+		
+		<div class="user-content">
+
+			<div class="user" ng-repeat="user in users | filter:{'id': post.userId}:true">
+				{{user.username}}
+			</div><!-- user -->
+			<p>{{post.content}}</p>
+			<div class="comment" ng-repeat="comment in post.comments">
+			<div class="user" ng-repeat="user in users | filter:{'id': comment.userId}:true">
+				<img src="{{user.pic}}" width="25" height="25" alt="{{user.username}}">
+				{{user.username}}
+			</div><!-- user -->
+				<p>{{comment.content}}</p>
+			</div><!-- comment -->
+
+		</div><!-- user-content -->
+	<div class="post-comment-container" ng-controller="postCommentController">
+		<textarea class="post-comment" placeholder="post a comment" ng-model="commentValue" ng-keypress="outputVal($event)" rows="1"></textarea>
 	</div>
+
+	</div><!-- post -->
+
+	</div><!-- posts -->
+	
+	</div><!-- page -->
 	
 	<div>
 		<p>This is a footer mesage</p>
