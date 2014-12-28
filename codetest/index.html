@@ -26,7 +26,7 @@
 	<div id="page" class="cf">
 
 	<div id="posts" ng-controller="getPostController">
-	<h1>Updatesssss</h1>
+	<h1>Updates</h1>
 	<div class="post" ng-repeat="post in postObj">
 		<div class="user-image" ng-repeat="user in users | filter:{'id': post.userId}:true">
 		<img src="{{user.pic}}" ng-class="user-image" alt="{{user.username}}">
