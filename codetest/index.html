@@ -4,52 +4,77 @@
 	<title>The network</title>
 	
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/ngDialog.css" />
+	<link rel="stylesheet" type="text/css" href="css/ngDialog-theme-default.css" />
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	<script type="text/javascript" src="lib/angular.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="resources/box.js/box.js"></script>
+	<script type="text/javascript" src="js/services/userservice.js"></script>
+	<script type="text/javascript" src="js/services/dataservice.js"></script>
+	<script type="text/javascript" src="lib/ngDialog.js"></script>
 	<script type="text/javascript" src="js/controllers.js"></script>
 </head>
 <body>
 	
 	<div id="header" class="cf">
 		<div id="logo">
-			<img src="images/logo.png" alt="the network"/>
+			<a href="/"><img src="images/logo.png" alt="the network"/></a>
 		</div><!-- logo -->
 		<div id="search">
 			<form method="get" action="#">
 				<input type="search" name="terms" ng-model="name" placeholder="Search...."/>
 				<input type="submit" value="Go"/>
-			</form><!-- search -->
+			</form>
+		</div><!-- search -->
+		<div id="utilities" ng-controller="newPostController">
+			<a href="/">Home</a>
+			<a href="" ng-click="openLightbox()">Post an update</a>
+			<img ng-src="{{userData[0].pic}}" width="25" ng-controller="userController" alt="{{userData[0].username}}">
 		</div>
 	</div><!-- header -->
 	
 	<div id="page" class="cf">
 
-	<div id="posts" ng-controller="getPostController">
+	<div id="current-user" ng-controller="userController" class="box">
+	
+	<img ng-src="{{userData[0].pic}}" alt="{{userData[0].username}}">
+
+	<span> {{userData[0].username}} </span>
+	
+	</div>
+
+	<div id="posts" ng-controller="dataController" class="box">
 	<h1>Updates</h1>
-	<div class="post" ng-repeat="post in postObj">
+	<div class="post cf" ng-repeat="post in postObj">
 		<div class="user-image" ng-repeat="user in users | filter:{'id': post.userId}:true">
-		<img src="{{user.pic}}" ng-class="user-image" alt="{{user.username}}">
+		<img ng-src="{{user.pic}}" ng-class="user-image" alt="{{user.username}}">
 		</div>
 		
 		<div class="user-content">
+			<div class="user-post">
+				<div class="user" ng-repeat="user in users | filter:{'id': post.userId}:true">
+					<span>{{user.username}}</span>
+				</div><!-- user -->
+				<p>{{post.content}}</p>
+			</div><!-- user-post -->
+			<div class="comments-box cf">
+				<div class="comment" ng-repeat="comment in post.comments">
+					<div class="user cf" ng-repeat="user in users | filter:{'id': comment.userId}:true">
+						<div class="img-comment"><img ng-src="{{user.pic}}" width="25" height="25" alt="{{user.username}}"></div>
+						<div class="comment-content">
+						<span>{{user.username}}</span>
+						<p>{{comment.content}}</p>
+					</div><!-- comment-content -->
+					</div><!-- user -->
+				</div><!-- comment -->
+			<div class="post-comment-container" ng-controller="postCommentController">
+				<textarea class="post-comment" placeholder="post a comment" ng-model="commentValue" ng-keypress="postComment($event, post, $index)" rows="1"></textarea>
+			</div>
 
-			<div class="user" ng-repeat="user in users | filter:{'id': post.userId}:true">
-				{{user.username}}
-			</div><!-- user -->
-			<p>{{post.content}}</p>
-			<div class="comment" ng-repeat="comment in post.comments">
-			<div class="user" ng-repeat="user in users | filter:{'id': comment.userId}:true">
-				<img src="{{user.pic}}" width="25" height="25" alt="{{user.username}}">
-				{{user.username}}
-			</div><!-- user -->
-				<p>{{comment.content}}</p>
-			</div><!-- comment -->
+			</div><!--comments-box-->
 
 		</div><!-- user-content -->
-	<div class="post-comment-container" ng-controller="postCommentController">
-		<textarea class="post-comment" placeholder="post a comment" ng-model="commentValue" ng-keypress="outputVal($event)" rows="1"></textarea>
-	</div>
 
 	</div><!-- post -->
 
@@ -57,9 +82,15 @@
 	
 	</div><!-- page -->
 	
-	<div>
+	<footer>
 		<p>This is a footer mesage</p>
-	</div>
+	</footer>
+
+	<script type="text/ng-template" id="templateId" ng-controller="newPostController">
+    <h1>Status Update</h1>
+    <textarea id="post-box" ng-model="postData" ng-keypress="newPost($event)" rows="5" autofocus></textarea>
+    <p>Hit enter to post</p>
+</script>
 		
 </body>
 </html>

@@ -2,102 +2,211 @@
  * base styles 
  * 
  */
-
-html{
-	height: 100%;
+html {
+    height:100%
 }
 
-body{
-	background: rgb(167,199,220); /* Old browsers */
-	background: -moz-linear-gradient(top,  rgba(167,199,220,1) 0%, rgba(133,178,211,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(167,199,220,1)), color-stop(100%,rgba(133,178,211,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* IE10+ */
-	background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
-
-	
-	font-size: 13px;
-	min-width: 800px;
-	
+body {
+    height:100%;
+    margin:0;
+    background:#a7c7dc;
+/* Old browsers */
+    background:-moz-linear-gradient(top,rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%);
+/* FF3.6+ */
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(167,199,220,1)),color-stop(100%,rgba(133,178,211,1)));
+/* Chrome,Safari4+ */
+    background:-webkit-linear-gradient(top,rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%);
+/* Chrome10+,Safari5.1+ */
+    background:-o-linear-gradient(top,rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%);
+/* Opera 11.10+ */
+    background:-ms-linear-gradient(top,rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%);
+/* IE10+ */
+    background:linear-gradient(top,rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%);
+/* W3C */
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7c7dc',endColorstr='#85b2d3',GradientType=0);
+/* IE6-9 */
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    font-size:13px;
+    min-width:800px
 }
 
 h1 {
-font-size: 1.25em;
+    font-size:1.25em
 }
 
-br{
-	clear: left;
+br {
+    clear:left
 }
 
-
-#header{
-	background: rgba( 0, 0, 0, 0.7);
-	padding: 10px 5px;
-	box-shadow: 0px 1px 5px #fff;
+#header {
+    background:rgba(0,0,0,0.7);
+    padding:10px 5px;
+    box-shadow:0 1px 5px #fff
 }
-
 
 /*logo in header*/
-#logo{
-	float: left;
+#logo {
+    float:left
 }
 
 /*search in header*/
-
-#search{
-
-    float: left;
-    left: 50%;
-    margin-left: -25%;
-    position: relative;
-    width: 300px;
-    margin-top: 1em;
-}
-#search input[name="terms"]{
-	width: 250px;
-	padding: 2px 3px;
-	border: 2px solid #A2C4DA;
-	font-size: 1.2em;
+#search {
+    float:left;
+    left:50%;
+    margin-left:-25%;
+    position:relative;
+    margin-top:1em
 }
 
-#search input[type="submit"]{
-	width: 30px;
-	padding: 4px;
-	vertical-align: top;
-	font-weight: bold;
-	text-shadow: 1px 1px 1px #fff;
-	border: 1px solid #6FD6F7;
+#search input[name="terms"] {
+    width:250px;
+    padding:2px 3px;
+    border:2px solid #A2C4DA;
+    font-size:1.2em;
+    outline:none;
+    -webkit-transition:all .3s ease-in-out;
+    -moz-transition:all .3s ease-in-out;
+    -ms-transition:all .3s ease-in-out;
+    -o-transition:all .3s ease-in-out
 }
 
-#search input[type="submit"]:hover{
-	
+#search input[name="terms"]:focus {
+    -webkit-box-shadow:0 0 5px 3px rgba(255,255,255,0.6);
+    -moz-box-shadow:0 0 5px 3px rgba(255,255,255,0.6);
+    box-shadow:0 0 5px 3px rgba(255,255,255,0.6)
+}
+
+#search input[type="submit"] {
+    width:30px;
+    padding:4px;
+    vertical-align:top;
+    font-weight:700;
+    text-shadow:1px 1px 1px #fff;
+    border:1px solid #6FD6F7;
+    background:#7db9e8;
+/* Old browsers */
+    background:-moz-linear-gradient(top,#7db9e8 0%,#7edcfb 0%,#07ace0 100%);
+/* FF3.6+ */
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#7db9e8),color-stop(0%,#7edcfb),color-stop(100%,#07ace0));
+/* Chrome,Safari4+ */
+    background:-webkit-linear-gradient(top,#7db9e8 0%,#7edcfb 0%,#07ace0 100%);
+/* Chrome10+,Safari5.1+ */
+    background:-o-linear-gradient(top,#7db9e8 0%,#7edcfb 0%,#07ace0 100%);
+/* Opera 11.10+ */
+    background:-ms-linear-gradient(top,#7db9e8 0%,#7edcfb 0%,#07ace0 100%);
+/* IE10+ */
+    background:linear-gradient(to bottom,#7db9e8 0%,#7edcfb 0%,#07ace0 100%);
+/* W3C */
+    filter:/* IE6-9 */
+progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db9e8',endColorstr='#07ace0',GradientType=0)
+}
+
+#search input[type="submit"]:hover {
+    background:#07ACE0
 }
 
 /*page content*/
+#page {
+    width:800px;
+/*background: rgba( 255, 255, 255, 0.3 );
+    border: 1px solid #ffffff;*/
+    margin:10px auto 0
+}
 
-#page{
-	width: 800px;
-	
-	/*background: rgba( 255, 255, 255, 0.3 );
-	border: 1px solid #ffffff;*/
-	margin: 10px auto 0px;
-	padding: 1em 2em;
-}
 div#posts {
-background: #F7F7F7;
-width: 65.625%;
-float: right;
-padding:0 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
+    width:65.625%;
+    float:right
 }
-div.post {
-background: lightgrey;
-margin: 20px 0;
+
+div#current-user {
+    float:left;
+    width:31.25%
 }
+
+.box {
+    background:#F7F7F7;
+    padding:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px
+}
+
 textarea.post-comment {
-width: 100%;
+    width:100%
+}
+
+div#utilities {
+    float:right;
+    margin:1em 1em 0 0
+}
+
+div#utilities a {
+    color:#fff;
+    text-decoration:none;
+    text-shadow:1px 1px 3px #000
+}
+
+div#utilities > * {
+    margin:0 5px;
+    vertical-align:middle
+}
+
+.new-post textarea {
+    width:100%
+}
+
+.user-image {
+    float:left;
+    padding-right:5px
+}
+
+.user-post {
+    padding-left:10px
+}
+
+.user-content {
+    float:left;
+    width:460px;
+    margin-bottom:25px
+}
+
+.user-content p,.comment-content p {
+    margin:0;
+    padding-bottom:10px
+}
+
+.comment p.post-content {
+    margin-left:28px
+}
+
+.comments-box {
+    background-color:#ededed;
+    padding:2px
+}
+
+.user span {
+    color:#0279C9;
+    font-weight:700;
+    margin-bottom:5px
+}
+
+.img-comment {
+    float:left;
+    margin:0 10px 0 5px
+}
+
+.comment-content {
+    float:left;
+    width:90%
+}
+
+.comment .user {
+    border-bottom:1px solid #d8d8d8;
+    margin:16px 0 5px
+}
+
+footer {
+    text-align:center;
+    margin:2em
 }
