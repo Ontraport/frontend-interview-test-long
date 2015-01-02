@@ -1,6 +1,12 @@
 ONTRAPORT Front-end Evaluation, Long Test
 ============================
 
+The app took 15 hours to complete, including the extra credit. The test was very fun and educational. I am thankful for this opportunity. It is my first Angular App. 
+
+I would definitely appreciate any feedback that I receive. 
+
+The current user can be changed on the user service file.
+
 Congratulations, you passed the first test! There is just one more hoop to jump through. This is the 
 ONTRAPORT 'Front-end Long Test'. We use it to gain an understanding of your front-end programming 
 abilities before we meet face to face. 
