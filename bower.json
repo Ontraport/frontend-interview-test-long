@@ -1,0 +1,19 @@
+{
+  "name": "frontend-interview-test-long",
+  "version": "0.0.0",
+  "homepage": "https://github.com/joekteo/frontend-interview-test-long",
+  "authors": [
+    "Joe Teo <revelate@live.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.8"
+  }
+}
