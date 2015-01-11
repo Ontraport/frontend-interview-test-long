@@ -30,6 +30,7 @@ br{
 
 #header{
 	background: rgba( 0, 0, 0, 0.7);
+	height: 70px;
 	padding: 10px 5px;
 	box-shadow: 0px 1px 5px #fff;
 }
@@ -84,17 +85,72 @@ br{
 
 #page{
 	width: 800px;
-
 	/*background: rgba( 255, 255, 255, 0.3 );
 	border: 1px solid #ffffff;*/
 	margin: 10px auto 0px;
 	padding: 1em 2em;
 }
 
-/* JKT Added */
-
-.user-tab{
-
+/*JKT Added*/
+.userNavbarItems{
+	bottom: 7em;
+	left: 12em;
+	list-style: none;
+	position: relative;
 }
 
+.userNavbarItems li{
+	color: #FDF8FF;
+	display: inline-block;
+	float: right;
+	padding: 0em 0.938em;
+	text-decoration: none;
+}
+
+.userNavbarItems img{
+	height: 30px;
+	width: 30px;
+}
+/*unvisited link*/
+.userNavbarItems a:link{
+  color: #FDF8FF;
+}
+/*visited link*/
+.userNavbarItems a:visited{
+  color: #00FF00;
+}
+/*mouse over link*/
+.userNavbarItems a:hover{
+  color: #FF00FF;
+}
+
+/*selected link*/
+.userNavbarItems a:active{
+  color: #0000FF;
+}
+
+#page-container{
+	margin: 0 auto;
+	width: 75%;
+}
+
+.user-tab{
+	background-color: #F7F7F7;
+	border-radius: 7px;
+	/*height: 90px;*/
+	padding: 10px 10px 0px 10px;
+	margin: 0 1em;
+}
+
+.user-tab img{
+	height: 50px;
+	width: 50px;
+}
+
+.updates-tab{
+	background-color: #F7F7F7;
+	border-radius: 7px;
+	padding: 10px 10px 0px 10px;
+	margin: 0 1em;
+}
 

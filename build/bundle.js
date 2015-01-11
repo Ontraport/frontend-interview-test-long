@@ -26078,26 +26078,51 @@ var ontraportApp = angular.module('ontraportApp', []);
 
 require('./controllers/userController.js')(ontraportApp);
 
-},{"./../../bower_components/angular/angular":1,"./controllers/userController.js":4}],3:[function(require,module,exports){
-
-},{}],4:[function(require,module,exports){
+},{"./../../bower_components/angular/angular":1,"./controllers/userController.js":3}],3:[function(require,module,exports){
 'use strict';
 
 module.exports = function(app) {
-  app.controller('ontraportController', ['$scope', '$http', function($scope, $http) {
-    $scope.users = 'hello world';
-    // console.log($scope.data);
-    $scope.displayUser = function(display) {
-      $scope.displayUser(display);
+  app.controller('userController', ['$scope', '$http', function($scope, $http) {
+    $scope.displayUser2 = false;
+    $scope.displayAllUsers2 = false;
+    $scope.displayAllComments2 = false;
+
+    $scope.displayUser = function() {
       $http({
         method: 'GET',
-        url: '/posts/9'
+        url: '/user/5'
       }).success(function(data) {
-        $scope.users.inf = data;
-        console.log($scope.users.inf);
+        $scope.data = data;
+        $scope.displayUser2 = true;
+      }).error(function() {
+        return console.log('unable to find info');
+      });
+    };
+
+    $scope.displayAllUsers = function() {
+      $http({
+        method: 'GET',
+        url: '/users/10'
+      }).success(function(data) {
+        $scope.allUsers = data;
+        $scope.displayAllUsers2 = true;
+      }).error(function() {
+        return console.log('unable to find info');
+      });
+    };
+
+    $scope.displayAllComments = function() {
+      $http({
+        method: 'GET',
+        url: '/posts/10'
+      }).success(function(data) {
+        $scope.allComments = data;
+        $scope.displayAllComments2 = true;
+      }).error(function() {
+        return console.log('unable to find info');
       });
     };
   }]);
 };
 
-},{}]},{},[2,3,4]);
+},{}]},{},[2,3]);

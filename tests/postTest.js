@@ -21,9 +21,9 @@ describe('Post Backend Tests', function() {
       });
   });
 
-  it('gets all post comments', function(done) {
+  it('gets a list of post comments', function(done) {
     chai.request(server)
-      .get('/posts/9')
+      .get('/posts/10')
       .end(function(err, res) {
         // console.log(res.body);
         expect(err).to.eql(null);

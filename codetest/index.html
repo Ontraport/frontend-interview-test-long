@@ -9,7 +9,7 @@
 	<script src="bundle.js"></script>
 </head>
 <body data-ng-app="ontraportApp">
-	<div data-ng-controller="ontraportController">
+	<div data-ng-controller="userController">
 		<div id="header">
 			<div id="logo">
 				<img src="images/logo.png" alt="the network"/>
@@ -26,15 +26,33 @@
 
 		</div>
 
-		<div class="row">
-			<div class="user-tab col-md-4">
-				<p>hello</p>
-				<p>{{users}}</p>
-				<button data-ng-click="displayUser()">{{users.inf}}</button>
+		<div class="row" id="page-container" data-ng-init="displayUser()">
+			<div data-ng-show="displayUser2">
+				<ul class="userNavbarItems">
+					<li><img src={{data.pic}}></img></li>
+			<!-- <p data-ng-submit="">Post an update</p> -->
+					<li><p>Post an Update</p><li>
+					<li><a href="../codetest/index.html">Home</a></li>
+				</ul>
 			</div>
-			<div class="updates-tab col-md-8">
-				<p>hi</p>
+
+			<div class="user-tab col-sm-4">
+				<div data-ng-show="displayUser2">
+					<img src={{data.pic}}></img>
+					<p>{{data.username}}</p>
+				</div>
 			</div>
+
+			<div class="updates-tab col-sm-7" data-ng-init="displayAllComments()">
+				<div data-ng-show="displayAllComments2">
+					<h2>Updates</h2>
+					<div class="userComments" data-ng-repeat="comments in allComments">
+					<p>{{comments.content}}</p>
+					<br>
+					<input type="text" name="inputComment" style="width: 100%" placeholder="post a comment"/>
+				</div>
+			</div>
+
 			<p>This is a footer mesage</p>
 		</div>
 	</div>
