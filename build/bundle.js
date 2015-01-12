@@ -26139,6 +26139,12 @@ module.exports = function(app) {
 
     $scope.showAddResource = function() {
       $scope.showResource = true;
+      // var code = (e.keyCode ? e.keyCode : e.which);
+      // if (code == 13) {
+      //   $scope.showResource = false;
+      // }else {
+      //   $scope.showResource = true;
+      // }
     };
   }]);
 };

@@ -92,6 +92,26 @@ br{
 }
 
 /*JKT Added*/
+#search input[name="terms"]{
+	box-shadow: 0 0 50px;
+	color: #0a0;
+	transition: box-shadow .5s;
+}
+
+#search input[name="terms"]:focus{
+	border-color: white;
+	color: white;
+}
+
+#search input[type="submit"]:hover{
+	border-bottom-color: yellow;
+	border-style: solid;
+	border-top-color: yellow;
+	border-width: 5px;
+	font-size: 12px;
+	text-align: center;
+}
+
 #page-container{
 	margin: 0 auto;
 	width: 75%;
@@ -116,31 +136,38 @@ br{
 	height: 30px;
 	width: 30px;
 }
+
 /*unvisited link*/
 .userNavbarItems a:link{
   color: #FDF8FF;
 }
+
 /*visited link*/
 .userNavbarItems a:visited{
   color: #FDF8FF;
 }
+
 /*mouse over link*/
 .userNavbarItems a:hover{
   color: #FF00FF;
+	text-decoration: none;
 }
 
 /*selected link*/
 .userNavbarItems a:active{
   color: #0000FF;
 }
+
 /*unvisited link*/
 .userNavbarItems p:link{
   color: #FDF8FF;
 }
+
 /*visited link*/
 .userNavbarItems p:visited{
   color: #FDF8FF;
 }
+
 /*mouse over link*/
 .userNavbarItems p:hover{
   color: #FF00FF;
@@ -152,17 +179,27 @@ br{
 }
 
 .showResource{
-	position: absolute;
-	top: 38px;
 	background-color: gray;
 	border: 4px solid;
 	border-color: gray;
 	border-radius: 4px;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	top: 24em;
+	width: 21em;
+	z-index: 1;
 }
 
 .postResource{
 	color: black;
 	height: 100px;
+}
+
+.submitPostResource{
+	width: 20.45em;
 }
 
 .user-tab{

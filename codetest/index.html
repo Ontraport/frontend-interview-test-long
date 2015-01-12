@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="bundle.js"></script>
 </head>
 <body data-ng-app="ontraportApp">
@@ -34,7 +35,7 @@
 						<p data-ng-click="showAddResource()">Post an Update</p>
 						<p class="showResource" data-ng-show="showResource">
 							<input class="postResource" data-ng-model="postResource.input" type="text" name="inputResource" style="width: 100%" placeholder="add a new post"/>
-							<input data-ng-submit="addResource(data.id, postResource.input)" type="submit" value="Submit">
+							<input class="submitPostResource" data-ng-submit="addResource(data.id, postResource.input)" type="submit" value="Submit"/>
 						</p>
 					</li>
 					<li><a href="./index.html">Home</a></li>
@@ -65,4 +66,15 @@
 	</div>
 	<p class="footerMessage">This is a footer message</p>
 </body>
+<script>
+'use strict';
+(function() {
+  $('.postResource').keypress(function(e) {
+		var code = (e.keyCode ? e.keyCode : e.which);
+    if (code == 13) {
+      $('.showResource').hide();
+    }
+  });
+})();
+</script>
 </html>
