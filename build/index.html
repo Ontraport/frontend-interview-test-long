@@ -32,11 +32,12 @@
 				<ul class="userNavbarItems">
 					<li><img src={{data.pic}}></img></li>
 					<li>
-						<p data-ng-click="showAddResource()">Post an Update</p>
+						<p class="showAddResource" data-ng-click="showAddResource()">Post an Update</p>
 						<p class="showResource" data-ng-show="showResource">
 							<input class="postResource" data-ng-model="postResource.input" type="text" name="inputResource" style="width: 100%" placeholder="add a new post"/>
 							<input class="submitPostResource" data-ng-submit="addResource(data.id, postResource.input)" type="submit" value="Submit"/>
 						</p>
+						<p>{{postResource.input}}</p>
 					</li>
 					<li><a href="./index.html">Home</a></li>
 				</ul>
@@ -53,28 +54,50 @@
 				<section data-ng-init="displayAllComments()">
 					<section data-ng-show="displayAllComments2">
 						<h2>Updates</h2>
-						<div class="userComments" data-ng-repeat="content in allComments">
-						<p>{{content.content}}</p>
-						<br>
-						<p>{{content.comments}}</p>
-						<br>
-						<input type="text" name="inputComment" style="width: 100%" placeholder="post a comment"/>
+						<div data-ng-init="displayAllUsers()" class="col-updates-tab">
+							<section class="userDescription col-sm-3" data-ng-repeat="users in allUsers">
+								<img src={{users.pic}}></img>
+								<p>{{users.username}}</p>
+							</section>
+						</div>
+
+						<div class="userComments col-sm-9">
+							<section data-ng-repeat="content in allComments">
+								<p>{{content.content}}</p>
+								<br>
+								<section class="replyCommentsbox">
+									<p>{{content.comments}}</p>
+								</section>
+								<br>
+								<p>{{content[comments].content}}</p>
+								<!-- <p>{{content.comments.[content]}}</p> -->
+								<input type="text" name="inputComment" style="width: 100%" placeholder="post a comment"/>
+								<br>
+							</section>
+						</div>
 					</section>
 				</section>
 			</div>
 		</div>
 	</div>
 	<p class="footerMessage">This is a footer message</p>
-</body>
 <script>
 'use strict';
 (function() {
+	$('.showAddResource').click(function() {
+    $('.showResource').toggle();
+	});
+
   $('.postResource').keypress(function(e) {
 		var code = (e.keyCode ? e.keyCode : e.which);
+    // var inputText = $('form input[name="inputResource"]').val();
     if (code == 13) {
-      $('.showResource').hide();
+	    // event.preventDefault();
+	    // $('.userComments').append('<p>' + inputText + '</p>');
+      $('.showResource').hide('slow');
     }
   });
 })();
 </script>
+</body>
 </html>

@@ -26132,6 +26132,7 @@ module.exports = function(app) {
         data: {cnt: content}
       }).success(function(data) {
         $scope.postData = data;
+        // $scope.cnt.push;
       }).error(function() {
         return console.log('unable to add comment');
       });
