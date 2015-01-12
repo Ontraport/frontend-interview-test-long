@@ -26086,6 +26086,7 @@ module.exports = function(app) {
     $scope.displayUser2 = false;
     $scope.displayAllUsers2 = false;
     $scope.displayAllComments2 = false;
+    $scope.showResource = false;
 
     $scope.displayUser = function() {
       $http({
@@ -26121,6 +26122,23 @@ module.exports = function(app) {
       }).error(function() {
         return console.log('unable to find info');
       });
+    };
+
+    $scope.addResource = function(userId, content) {
+      $http({
+        method: 'POST',
+        url: 'post/' + userId,
+        data: {cnt: content}
+      }).success(function(data) {
+        $scope.postData = data.push;
+        // $scope.showResource = true;
+      }).error(function() {
+        return console.log('unable to add comment');
+      });
+    };
+
+    $scope.showAddResource = function() {
+      $scope.showResource = true;
     };
   }]);
 };

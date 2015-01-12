@@ -8,10 +8,8 @@ module.exports = function(app) {
   app.post('/post/:id', function(req, res) {
     var post = new Post({
       id: req.body.id,
-      userId: req.body.userId,
-      date: req.body.date,
-      content: req.body.cnt,
-      comments: req.body.comments
+      userId: req.params.userId,
+      content: req.body.cnt
     });
     post.save(function(err, data) {
       if (err) {

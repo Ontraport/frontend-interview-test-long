@@ -16,7 +16,6 @@ describe('Post Backend Tests', function() {
         // console.log(res.body);
         expect(err).to.eql(null);
         expect(res.body.content).to.be.a('string');
-        expect(res.body.comments).to.be.a('array');
         done();
       });
   });
@@ -28,8 +27,8 @@ describe('Post Backend Tests', function() {
         // console.log(res.body);
         expect(err).to.eql(null);
         expect(res.body[0].id).to.be.a('number');
-        expect(res.body[1].content).to.be.a('string');
-        expect(res.body[2].comments).to.be.a('array');
+        expect(res.body[0].content).to.be.a('string');
+        expect(res.body[0].comments).to.be.a('array');
         done();
       });
   });
@@ -41,7 +40,7 @@ describe('Post Backend Tests', function() {
       .end(function(err, res) {
         // console.log(res.body);
         expect(err).to.eql(null);
-        expect(res.body.comments[1]).to.be.a('object');
+        expect(res.body.comments[0]).to.be.a('object');
         done();
       });
   });

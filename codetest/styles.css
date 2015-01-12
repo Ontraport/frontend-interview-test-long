@@ -92,6 +92,11 @@ br{
 }
 
 /*JKT Added*/
+#page-container{
+	margin: 0 auto;
+	width: 75%;
+}
+
 .userNavbarItems{
 	bottom: 7em;
 	left: 12em;
@@ -117,7 +122,7 @@ br{
 }
 /*visited link*/
 .userNavbarItems a:visited{
-  color: #00FF00;
+  color: #FDF8FF;
 }
 /*mouse over link*/
 .userNavbarItems a:hover{
@@ -129,17 +134,16 @@ br{
   color: #0000FF;
 }
 
-#page-container{
-	margin: 0 auto;
-	width: 75%;
+.postResource{
+	color: black;
 }
 
 .user-tab{
 	background-color: #F7F7F7;
 	border-radius: 7px;
-	/*height: 90px;*/
 	padding: 10px 10px 0px 10px;
 	margin: 0 1em;
+	top: -2em;
 }
 
 .user-tab img{
@@ -150,7 +154,18 @@ br{
 .updates-tab{
 	background-color: #F7F7F7;
 	border-radius: 7px;
-	padding: 10px 10px 0px 10px;
 	margin: 0 1em;
+	padding: 10px 10px 0px 10px;
+	position: relative;
+	top: -4.11em;
 }
 
+.userComments p{
+	margin: 20px 2px -10px 2px;
+}
+
+.footerMessage{
+	float: left;
+	left: 57.5em;
+	position: relative;
+}
