@@ -133,9 +133,36 @@ br{
 .userNavbarItems a:active{
   color: #0000FF;
 }
+/*unvisited link*/
+.userNavbarItems p:link{
+  color: #FDF8FF;
+}
+/*visited link*/
+.userNavbarItems p:visited{
+  color: #FDF8FF;
+}
+/*mouse over link*/
+.userNavbarItems p:hover{
+  color: #FF00FF;
+}
+
+/*selected link*/
+.userNavbarItems p:active{
+  color: #0000FF;
+}
+
+.showResource{
+	position: absolute;
+	top: 38px;
+	background-color: gray;
+	border: 4px solid;
+	border-color: gray;
+	border-radius: 4px;
+}
 
 .postResource{
 	color: black;
+	height: 100px;
 }
 
 .user-tab{

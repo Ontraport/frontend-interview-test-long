@@ -26118,6 +26118,7 @@ module.exports = function(app) {
         url: '/posts/10'
       }).success(function(data) {
         $scope.allComments = data;
+        // $scope.allReplies = data.comments;
         $scope.displayAllComments2 = true;
       }).error(function() {
         return console.log('unable to find info');
@@ -26130,8 +26131,7 @@ module.exports = function(app) {
         url: 'post/' + userId,
         data: {cnt: content}
       }).success(function(data) {
-        $scope.postData = data.push;
-        // $scope.showResource = true;
+        $scope.postData = data;
       }).error(function() {
         return console.log('unable to add comment');
       });

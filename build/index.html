@@ -32,9 +32,9 @@
 					<li><img src={{data.pic}}></img></li>
 					<li>
 						<p data-ng-click="showAddResource()">Post an Update</p>
-						<p data-ng-show="showResource">
+						<p class="showResource" data-ng-show="showResource">
 							<input class="postResource" data-ng-model="postResource.input" type="text" name="inputResource" style="width: 100%" placeholder="add a new post"/>
-							<input data-ng-submit="addResource()" type="submit" value="Submit">
+							<input data-ng-submit="addResource(data.id, postResource.input)" type="submit" value="Submit">
 						</p>
 					</li>
 					<li><a href="./index.html">Home</a></li>
@@ -48,17 +48,21 @@
 				</div>
 			</div>
 
-			<div class="updates-tab col-sm-7" data-ng-init="displayAllComments()">
-				<div data-ng-show="displayAllComments2">
-					<h2>Updates</h2>
-					<div class="userComments" data-ng-repeat="comments in allComments">
-					<p>{{comments.content}}</p>
-					<br>
-					<input type="text" name="inputComment" style="width: 100%" placeholder="post a comment"/>
-				</div>
+			<div class="updates-tab col-sm-7">
+				<section data-ng-init="displayAllComments()">
+					<section data-ng-show="displayAllComments2">
+						<h2>Updates</h2>
+						<div class="userComments" data-ng-repeat="content in allComments">
+						<p>{{content.content}}</p>
+						<br>
+						<p>{{content.comments}}</p>
+						<br>
+						<input type="text" name="inputComment" style="width: 100%" placeholder="post a comment"/>
+					</section>
+				</section>
 			</div>
 		</div>
 	</div>
-	<p class="footerMessage">This is a footer mesage</p>
+	<p class="footerMessage">This is a footer message</p>
 </body>
 </html>

@@ -37,6 +37,7 @@ module.exports = function(app) {
         url: '/posts/10'
       }).success(function(data) {
         $scope.allComments = data;
+        // $scope.allReplies = data.comments;
         $scope.displayAllComments2 = true;
       }).error(function() {
         return console.log('unable to find info');
