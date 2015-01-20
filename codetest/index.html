@@ -1,32 +1,61 @@
 <!DOCTYPE HTML >
-<html>
+<html ng-app="NetworkEngine">
 <head>
 	<title>The network</title>
-	
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
-<body>
+<body ng-controller="UserController as UserCtrl">
+	<div id="application-wrap" ng-repeat="user in users" ng-if="user.id==5">
+		<header>
+			<div id="logo">
+				<img src="images/logo.png" alt="the network"/>
+			</div>	
+			<div id="search">
+				<form method="get" action="#">
+					<input type="search" name="terms" placeholder="Search...."/>
+					<input type="submit" value="Go"/>
+				</form>
+			</div>
+			<ul id="admin">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Post an Update</a></li>
+				<li><img src="{{user.pic}}" /></li>
+			</ul>
+		</header>
 	
-	<div id="header">
-		<div id="logo">
-			<img src="images/logo.png" alt="the network"/>
-		</div>	
-		<div id="search">
-			<form method="get" action="#">
-				<input type="search" name="terms" placeholder="Search...."/>
-				<input type="submit" value="Go"/>
-			</form>
+		<div id="page">
+			<aside>
+				<img class="user-avatar" src="{{user.pic}}" /> {{user.username}}
+			</aside>
+			<div id="content">
+				<h2>Updates</h2>
+				<ul>
+					<li ng-repeat="post in posts" class="post">
+						<img src="{{post.pic}}" class="post-avatar" />
+						<div class="post-content">
+							<h3>{{post.username}}</h3>
+							<p>{{post.content}}</p>
+						</div>
+						<ul>
+							<li ng-repeat="comment in post.comments">
+								<img src="{{comment.pic}}" class="comment-avatar" />
+								<div class="post-content">
+									<h3>{{comment.username}}</h3>
+									<p>{{comment.content}}</p>
+								</div>
+							</li>
+						</ul>
+					</li>
+				
+				</ul>
+			</div>
 		</div>
-	</div>
 	
-	<div id="page">
-
+		<footer>
+			<p>This is a footer mesage</p>
+		</footer>
 	</div>
-	
-	<div>
-		<p>This is a footer mesage</p>
-	</div>
-		
+	<script src="controller.js"></script>
 </body>
 </html>
