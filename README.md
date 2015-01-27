@@ -1,96 +1,264 @@
-ONTRAPORT Front-end Evaluation, Long Test
-============================
+# AngularJS Phone Catalog Tutorial Application
 
-Congratulations, you passed the first test! There is just one more hoop to jump through. This is the 
-ONTRAPORT 'Front-end Long Test'. We use it to gain an understanding of your front-end programming 
-abilities before we meet face to face. 
+## Overview
 
-We are trying to ascertain your skill level in all areas of front end development (HTML, CSS, 
-Javascript, and App Development). We are looking for candidates to fill all sorts of positions at all levels. 
-Do your best and don't worry if your skills set is better suited for some parts of the test than others. 
-Try and have fun with it!
+This application takes the developer through the process of building a web-application using
+angular. The application is loosely based on the **Google Phone Gallery**, which no longer
+exists. Here is a historical reference: [Google Phone Gallery on WayBack](http://web.archive.org/web/20131215082038/http://www.android.com/devices/).
 
-###Some things we are looking for specifically:
+Each tagged commit is a separate lesson teaching a single aspect of angular.
 
-1. Ability to bind into/use existing markup/CSS/models.
-2. Take a design screenshot with some dimensions and create the CSS, markup and layout from it.
-3. Determine how you layout your code and what frameworks you choose to use and are familiar with.
-4. See how you use the MVC software pattern.
+The full tutorial can be found at http://docs.angularjs.org/tutorial.
 
-### Description
-Your job is to finish coding a post / comment list engine for a web app. Imagine that your user 
-has already logged in and is viewing a list of posts from other users and themselves. The engine has 
-a two column layout. In the left column the user can see their profile. In the right column the user 
-sees a list of user posts. Some of the posts have comments. There is a link in the app header that 
-facilitates adding new posts via a textarea in a light box. If you have time, the engine can store data 
-in local storage so it can push it later on (depending on internet connection) to some fictitious 
-external data source.
+## Prerequisites
 
-![ONTRAPORT Front End Long Test](design.png)
+### Git
 
-###The test git repo contains: 
-    /codetest
-        /data
-            posts.json                       //posts json data
-            users.json                       //users json data
-        /images
-            /profile                         //user profile pics
-                2001_finding_forrester_008.png
-                daniel-craig.jpg
-                Sean_Connery_as_Ramirez_in_Highlander.jpg
-                sean_connery_the_untouchables.jpg
-                Sean-Connery-as-James-Bond.jpg
-            logo.png                         //app logo
-        /resources
-            box.js                           //local storage API you can use for the extra credit
-        design.png                           //another copy of the design spec in case you lost it
-        index.html                           //markup outline for the test, you don't have to use it
-        normalize.css                        //CSS reset styles, feel free to remove or replace
-        styles.css                           //test specific styles
-    code_test_instructions.txt               //text instructions for test    
-    code_test_walk_through.avi               //video example of finished test including extra credit  
-    code_test_walk_through.swf               //video example of finished test including extra credit
-    design.png                               //design spec for the test
+- A good place to learn about setting up git is [here][git-github].
+- Git [home][git-home] (download, documentation).
+
+### Node.js and Tools
+
+- Get [Node.js][node-download].
+- Install the tool dependencies (`npm install`).
 
 
+## Workings of the application
 
-### Assumptions:
-1. You are logged in as user ID 5.
-2. The model data for the posts and user is in the /data folder (posts.json, users.json).
-3. There needs to be an "interface" for posts, comments, and users.
+- The application filesystem layout structure is based on the [angular-seed] project.
+- There is no dynamic backend (no application server) for this application. Instead we fake the
+  application server by fetching static json files.
+- Read the Development section at the end to familiarize yourself with running and developing
+  an angular application.
 
-### Requirements
+## Commits / Tutorial Outline
 
-Fork this repo into your own github account and complete the following:
+You can check out any point of the tutorial using
+    git checkout step-?
 
-1. Write the HTML and CSS needed to finish the engine. See styles.css and index.html (you don't 
-have to use these files but we think its a good starting point). Try to make the finished product look as close to the design spec as possible (design.png).
-2. Load / render the user and post data from the json files in the data folder. Again, loaded 
-data should look as close to design.png as possible.
-3. Search button needs to have some sort of interaction on hover. Change the colors borders etc..
-4. Add a white shadow to the search box when it gains focus.
-5. Show a light box / modal window in the middle of the screen when the user clicks on the 'Post An Update' button in the header section.
-6. The light box should contain a textarea where the user can type a new post.
-7. The user can submit a new post by hitting the enter key, the post should then be added to the end of the posts list.
-8. The light box should be removed from view when the user hits the enter key in the textarea.
+To see the changes which between any two lessons use the git diff command.
+    git diff step-?..step-?
 
-###Extra Credit Requirements:
-1. User can add comments to any post. 
-2. Save the user and post data to local storage so if you refresh the page the new posts and comments are reloaded  (Imagine the temporarily doesn't have a network connection. In theory the data in local storage should be able to be sent to the server once there is a stable connection).
+### step-0
 
-###Test Parameters:
-1. This test doesn't have a time limit, but we are interested in how long it takes you to complete
-as much as you did. A general: 'it took me _ hours' will do.
-2. Extra Credit Requirements are not required for submission.
-3. You are free to use any framework(s) of your choice as long as all requirements are met. 
-4. Feel free to structure your code in any way you want. We want to see how you do things.
-5. If you want to attempt the extra credit: Check in /resources for box.js it's a localstorage framework. It works for anything that supports window.localstorage its kinda buggy for anything else but will get the job done. You don't have to use it but it there if you want to.
-       
-       
-###Example:
-Here is video example of a working test
-[![ScreenShot](https://raw.github.com/Ontraport/frontend-interview-test-long/master/exampleVideoPreview.png)](https://www.youtube.com/watch?v=PYsH5xcyewI&feature=youtu.be)
+- Add ngApp directive to bootstrap the app.
+- Add simple template with an expression.
 
 
+### step-1
 
-Good Luck!
+- Add static html list with two phones into index.html. We will convert this static page into
+  dynamic one with the help of angular.
+
+
+### step-2
+
+- Convert the static html list into dynamic one by:
+  - creating `PhoneListCtrl` controller for the application.
+  - extracting the data from HTML, moving it into the controller as an in-memory dataset.
+  - converting the static HTML document into an Angular template with the use of the `ngRepeat`
+    directive which iterates over the dataset of phones.
+    `ngRepeat` clones its contents for each instance in the dataset and renders it into the view.
+- Add a simple unit test to show off how to write tests and run them with Karma.
+
+
+### step-3
+
+
+- Add a search box to demonstrate how:
+  - the data-binding works on input fields.
+  - to use the `filter` filter.
+  - `ngRepeat` automatically shrinks and grows the number of phones in the view.
+- Add an end-to-end test to:
+  - show how end-to-end tests are written and how to run them with Protractor.
+  - prove that the search box and the repeater are correctly wired together.
+
+
+### step-4
+
+- Add `age` property to each phone in the data model.
+- Add a `<select>` input to change the phone list order.
+- Override the default order value in the controller.
+- Add unit and e2e tests for this feature.
+
+### step-5
+
+- Replace the in-memory dataset with data loaded from the server (in
+  the form of static `phones.json` file).
+  - The `phones.json` file is loaded using the `$http` service.
+- Demonstrate the use of [services][service] and [dependency injection][DI].
+  - The [$http] service is injected into the controller through [dependency injection][DI].
+
+
+### step-6
+
+- Add phone images and links to new pages that show the phone details.
+- Add end2end tests that verify the links to the detail pages.
+- Add CSS to style the page just a notch.
+
+
+### step-7
+
+- Introduce the [$route] service which allows binding URLs for deep-linking with
+  views:
+  - Create `PhoneCatCtrl` which governs the entire app and contains $route configuration.
+  - Install `angular-route` using bower and load the `ngRoute` module.
+    (Be sure to run npm install again.)
+  - Copy route parameters to root scope `params` property for access in sub controllers.
+  - Replace the contents of `index.html` with the `ngView` directive, which will display the partial
+    template of the current route.
+
+- Create phone list route:
+  - Map `/phones` route to `PhoneListCtrl` and `partials/phones-list.html`.
+  - Preserve existing `PhoneListCtrl` controller.
+  - Move existing html from `index.html` to `partials/phone-list.html`.
+- Create phone details route:
+  - Map `/phones/<phone-id>` route to `PhoneDetailCtrl` and `partials/phones-detail.html`.
+  - Create empty placeholder `PhoneDetailsCtrl` controller.
+
+
+### step-8
+
+
+- Implement `PhoneDetailCtrl` controller to fetch the details for a specific phone from a JSON file
+  using `$http` service.
+- Update the template for the phone detailed view.
+- Add CSS to make the phone details page look "pretty".
+
+
+### step-9
+
+- Add custom `checkmark` filter.
+- Update phone detail template to use `checkmark` filter.
+- Add unit test for the filter.
+
+### step-10
+
+In the phone detail view, clicking on a thumbnail image, changes the main phone image to be the
+large version of the thumbnail image.
+
+- Define `mainImageUrl` model variable in the `PhoneDetailCtrl` and set its default value.
+- Create `setImage()` controller method to change `mainImageUrl`.
+- Register an expression with the `ngClick` directive on thumb images to set the main image, using
+  `setImage()`.
+- Add e2e tests for this feature.
+- Add CSS to change the mouse cursor when user points at thumnail images.
+
+
+### step-11
+
+- Replace [$http] with [$resource].
+- Created a custom `Phone` service that represents the `$resource` client.
+
+
+### step-12
+
+- Add animations to the application:
+  - Animate changes to the phone list, adding, removing and reordering phones.
+  - Animate changes to the main phone image in the detail view.
+
+
+## Development with angular-phonecat
+
+The following docs describe how you can test and develop further this application.
+
+
+### Installing dependencies
+
+The application relies upon various node.js tools, such as Bower, Karma and Protractor.  You can
+install these by running:
+
+```
+npm install
+```
+
+This will also run bower, which will download the angular files needed for the current step of the
+tutorial.
+
+Most of the scripts described below will run this automatically but it doesn't do any harm to run
+it whenever you like.
+
+### Running the app during development
+
+- Run `npm start`
+- navigate your browser to `http://localhost:8000/app/index.html` to see the app running in your browser.
+
+### Running unit tests
+
+We recommend using [Jasmine][jasmine] and [Karma][karma] for your unit tests/specs, but you are free
+to use whatever works for you.
+
+- Start Karma with `npm test`
+  - A browser will start and connect to the Karma server. Chrome is the default browser, others can
+  be captured by loading the same url as the one in Chrome or by changing the `test/karma.conf.js`
+  file.
+- Karma will sit and watch your application and test JavaScript files. To run or re-run tests just
+  change any of your these files.
+
+
+### End to end testing
+
+We recommend using [Jasmine][jasmine] and [Protractor][protractor] for end-to-end testing.
+
+Requires a webserver that serves the application. See Running the app during development, above.
+
+- Serve the application: run `npm start`.
+- In a separate console run the end2end tests: `npm run protractor`. Protractor will execute the
+  end2end test scripts against the web application itself.
+  - The configuration is set up to run the tests on Chrome directly. If you want to run against
+    other browsers then you must install the webDriver, `npm run update-webdriver`, and modify the
+  configuration at `test/protractor-conf.js`.
+
+## Application Directory Layout
+
+    app/                --> all of the files to be used in production
+      css/              --> css files
+        app.css         --> default stylesheet
+      img/              --> image files
+      index.html        --> app layout file (the main html template file of the app)
+      js/               --> javascript files
+        app.js          --> the main application module
+        controllers.js  --> application controllers
+        directives.js   --> application directives
+        filters.js      --> custom angular filters
+        services.js     --> custom angular services
+        animations.js   --> hooks for running JQuery animations with ngAnimate
+      partials/         --> angular view partials (partial html templates) used by ngRoute
+        partial1.html
+        partial2.html
+      bower_components  --> 3rd party js libraries, including angular and jquery
+
+    scripts/            --> handy scripts
+      update-repo.sh       --> pull down the latest version of this repos
+                               (BE CAREFUL THIS DELETES ALL CHANGES YOU HAVE MADE)
+      private/             --> private scripts used by the Angular Team to maintain this repo
+    test/               --> test source files and libraries
+      karma.conf.js        --> config file for running unit tests with Karma
+      protractor-conf.js   --> config file for running e2e tests with Protractor
+      e2e/
+        scenarios.js       --> end-to-end specs
+      unit/             --> unit level specs/tests
+        controllersSpec.js --> specs for controllers
+        directivesSpec.js  --> specs for directives
+        filtersSpec.js     --> specs for filters
+        servicesSpec.js    --> specs for services
+
+## Contact
+
+For more information on AngularJS please check out http://angularjs.org/
+
+[7 Zip]: http://www.7-zip.org/
+[angular-seed]: https://github.com/angular/angular-seed
+[DI]: http://docs.angularjs.org/guide/di
+[directive]: http://docs.angularjs.org/guide/directive
+[filterFilter]: http://docs.angularjs.org/api/ng/filter/filter
+[git-home]: http://git-scm.com
+[git-github]: http://help.github.com/set-up-git-redirect
+[ngRepeat]: http://docs.angularjs.org/api/ng/directive/ngRepeat
+[ngView]: http://docs.angularjs.org/api/ngRoute/directive/ngView
+[node-download]: http://nodejs.org/download/
+[$resource]: http://docs.angularjs.org/api/ngResource/service/$resource
+[$route]: http://docs.angularjs.org/api/ngRoute/service/$route
+[protractor]: https://github.com/angular/protractor
+[jasmine]: http://pivotal.github.com/jasmine/
+[karma]: http://karma-runner.github.io

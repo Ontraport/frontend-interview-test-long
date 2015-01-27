@@ -1,0 +1,151 @@
+/* app css stylesheet */
+
+body {
+  padding-top: 0px;
+
+  background: rgb(167,199,220); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(167,199,220,1) 0%, rgba(133,178,211,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(167,199,220,1)), color-stop(100%,rgba(133,178,211,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* IE10+ */
+  background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
+}
+
+.phones {
+  list-style: none;
+}
+
+.thumb {
+  float: left;
+  margin: -0.5em 1em 1.5em 0;
+  padding-bottom: 1em;
+  height: 100px;
+  width: 100px;
+}
+
+.phones li {
+  clear: both;
+  height: 115px;
+  padding-top: 15px;
+}
+
+.currentuser{
+  background-color: #F7F7F7; 
+  border-radius: 4px;
+}
+
+.user{
+  background-color: #F7F7F7;
+}
+
+#allposts{
+  background-color: #F7F7F7;
+  border-radius: 4px;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+}
+.thumbnail{
+  border: none;
+  background-color: #F7F7F7;
+}
+.updates{
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+}
+.pic{
+margin-right: 100px;
+}
+.username{
+  margin-left: 10px;
+  color: #027929;
+}
+.pc{
+  margin-left: 30px;
+  padding-left: 30px;
+}
+.commentPayload{
+  background-color: #EDEDED;
+  margin-left: 50px;
+  padding-top: 15px;
+  padding-left: 8px;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #BDBDBD;
+}
+.newComment{
+width: 100%;
+float:right;
+border-color: #EDEDED;
+margin-top: 5px;  
+margin-color: #EDEDED;
+}
+.comment-content{
+  margin-left: 35px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+}
+.cntr{
+  left:;
+}
+.comments-box{
+  margin-bottom: 10px;
+}
+.post-comment-container{
+  margin-left: 50px;
+  background-color: #EDEDED;
+  padding-bottom: 35px;
+}
+.leftUsername{
+  margin-top: 20px;
+}
+.leftProfilePic{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.logo{
+  margin-top: 5px;
+}
+.navbar-inverse .navbar-link{
+  color:#ffffff;
+}
+#newPost{
+  width: 100%;
+}
+.center
+{
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+  height:100%;
+}
+.searchbox{
+  border-radius: 0;
+  width: 10px;
+}
+
+.searchbox:focus{
+  background-color: #FFFFFF;
+  border-color: #333333;
+  box-shadow: 0px 0px 25px -2px #fff;
+}
+
+.goButton{
+  background-color: #7EDCFB;
+  border-radius: 0;
+}
+.goButton:hover{
+  background-color: #63D1F4;
+}
+.footer{
+  margin-left: 250px;
+}
+.modal-content{
+  background-color: #EDEDED;
+}

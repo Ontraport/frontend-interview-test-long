@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ontraportApp">
+<head>
+  <meta charset="utf-8">
+
+  <title>The Network</title>
+
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body >
+  <nav class="navbar navbar-inverse">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img class="logo" src="images/logo.png"> <!-- The Network logo-->
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <p class="navbar-text navbar-right">
+            <a href="#" class="navbar-link">Home</a>&nbsp;&nbsp;&nbsp;
+            <a href="#" class="navbar-link" data-toggle="modal" data-target="#myModal">Post an Update</a>&nbsp;&nbsp;&nbsp; 
+            <img src="images/profile/daniel-craig.jpg" width="25px">
+          </p>
+          <form class="navbar-form center">
+            <div class="form-group">
+              <input type="text" size="40" placeholder="Search..." class="form-control searchbox input-large">
+            </div>
+            <button type="submit" class="btn goButton">Go</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+
+  </nav> <!-- end nav code -->
+
+  <div class="container"> <!-- main container -->
+
+    <div class="row">
+
+      <div class="col-md-3 col-md-offset-1 currentuser">
+        <!-- User content || hardcoded for Daniel Craig user.id 5-->
+        <img class="leftProfilePic"align="left" src="images/profile/daniel-craig.jpg">
+        <p class="leftUsername">Daniel Craig</p>
+      </div> <!-- col-md-2 -->
+
+      <div class="col-md-7">
+        <!-- all posts and comments-->
+        <div id="allposts" ng-controller="dataCtrl">
+          <br><p class="updates" >Updates<p>
+          <div ng-repeat="post in posts" class="thumbnail">
+
+              <div class="user" ng-repeat="user in users | filter:{'id': post.userId}:true">
+                <img align="left" ng-src="{{user.pic}}">
+              </div>
+
+              <div>
+
+              <div> <!-- render username and content for each post -->
+                <div ng-repeat="user in users | filter:{'id': post.userId}:true"> <!-- loop thru users-->
+                  <span class="username">{{user.username}}</span>
+                </div>
+                <p class="pc">{{post.content}}</p>
+              </div> <!-- end user/post data -->
+
+              <div> <!-- render data for post comments-->
+                <div class="post-comments" ng-repeat="comment in post.comments">
+                  <div ng-repeat="user in users | filter:{'id': comment.userId}:true">
+                    <div class="commentPayload">
+                        <img ng-src="{{user.pic}}" align="left" width="25" height="25">
+                        <span class="username">{{user.username}}</span>
+                        <p class="comment-content">{{comment.content}}</p>
+                    </div><!-- commentPayload -->
+                  </div><!-- user pic and name-->
+                </div><!-- post-comments -->
+                <div class="post-comment-container" ng-controller="commentController">
+                    <textarea class="newComment" placeholder="post a comment" ng-model="comment" ng-keypress="newComment($event, post, $index)" rows="1"></textarea>
+                </div>
+
+              </div><!-- end of comment markup-->
+
+              <!-- Modal Content-->
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Status Update</h4>
+                      </div>
+                      <div class="modal-body" ng-controller="postController">
+                        <textarea id="newPost" ng-keypress="newPost($event,posts)" rows="4" autofocus></textarea>
+                      </div>
+                      <div class="modal-footer">
+                        <p align="left">Hit enter to post!</p>
+                      </div>
+                    </div>
+                  </div>
+              </div> <!-- end Modal -->
+
+            </div> <!-- end all post / comment processing -->
+
+        </div> <!-- close main posts div ||  -->
+
+      </div> <!-- col-md-7 -->
+      <p class="footer">This is a footer message </p>
+    </div> <!-- row -->
+
+  </div> <!-- container -->
+
+</body>
+</html>
