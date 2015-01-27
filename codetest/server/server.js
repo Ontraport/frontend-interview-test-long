@@ -36,6 +36,20 @@ function stream(req, res){
       throw err;
     }else{
       responseObject.posts = JSON.parse(data);
+      var largestId = 0;
+      for(var i = 0; i < responseObject.posts.length; i++){
+        var post = responseObject.posts[i];
+        if(post.comments.length > 0){
+          var lastIndex = post.comments.length - 1;
+          var lastPost = post.comments[lastIndex];
+          if(lastPost.id > largestId){
+            largestId = lastPost.id;
+          }
+        }else if(post.id > largestId){
+          largestId = post.id; 
+        }
+      }
+      responseObject.nextId = ++largestId;
       fs.readFile('../data/users.json', function(err, data){
         if(err){
           throw err;

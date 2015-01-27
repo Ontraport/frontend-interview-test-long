@@ -37,7 +37,7 @@
             {{comment.content}}
           </div>
         </div>
-        <input type="text" placeholder="post a comment">
+        <input type="text" placeholder="post a comment" ng-keypress="Feed.postComment($event, post)"/>
     </div>
   </div>  
 </div>

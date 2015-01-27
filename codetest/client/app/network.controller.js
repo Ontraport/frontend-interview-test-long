@@ -8,6 +8,22 @@
       model.feeds = feeds;
       model.posts = feeds.posts;
       model.users = feeds.users;
+      model.nextId = feeds.nextId;
+      model.postComment = function(e, p){
+        if(e.which === 13){
+          console.log(e);
+          var commentObject = {
+            "id": model.nextId,
+            "postId": p.id,
+            "userId": model.currentUser().id,
+            "date": "",
+            "content": e.srcElement.value
+          };
+          p.comments.push(commentObject);
+          model.nextId++;
+          e.srcElement.value = '';  
+        }
+      };
       model.currentUser = function(id){
         //would usually get this from the server after auth
         //hardcode 5 here
@@ -23,5 +39,6 @@
       };
       console.log(model.posts);
       console.log(model.users);
+      console.log(model.nextId);
     }
 }).call(this);
