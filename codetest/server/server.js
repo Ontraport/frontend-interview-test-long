@@ -26,10 +26,15 @@ console.log('listening ' + port);
 
 
 function updateStream(req, res){
-  console.log(typeof req.body);
   var posts = JSON.stringify(req.body);
-  
-  res.end();
+  fs.writeFile('../data/posts.json', posts, function(err, data){
+    if(err){
+      throw err;
+    }
+    console.log('updated posts');
+    
+    res.end();
+  });
 }
 
 
