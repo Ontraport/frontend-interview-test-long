@@ -1,0 +1,46 @@
+<div id="header">
+  <div id="logo">
+    <img src="images/logo.png" alt="the network"/>
+  </div>  
+  <div id="search"> 
+    <form method="get" action="#">
+      <input type="search" name="terms" placeholder="Search...."/>
+      <input type="submit" value="Go"/>
+    </form>
+  </div>
+  <div id="navbar">
+    <span class="navbar-items" id="home">Home</span>
+    <span class="navbar-items" id="post">Post an Update</span>
+    <span id="navbar-image">
+      <img class="navbar-items small-user-image" ng-src="{{Feed.currentUser().pic}}"/>
+    </span>
+  </div>
+</div>
+
+<div id="col-left">
+  <div id="dashboard" class="foreground">
+    <img class="large-user-image" ng-src="{{Feed.currentUser().pic}}"/>
+    <span>{{Feed.currentUser().username}}</span>
+  </div>
+</div>
+<div id="col-right">
+  <div id="stream" class="foreground">
+    <h2>Updates</h2>
+    <div class="post" ng-repeat="post in Feed.posts">
+        <img class="large-user-image" ng-src="{{Feed.currentUser(post.userId).pic}}"/>
+        <div class="username">{{Feed.currentUser(post.userId).username}}</div>
+        {{post.content}}
+        <div ng-if="post.comments.length > 0">
+          <div class="comments" ng-repeat="comment in post.comments">
+            <img class="small-user-image" ng-src="{{Feed.currentUser(comment.userId).pic}}" />
+            <div class="comment-username">{{Feed.currentUser(comment.userId).username}}</div>
+            {{comment.content}}
+          </div>
+        </div>
+        <input type="text" placeholder="post a comment">
+    </div>
+  </div>  
+</div>
+<footer id="footer">
+  <p>This is a footer mesage</p>
+</footer>
