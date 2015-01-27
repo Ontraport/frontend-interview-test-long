@@ -2,7 +2,9 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 var ejs = require('ejs');
+var bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
 app.engine('html', ejs.renderFile);
 app.set('views', __dirname + '/../client');
@@ -12,24 +14,27 @@ app.get('/', function(req, res){
   res.end();
 });
 
-app.get('/feeds', function(req, res){
-  stream(req, res);
-  console.log('feeds request sent');
-});
+app.get('/feeds', getStream);
+
+app.put('/update', updateStream);
 
 
 var port = 4000;
-
 app.listen(port);
 console.log('listening ' + port);
 
 
 
-
+function updateStream(req, res){
+  console.log(typeof req.body);
+  var posts = JSON.stringify(req.body);
+  
+  res.end();
+}
 
 
   
-function stream(req, res){
+function getStream(req, res){
   var responseObject = {};
   fs.readFile('../data/posts.json', function(err, data){
     if(err){
