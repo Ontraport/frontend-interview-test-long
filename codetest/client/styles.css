@@ -1,0 +1,232 @@
+/*
+ * base styles 
+ * 
+ */
+
+html{
+	height: 100%;
+}
+
+body{
+	background: rgb(167,199,220); /* Old browsers */
+	font-size: 13px;
+	min-width: 800px;
+}
+
+br{
+	clear: left;
+}
+
+.small-user-image{
+  height: 25px;
+  width: 25px;
+}
+
+.large-user-image{
+  height: 50px;
+  width: 50px;
+}
+
+.comments{
+  background: #ededed;
+  float: right;
+  width: 525px;
+  padding: 10px;
+  word-wrap: break-word;
+  border-bottom: 1px inset LightGray;
+}
+
+.username{
+  vertical-align: top;
+  color: #0279c9;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.comment-username{
+  vertical-align: top;
+  color: #0279c9;
+  font-weight: bold;
+}
+
+#dashboard{
+  height: 60px;
+  width: 200px;
+  padding: 5px 5px 5px 5px;
+  float: right;
+}
+
+#footer{
+	text-align: center;
+  width: 100%;
+}
+
+#col-left{
+  display: table-cell;
+  width: 50%;
+  padding-top: 20px;
+  vertical-align: top;
+
+}
+
+#col-right{
+  display: table-cell;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.foreground{
+  background: #f7f7f7;
+  border-radius: 6px;
+}
+
+#header{
+	background: rgba( 0, 0, 0, 0.7);
+	padding: 10px 5px;
+	box-shadow: 0px 1px 5px #fff;
+	height: 40px;
+}
+
+/*logo in header*/
+#logo{
+	display: inline-block;
+	float: left;
+}
+
+#close:hover{
+  cursor: pointer;
+}
+
+#close{
+  float: right;
+  margin-right: 3px;
+}
+
+#submit{
+  width: 375px;
+  height: 100px;
+}
+
+#modal{
+  padding-left: 20px;
+  position: fixed;
+  left: 40%;
+  top: 40%;
+  background: #ededed;
+  height: 300px;
+  width: 400px;
+  z-index: 1000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 80px #000;
+}
+
+#navbar{
+	padding-top: 12px;
+	display: inline;
+	float: right;
+	color: white;
+	font-size: 1.1em;
+	font-weight: 100;
+	text-shadow: 1px 2px 0px black;
+}
+
+#navbar-image{
+  float: right;
+  margin-right: 15px;
+}
+
+.navbar-items{
+	margin-left: 15px;
+	cursor: pointer;
+}
+
+.navbar-items:hover{
+  text-decoration: underline;
+}
+
+/*search in header*/
+
+#search{
+  display: inline;
+  float: left;
+  left: 50%;
+  margin-left: -25%;
+  position: relative;
+  width: 300px;
+  margin-top: 1em;
+}
+#search input[name="terms"]{
+	width: 250px;
+	padding: 2px 3px;
+	border: 2px solid #A2C4DA;
+	font-size: 1.2em;
+}
+
+#search input[name="terms"]:focus{
+  border-color: white;
+  box-shadow: 0px 0px 8px white;
+}
+
+#search input[type="submit"]{
+	width: 30px;
+	padding: 4px;
+	vertical-align: top;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #fff;
+	border: 1px solid #6FD6F7;
+	background: -webkit-linear-gradient(#b7eafb, #4d95ac); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#b7eafb, #4d95ac); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#b7eafb, #4d95ac); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#b7eafb, #4d95ac); /* Standard syntax */
+}
+
+#search input[type="submit"]:hover{
+	background: -webkit-linear-gradient(#4d95ac, #b7eafb); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#4d95ac, #b7eafb); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#4d95ac, #b7eafb); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#4d95ac, #b7eafb); /* Standard syntax */	
+}
+
+#search input[type="submit"]:active{
+  background: #4d95ac;
+}
+
+#stream{
+  padding: 0px 5px 10px 10px;
+  width: 600px;
+  float: left;
+  margin-left: 20px
+}
+
+#stream .large-user-image{
+  display: inline;
+  float: left;
+  margin: 0px 10px 10px 10px;
+}
+
+#stream .small-user-image{
+  margin: 0px 10px 10px 0px;
+  display: inline;
+  float: left;
+}
+
+#post-text{
+  display: inline;
+  margin-top: 0px;
+}
+
+#stream input{
+  margin-left: 55px;
+  width: 90%;
+}
+/*page content*/
+
+#page{
+	width: 800px;
+	
+	/*background: rgba( 255, 255, 255, 0.3 );
+	border: 1px solid #ffffff;*/
+	margin: 10px auto 0px;
+	padding: 1em 2em;
+}
+
+

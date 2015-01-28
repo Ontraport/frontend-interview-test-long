@@ -1,0 +1,16 @@
+{
+  "name": "network-server",
+  "version": "0.0.0",
+  "description": "basic server to handle read/write requests for network app",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "author": "Mike Axtman",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.2.3",
+    "express": "^4.11.1"
+  }
+}
