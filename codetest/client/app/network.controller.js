@@ -18,7 +18,6 @@
       
       function post(e, p, type){
         if(e.which === 13){
-          console.log(type);
           if(e.srcElement.value.length !== 0){
             if(type === 'comment'){
               var commentObject = {
