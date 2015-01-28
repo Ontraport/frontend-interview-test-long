@@ -10,12 +10,20 @@
   </div>
   <div id="navbar">
     <span class="navbar-items" id="home">Home</span>
-    <span class="navbar-items" id="post">Post an Update</span>
+    <span class="navbar-items" id="post" ng-click="Feed.showModal = true">Post an Update</span>
     <span id="navbar-image">
       <img class="navbar-items small-user-image" ng-src="{{Feed.currentUser().pic}}"/>
     </span>
   </div>
 </div>
+
+<div ng-show="Feed.showModal" id="modal">
+  <span id="close" ng-click="Feed.showModal = false">X</span>
+  <br>
+  <h3>Status Update</h3>
+  <textarea id="submit" cols="40" rows="5" ng-keypress="Feed.post($event, null, 'update')"></textarea>
+</div>
+
 
 <div id="col-left">
   <div id="dashboard" class="foreground">
@@ -37,7 +45,7 @@
             {{comment.content}}
           </div>
         </div>
-        <input type="text" placeholder="post a comment" ng-keypress="Feed.postComment($event, post)"/>
+        <input type="text" placeholder="post a comment" ng-keypress="Feed.post($event, post, comment)"/>
     </div>
   </div>  
 </div>

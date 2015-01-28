@@ -3,27 +3,45 @@
 
     .controller('networkCtrl', networkCtrl);
     networkCtrl.$inject = ['feeds', 'feedsUpdate'];
+    
     function networkCtrl(feeds, feedsUpdate){
       var model = this;
+      model.showModal = false;
       model.posts = feeds.posts;
       model.users = feeds.users;
       model.nextId = feeds.nextId;
-      model.postComment = function(e, p){
+      console.log(model.posts);
+      model.post = function(e, p, type){
         if(e.which === 13){
           if(e.srcElement.value.length !== 0){
-            var commentObject = {
-              "id": model.nextId,
-              "postId": p.id,
-              "userId": model.currentUser().id,
-              "date": "",
-              "content": e.srcElement.value
-            };
-            p.comments.push(commentObject);
+            if(type === 'comment'){
+              var commentObject = {
+                "id": model.nextId,
+                "postId": p.id,
+                "userId": model.currentUser().id,
+                "date": "",
+                "content": e.srcElement.value
+              };
+              p.comments.push(commentObject);
+            }else if(type === 'update'){
+              var updateObject = {
+                "comments": [],
+                "content": e.srcElement.value,
+                "date": "",
+                "id": model.nextId,
+                "userId": model.currentUser().id
+              };
+              model.posts.push(updateObject);
+              model.showModal = false;
+            }
             feedsUpdate.put({}, model.posts, function(res){
-              console.log(res);
+              Box.empty();
+            }, function(err){  
+                var stream = JSON.stringify({'posts': model.posts, 'users': model.users, 'nextId': model.nextId});
+                Box.store('stream', stream);  
             });
             model.nextId++;
-            e.srcElement.value = '';  
+            e.srcElement.value = '';
           }
         }
       };
@@ -38,6 +56,9 @@
             return profile;  
           }  
         }
+      };
+      model.toggleModal = function(bool){
+        model.showModal = bool;
       };
     }
 }).call(this);

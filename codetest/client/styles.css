@@ -101,6 +101,34 @@ br{
 	float: left;
 }
 
+#close:hover{
+  cursor: pointer;
+}
+
+#close{
+  float: right;
+  margin-right: 3px;
+}
+
+#submit{
+  width: 375px;
+  height: 100px;
+
+}
+
+#modal{
+  padding-left: 20px;
+  position: fixed;
+  left: 40%;
+  top: 40%;
+  background: #ededed;
+  height: 300px;
+  width: 400px;
+  z-index: 1000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 80px #000;
+}
+
 #navbar{
 	padding-top: 12px;
 	display: inline;
@@ -198,7 +226,7 @@ br{
 
 #stream input{
   margin-left: 55px;
-  width: 91%;
+  width: 90%;
 }
 /*page content*/
 
