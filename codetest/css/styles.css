@@ -1,0 +1,172 @@
+/*****************************
+MAIN
+*****************************/
+
+html{
+	height: 100%;
+	background-color: #9FC6DC;
+}
+
+body{
+	font-size: 13px;
+	min-width: 800px;
+	background-color: inherit;
+}
+
+br {
+	clear: left;
+}
+
+
+/**********************************
+NAVBAR / HEADER
+**********************************/
+
+#header{
+	background: rgba( 0, 0, 0, 0.7);
+	padding: 10px 5px;
+	box-shadow: 0px 1px 5px #fff;
+}
+
+nav.navbar {
+	background-color: #2F3B41 !important;
+	border-style: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: white;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: #9FC6DC;
+}
+
+input.terms {
+	width: 250px;
+}
+
+.post-button {
+	float: right;
+}
+
+.btn-default {
+	background-color: #9FC6DC;
+	border-color: #2F3B41;
+}
+
+.btn-default:hover {
+	background-color: #F7F7F7;
+	
+}
+
+form.search input.form-control {
+	width: 250px;
+}
+
+.form-group {
+   -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+textarea.form-control {
+	text-indent: none;
+	padding-left: 5px;
+}
+
+
+/***********************************
+PAGE CONTENT
+***********************************/
+
+#page {
+	width: 800px;
+	background-color: #2F3B41;
+	border-radius: 10px;
+	margin: 80px auto 0px;
+	padding: 2em;
+}
+
+.col-md-3, .col-md-8 {
+	background-color: #F7F7F7;
+	border-radius: 10px;
+}
+
+.col-md-3 {
+	margin: 20px 0;
+}
+
+.col-md-8 {
+	padding: 8px;
+	margin-top: 20px;
+}
+
+.post-comments {
+	background-color: #EDEDED;
+	margin: 3px;
+	border-radius: 5px;
+}
+
+.profile-info p {
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	font-size: 1.2em;
+}
+
+.media-heading, .profile-info p {
+	font-weight: bold;
+	color: #0279C9;
+}
+
+#media {
+	padding-top: 10px;
+}
+
+/********************************
+IMAGES/ PROFILE PICTURES
+********************************/
+
+#logo{
+	display: inline-block;
+	float: left;
+}
+
+.small-post-profile-pic, #static-profile-pic {
+	width: 25px;
+	height: 25px;
+	border-radius: 5px;
+}
+
+.small-post-profile-pic {
+	margin: 5px; 
+}
+
+#post-profile-pic, #profile-pic {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+#profile-pic {
+	margin: 15px 5px 5px;
+}
+
+
+
+/****************************
+FOOTER
+****************************/
+
+footer {
+	min-height: 100px;
+	position: absolute;
+   	width: 100%;
+	margin-top: 50px;
+	padding-top: 50px;
+	text-align: center;
+	background-color: #2F3B41;
+	color: white;
+	font-weight: bold;
+}
+
