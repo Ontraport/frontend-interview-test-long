@@ -22,9 +22,10 @@
   <br>
   <h3>Status Update</h3>
   <textarea id="submit" cols="40" rows="5" ng-keypress="Feed.post($event, null, 'update')"></textarea>
+  <p>
+    hit enter to post
+  </p>
 </div>
-
-
 <div id="col-left">
   <div id="dashboard" class="foreground">
     <img class="large-user-image" ng-src="{{Feed.currentUser().pic}}"/>
@@ -45,7 +46,7 @@
             {{comment.content}}
           </div>
         </div>
-        <input type="text" placeholder="post a comment" ng-keypress="Feed.post($event, post, comment)"/>
+        <input type="text" placeholder="post a comment" ng-keypress="Feed.post($event, post, 'comment')"/>
     </div>
   </div>  
 </div>

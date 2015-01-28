@@ -5,14 +5,20 @@
     networkCtrl.$inject = ['feeds', 'feedsUpdate'];
     
     function networkCtrl(feeds, feedsUpdate){
+      //business logic
       var model = this;
       model.showModal = false;
       model.posts = feeds.posts;
       model.users = feeds.users;
       model.nextId = feeds.nextId;
-      console.log(model.posts);
-      model.post = function(e, p, type){
+      
+      //functions
+      model.post = post;
+      model.currentUser = currentUser;
+      
+      function post(e, p, type){
         if(e.which === 13){
+          console.log(type);
           if(e.srcElement.value.length !== 0){
             if(type === 'comment'){
               var commentObject = {
@@ -44,8 +50,9 @@
             e.srcElement.value = '';
           }
         }
-      };
-      model.currentUser = function(id){
+      }
+
+      function currentUser(id){
         //would usually get this from the server after auth
         //hardcode 5 here
         var userID = (typeof id === 'undefined' ? 5 : id);
@@ -56,9 +63,6 @@
             return profile;  
           }  
         }
-      };
-      model.toggleModal = function(bool){
-        model.showModal = bool;
-      };
+      }
     }
 }).call(this);
