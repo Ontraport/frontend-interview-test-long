@@ -1,32 +1,207 @@
 <!DOCTYPE HTML >
 <html>
 <head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>The network</title>
-	
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 </head>
 <body>
-	
-	<div id="header">
-		<div id="logo">
-			<img src="images/logo.png" alt="the network"/>
-		</div>	
-		<div id="search">
-			<form method="get" action="#">
-				<input type="search" name="terms" placeholder="Search...."/>
-				<input type="submit" value="Go"/>
-			</form>
-		</div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    	<a class="navbar-brand" href="#">
+      	<img src="images/logo.png" id="logo" alt="the network"/>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" aria-expanded="true">
+        <li><a href="#">Home</a></li>
+        <li id="PostAnUpdate" data-toggle="modal" data-target="#myModal"><a href="#myModal">Post an update</a></li>
+        <li><a href="#"><img src="images/profile/daniel-craig.jpg" id="static-profile-pic" alt="profile-picture" /></a></li>
+      </ul>
+       <form class="navbar-form navbar-right search" role="search" method="get" action="#">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search...">
+        </div>
+        <button type="submit" class="btn btn-default">Go</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="modal fade" id="myModal" role="dialog"><a name="myModal"></a>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Post an update</h4>
+      </div>
+      <div class="modal-body" role="dialog">
+      	<form class="modal-body-text">
+      		<textarea class="form-control" rows="3" cols="80" placeholder="post an update" autofocus></textarea>
+          <div class="modal-footer">
+        		<button type="submit" class="post-button btn btn-primary">Post!</button>
+      		</div>
+      	</form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+<div id="page">
+ <div class="container-fluid">
+	<div class="row">
+  	<div class="col-md-3 col-xs-18" id="profile-left">
+  		<div class="profile-info">
+  			<p><img src="images/profile/daniel-craig.jpg" id="profile-pic">Daniel Craig</p>
+  		</div>
+  	</div>
+  	<div class="col-md-8 col-md-offset-1 col-xs-18" id="posts">
+  		<div id="comments">
+  			<h1>Updates</h1>
+	  	 <div class="media">
+	  		<div class="media-left">
+	    		<a href="#">
+	      		<img src="images/profile/Sean-Connery-as-James-Bond.jpg" id="post-profile-pic" alt="Profile Picture">
+	    		</a>
+	  		</div>
+	  		<div class="media-body post-body">
+	    		<h4 class="media-heading post-name">James Bond</h4>
+	    			<p class="post-content">Love wine? Love food? Love to win an iPad 2 with gift certificates to your favorite IA winery & Dine IA restaurant. <a href="http://courtneylynnlivingston.com" target="_blank">Click Here!</a></p>
+	    			<div class="comment-box">
+	    				<ul class="media-list comment-list">
+  							<li class="media post-comments">
+    							<div class="media-left">
+      							<a href="#">
+        							<img class="small-post-profile-pic media-object" src="images/profile/Sean_Connery_the_untouchables.jpg" alt="Profile Picture">
+      							</a>
+    							</div>
+    							<div class="media-body comment-body">
+      							<h4 class="media-heading comment-name">Jim Malone</h4>
+      								<p class="comment-content">Would you happen to know were Capone is? Since you are a secret agent and all</p>
+    							</div>
+  							</li>
+							</ul>
+						</div>
+						<form>	
+  						<textarea class="form-control comment-boxes" rows="1" placeholder=" post a comment"></textarea>
+  					</form>
+	  		</div>
+			 </div>
+			 	<div class="media">
+	  		<div class="media-left">
+	    		<a href="#">
+	      		<img src="images/profile/Sean_Connery_the_untouchables.jpg" id="post-profile-pic" alt="Profile Picture">
+	    		</a>
+	  		</div>
+	  		<div class="media-body post-body">
+	    		<h4 class="media-heading post-name">Jim Malone</h4>
+	    			<p class="post-content">Day 2 of house sitting...awww my firends really do Trust me!</p>
+  					<textarea class="form-control comment-boxes" rows="1" placeholder=" post a comment"></textarea>
+	  		</div>
+			 </div>
+	 		 <div class="media">
+	  		<div class="media-left">
+	    		<a href="#">
+	      		<img src="images/profile/Sean_Connery_as_Ramirez_in_Highlander.jpg" id="post-profile-pic" alt="Profile Picture">
+	    		</a>
+	  		</div>
+	  		<div class="media-body post-body">
+	    		<h4 class="media-heading post-name">Juan Sanchez Villalobos Ramirez</h4>
+	    			<p class="post-content">Just got doing some sword fighting with Connor! THERE CAN BE ONLY ONE!</p>
+	    			<div class="comment-box">
+	    				<ul class="media-list comment-list">
+  							<li class="media post-comments">
+    							<div class="media-left">
+      							<a href="#">
+        							<img class="small-post-profile-pic media-object" src="images/profile/Sean-Connery-as-James-Bond.jpg" alt="Profile Picture">
+      							</a>
+    							</div>
+    							<div class="media-body comment-body">
+      							<h4 class="media-heading comment-name">James Bond</h4>
+      								<p class="comment-content">Let me know when you're going to be going at it again, I would love to join</p>
+    							</div>
+  							</li>
+  							<li class="media post-comments">
+    							<div class="media-left">
+      							<a href="#">
+        							<img class="small-post-profile-pic media-object" src="images/profile/Sean_Connery_as_Ramirez_in_Highlander.jpg" alt="Profile Picture">
+      							</a>
+    							</div>
+    							<div class="media-body comment-body">
+      							<h4 class="media-heading comment-name">Juan Sanchez Villalobos Ramirez</h4>
+      								<p class="comment-content">sure thing</p>
+    							</div>
+  							</li>
+							</ul>
+						</div>	
+  					<textarea class="form-control comment-boxes" rows="1" placeholder=" post a comment"></textarea>
+	  		</div>
+			 </div>
+			 <div class="media">
+	  		<div class="media-left">
+	    		<a href="#">
+	      		<img src="images/profile/2001_finding_forrester_008.png" id="post-profile-pic" alt="Profile Picture">
+	    		</a>
+	  		</div>
+	  		<div class="media-body post-body">
+	    		<h4 class="media-heading post-name">William Forrester</h4>
+	    			<p class="post-content">How do I even have friends?! Oh wait.... I don't. Glad I have internet firends! I'd be screwed without them... #LameTweetIsLame #hobit #somereallylonghashtag #longcomment #eggs #stuff</p>
+  					<textarea class="form-control comment-boxes" rows="1" placeholder=" post a comment"></textarea>
+	  		</div>
+			 </div>
+	 		 <div class="media">
+	  		<div class="media-left">
+	    		<a href="#">
+	      		<img src="images/profile/sean_connery_the_untouchables.jpg" id="post-profile-pic" alt="Profile Picture">
+	    		</a>
+	  		</div>
+	  		<div class="media-body post-body">
+	    		<h4 class="media-heading post-name">Jim Malone</h4>
+	    			<p class="post-content">I want to thank ALL MY FIRENDS BOTH OLD AND NEW FOR THE ENCOURAGING WORDS....LOVE YOU GUYS!!!!!</p>
+  					<textarea class="form-control" rows="1" placeholder=" post a comment"></textarea>
+	  		</div>
+			 </div>
+			 <div class="media">
+	  		<div class="media-left">
+	    		<a href="#">
+	      		<img src="images/profile/Sean-Connery-as-James-Bond.jpg" id="post-profile-pic" alt="Profile Picture">
+	    		</a>
+	  		</div>
+	  		<div class="media-body post-body">
+	    		<h4 class="media-heading post-name">James Bond</h4>
+	    			<p class="post-content">Just got back from the moon, they have sharks with lazers on their heads</p>
+	    			<div class="comment-box">
+	    				<ul class="media-list comment-list">
+  							<li class="media post-comments">
+    							<div class="media-left">
+      							<a href="#">
+        							<img class="small-post-profile-pic media-object" src="images/profile/2001_finding_forrester_008.png" alt="Profile Picture">
+      							</a>
+    							</div>
+    							<div class="media-body comment-body">
+      							<h4 class="media-heading comment-name">William Forrester</h4>
+      								<p class="comment-content">Hey, what else was there? I want to write a book on it</p>
+    							</div>
+  							</li>
+							</ul>
+						</div>	
+  					<textarea class="form-control comment-boxes" rows="1" placeholder=" post a comment"></textarea>
+	  		</div>
+			 </div>
+			 <div id="media">
+			 </div>
+  	  </div>
+    </div>
 	</div>
-	
-	<div id="page">
-
-	</div>
-	
-	<div>
-		<p>This is a footer mesage</p>
-	</div>
-		
+ </div>
+</div>
 </body>
+	<footer>
+		<p>The Network &copy; 2015</p>
+	</footer>
 </html>
