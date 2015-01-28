@@ -23,22 +23,16 @@ var port = 4000;
 app.listen(port);
 console.log('listening ' + port);
 
-
-
 function updateStream(req, res){
   var posts = JSON.stringify(req.body);
   fs.writeFile('../data/posts.json', posts, function(err, data){
     if(err){
       throw err;
-    }
-    console.log('updated posts');
-    
+    }    
     res.end();
   });
 }
 
-
-  
 function getStream(req, res){
   var responseObject = {};
   fs.readFile('../data/posts.json', function(err, data){
