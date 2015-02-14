@@ -4,7 +4,8 @@
  */
 
 html{
-	height: 100%;
+    /* Updated height to prevent gradient from repeating */
+	height: 200%;
 }
 
 body{
@@ -16,7 +17,6 @@ body{
 	background: -ms-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* IE10+ */
 	background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
-
 	
 	font-size: 13px;
 	min-width: 800px;
@@ -29,6 +29,7 @@ br{
 
 
 #header{
+	height: 45px;
 	background: rgba( 0, 0, 0, 0.7);
 	padding: 10px 5px;
 	box-shadow: 0px 1px 5px #fff;
@@ -76,19 +77,148 @@ br{
 	
 }
 
-
-
-
+/* Add styles to additional header features */
+.home-container{
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 78%;
+}
+.add-container{
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 83%;
+}
+.home-button,.add-button{
+    font-size: 16px;
+    color: white;
+    background-color: transparent;
+    border: 0px;
+}
+.header-image{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 95%;
+    background-color: green;
+}
 
 /*page content*/
 
 #page{
+    /* Added relative position */
+    position: relative;
 	width: 800px;
-	
+	/* Removed page background and border styles */
 	/*background: rgba( 255, 255, 255, 0.3 );
 	border: 1px solid #ffffff;*/
 	margin: 10px auto 0px;
-	padding: 1em 2em;
 }
 
-
+/* Add styles to page content */
+h3{
+    margin-left: 5px;
+}
+.profile{
+    position: relative;
+    float: left;
+    height: 50px;
+    width: 30%;
+    padding: 4px;
+    background-color: #F7F7F7;
+    border-radius: 5px;
+}
+.profile-name{
+    float: left;
+    margin-top: 35px;
+    margin-left: 5px;
+}
+.profile-image{
+    float: left;
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+}
+.post-list{
+    position: relative;
+    float: left;
+    width: 65%;
+    margin-left: 3%;
+    padding-bottom: 30px;
+    background-color: #F7F7F7;
+    border-radius: 5px;
+}
+.post{
+    position: relative;
+}
+.post-image{
+    float: left;
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    margin-top: 0px;
+}
+.post-name{
+    margin-top: 10px;
+    margin-left: 66px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #0279C9;
+}
+.post-content{
+    margin: 0px 10px;
+    margin-top: 0px;
+    margin-left: 66px;
+}
+.comment{
+    position: relative;
+    padding: 12px 5px 2px 5px;
+    margin-left: 60px;
+    margin-right: 7px;
+    background-color: #EDEDED;
+    border-bottom: 1px solid #DDDDDD;
+}
+.comment-image{
+    float: left;
+    height: 25px;
+    width: 25px;
+    margin: 3px;
+    margin-right: 10px
+}
+.comment-name{
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #0279C9;
+}
+.comment-content{
+    margin: 20px;
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-bottom: 5px;
+}
+.new-comment{
+    margin-top: 5px;
+    margin-left: 60px;
+    width: 86%;
+    color: #888888;
+}
+.new-post{
+    position: absolute;
+    display: none;
+    height: 300px;
+    width: 500px;
+    margin-left: -80%;
+    margin-top: 10%;
+    padding-left: 30px;
+    background-color: #85b2d3;
+    border-radius: 5px;
+    z-index: 1;
+}
+.new-post-text{
+    width: 460px;
+}
+.footer{
+    margin-left: 45%;
+}
