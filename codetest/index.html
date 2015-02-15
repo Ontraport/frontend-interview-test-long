@@ -1,3 +1,5 @@
+<!-- Brian Cottrell's responce to the ontraport long test -->
+<!-- 02-12-2015 -->
 <!DOCTYPE HTML >
 <html>
 <head>
@@ -5,6 +7,9 @@
 	
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 </head>
 <body>
 	
@@ -18,15 +23,219 @@
 				<input type="submit" value="Go"/>
 			</form>
 		</div>
+        <!-- Added additional header features -->
+        <div class='home-container'><button class='home-button'>Home</button></div>
+        <div class='add-container'><button class='add-button'>Post an update</button></div>
+        <div class='header-image'></div>
 	</div>
 	
 	<div id="page">
-
+        <!-- Added page content header -->
+        <div class='profile'>
+            <div class='profile-image'></div>
+            <p class='profile-name'><p>
+        </div>
+        <div class='post-list'>
+            <div class='list-header'><h3>Updates</h3></div>
+        </div>
+        <div class='new-post'>
+            <h2>Enter your post</h2>
+            <textarea class='new-post-text' rows=14></textarea>
+        </div>
 	</div>
-	
-	<div>
+    </br>
+	<div class='footer'>
 		<p>This is a footer mesage</p>
 	</div>
 		
+    <!-- Added script here -->
+    <script>
+        //Load user and post data from the github api
+        function loadData(){
+            var usersUrl = 'https://api.github.com/repos/BrianCottrell/frontend-interview-test-long/contents/codetest/data/users.json',
+                postsUrl = 'https://api.github.com/repos/BrianCottrell/frontend-interview-test-long/contents/codetest/data/posts.json',
+                encodedUsers,
+                decodedUsers;
+            //Use jquery to make a http request to get user data
+            $.get(usersUrl, function(res) {
+                encodedUsers = res.content;
+                //Remove new line characters as the aren't decoded properly
+                while(encodedUsers.indexOf('\n') >= 0){
+                    encodedUsers = encodedUsers.replace('\n', '');
+                }
+                //Decode api data from base64 format
+                decodedUsers = decodeBase64(encodedUsers);
+                //Store data in browser
+                localStorage.users = JSON.stringify(decodedUsers);
+                localStorage.users = JSON.stringify(JSON.parse(JSON.parse(localStorage.users)));
+            });
+            //Use jquery to make a http request to get user data
+            $.get(postsUrl, function(res) {
+                encodedPosts = res.content;
+                //Remove new line characters as the aren't decoded properly
+                while(encodedPosts.indexOf('\n') >= 0){
+                    encodedPosts = encodedPosts.replace('\n', '');
+                }
+                //Decode api data from base64 format
+                decodedPosts = decodeBase64(encodedPosts);
+                //Store data in browser
+                localStorage.posts = JSON.stringify(decodedPosts);
+                localStorage.posts = JSON.stringify(JSON.parse(JSON.parse(localStorage.posts)));
+            });
+
+        }
+        //Decodes a base64 string to return text.
+        function decodeBase64(s) {
+            var e={},i,b=0,c,x,l=0,a,r='',w=String.fromCharCode,L=s.length;
+            var A="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+            for(i=0;i<64;i++){
+                e[A.charAt(i)]=i;
+            }
+            for(x=0;x<L;x++){
+                c=e[s.charAt(x)];
+                b=(b<<6)+c;
+                l+=6;
+                while(l>=8){
+                    ((a=(b>>>(l-=8))&0xff)||(x<(L-2)))&&(r+=w(a));
+                }
+            }
+            return r;
+        }
+        //Set up the page body
+        function setPage(userId){
+            var users = JSON.parse(localStorage.users),
+                posts = JSON.parse(localStorage.posts),
+                currentUser = users[2];
+            for(var i = 0; i < users.length; i++){
+                if(users[i].id == userId){
+                    document.getElementsByClassName('profile-name')[0].innerHTML = users[i].username;
+                    document.getElementsByClassName('profile-image')[0].style.background = 'url('+users[i].pic+')';
+                }
+            }
+            for(var i = 0; i < posts.length; i++){
+                //Create a new set of elements for each post
+                var post = document.createElement('div'),
+                    postImage = document.createElement('div'),
+                    postName = document.createElement('p'),
+                    postContent = document.createElement('p'),
+                    comments = [],
+                    newComment = document.createElement('textarea');
+                //Add a class to each element
+                post.classList.add('post');
+                postImage.classList.add('post-image');
+                postName.classList.add('post-name');
+                postContent.classList.add('post-content');
+                //Add each element to a container
+                post.appendChild(postImage);
+                post.appendChild(postName);
+                post.appendChild(postContent);
+                document.getElementsByClassName('post-list')[0].appendChild(post);
+                //Add content to each element
+                for(var j = 0; j < users.length; j++){
+                    if(users[j].id == posts[i].userId){
+                        postName.innerHTML = users[j].username;
+                        postImage.style.background = 'url('+users[j].pic+')';
+                    }
+                }
+                document.getElementsByClassName('post-content')[i].innerHTML = posts[i].content;
+                for(var j = 0; j < posts[i].comments.length; j++){
+                    //Create a new set of elements for each comment
+                    var comment = document.createElement('div'),
+                        commentImage = document.createElement('div'),
+                        commentName = document.createElement('p'),
+                        commentContent = document.createElement('p');
+                    //Add a class to each element
+                    comment.classList.add('comment');
+                    commentImage.classList.add('comment-image');
+                    commentName.classList.add('comment-name');
+                    commentContent.classList.add('comment-content');
+                    //Add each element to a container
+                    comment.appendChild(commentImage);
+                    comment.appendChild(commentName);
+                    comment.appendChild(commentContent);
+                    post.appendChild(comment);
+                    //Add content to each element
+                    for(var k = 0; k < users.length; k++){
+                        if(users[k].id == posts[i].comments[j].userId){
+                            commentName.innerHTML = users[k].username;
+                            commentImage.style.background = 'url('+users[k].pic+')';
+                            commentImage.style.backgroundSize = 'contain';
+                        }
+                    }
+                    commentContent.innerHTML = posts[i].comments[j].content;
+                }
+                //Set properties of new comment element
+                newComment.rows = '1';
+                newComment.defaultValue = 'post a comment';
+                //Add new comment element to container and add class
+                post.appendChild(newComment);
+                newComment.classList.add('new-comment');
+                newComment.classList.add('post'+i);
+                //Allow users to add comments
+                newComment.addEventListener('keypress', function(evt){
+                    if(evt.which == 13){
+                        if(this.value != ''){
+                            var resetInnerHTML = '<div class="list-header"><h3>Updates</h3></div>'
+                            var updatedPosts = JSON.parse(localStorage.posts);
+                            updatedPosts[this.classList[1][4]].comments.push({userId:userId,content:this.value});
+                            localStorage.posts = JSON.stringify(updatedPosts);
+                            this.value = '';
+                            document.getElementsByClassName('post-list')[0].innerHTML = resetInnerHTML;
+                            setPage(userId); 
+                        }
+                    }
+                })
+
+            }
+        }
+        //Set up the page header
+        function setHeader(userId){
+            var userImage = document.getElementsByClassName('profile-image')[0].style.background;
+            document.getElementsByClassName('header-image')[0].style.background = userImage;
+            document.getElementsByClassName('header-image')[0].style.backgroundSize = 'contain';
+            //Add a mouse ever event to change the color of the search button
+            document.getElementsByTagName('input')[1].addEventListener('mouseover', function(){
+                var originalColor = this.style.backgroundColor;
+                this.style.backgroundColor = '#a7c7dc';
+                this.addEventListener('mouseout', function(){
+                    this.style.backgroundColor = originalColor;
+                })
+            });
+            //Add a focus event to add a shadow to the search box
+            document.getElementsByTagName('input')[0].addEventListener('focusin', function(){
+                var originalBoxShadow = this.style.boxShadow;
+                this.style.boxShadow = '1px 1px 10px #FFFFFF';
+                this.addEventListener('focusout', function(){
+                    this.style.boxShadow = originalBoxShadow;
+                })
+            });
+            //Add the ability to add posts to the page
+            document.getElementsByClassName('add-button')[0].addEventListener('click', function(){
+                document.getElementsByClassName('new-post')[0].style.display = 'inline';
+                document.getElementsByClassName('new-post-text')[0].addEventListener('keypress', function(evt){
+                    if(evt.which == 13){
+                        document.getElementsByClassName('new-post')[0].style.display = 'none';
+                        if(this.value != ''){
+                            var resetInnerHTML = '<div class="list-header"><h3>Updates</h3></div>'
+                            var updatedPosts = JSON.parse(localStorage.posts);
+                            updatedPosts.push({userId: userId, content: this.value, comments: []});
+                            localStorage.posts = JSON.stringify(updatedPosts);
+                            this.value = '';
+                            document.getElementsByClassName('post-list')[0].innerHTML = resetInnerHTML;
+                            setPage(userId); 
+                        }
+                    }
+                })
+            });
+        }
+        //Program starts here
+        //Load data onto the page
+        loadData();
+        //Set the page to display the loaded data, pass in the id of the current user
+        setPage(5);
+        //Set the page header functions, pass in the id of the current user
+        setHeader(5);
+    </script>
+
 </body>
 </html>
