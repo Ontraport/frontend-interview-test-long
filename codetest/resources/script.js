@@ -22,10 +22,13 @@
  */
 function init()
 {
-	var posts = JSON.parse(loadJSON("data/posts.json"));
-	var users = JSON.parse(loadJSON("data/users.json"));
-	Box.store('posts', posts);
-	Box.store('users', users);
+	if(!Box.isset('posts') || !Box.isset('users'))
+	{
+		var posts = JSON.parse(loadJSON("data/posts.json"));
+		var users = JSON.parse(loadJSON("data/users.json"));
+		Box.store('posts', posts);
+		Box.store('users', users);
+	}
 }
 
 function getCurrentUserId()
