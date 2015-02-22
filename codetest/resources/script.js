@@ -102,7 +102,7 @@ function printPosts(postDiv)
 	}
 	else
 	{
-		html += '<ul class="rounded">';
+		html += '<ul class="post rounded">';
 		html += '<li><div id="update-title">Updates</div></li>';
 		//Each Post object contains an array of comment objects, which are
 		//nearly identical to Posts except they have a postId
@@ -121,8 +121,8 @@ function printPosts(postDiv)
 				}
 			}
 
-			html += '<li class="rounded"><form onsubmit="return false;">';
-			html += '<input id="comment_' + posts[i].id + '" type="text" class="comment-input rounded" onkeyup="commentKeyUpHandler(event)"/>';
+			html += '<li class="comment-form rounded"><form onsubmit="return false;">';
+			html += '<input id="comment_' + posts[i].id + '" type="text" class="comment-input rounded" onkeyup="commentKeyUpHandler(event)" placeholder="Post a comment"/>';
 			html += "</form></li>";
 			html += "</ul></li>";
 		}
@@ -150,10 +150,10 @@ function printLi(id, userId, date, content)
 	var html = "";
 
 	//append HTML for the avatar
-	html += '<li class="rounded"><div class="comment-left"><img class="avatar rounded" src="' + user.pic + '" /></div>';
+	html += '<li class="post rounded"><div class="comment-left"><img class="avatar rounded" src="' + user.pic + '" /></div>';
 
 	//append HTML for the username and content
-	html += '<div class="comment-right rounded"><div class="user-name">' + user.username + '</div><div class="content">' + content + '</div></li>';
+	html += '<div class="comment-right rounded"><div class="bold-link">' + user.username + '</div><div class="content">' + content + '</div></li>';
 
 	return html;
 }
@@ -164,10 +164,10 @@ function printCommentLi(commentId, userId, date, content)
 	var html = "";
 
 	//append HTML for the avatar
-	html += '<li class="rounded"><div class="comment-left"><img class="avatar mini rounded" src="' + user.pic + '" /></div>';
+	html += '<li class="comment rounded"><div class="comment-left"><img class="avatar mini rounded" src="' + user.pic + '" /></div>';
 
 	//append HTML for the username and content
-	html += '<div class="comment-right rounded"><div class="user-name">' + user.username + '</div><div class="content">' + content + '</div></li>';
+	html += '<div class="comment-right rounded"><div class="bold-link">' + user.username + '</div><div class="content">' + content + '</div></li>';
 
 	return html;
 }

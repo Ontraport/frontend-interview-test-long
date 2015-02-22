@@ -183,58 +183,74 @@ input[type=text]:focus, textarea:focus
 .rounded
 {
 	/*Rounded Corners*/
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	border-radius: 7px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
-ul
+ul.post
 {
-	background: rgba(255, 255, 255, 0.5);
 	padding: 5px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	list-style-type: none;
+	/*display: table-layout;*/
 }
 
 ul.comment
 {
-	background: rgba(255, 255, 255, 0.5);
-	padding: 0px 0px 0px 50px;
-	margin: 0px 0px 0px 0px;
+	background: #EDEDED;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 5px 0px 60px;
 	list-style-type: none;
 }
 
-li
+li.post
 {
-	margin: 5px;
+	margin: 5px 5px 5px 5px;
+}
+
+li.comment
+{
+	margin: 5px 5px 5px 5px;
+	display:table;
+}
+
+li.comment-form
+{
+	margin: 0px 5px 0px 0px;
 }
 
 .comment-left
 {
-	width: 30%;
-	display: inline;
+	display: table-cell;
+	padding: 5px 0px 0px 0px;
 	vertical-align: top;
 }
 
 .comment-right
 {
-	width: 70%;
+	display: table-cell;
+	padding: 3px 0px 0px 5px;
+}
+
+.bold-link
+{
+	font-weight: bold;
+	color: #0297C7;
+}
+
+/* For the "Home" and "Update Status" links */
+.menu-link
+{
+	color: #FFFFFF;
+	font-size: 14px;
+}
+
+#username
+{
 	display: inline-block;
+	vertical-align: bottom;
 	padding: 0px 5px;
-}
-
-.user-name
-{
-	font-weight: bold;
-	color: rgb(25, 150, 255);
-	display: block;
-}
-
-a
-{
-	text-decoration: none;
-	font-weight: bold;
-	color: rgb(25, 150, 255);
 }
 
 .content
@@ -299,7 +315,6 @@ img.mini
 {
 	width: 100%;
 	display: block;
-	overflow: hidden;
 }
 
 #main-content
@@ -308,17 +323,17 @@ img.mini
 	text-align: center;
 }
 
-/*Container for Profile Info*/
+/* Profile Info pod, to the left of the posts / comments */
 #profile
 {
 	border: 1px solid #6FD6F7;
 	display: inline-block;
-	background: rgba(255, 255, 255, 0.5);
+	background: #F7F7F7;
 	width: 200px;
 	vertical-align: top;
 	text-align: left;
 	margin: 0px 10px;
-	padding: 0px 0px 5px 5px;
+	padding: 2px 0px 5px 5px;
 }
 
 #profile-img-container
@@ -326,27 +341,21 @@ img.mini
 	display: inline-block;
 }
 
-#username
-{
-	display: inline-block;
-	vertical-align: bottom;
-	padding: 0px 5px;
-}
+
 
 /*Container for posts*/
 #page
 {
 	display: inline-block;
 	width: 510px;
-	background: rgba( 255, 255, 255, 0.3 );
+	background: #F7F7F7;
 	border: 1px solid #6FD6F7;
 	text-align: left;
 }
 
 #update-title
 {
-	padding: 0px 5px;
 	font-weight: bold;
 	font-size: 14px;
-	padding: 0px 0px 20px 0px;
+	padding: 5px 0px 20px 5px;
 }
