@@ -14,12 +14,6 @@
 |
 */
 
-
-//Global Variables (we can probably just use Box instead, assuming performance is not an issue)
-var posts;
-var users;
-var mybox;
-
 /**
  * init(): Initializes the web app. Loads posts.json and users.json
  * and then stores them in our "Box" object from Box.js
@@ -28,8 +22,8 @@ var mybox;
  */
 function init()
 {
-	posts = JSON.parse(loadJSON("data/posts.json"));
-	users = JSON.parse(loadJSON("data/users.json"));
+	var posts = JSON.parse(loadJSON("data/posts.json"));
+	var users = JSON.parse(loadJSON("data/users.json"));
 	Box.store('posts', posts);
 	Box.store('users', users);
 }
@@ -94,6 +88,7 @@ function loadJSON(file)
  */
 function printPosts(postDiv)
 {
+	var posts = Box.fetch('posts');
 	var html = "";
 
 	if(!posts)
@@ -180,17 +175,19 @@ function printCommentLi(commentId, userId, date, content)
  */
 function getUserById(userId)
 {
+	var users = Box.fetch('users');
 	return users[users.indexOf("id", userId)];
 }
 
 /**
- * getUserById(): Obtain a post object from the post list
+ * getPostById(): Obtain a post object from the post list
  * @access  public
  * @param   int postId		The id of the post to look up
  * @return  User Object or null? if not found
  */
 function getPostById(postId)
 {
+	var posts = Box.fetch('posts');
 	return posts[posts.indexOf("id", postId)];
 }
 
@@ -377,7 +374,9 @@ function insertPost(userId, content)
 		"comments": []
 	}
 
+	var posts = Box.fetch('posts');
 	posts.push(newPost);
+	Box.store('posts', posts);
 	printPosts("posts");
 }
 
@@ -397,6 +396,7 @@ function insertPost(userId, content)
  */
 function createPostId()
 {
+	var posts = Box.fetch('posts');
 	var newId = posts[posts.length - 1].id + 1;
 
 	while(posts.indexOf("id", newId) != -1)
@@ -432,36 +432,30 @@ function commentKeyUpHandler(event)
  */
 function insertComment(userId, postId, content)
 {
-	console.log("userid: " + userId + " postid: " + postId + " content: " + content);
-	console.log(typeof postId);
-	console.log(postId.length);
-	console.log(parseInt(postId));
-	console.log(postId.charAt(0));
-	console.log(postId.charAt(1));
-	console.log(postId.charAt(2));
-
-
-
+	var posts = Box.fetch('posts');
 	var post = getPostById(parseInt(postId));
-	console.log("##################");
-	console.log(post);
-	console.log("##################");
-	var comments = post.comments;
-	console.log(comments);
 	var date = new Date();
 
 	var newComment =
 	{
-		"id": createCommentId(comments),
+		"id": createCommentId(post.comments),
 		"postId": postId,
 		"userId": userId,
 		"date": date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
 		"content": content,
 	}
 
-	comments.push(newComment);
+	//add new comment to this post
+	post.comments.push(newComment);
+
+	//replace the old post with the new one
+	posts[posts.indexOf("id", parseInt(postId))] = post;
+
+	//overwrite the posts list in Box
+	Box.store('posts', posts);
+
+	//update the post list in the display
 	printPosts("posts");
-	console.log(newComment);
 }
 
 /**
@@ -472,8 +466,6 @@ function insertComment(userId, postId, content)
 function createCommentId(comments)
 {
 	var newId;
-
-	console.log("comments: " + comments);
 
 	if(comments.length == 0)
 	{
