@@ -69,10 +69,9 @@ br
 	width: auto;
 	margin-top: auto;
 	margin-bottom: auto;
+	margin-right: 20px;
 	display: inline;
 	float: right;
-	background: rgba( 255, 255, 255, 0.3 );
-	border: 1px solid #A2C4DA;
 	
 	/*to align the account pod with the BOTTOM of the "The Network" logo*/
 	position: absolute; 

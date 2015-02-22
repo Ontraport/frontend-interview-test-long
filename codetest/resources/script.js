@@ -117,7 +117,7 @@ function printPosts(postDiv)
 			}
 
 			html += '<li class="comment-form rounded"><form onsubmit="return false;">';
-			html += '<input id="comment_' + posts[i].id + '" type="text" class="comment-input rounded" onkeyup="commentKeyUpHandler(event)" placeholder="Post a comment"/>';
+			html += '<input id="comment_' + posts[i].id + '" type="text" class="comment-input rounded" onkeyup="commentKeyUpHandler(event)" onfocus="showCommentAvatar();" placeholder="Post a comment"/>';
 			html += "</form></li>";
 			html += "</ul></li>";
 		}
@@ -482,6 +482,11 @@ function createCommentId(comments)
 	}
 
 	return newId;
+}
+
+function showCommentAvatar()
+{
+	//TODO
 }
 
 /*------------------------------------------------------------------------------------*/
