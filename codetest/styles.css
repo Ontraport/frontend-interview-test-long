@@ -203,7 +203,7 @@ input[type="text"]
 /* unordered list for displaying posts (and also comments, as a sub-unordered list */
 ul.post
 {
-	padding: 5px 0px 0px 0px;
+	padding: 5px 0px 5px 0px;
 	margin: 0px 0px 0px 0px;
 	list-style-type: none;
 }
