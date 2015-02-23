@@ -1,5 +1,8 @@
 /*
- * base styles 
+ * styles.css
+ * A mix of ontraport's original styles.css file with a bunch of additions.
+ * I later realized I should have written this myself from scratch when I
+ * didn't realize some of my additions were inheriting undesired styles. 
  * 
  */
 
@@ -27,6 +30,10 @@ br
 	clear: left;
 }
 
+img
+{
+	vertical-align: middle;
+}
 
 #header
 {
@@ -36,13 +43,7 @@ br
 	box-shadow: 0px 1px 5px #fff;
 }
 
-/* 
-	In Ontraport's example it looked like the search and acct menu 
-	were aligned to the bottom of the The Network image, wrapping the
-	image in a container div makes it the biggest element vertically
-	and thus allows us to align the "search" and "account" divs to the 
-	bottom of that container.
-*/
+/* div to hold the 3 items in the header (logo, account, search) */
 #header-container
 {
 	position: relative;
@@ -72,11 +73,14 @@ br
 	margin-right: 20px;
 	display: inline;
 	float: right;
-	
-	/*to align the account pod with the BOTTOM of the "The Network" logo*/
+
+	/*
+	to align the account pod with the BOTTOM of the "The Network" logo
+	*/
 	position: absolute; 
 	right: 0; 
 	bottom: 0;
+	
 }
 
 /* items inside the account menu pod */
@@ -88,19 +92,17 @@ br
 	cursor: pointer;
 }
 
-/*search in header*/
+/*search container in header*/
 #search
 {
-
 	display: inline;
 	position: relative;
 	left: 20%;
 	margin-left: -25%;
-
 	width: 400px;
 	margin-top: auto;
 	margin-bottom: auto;
-	
+	vertical-align: bottom;
 }
 
 /* Styling for search at top center */
@@ -127,10 +129,10 @@ br
 	border: 2px solid rgba(81, 203, 238, 1);
 }
 
-/* My Code */
+/* Submit button for the search field */
 #search input[type="submit"]
 {
-	width: 30px;
+	width: 40px;
 	padding: 4px;
 	vertical-align: top;
 	font-weight: bold;
@@ -152,14 +154,14 @@ br
   	background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
 }	
 
-/* My Code */
+/* Search button, grows in size on hover */
 #search input[type="submit"]:hover
 {
 	width: 120px;
 }
 
-/* My Code */
-input[type=text], textarea 
+/* Text area for "update status" dialog box */
+textarea 
 {
 	-webkit-transition: all 0.30s ease-in-out;
 	-moz-transition: all 0.30s ease-in-out;
@@ -171,7 +173,8 @@ input[type=text], textarea
 	border: 1px solid #DDDDDD;
 }
 
-input[type=text]:focus, textarea:focus 
+/* Shadow effect on focus */
+textarea:focus 
 {
 	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 	padding: 3px 0px 3px 3px;
@@ -179,6 +182,16 @@ input[type=text]:focus, textarea:focus
 	border: 1px solid rgba(81, 203, 238, 1);
 }
 
+/* inputs that appear in the comments list */
+input[type="text"]
+{
+	outline: none;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid #DDDDDD;
+}
+
+/* round everything! */
 .rounded
 {
 	/*Rounded Corners*/
@@ -187,14 +200,15 @@ input[type=text]:focus, textarea:focus
 	border-radius: 5px;
 }
 
+/* unordered list for displaying posts (and also comments, as a sub-unordered list */
 ul.post
 {
 	padding: 5px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 	list-style-type: none;
-	/*display: table-layout;*/
 }
 
+/* the aforementioned sub-unordered list */
 ul.comment
 {
 	background: #EDEDED;
@@ -203,22 +217,32 @@ ul.comment
 	list-style-type: none;
 }
 
+/* 
+Each <li> in the post list will contain a post object, and a comment sublist with input field. 
+in the event that there are no comments the sublist will contain 1 element that is 
+the input field.
+*/
 li.post
 {
 	margin: 5px 5px 5px 5px;
 }
 
+/* li element for comments */
 li.comment
 {
 	margin: 5px 5px 5px 5px;
-	display:table;
+	padding: 5px;
+	display: table;
+	border-bottom: 1px solid #D0D0D0;
 }
 
+/* container for the "form" (just a text input with javascript) into which users input comments */
 li.comment-form
 {
 	margin: 0px 5px 0px 0px;
 }
 
+/* left side of a comment (this is also used by the post list) */
 .comment-left
 {
 	display: table-cell;
@@ -226,12 +250,22 @@ li.comment-form
 	vertical-align: top;
 }
 
+/* right side of a comment (this is also used by the post list) */
 .comment-right
 {
 	display: table-cell;
+	width: 100%; 
 	padding: 3px 0px 0px 5px;
+	overflow: auto;
 }
 
+/* post or comment text */
+.content
+{
+	display: inline;	
+}
+
+/* As per Ontraports specifications */
 .bold-link
 {
 	font-weight: bold;
@@ -245,6 +279,10 @@ li.comment-form
 	font-size: 14px;
 }
 
+/* 
+Div to store the username of the currently logged in user in the profile pod, 
+left of the main pod for the posts
+*/
 #username
 {
 	display: inline-block;
@@ -252,22 +290,20 @@ li.comment-form
 	padding: 0px 5px;
 }
 
-.content
-{
-	display: inline;
-}
-
+/* div for showing user avatars */
 .avatar
 {
 	vertical-align: top;
 }
 
+/* div for shrinking down avatars to ontraport's specs */
 .mini
 {
 	height: 25px;
 	width: 25px;
 }
 
+/*overlay div to dim the screen when the lightbox is active*/
 #overlay 
 {
 	visibility: hidden;
@@ -279,18 +315,9 @@ li.comment-form
 	text-align: center;
 	z-index: 200;
 	background-color: rgba(100, 100, 100, 0.7);
- }
+}
  
-img
-{
-	vertical-align: middle;
-}
 
-img.mini
-{
-	vertical-align: middle;
-	height: 50%;
-}
  
 .dialog
 {
@@ -301,8 +328,8 @@ img.mini
 	width: auto;
 	height: auto;
 	z-index: 301;
-	background-color: rgb(167,199,220);	
-	padding: 0px 20px;
+	background-color: #F7F7F7;
+	padding: 15px 30px;
 }
 
 #updatetitle
@@ -313,7 +340,12 @@ img.mini
 .comment-input
 {
 	width: 100%;
-	display: block;
+	display: inline;
+}
+
+.comment-input-container
+{
+	display: inline;
 }
 
 #main-content
@@ -335,6 +367,7 @@ img.mini
 	padding: 2px 0px 5px 5px;
 }
 
+/* Container for the profile image*/
 #profile-img-container
 {
 	display: inline-block;
@@ -352,9 +385,23 @@ img.mini
 	text-align: left;
 }
 
+/* Styling for the title of the lightbox (update status dialog)*/
 #update-title
 {
 	font-weight: bold;
 	font-size: 14px;
 	padding: 5px 0px 20px 5px;
+}
+
+/* To fill up some space after the post list*/
+.footer
+{
+	text-align: center;
+}
+
+/* container for the mini image that appears when a comment input has focus */
+.comment-avatar
+{
+	display: none;
+	margin: 0px 5px 0px 5px;
 }

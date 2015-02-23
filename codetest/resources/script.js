@@ -14,6 +14,10 @@
 |
 */
 
+/*------------------------------------------------------------------------------------*/
+/********************** INIT AND POST/COMMENT DISPLAY FUNCTIONS ***********************/
+/*------------------------------------------------------------------------------------*/
+
 /**
  * init(): Initializes the web app. Loads posts.json and users.json
  * and then stores them in our "Box" object from Box.js
@@ -31,18 +35,10 @@ function init()
 	}
 }
 
-function getCurrentUserId()
-{
-	return 5;
-}
-
 /**
- * loadJSON(): Attempts to load a JSON file stored locally. The
- * first attempt will fail on some browsers such as Chrome if
- * the html file is simply run off the file system and not served
- * via a web server. If this is the case, the XMLHttpRequest status
- * will be set to 0 and we will attempt to load the file from
- * http://spencerbartz.com/codetest/data/xxx.json
+ * loadJSON(): Attempts to load a JSON file stored locally.
+ * This will fail on browsers like Chrome that require the
+ * local file be hosted (like localhost or on some website)
  * @access  public
  * @param   String file		The relative path to the JSON file
  * @return  text of the JSON file on success, null on failure
@@ -86,6 +82,7 @@ function loadJSON(file)
  * In order to display the thumbnail associated with the user who
  * made the post, the userId value of each post object is used to then
  * look up the user based on our user list from users.json.
+ * @param   Div postDiv		The div to which we will write the list of posts / comments
  * @access  public
  * @return  void
  */
@@ -103,7 +100,7 @@ function printPosts(postDiv)
 		html += '<ul class="post rounded">';
 		html += '<li><div id="update-title">Updates</div></li>';
 		//Each Post object contains an array of comment objects, which are
-		//nearly identical to Posts except they have a postId
+		//nearly identical to Posts except they have a postId and no comment list
 		for(var i = 0; i < posts.length; i++)
 		{
 			html += printLi(posts[i].id, posts[i].userId, posts[i].date, posts[i].content);
@@ -119,9 +116,20 @@ function printPosts(postDiv)
 				}
 			}
 
-			html += '<li class="comment-form rounded"><form onsubmit="return false;">';
-			html += '<input id="comment_' + posts[i].id + '" type="text" class="comment-input rounded" onkeyup="commentKeyUpHandler(event)" onfocus="showCommentAvatar();" placeholder="Post a comment"/>';
-			html += "</form></li>";
+			html += '<li class="comment-form rounded">';
+			html += '<div id="comment-avatar_' + posts[i].id + '" class="comment-avatar">';
+			html += '<img src="' + getUserById(getCurrentUserId()).pic + '" class="mini"/>';
+			html += '</div>';
+
+			//The hefty comment input element
+			html += '<div class="comment-input-container">';
+			html += '<input id="comment_' + posts[i].id + '" ';
+			html += 'type="text" class="rounded comment-input" onkeyup="commentKeyUpHandler(event)" ';
+			html += 'onfocus="showCommentAvatar(\'' + posts[i].id + '\');" ';
+			html += 'onblur="hideCommentAvatar(\'' + posts[i].id + '\');" placeholder="Post a comment"/>';
+			html += '</div>';
+
+			html += "</li>";
 			html += "</ul></li>";
 		}
 
@@ -132,13 +140,12 @@ function printPosts(postDiv)
 }
 
 /**
- * printLi(): Print a list element containing a user avatar, username,
+ * printLi(): Print a post containing a user avatar, username,
  * and content of the post
  * @access  public
  * @param   int id      		the id of the post
  * @param   int userId			the id of the user who made the post
  * @param   Date date    		the date the post was made
- * @param   Boolean miniImage   resize profile pic if true
  * @param   String content		the text comment to display
  * @return  void
  */
@@ -156,13 +163,22 @@ function printLi(id, userId, date, content)
 	return html;
 }
 
+/**
+ * printCommentLi(): Print a comment with an avatar, username and content
+ * @access  public
+ * @param   int commentId      	the id of the comment
+ * @param   int userId			the id of the user who made the post
+ * @param   Date date    		the date the post was made
+ * @param   String content		the text comment to display
+ * @return  void
+ */
 function printCommentLi(commentId, userId, date, content)
 {
 	var user = getUserById(userId);
 	var html = "";
 
 	//append HTML for the avatar
-	html += '<li class="comment rounded"><div class="comment-left"><img class="avatar mini rounded" src="' + user.pic + '" /></div>';
+	html += '<li class="comment"><div class="comment-left"><img class="avatar mini rounded" src="' + user.pic + '" /></div>';
 
 	//append HTML for the username and content
 	html += '<div class="comment-right rounded"><div class="bold-link">' + user.username + '</div><div class="content">' + content + '</div></li>';
@@ -171,27 +187,43 @@ function printCommentLi(commentId, userId, date, content)
 }
 
 /**
- * getUserById(): Obtain a user object from the users list
- * @access  public
- * @param   int id		The id of the user to look up
- * @return  User Object or null? if not found
- */
-function getUserById(userId)
-{
-	var users = Box.fetch('users');
-	return users[users.indexOf("id", userId)];
-}
-
-/**
  * getPostById(): Obtain a post object from the post list
  * @access  public
  * @param   int postId		The id of the post to look up
- * @return  User Object or null? if not found
+ * @return  Post Object or null if not found
  */
 function getPostById(postId)
 {
 	var posts = Box.fetch('posts');
 	return posts[posts.indexOf("id", postId)];
+}
+
+/*------------------------------------------------------------------------------------*/
+/*************************** USER ACCOUNT FUNCTIONS ********************************/
+/*------------------------------------------------------------------------------------*/
+
+/**
+ * getCurrentUserId(): For this exercise we assume there
+ * was some authorization and we know the currently logged
+ * in user is userId 5
+ * @access  public
+ * @return  void
+ */
+function getCurrentUserId()
+{
+	return 5;
+}
+
+/**
+ * getUserById(): Obtain a user object from the users list
+ * @access  public
+ * @param   int id		The id of the user to look up
+ * @return  User Object or null if not found
+ */
+function getUserById(userId)
+{
+	var users = Box.fetch('users');
+	return users[users.indexOf("id", userId)];
 }
 
 /**
@@ -210,9 +242,8 @@ function printMiniAcctImage(userId, imgDivId)
 	{
 		var img = document.getElementById(imgDivId);
 		img.src = user.pic;
-		var dimension = scaleSize(img.width, img.height, 25, 25);
-		img.width = dimension.width;
-		img.height = dimension.height;
+		img.width = 25;
+		img.height = 25;
 	}
 	else
 	{
@@ -235,15 +266,37 @@ function printProfileInfo(userId, imgId, userNameDivId)
 	{
 		var img = document.getElementById(imgId);
 		var username = document.getElementById(userNameDivId);
-
 		img.src = user.pic;
 		username.innerHTML = user.username;
-
 	}
 	else
 	{
 		console.error("User was not found");
 	}
+}
+
+/**
+ * showCommentAvatar(): Show the avatar (mini) of the currently logged
+ * in user to the left of the comment input field when it has focus
+ * @access  public
+ * @return  void
+ */
+function showCommentAvatar(id)
+{
+	var div = document.getElementById("comment-avatar_" + id);
+	div.style.display = "inline";
+
+	var input = document.getElementById("comment_" + id);
+	input.style.width = "90%";
+}
+
+function hideCommentAvatar(id)
+{
+	var div = document.getElementById("comment-avatar_" + id);
+	div.style.display = "none";
+
+	var input = document.getElementById("comment_" + id);
+	input.style.width = "100%";
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -261,6 +314,7 @@ function showDialog(dialogId)
 {
 	centerDialog(dialogId);
 	toggleOverlay();
+	toggleTextArea();
 }
 
 /**
@@ -271,6 +325,20 @@ function showDialog(dialogId)
 function toggleOverlay()
 {
 	var el = document.getElementById("overlay");
+	el.style.visibility = (el.style.visibility == "hidden") || (el.style.visibility == "") ? "visible" : "hidden";
+}
+
+/**
+ * toggleTextArea(): Fading the text areain the lightbox became a problem on firefox
+ * as it would remain visible after the overlay disappeared. Although
+ * simply hiding the text area doesn't actually fade it out with the
+ * overlay, it is a cheap fix that doesn't require jquery.
+ * @access  public
+ * @return  void
+ */
+function toggleTextArea()
+{
+	var el = document.getElementById("dialogText");
 	el.style.visibility = (el.style.visibility == "hidden") || (el.style.visibility == "") ? "visible" : "hidden";
 }
 
@@ -296,17 +364,24 @@ function centerDialog(dialogId)
 }
 
 /**
- * closeDialog():
+ * closeDialog(): Closes the light box
  * @access  public
- * @param   String dialogId		The id of our status update dialog div
  * @return  void
  */
 function closeDialog()
 {
 	var overlay = document.getElementById("overlay");
 	fadeCallBack(overlay, toggleOverlay);
+	toggleTextArea();
 }
 
+/**
+ * fadeCallBack():
+ * @access  public
+ * @param   Element element				The element to fade
+ * @param   Function onCompleteFunc		The function to execute upon completion
+ * @return  void
+ */
 function fadeCallBack(element, onCompleteFunc)
 {
     var op = 1;  // initial opacity
@@ -337,7 +412,9 @@ function fadeCallBack(element, onCompleteFunc)
 /*------------------------------------------------------------------------------------*/
 
 /**
- * keyUpHandler():
+ * keyUpHandler(): Check for "enter" key being pressed on the text area in
+ * the "Update Status" dialog. Insert the text in the text area if the user
+ * presses enter.
  * @access  public
  * @param   Event e		The keypress event
  * @return  void
@@ -356,7 +433,7 @@ function keyUpHandler(event)
 }
 
 /**
- * insertPost():
+ * insertPost(): Inserts a new post object into our list of posts stored in Box
  * @access  public
  * @param   String userId		The id of the user making the post
  * @param   String content		The post text
@@ -364,8 +441,6 @@ function keyUpHandler(event)
  */
 function insertPost(userId, content)
 {
-	console.log("inserting post");
-
 	var date = new Date();
 
 	var newPost =
@@ -411,7 +486,9 @@ function createPostId()
 }
 
 /**
- * commentKeyUpHandler():
+ * commentKeyUpHandler(): Check for "enter" key being pressed on the input field that
+ * appears under the comment list for each post. Insert the input value if the user
+ * presses enter.
  * @access  public
  * @param   Event e		The key event
  * @return  void
@@ -429,8 +506,12 @@ function commentKeyUpHandler(event)
 }
 
 /**
- * insertComment():
+ * insertComment(): Inserts a new comment in the comments list for a particular
+ * post stored in our posts list inside Box.
  * @access  public
+ * @param Int userId 		Id of the user making the comment
+ * @param String postId 	Id of the post to which we are making the comment
+ * @param String content	Comment text
  * @return  void
  */
 function insertComment(userId, postId, content)
@@ -462,8 +543,11 @@ function insertComment(userId, postId, content)
 }
 
 /**
- * createCommentId():
+ * createCommentId(): See createPostId(), same concept however
+ * we also have to handle the case where no comments have been
+ * made yet.
  * @access  public
+ * @param Array comments	The comment list of the post we are commenting on
  * @return  void
  */
 function createCommentId(comments)
@@ -487,13 +571,9 @@ function createCommentId(comments)
 	return newId;
 }
 
-function showCommentAvatar()
-{
-	//TODO
-}
 
 /*------------------------------------------------------------------------------------*/
-/*************************** BORROWED FUNCTIONS *********************************/
+/*************************** BORROWED FUNCTIONS ***************************************/
 /*------------------------------------------------------------------------------------*/
 
 // From Stack Overflow http://stackoverflow.com/questions/8668174/indexof-method-in-an-object-array

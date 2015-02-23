@@ -1,4 +1,4 @@
-<!DOCTYPE HTML >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 	<title>The network</title>
@@ -11,12 +11,13 @@
 </head>
 
 <body>
+
 	<!-- Overlay to dim screen, and dialog for status updates -->
 	<div id="overlay">
 		<div id="dialog" class="dialog rounded">
 			<p id="updatetitle">Status Update</p>
 			<form>
-				<textarea class="rounded" onkeyup="keyUpHandler(event)"></textarea>
+				<textarea id="dialogText" class="rounded" onkeyup="keyUpHandler(event)"></textarea>
 			</form>
 			<p>Press enter to post</p>
 		</div>
@@ -24,7 +25,7 @@
 
 	<!--## Header (the top bar of the page) -->
 	<div id="header">
-
+		<!--## Header Container, to vertically align the 3 header divs (logo, search, account) -->
 		<div id="header-container">
 
 			<!--## Logo image Pod -->
@@ -44,7 +45,7 @@
 			<div id="account" class="rounded">
 				<div class="infoitem menu-link">Home</div>
 				<div class="infoitem menu-link" onclick="showDialog('dialog');"><a>Post an Update</a></div>
-				<img src="" id="acct" class="rounded" />
+				<img src="" id="acct" class="rounded"/>
 			</div>
 			<script type="text/javascript">
 				init();
@@ -75,8 +76,10 @@
 		</div>
 	</div>
 
-	<div>
-		<p>This is a footer mesage</p>
+	<div class="footer">
+		<p>&copy;Spencer Bartz 2015</p>
+		<p><a href="http://www.spencerbartz.com">spencerbartz.com</a></p>
+
 	</div>
 
 </body>
