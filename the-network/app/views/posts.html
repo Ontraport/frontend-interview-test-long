@@ -1,17 +1,26 @@
-<div class="row">
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h3 class="page-header">Updates</h3>
-        
-        <div ng-repeat="(postId, post) in posts">
-            <p ng-show="post">{{ post.content }}
-            <span><a ng-click="deletePost(postId)">delete</a></span>
-            </p>
+<div class="container posts-page">
+    <div class="post row">
+        <div class="col-xs-1">
         </div>
+        <div class="col-md-9 col-xs-11">
+            <h3 class="page-header">Updates</h3>
+        </div>
+    </div>
 
-        <form ng-submit="submitPost()">
-            <input type="text" ng-model="post.content" />
-            <input type="submit" value="Add Post" />
-        </form>
-    
+    <div class="post row" ng-repeat="post in posts">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-md-9 col-xs-11">
+            <div class="info">
+                <p ng-show="post">
+                    {{ post.content }}
+                </p>
+            </div>
+            <div>
+                <span>submitted by <a ng-href="#/users/{{ post.creatorUID }}">{{ post.creator }}</a></span> &mdash;
+                <a ng-href="#/posts/{{ post.$id }}">comments</a>
+                <a ng-click="deletePost(post)">delete</a>
+            </div>
+        </div>
     </div>
 </div>

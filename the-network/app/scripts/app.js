@@ -1,6 +1,7 @@
 'use strict';
 /* global app:true */
 /* exported app */
+
 /**
  * @ngdoc overview
  * @name theNetworkApp
@@ -16,8 +17,10 @@ var app = angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
+        'firebase'
     ])
+    .constant('FIREBASE_URL', 'https://ontra-network.firebaseio.com/')
     .config(function($routeProvider) {
         $routeProvider
             .when('/', {
@@ -27,6 +30,10 @@ var app = angular
             .when('/home', {
                 templateUrl: 'views/posts.html',
                 controller: 'PostsCtrl'
+            })
+            .when('/posts/:postId', {
+                templateUrl: 'views/post.html',
+                controller: 'PostCtrl'
             })
             .otherwise({
                 redirectTo: '/'
