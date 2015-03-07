@@ -34,11 +34,15 @@ app.controller('PostsCtrl', function($scope, $routeParams, $http, Post) {
             date: date,
             content: content
         };
-        post.comments.push(comment);
-         //reset comment to empty
+        if (post.comments[0] === '') {
+            post.comments[0] = comment;
+        } else {
+            post.comments.push(comment);
+        }
+        //reset comment to empty
         $scope.commentText = '';
         comments.$add(comment);
-       
+
     };
 
     //Method to delete a comment from post

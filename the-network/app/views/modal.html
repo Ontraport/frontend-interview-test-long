@@ -1,11 +1,12 @@
 <div class="modal fade">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
+        <div class="modal-content mc-override">
+            <div class="modal-body mb-override">
+               <h5 class="spacer-top update-text">Status Update</h5>
                 <form role="form" ng-submit="close()">
-                    <input type="text" class="form-control" id="postContent" placeholder="Your Name" ng-model="postContent">
-                    <button type="submit"></button>
+                    <input type="text" class="form-control" id="postContent" placeholder="what's on your mind?" ng-model="postContent">
                 </form>
+                <p class="spacer-bottom">Hit enter to post</p>
             </div>
         </div>
     </div>

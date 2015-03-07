@@ -24,15 +24,7 @@ app.controller('NavCtrl', function($scope, Post, ModalService) {
         userId: 5,
         date: '',
         content: '',
-        comments: [{
-            userId: 3,
-            date: "",
-            content: "Would you happen to know were Capone is? Since you are a secret agent and all"
-        }, {
-            userId: 4,
-            date: "",
-            content: "Would you happen to know were Capone is? Since you are a secret agent and all"
-        }],
+        comments: ['']
     };
 
     //format date for posts
@@ -55,7 +47,7 @@ app.controller('NavCtrl', function($scope, Post, ModalService) {
                 userId: 5,
                 date: '',
                 content: '',
-                comments: []
+                comments: ['']
             };
         });
     };

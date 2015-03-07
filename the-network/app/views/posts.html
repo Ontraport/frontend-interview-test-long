@@ -4,15 +4,18 @@
         <div class="row">
             <div class="sidebar col-md-4">
                 <div class="pull-left">
-                        <img class="media-object" ng-show="users" src="{{users[4].pic }}" alt="user image">
+                    <img class="media-object" ng-show="users" src="{{users[4].pic }}" alt="user image">
                 </div>
-                 <div class="logged-in-name">{{ users[4].username }}</div>
+                <div class="logged-in-name">{{ users[4].username }}</div>
 
             </div>
             <div class="main-posts col-md-8">
-                <h5 class="update-text">Updates</h5>
+                <h5 class="update-text">Updates
+                <span class="pull-right">
+                    <input type="text" ng-model="query" class="form-control" placeholder="Filter Posts...">
+                </h5>
                 <br/>
-                <div class="single-post" ng-repeat="post in posts">
+                <div class="single-post" ng-repeat="post in posts | filter:query ">
                     <div class="media">
                         <div class="media-left">
                             <a href="#">
@@ -20,11 +23,12 @@
                             </a>
                         </div>
                         <div class="media-body">
-                            <h5 class="user-name media-heading" ng-show="users">{{ users[post.userId - 1].username }}</h5> <div class="post-content"> {{ post.content }} 
-                            <a ng-click="deletePost(post)">delete</a> </div>
+                            <h5 class="user-name media-heading" ng-show="users">{{ users[post.userId - 1].username }}</h5>
+                            <div class="post-content"> {{ post.content }}
+                                <a ng-click="deletePost(post)" ng-if="post.userId === 5">delete</a> </div>
 
                             <!-- COMMENTS -->
-                            <div class="media comment-body" ng-repeat="($index, comment) in post.comments">
+                            <div ng-if="post.comments[0] !== ''" class="media comment-body" ng-repeat="($index, comment) in post.comments | filter:query" >
                                 <div class="media-left">
                                     <a href="#">
                                         <img class="comment-avatar media-object" ng-show="users" src="{{ users[comment.userId - 1].pic }}" alt="user image">
@@ -33,7 +37,7 @@
                                 <div class="media-body">
                                     <h5 class="user-name media-heading" ng-show="users">{{ users[comment.userId - 1].username }}</h5> {{ comment.content }}
                                     <a ng-href="" ng-click="deleteComment($index, post)" ng-if="comment.userId === 5"> delete
-                            </a>
+                                    </a>
                                 </div>
                             </div>
 
