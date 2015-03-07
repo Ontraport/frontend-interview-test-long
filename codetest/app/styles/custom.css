@@ -1,0 +1,122 @@
+.main-posts {
+    margin-top: 50px;
+    background-color: #F7F7F7;
+    margin-left: 30px;
+    margin-right: -30px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.update-text {
+    font-weight: 800;
+    font-size: 1.2em;
+}
+.sidebar {
+    padding: 5px 5px 2px 5px;
+    margin-top: 50px;
+    background-color: #F7F7F7;
+    border-radius: 5px;
+}
+/* POSTS */
+
+.post-content {
+    margin-bottom: 2px;
+}
+/* COMMENTS */
+
+.comment-body {
+    background-color: #EDEDED;
+    margin-top: 0;
+    padding: 15px 8px;
+    border-bottom: 1px solid rgba(171, 173, 179, 1);
+}
+.comment-avatar {
+    height: 25px;
+    width: 25px;
+}
+/*USERS */
+
+.user-name {
+    color: #0279C9;
+    margin-bottom: 2px;
+}
+.logged-in-name {
+    margin-top: 35px;
+    padding-bottom: 0;
+    margin-left: 55px;
+}
+/*BUTTONS*/
+
+.submit-button {
+    display: none;
+}
+/*NAVIGATION*/
+
+#header {
+    background: rgba(49, 59, 64, 1);
+    padding: 0px 5px;
+    box-shadow: 0px 1px 5px #fff;
+    color: white;
+}
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color: #ebebeb;
+}
+.navbar-default .navbar-nav > li > a:focus {
+    color: #ebebeb;
+}
+.nav-pic {
+    height: 25px;
+    width: 25px;
+    margin-right: 30px;
+    margin-left: 15px;
+    margin-top: 13px;
+}
+/*logo in header*/
+
+#logo {
+    display: inline-block;
+    float: left;
+}
+#logo img {
+    width: 70%;
+    margin-bottom: 10px;
+}
+/*search in header*/
+
+.search-box {
+    margin-right: 15% !important;
+    margin-top: 13px !important;
+}
+.search-button {
+    height: 25px !important;
+    line-height: 0.9 !important;
+}
+.search-input {
+    width: 250px !important;
+    height: 25px !important;
+}
+.search-input:focus {
+    -moz-box-shadow: 0 0 5px #fff;
+    -webkit-box-shadow: 0 0 5px #fff;
+    box-shadow: 0px 0px 5px #fff;
+}
+/* MODAL */
+
+.mc-override {
+    width: 70%;
+}
+.mb-override {
+    padding: 50px;
+    background-color: #F7F7F7;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px
+}
+.spacer-top {
+    margin-bottom: 15px;
+}
+.spacer-bottom {
+    margin-top: 10px;
+}
