@@ -14,6 +14,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/custom.css">
     <!-- endbuild -->
 </head>
 
@@ -24,33 +25,24 @@
 
     <!-- NAVIGATION BAR -->
     <div ng-include='"views/nav.html"'></div>
-    
+
     <!-- MAIN VIEW -->
     <div class="container-fluid">
         <div ng-view=""></div>
-    </div>
 
-    <!--FOOTER-->
-    <div class="footer">
-        <div class="container">
-            <p>This is a footer message
-                <p>
+        <!--FOOTER-->
+    </div>
+    <br/>
+    <footer>
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+                <p>This is a footer message</p>
+            </div>
         </div>
-    </div>
+    </footer>
 
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-    ! function(A, n, g, u, l, a, r) {
-        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
-                (A[l].q = A[l].q || []).push(arguments)
-            }, A[l].l = +new Date, a = n.createElement(g),
-            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
-    }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
-    </script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -67,14 +59,18 @@
     <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
     <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/services/auth.js"></script>
     <script src="scripts/controllers/nav.js"></script>
+    <script src="scripts/controllers/modal.js"></script>
     <script src="scripts/controllers/posts.js"></script>
-    <script src="scripts/controllers/post.js"></script>
+    <script src="scripts/controllers/postview.js"></script>
     <script src="scripts/services/posts.js"></script>
     <!-- endbuild -->
 </body>

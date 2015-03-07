@@ -5,9 +5,10 @@ app.factory('Post', function($firebase, FIREBASE_URL) {
     //create a pointer to our posts
     //return $resource('https://ontra-network.firebaseio.com/posts/:id.json')
     var posts = $firebase(hashKey.child('posts')).$asArray();
-
+    var comments = $firebase(hashKey.child('comments')).$asArray();
     var Post = {
         all: posts,
+        allComments: comments,
         create: function(post) {
             return posts.$add(post);
         },
@@ -16,7 +17,12 @@ app.factory('Post', function($firebase, FIREBASE_URL) {
         },
         delete: function(post) {
             return posts.$remove(post);
+        },
+        comments: function(postId) {
+            return $firebase(hashKey.child('comments').child(postId)).$asArray();
         }
+
     };
+
     return Post;
 });

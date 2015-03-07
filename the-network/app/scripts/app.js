@@ -18,7 +18,8 @@ var app = angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'firebase'
+        'firebase',
+        'angularModalService'
     ])
     .constant('FIREBASE_URL', 'https://ontra-network.firebaseio.com/')
     .config(function($routeProvider) {
@@ -32,8 +33,17 @@ var app = angular
                 controller: 'PostsCtrl'
             })
             .when('/posts/:postId', {
-                templateUrl: 'views/post.html',
-                controller: 'PostCtrl'
+                templateUrl: 'views/post-view.html',
+                controller: 'PostViewCtrl'
+            })
+            .when('/register', {
+                templateUrl: 'views/register.html',
+                controller: 'AuthCtrl',
+                resolve: {
+                    user: function(Auth) {
+                        return Auth.resolveUser();
+                    }
+                }
             })
             .otherwise({
                 redirectTo: '/'
