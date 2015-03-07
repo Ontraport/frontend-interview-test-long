@@ -1,0 +1,9 @@
+{
+  "firebase": "ontra-network",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

@@ -1,0 +1,203 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'firebase-tools' ]
+2 info using npm@2.5.1
+3 info using node@v0.10.33
+4 silly cache add args [ 'firebase-tools', null ]
+5 verbose cache add spec firebase-tools
+6 silly cache add parsed spec { raw: 'firebase-tools',
+6 silly cache add   scope: null,
+6 silly cache add   name: 'firebase-tools',
+6 silly cache add   rawSpec: '',
+6 silly cache add   spec: '*',
+6 silly cache add   type: 'range' }
+7 verbose addNamed firebase-tools@*
+8 silly addNamed semver.valid null
+9 silly addNamed semver.validRange *
+10 silly addNameRange { name: 'firebase-tools', range: '*', hasData: false }
+11 silly mapToRegistry name firebase-tools
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry uri https://registry.npmjs.org/firebase-tools
+15 verbose addNameRange registry:https://registry.npmjs.org/firebase-tools not in flight; fetching
+16 verbose request uri https://registry.npmjs.org/firebase-tools
+17 verbose request no auth needed
+18 info attempt registry request try #1 at 02:27:12
+19 verbose request id 6c6c670ba972695a
+20 verbose etag "352OJJNHRC9E7UE6VVJJLBF72"
+21 http request GET https://registry.npmjs.org/firebase-tools
+22 http 304 https://registry.npmjs.org/firebase-tools
+23 silly get cb [ 304,
+23 silly get   { date: 'Sat, 07 Mar 2015 10:27:13 GMT',
+23 silly get     server: 'Apache',
+23 silly get     via: '1.1 varnish',
+23 silly get     'last-modified': 'Sat, 07 Mar 2015 10:27:13 GMT',
+23 silly get     'cache-control': 'max-age=60',
+23 silly get     etag: '"352OJJNHRC9E7UE6VVJJLBF72"',
+23 silly get     age: '27',
+23 silly get     'x-served-by': 'cache-sjc3133-SJC',
+23 silly get     'x-cache': 'HIT',
+23 silly get     'x-cache-hits': '1',
+23 silly get     'x-timer': 'S1425724033.791097,VS0,VE0',
+23 silly get     vary: 'Accept',
+23 silly get     'content-length': '0',
+23 silly get     'keep-alive': 'timeout=10, max=50',
+23 silly get     connection: 'Keep-Alive' } ]
+24 verbose etag https://registry.npmjs.org/firebase-tools from cache
+25 verbose get saving firebase-tools to /Users/alexhawkins/.npm/registry.npmjs.org/firebase-tools/.cache.json
+26 silly addNameRange number 2 { name: 'firebase-tools', range: '*', hasData: true }
+27 silly addNameRange versions [ 'firebase-tools',
+27 silly addNameRange   [ '0.0.1',
+27 silly addNameRange     '0.0.2',
+27 silly addNameRange     '0.0.3',
+27 silly addNameRange     '0.0.4',
+27 silly addNameRange     '0.0.5',
+27 silly addNameRange     '0.0.6',
+27 silly addNameRange     '0.1.0',
+27 silly addNameRange     '0.1.1',
+27 silly addNameRange     '0.1.2',
+27 silly addNameRange     '0.1.3',
+27 silly addNameRange     '0.1.4',
+27 silly addNameRange     '0.1.5',
+27 silly addNameRange     '0.1.6',
+27 silly addNameRange     '0.2.0',
+27 silly addNameRange     '0.3.0',
+27 silly addNameRange     '0.4.0',
+27 silly addNameRange     '0.5.0',
+27 silly addNameRange     '1.0.0',
+27 silly addNameRange     '1.0.1',
+27 silly addNameRange     '1.0.2',
+27 silly addNameRange     '1.0.3',
+27 silly addNameRange     '1.0.4',
+27 silly addNameRange     '1.0.5',
+27 silly addNameRange     '1.0.6',
+27 silly addNameRange     '1.1.0',
+27 silly addNameRange     '1.1.1',
+27 silly addNameRange     '1.1.2',
+27 silly addNameRange     '1.1.3',
+27 silly addNameRange     '1.1.4',
+27 silly addNameRange     '1.1.5' ] ]
+28 verbose addNamed firebase-tools@1.1.5
+29 silly addNamed semver.valid 1.1.5
+30 silly addNamed semver.validRange 1.1.5
+31 silly cache afterAdd firebase-tools@1.1.5
+32 verbose afterAdd /Users/alexhawkins/.npm/firebase-tools/1.1.5/package/package.json not in flight; writing
+33 verbose afterAdd /Users/alexhawkins/.npm/firebase-tools/1.1.5/package/package.json written
+34 silly install resolved [ { name: 'firebase-tools',
+34 silly install resolved     description: 'Firebase command line tools',
+34 silly install resolved     version: '1.1.5',
+34 silly install resolved     author:
+34 silly install resolved      { name: 'Firebase',
+34 silly install resolved        email: 'support@firebase.com',
+34 silly install resolved        url: 'https://www.firebase.com/' },
+34 silly install resolved     homepage: 'https://github.com/firebase/firebase-tools/',
+34 silly install resolved     repository:
+34 silly install resolved      { type: 'git',
+34 silly install resolved        url: 'https://github.com/firebase/firebase-tools.git' },
+34 silly install resolved     bugs: { url: 'https://github.com/firebase/firebase-tools/issues' },
+34 silly install resolved     licenses: [ [Object] ],
+34 silly install resolved     keywords:
+34 silly install resolved      [ 'cdn',
+34 silly install resolved        'cli',
+34 silly install resolved        'ssl',
+34 silly install resolved        'cloud',
+34 silly install resolved        'hosting',
+34 silly install resolved        'firebase',
+34 silly install resolved        'realtime',
+34 silly install resolved        'websockets',
+34 silly install resolved        'synchronization' ],
+34 silly install resolved     preferGlobal: true,
+34 silly install resolved     bin: { firebase: './bin/firebase' },
+34 silly install resolved     engines: { node: '>=0.10.0' },
+34 silly install resolved     engineStrict: true,
+34 silly install resolved     files: [ 'bin/**', 'lib/**', 'LICENSE', 'README.md', 'package.json' ],
+34 silly install resolved     dependencies:
+34 silly install resolved      { chalk: '0.5.x',
+34 silly install resolved        firebase: '2.1.x',
+34 silly install resolved        'fstream-ignore': '1.0.x',
+34 silly install resolved        open: '0.0.x',
+34 silly install resolved        optimist: '0.6.x',
+34 silly install resolved        progress: '1.1.x',
+34 silly install resolved        prompt: '0.2.x',
+34 silly install resolved        request: '2.51.x',
+34 silly install resolved        tar: '1.0.x',
+34 silly install resolved        when: '3.6.x' },
+34 silly install resolved     devDependencies:
+34 silly install resolved      { chai: '^1.10.0',
+34 silly install resolved        coveralls: '2.11.2',
+34 silly install resolved        gulp: '3.8.10',
+34 silly install resolved        'gulp-exit': '0.0.2',
+34 silly install resolved        'gulp-istanbul': '0.5.0',
+34 silly install resolved        'gulp-jshint': '1.9.0',
+34 silly install resolved        'gulp-mocha': '2.0.0',
+34 silly install resolved        'jshint-stylish': '1.0.0' },
+34 silly install resolved     scripts: { test: 'gulp test', travis: 'gulp' },
+34 silly install resolved     gitHead: 'f38ad28eac6f015e9d05cd132d849f993e72cc0e',
+34 silly install resolved     _id: 'firebase-tools@1.1.5',
+34 silly install resolved     _shasum: '6b9a62d9e3b935d7171ed8546247b46e433e418a',
+34 silly install resolved     _from: 'firebase-tools@*',
+34 silly install resolved     _npmVersion: '1.4.23',
+34 silly install resolved     _npmUser: { name: 'firebase', email: 'operations@firebase.com' },
+34 silly install resolved     maintainers: [ [Object] ],
+34 silly install resolved     dist:
+34 silly install resolved      { shasum: '6b9a62d9e3b935d7171ed8546247b46e433e418a',
+34 silly install resolved        tarball: 'http://registry.npmjs.org/firebase-tools/-/firebase-tools-1.1.5.tgz' },
+34 silly install resolved     directories: {},
+34 silly install resolved     _resolved: 'https://registry.npmjs.org/firebase-tools/-/firebase-tools-1.1.5.tgz',
+34 silly install resolved     readme: 'ERROR: No README data found!' } ]
+35 info install firebase-tools@1.1.5 into /usr/local/lib
+36 info installOne firebase-tools@1.1.5
+37 verbose installOne of firebase-tools to /usr/local/lib not in flight; installing
+38 verbose lock using /Users/alexhawkins/.npm/_locks/firebase-tools-10d1b8d676fd02fa.lock for /usr/local/lib/node_modules/firebase-tools
+39 silly install write writing firebase-tools 1.1.5 to /usr/local/lib/node_modules/firebase-tools
+40 silly cache addNamed cb firebase-tools@1.1.5
+41 verbose unbuild lib/node_modules/firebase-tools
+42 info preuninstall firebase-tools@1.1.5
+43 info uninstall firebase-tools@1.1.5
+44 verbose unbuild rmStuff firebase-tools@1.1.5 from /usr/local/lib/node_modules
+45 verbose gentlyRm verifying that /usr/local is managed by npm
+46 silly isManaged /usr/local is not inside /usr/local/lib/node_modules
+47 silly isManaged /usr/local is not inside /usr/local/lib/node_modules
+48 silly isManaged /usr/local/bin is inside /usr/local
+49 silly gentlyRm /usr/local is managed by npm
+50 silly gentlyRm /usr/local/bin/firebase is under /usr/local
+51 verbose gentlyRm vacuuming /usr/local/bin/firebase up to /usr/local
+52 info postuninstall firebase-tools@1.1.5
+53 verbose gentlyRm vacuuming /usr/local/lib/node_modules/firebase-tools
+54 silly gentlyRm purging /usr/local/lib/node_modules/firebase-tools
+55 verbose unlock done using /Users/alexhawkins/.npm/_locks/firebase-tools-10d1b8d676fd02fa.lock for /usr/local/lib/node_modules/firebase-tools
+56 verbose stack Error: EACCES, unlink '/usr/local/lib/node_modules/firebase-tools/LICENSE'
+57 verbose cwd /Users/alexhawkins/Desktop/frontend-interview-test-long/codetest/app
+58 error Darwin 14.1.0
+59 error argv "node" "/usr/local/bin/npm" "install" "-g" "firebase-tools"
+60 error node v0.10.33
+61 error npm  v2.5.1
+62 error path /usr/local/lib/node_modules/firebase-tools/LICENSE
+63 error code EACCES
+64 error errno 3
+65 error Error: EACCES, unlink '/usr/local/lib/node_modules/firebase-tools/LICENSE'
+65 error  { [Error: EACCES, unlink '/usr/local/lib/node_modules/firebase-tools/LICENSE']
+65 error   errno: 3,
+65 error   code: 'EACCES',
+65 error   path: '/usr/local/lib/node_modules/firebase-tools/LICENSE' }
+66 error Please try running this command again as root/Administrator.
+67 verbose exit [ 3, true ]
+68 verbose unbuild lib/node_modules/firebase-tools
+69 info preuninstall firebase-tools@1.1.5
+70 info uninstall firebase-tools@1.1.5
+71 verbose unbuild rmStuff firebase-tools@1.1.5 from /usr/local/lib/node_modules
+72 verbose gentlyRm verifying that /usr/local is managed by npm
+73 silly isManaged /usr/local is not inside /usr/local/lib/node_modules
+74 silly isManaged /usr/local is not inside /usr/local/lib/node_modules
+75 silly isManaged /usr/local is not inside /usr/local/bin
+76 silly isManaged /usr/local is inside /usr/local
+77 silly gentlyRm /usr/local is managed by npm
+78 silly gentlyRm /usr/local/bin/firebase is under /usr/local
+79 verbose gentlyRm vacuuming /usr/local/bin/firebase up to /usr/local
+80 info postuninstall firebase-tools@1.1.5
+81 verbose gentlyRm vacuuming /usr/local/lib/node_modules/firebase-tools
+82 silly gentlyRm purging /usr/local/lib/node_modules/firebase-tools
+83 error error rolling back Error: EACCES, unlink '/usr/local/lib/node_modules/firebase-tools/LICENSE'
+83 error error rolling back  { [Error: EACCES, unlink '/usr/local/lib/node_modules/firebase-tools/LICENSE']
+83 error error rolling back   errno: 3,
+83 error error rolling back   code: 'EACCES',
+83 error error rolling back   path: '/usr/local/lib/node_modules/firebase-tools/LICENSE' }
