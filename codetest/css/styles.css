@@ -68,7 +68,6 @@ br{
 	border: 1px solid #6FD6F7;
 
   color: #fef4e9;
-	border: solid 1px #da7c0c;
 	background: #f78d1d;
 	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
 	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
@@ -106,7 +105,17 @@ br{
 }
 
 #search input[name="terms"]:focus {
+	border-color: white;
   outline-color: white;
+}
+
+/* Modal */
+.status-update .modal-dialog {
+  width: 400px;
+}
+
+.modal-body textarea {
+	max-width: 371px;
 }
 
 /* */
@@ -118,8 +127,6 @@ br{
 	background: #F7F7F7;
 }
 
-.status-update .modal-dialog {
-  width: 400px;
-}
+
 
 
