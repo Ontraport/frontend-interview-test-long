@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>The network</title>
-	
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
 <body>
 	
@@ -18,15 +19,65 @@
 				<input type="submit" value="Go"/>
 			</form>
 		</div>
-	</div>
-	
-	<div id="page">
+	  <ul class="nav navbar-nav navbar-right">
+      <li><a class="nav-link" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="modal.html#myModal" data-toggle="modal">Post an Update</a></li>
+    </ul>
 
+    <!-- Modal -->
+    <div class="status-update">
+	  	<div class="modal fade" id="myModal">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+
+			      <div class="modal-header">
+			        <h4 class="modal-title">Status Update</h4>
+			      </div>
+
+			      <div class="modal-body">
+	            <form method="post" action="#" id="cmtform">
+								<input type="submit" style="position: absolute; left: -9999px"/>
+							</form>
+
+							<textarea rows="4" cols="50" name="comment" form="cmtform" placeholder="Whats on your mind"></textarea>
+			      </div>
+
+			      <div class="modal-footer">
+			        Hit Enter to Post
+			      </div>
+			    </div>
+			  </div>
+	    </div>
+    </div>
+
+		<br>
 	</div>
-	
-	<div>
-		<p>This is a footer mesage</p>
-	</div>
+
+	<div class="container" id="main">
+		
+		<div id="page">
+			<div class="row">
+        <div class="col-sm-3 user-panel">
+        </div>
+        <div class="col-sm-7 col-sm-offset-1 updates">
+        </div>
+      </div> <!-- end row -->
+		</div> <!-- end page -->
+		
+		<div>
+			<p>This is a footer mesage</p>
+		</div>
+
+	</div> <!-- end container -->
+
+	<!-- Javascript at the bottom of the page for faster page loading -->
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+	<!-- Bootstrap JS -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<script> $(document).ready(function(){ $("#ModalCode").load("modal.html #myModal"); }); </script> 
 		
 </body>
 </html>
