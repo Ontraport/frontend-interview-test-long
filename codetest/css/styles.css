@@ -104,9 +104,20 @@ br{
 	color: #F7F7F7;
 }
 
+.navbar-nav .nav-img {
+  margin-top: -5px;
+  margin-right: 15px;
+}
+
+.navbar-nav .nav-img:hover,
+.navbar-nav .nav-img:focus {
+	background: transparent;
+}
+
 #search input[name="terms"]:focus {
-	border-color: white;
-  outline-color: white;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow:    0px 0px 15px 0px rgba(255, 255, 255, 0.75);
+  box-shadow:         0px 0px 15px 0px rgba(255, 255, 255, 0.75);
 }
 
 /* Modal */
@@ -125,6 +136,16 @@ br{
 
 .updates{
 	background: #F7F7F7;
+}
+
+.lg-profile-image {
+	width: 50px;
+	height: 50px;
+}
+
+.sm-profile-image {
+	width: 25px;
+	height: 25px;
 }
 
 
