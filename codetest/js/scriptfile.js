@@ -27,8 +27,30 @@ $(document).ready(function() {
     });
 });
 
-$.getJSON( "data/users.json", function(data) {
-    //for (var i=0, len=data.length; i < len; i++) {
-        console.log(data[i].id);
-    //}
+$(document).ready(function() {
+  var users = [];
+  var posts = [];
+
+  $.ajax({
+    url: "data/users.json",
+    async: false,
+    dataType: 'json',
+    success: function(data) {
+      users = data.slice(0);
+    }
+  });
+
+  $.ajax({
+    url: "data/posts.json",
+    async: false,
+    dataType: 'json',
+    success: function(data) {
+      posts = data.slice(0);
+    }
+  });
+
+  $('#profile-nav-img').append('<img src="' + users[4].pic + '" class="nav-img sm-profile-image">');
+  $('#profile-panel-img').append('<img src="' + users[4].pic + '" class="lg-profile-image">');
+  $('#profile-panel-name').append("_" + users[4].username);
+
 });

@@ -23,7 +23,7 @@
       <li><a class="nav-link" href="index.html">Home</a></li>
       <li><a class="nav-link" href="#myModal" data-toggle="modal">Post an Update</a></li>
       <li><a class="nav-link" href="#" title="Profile">
-        <img src="" class="nav-img sm-profile-image">
+        <div id="profile-nav-img"></div>
       </a></li>
     </ul>
 
@@ -60,16 +60,17 @@
 		
 		<div id="page">
 			<div class="row">
-        <div class="col-md-4 profile-panel">
-        	<div class="panel panel-default">
+        <div class="col-md-4">
+        	<div class="panel panel-default profile-panel">
 					  <div class="panel-body">
-					    <img src="" class="lg-profile-image">
+					    <div id="profile-panel-img"></div>
+					    <div id="profile-panel-name"></div>
 					  </div>
 					</div>
         </div>
-        <div class="col-md-8 comment-panel">
-        	<div class="panel panel-default">
-					  <div class="panel-body">
+        <div class="col-md-8">
+        	<div class="panel panel-default update-panel">
+					  <div class="panel-body" id="comment-panel">
 					    <strong>Updates</strong>
 					  </div>
 					</div>

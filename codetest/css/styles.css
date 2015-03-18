@@ -148,6 +148,23 @@ br{
 	height: 25px;
 }
 
+#profile-panel-name {
+	margin-top: 32px;
+}
+
+#profile-panel-img {
+	float: left;
+}
+
+.profile-panel .panel-body {
+  padding: 5px;
+  background-color: #F7F7F7;
+}
+
+.update-panel .panel-body {
+  padding: 5px;
+  background-color: #F7F7F7;
+}
 
 
 
