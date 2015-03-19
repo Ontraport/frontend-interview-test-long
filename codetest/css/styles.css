@@ -126,7 +126,8 @@ br{
 }
 
 .modal-body textarea {
-	max-width: 371px;
+	width: 100%;
+	max-width: 100%;
 }
 
 /* */
@@ -156,15 +157,50 @@ br{
 	float: left;
 }
 
-.profile-panel .panel-body {
+#profile-panel {
   padding: 5px;
   background-color: #F7F7F7;
 }
 
-.update-panel .panel-body {
+#post-panel {
   padding: 5px;
   background-color: #F7F7F7;
 }
 
+.comment-panel {
+	margin-left: 10px;
+}
+
+.comment-panel .panel-body {
+	background-color: #EDEDED;
+	padding: 3px;
+}
+
+.comment-panel .panel-body hr {
+	border-color: #D8D8D8;
+	margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-user-name {
+	color: #0279C9;
+	font-weight: bold;
+	vertical-align: top;
+	text-align: left;
+}
+
+.post-user-img {
+	float: left;
+	margin-right: 10px;
+}
+
+.post-user-comment {
+	overflow: hidden 
+}
+
+textarea.post-comment {
+	width: 100%;
+	max-width: 100%;
+}
 
 

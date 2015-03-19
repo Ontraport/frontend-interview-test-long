@@ -38,11 +38,11 @@
 			      </div>
 
 			      <div class="modal-body">
-	            <form method="post" action="#" id="cmtform">
+	            <form method="post" action="#" id="postform">
 								<input type="submit" style="position: absolute; left: -9999px"/>
 							</form>
 
-							<textarea rows="4" cols="50" class="modal_comment" form="cmtform" placeholder="Whats on your mind?"></textarea>
+							<textarea rows="4" class="modal_comment" form="postform" placeholder="Whats on your mind?"></textarea>
 			      </div>
 
 			      <div class="modal-footer">
@@ -61,17 +61,18 @@
 		<div id="page">
 			<div class="row">
         <div class="col-md-4">
-        	<div class="panel panel-default profile-panel">
-					  <div class="panel-body">
+        	<div class="panel panel-default">
+					  <div class="panel-body" id="profile-panel">
 					    <div id="profile-panel-img"></div>
 					    <div id="profile-panel-name"></div>
 					  </div>
 					</div>
         </div>
         <div class="col-md-8">
-        	<div class="panel panel-default update-panel">
-					  <div class="panel-body" id="comment-panel">
+        	<div class="panel panel-default">
+					  <div class="panel-body" id="post-panel">
 					    <strong>Updates</strong>
+					    <br><br>
 					  </div>
 					</div>
         </div>
@@ -92,6 +93,8 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 	<script type="text/javascript" src="js/scriptfile.js"></script>
+
+	<script type="text/javascript" src="js/modal.js"></script>
 		
 </body>
 </html>
