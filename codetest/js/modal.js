@@ -20,9 +20,52 @@ $(function() {
 
 // Modal form submit
 $(document).ready(function() {
+    var users = {};
+
+    // Load Users and Posts
+    $.ajax({
+      url: "data/users.json",
+      async: false,
+      dataType: 'json',
+      success: function(data) {
+        users = data.slice(0);
+        for (var i = 0, len = data.length; i < len; i++) {
+          users[data[i].id] = data[i];
+        }
+      }
+    });
+
     $('.modal_comment').keydown(function(event) {
         if (event.keyCode == 13) {
-            this.form.submit();
+            var html = [];
+            var user = users[5];
+
+            html.push(
+              '<div class="row">',
+                '<div class="col-sm-12">',
+                  '<img src="' + user.pic + '" class="lg-profile-image post-user-img">',
+                  '<div class="post-user-name">' + user.username + '</div>',
+                  '<div class="post-user-comment">' + this.value + '</div>',
+                '</div>',
+              '</div>',
+              '<div class="row">',
+                '<div class="col-sm-11 col-offset-1 pull-right">',
+                  '<div class="panel panel-default comment-panel" id="">',
+                    '<div class="panel-body">',
+                      '<form method="post" action="#" id="cmtform">',
+                        '<input type="submit" style="position: absolute; left: -9999px"/>',
+                      '</form>',
+                      '<textarea rows="1" class="post-comment" form="cmtform" placeholder="post a comment"></textarea>',
+                    '</div>',
+                  '</div>',
+                '</div>',
+              '</div>'
+            );
+
+            this.value = ''; // Clear input
+            $('#post-panel').append(html.join(''));
+            $('#myModal').modal('toggle');
+
             return false;
          }
     });

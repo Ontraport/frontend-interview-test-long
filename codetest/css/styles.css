@@ -203,4 +203,12 @@ textarea.post-comment {
 	max-width: 100%;
 }
 
+.comment {
+	padding-top: 10px;
+}
+
+.footer {
+	text-align: center;
+}
+
 
