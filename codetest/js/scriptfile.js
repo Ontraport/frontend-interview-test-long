@@ -1,9 +1,8 @@
 
-var loggedInUser = 5;
-
 $(document).ready(function() {
   var users = {};
   var posts = [];
+  var loggedInUser = 5;
 
   // Load Users and Posts
   $.ajax({
@@ -11,7 +10,6 @@ $(document).ready(function() {
     async: false,
     dataType: 'json',
     success: function(data) {
-      users = data.slice(0);
       for (var i = 0, len = data.length; i < len; i++) {
         users[data[i].id] = data[i];
       }
@@ -27,11 +25,18 @@ $(document).ready(function() {
     }
   });
 
+  // Store so we can access it in modal.js
+  $.jStorage.set("logged_in_user", users[loggedInUser]);
+  $.jStorage.set("post_number", posts.length);  
+
   $('#profile-nav-img').append('<img src="' + users[loggedInUser].pic + '" class="nav-img sm-profile-image">');
   $('#profile-panel-img').append('<img src="' + users[loggedInUser].pic + '" class="lg-profile-image">');
   $('#profile-panel-name').append("_" + users[loggedInUser].username);
 
-  // Append Posts and comments
+  var localPosts = $.jStorage.get("posts") || [];
+  $.merge(posts, localPosts);
+  
+  // Posts and comments
   for (var i = 0; i < posts.length; i++) {
     var user = users[posts[i].userId];
     var commentPostId = 'comment-panel-' + posts[i].id;
@@ -52,28 +57,29 @@ $(document).ready(function() {
           '<div class="panel panel-default comment-panel" id="' + commentPostId + '">',
             '<div class="panel-body">');
 
-    for (var j = 0; j < posts[i].comments.length; j++) {
-      var comments = posts[i].comments;
+    var comments = posts[i].comments;
+    var localComments = $.jStorage.get("comment-" + commentPostId) || [];
+    $.merge(comments, localComments);
+
+    for (var j = 0; j < comments.length; j++) {
       var user = users[comments[j].userId];
 
       html.push(
               '<img src="' + user.pic + '" class="sm-profile-image post-user-img">',
               '<div class="post-user-name">' + user.username + '</div>',
               '<div class="post-user-comment">' + comments[j].content + '</div>',
-              '<hr>'
-              );
+              '<hr>');
     }
 
     html.push(
-              '<form method="post" action="#" id="cmtform">',
+              '<form method="post" action="#" id="cmtform-' + posts[i].id + '">',
                 '<input type="submit" style="position: absolute; left: -9999px"/>',
               '</form>',
-              '<textarea rows="1" class="post-comment" form="cmtform" placeholder="post a comment"></textarea>',
+              '<textarea rows="1" class="post_comment" form="cmtform-' + posts[i].id + '" placeholder="post a comment"></textarea>',
             '</div>',  // end of panel-body
           '</div>',    // end of panel
         '</div>',      // end of col-sm-10
-      '</div>'         // end of Row
-    );
+      '</div>');       // end of Row
 
     $('#post-panel').append(html.join(''));
   }

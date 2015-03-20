@@ -198,7 +198,7 @@ br{
 	overflow: hidden 
 }
 
-textarea.post-comment {
+textarea.post_comment {
 	width: 100%;
 	max-width: 100%;
 }

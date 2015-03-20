@@ -20,53 +20,44 @@ $(function() {
 
 // Modal form submit
 $(document).ready(function() {
-    var users = {};
+  var user = $.jStorage.get("logged_in_user");
 
-    // Load Users and Posts
-    $.ajax({
-      url: "data/users.json",
-      async: false,
-      dataType: 'json',
-      success: function(data) {
-        users = data.slice(0);
-        for (var i = 0, len = data.length; i < len; i++) {
-          users[data[i].id] = data[i];
-        }
-      }
-    });
+  $('.modal_comment').keydown(function(event) {
+    if (event.keyCode == 13) {
+      var html = [];
 
-    $('.modal_comment').keydown(function(event) {
-        if (event.keyCode == 13) {
-            var html = [];
-            var user = users[5];
-
-            html.push(
-              '<div class="row">',
-                '<div class="col-sm-12">',
-                  '<img src="' + user.pic + '" class="lg-profile-image post-user-img">',
-                  '<div class="post-user-name">' + user.username + '</div>',
-                  '<div class="post-user-comment">' + this.value + '</div>',
-                '</div>',
+      html.push(
+        '<div class="row">',
+          '<div class="col-sm-12">',
+            '<img src="' + user.pic + '" class="lg-profile-image post-user-img">',
+            '<div class="post-user-name">' + user.username + '</div>',
+            '<div class="post-user-comment">' + this.value + '</div>',
+          '</div>',
+        '</div>',
+        '<div class="row">',
+          '<div class="col-sm-11 col-offset-1 pull-right">',
+            '<div class="panel panel-default comment-panel" id="">',
+              '<div class="panel-body">',
+                '<form method="post" action="#" id="cmtform">',
+                  '<input type="submit" style="position: absolute; left: -9999px"/>',
+                '</form>',
+                '<textarea rows="1" class="post-comment" form="cmtform" placeholder="post a comment"></textarea>',
               '</div>',
-              '<div class="row">',
-                '<div class="col-sm-11 col-offset-1 pull-right">',
-                  '<div class="panel panel-default comment-panel" id="">',
-                    '<div class="panel-body">',
-                      '<form method="post" action="#" id="cmtform">',
-                        '<input type="submit" style="position: absolute; left: -9999px"/>',
-                      '</form>',
-                      '<textarea rows="1" class="post-comment" form="cmtform" placeholder="post a comment"></textarea>',
-                    '</div>',
-                  '</div>',
-                '</div>',
-              '</div>'
-            );
+            '</div>',
+          '</div>',
+        '</div>');
 
-            this.value = ''; // Clear input
-            $('#post-panel').append(html.join(''));
-            $('#myModal').modal('toggle');
+      var posts = $.jStorage.get("posts") || [];
+      var post_number = $.jStorage.get("post_number");
+      posts.push({id: post_number, userId: user.id, date: "", content: this.value, comments: []});
+      $.jStorage.set("post_number", post_number+1);
+      $.jStorage.set("posts", posts);
 
-            return false;
-         }
-    });
+      $('#post-panel').append(html.join(''));
+      $('#myModal').modal('toggle');
+      this.value = ''; // Clear input
+
+      return false;
+    }
+  });
 });
