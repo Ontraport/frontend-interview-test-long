@@ -130,15 +130,7 @@ br{
 	max-width: 100%;
 }
 
-/* */
-.user-panel{
-	background: #F7F7F7;
-}
-
-.updates{
-	background: #F7F7F7;
-}
-
+/* Panel */
 .lg-profile-image {
 	width: 50px;
 	height: 50px;
@@ -162,26 +154,7 @@ br{
   background-color: #F7F7F7;
 }
 
-#post-panel {
-  padding: 5px;
-  background-color: #F7F7F7;
-}
-
-.comment-panel {
-	margin-left: 10px;
-}
-
-.comment-panel .panel-body {
-	background-color: #EDEDED;
-	padding: 3px;
-}
-
-.comment-panel .panel-body hr {
-	border-color: #D8D8D8;
-	margin-top: 10px;
-  margin-bottom: 10px;
-}
-
+/* Posts */
 .post-user-name {
 	color: #0279C9;
 	font-weight: bold;
@@ -203,10 +176,28 @@ textarea.post_comment {
 	max-width: 100%;
 }
 
-.comment {
-	padding-top: 10px;
+#post-panel {
+  padding: 5px;
+  background-color: #F7F7F7;
 }
 
+/* Comments */
+.comment-panel {
+	margin-left: 10px;
+}
+
+.comment-panel .panel-body {
+	background-color: #EDEDED;
+	padding: 3px;
+}
+
+.comment-panel .panel-body hr {
+	border-color: #D8D8D8;
+	margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Footer */
 .footer {
 	text-align: center;
 }
