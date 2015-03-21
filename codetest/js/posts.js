@@ -27,8 +27,9 @@ $(document).ready(function() {
   });
 
   // Store so we can access it in modal.js
+  var post_number = $.jStorage.get("post_number") || posts.length+1;
   $.jStorage.set("logged_in_user", users[loggedInUser]);
-  $.jStorage.set("post_number", posts.length+1);  
+  $.jStorage.set("post_number", post_number);  
 
   // Navbar and profile panel
   $('#profile-nav-img').append('<img src="' + users[loggedInUser].pic + '" class="nav-img sm-profile-image">');

@@ -1,24 +1,30 @@
+// Load modal html
 $(document).ready(function() {
   $( "#modal_html" ).load( "modal.html" );
+});
+
+// Auto focus textarea when modal is shown
+$('#modal_html').on('shown.bs.modal', '.modal', function () {
+  $('#modal_comment').focus();
 });
 
 // Center modal vertically on page
 // http://www.abeautifulsite.net/vertically-centering-bootstrap-modals/
 $(document).ready(function() {
   function reposition() {
-      var modal = $(this),
-          dialog = modal.find('.modal-dialog');
-      modal.css('display', 'block');
-      
-      // Dividing by two centers the modal exactly, but dividing by three 
-      // or four works better for larger screens.
-      dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+    var modal = $(this),
+    dialog = modal.find('.modal-dialog');
+    modal.css('display', 'block');
+    
+    // Dividing by two centers the modal exactly, but dividing by three 
+    // or four works better for larger screens.
+    dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
   }
   // Reposition when a modal is shown
   $('#modal_html').on('show.bs.modal', '.modal',reposition);
   // Reposition when the window is resized
   $(window).on('resize', function() {
-      $('.modal:visible').each(reposition);
+    $('.modal:visible').each(reposition);
   });
 });
 
