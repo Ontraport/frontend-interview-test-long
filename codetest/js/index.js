@@ -132,6 +132,12 @@ tn.views.HeaderView = Mn.ItemView.extend({
 		'click @ui.postAnUpdate' : 'postAnUpdate'
 	},
 	postAnUpdate : function() {
+		var that = this;
+
+		function isInPost(element) {
+			return element.postId == that.model.get('id');
+		}
+
 		$('#modalBg').dialog({
 			dialogClass : 'noTitleStuff',
 			resizable : false,
@@ -143,14 +149,15 @@ tn.views.HeaderView = Mn.ItemView.extend({
 				$eTarget.find('textarea').keypress(function(e) {
 					if( e.keyCode == $.ui.keyCode.ENTER && this.value !== '' ) {
 						tn.collections.posts.sortBy('id');
-						tn.collections.posts.add(new tn.models.Post({
+						var postModel = new tn.models.Post({
 							id : tn.collections.posts.last().get('id') + 1,
 							content : this.value,
 							userId : tn.currentUserId
-						}));
+						});
+						postModel.set('comments', postModel.get('comments').filter(isInPost));
+						tn.collections.posts.add(postModel);
 						$eTarget.find('textarea').val('');
 						$eTarget.dialog('close');
-						tn.updateStorage(true);
 					}
 				});
 			}
