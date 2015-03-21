@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  $( "#modal_html" ).load( "modal.html" );
+});
+
 // Center modal vertically on page
 // http://www.abeautifulsite.net/vertically-centering-bootstrap-modals/
 $(document).ready(function() {
@@ -11,7 +15,7 @@ $(document).ready(function() {
       dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
   }
   // Reposition when a modal is shown
-  $('.modal').on('show.bs.modal', reposition);
+  $('#modal_html').on('show.bs.modal', '.modal',reposition);
   // Reposition when the window is resized
   $(window).on('resize', function() {
       $('.modal:visible').each(reposition);
@@ -22,8 +26,8 @@ $(document).ready(function() {
 $(document).ready(function() {
   var user = $.jStorage.get("logged_in_user");
 
-  $('.modal_comment').keydown(function(event) {
-    if (event.keyCode == 13) {
+  $('#modal_html').on('keydown', '.modal_comment', function(event) {
+    if (event.which == 13) {
       var html = [];
 
       var posts = $.jStorage.get("posts") || [];
