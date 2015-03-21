@@ -68,9 +68,11 @@ $(document).ready(function() {
       var user = users[comments[j].userId];
 
       html.push(
-            '<img src="' + user.pic + '" class="sm-profile-image post-user-img">',
-            '<div class="post-user-name">' + user.username + '</div>',
-            '<div class="post-user-comment">' + comments[j].content + '</div>',
+            '<div class="comment">',
+              '<img src="' + user.pic + '" class="sm-profile-image post-user-img">',
+              '<div class="post-user-name">' + user.username + '</div>',
+              '<div class="post-user-comment">' + comments[j].content + '</div>',
+            '</div>',
             '<hr>');
     }
 
