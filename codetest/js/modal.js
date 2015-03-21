@@ -32,7 +32,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   var user = $.jStorage.get("logged_in_user");
 
-  $('#modal_html').on('keydown', '.modal_comment', function(event) {
+  $('#modal_html').on('keydown', '#modal_comment', function(event) {
     if (event.which == 13) {
       var html = [];
 
