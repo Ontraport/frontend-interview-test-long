@@ -1,0 +1,307 @@
+// ******************************************
+// Defaults
+// ******************************************
+// apply a natural box layout model to all elements,
+// but allowing components to change
+html {
+	box-sizing: border-box;
+	font-size: 100%;
+	height: 100%;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+// ******************************************
+// Helpers
+// ******************************************
+.group:before,
+.group:after {
+	content: ' ';
+	display: table;
+}
+
+.group:after {
+	clear: both;
+}
+
+//For IE 6/7 only, Include this rule to trigger hasLayout and contain floats.
+.group {
+	*zoom: 1;
+}
+
+.hidden {
+	display: none !important;
+}
+
+@mixin mainBg {
+	background: rgb(167, 199, 220); // Old browsers
+	background: -moz-linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%); // FF3.6+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(167, 199, 220, 1)), color-stop(100%, rgba(133, 178, 211, 1))); // Chrome,Safari4+
+	background: -webkit-linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%); // Chrome10+,Safari5.1+
+	background: -o-linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%); // Opera 11.10+
+	background: -ms-linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%); // IE10+
+	background: linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%); // W3C
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7c7dc', endColorstr='#85b2d3', GradientType=0); // IE6-9
+}
+
+// ******************************************
+// base styles
+// ******************************************
+// Storage Error
+.storageError {
+	text-align: center;
+	h1 {
+		font-size: 2em;
+		margin-top: 3em;
+	}
+}
+
+.storageBg {
+	@include mainBg;
+}
+
+// Main Container
+#appContainer {
+	@include mainBg;
+	font-size: 13px;
+	min-width: 800px;
+
+}
+
+// Header
+#header {
+	background: rgba(0, 0, 0, .7);
+	box-shadow: 0 1px 5px #fff;
+	padding: 10px 5px;
+
+	#logo {
+		display: inline;
+		float: left;
+	}
+
+	#search {
+
+		display: inline;
+		float: left;
+		left: 50%;
+		margin-left: -25%;
+		margin-top: 1em;
+		position: relative;
+		width: 300px;
+
+		input:focus {
+			-webkit-box-shadow: 0px 0px 10px 2px rgba(245,245,245,1);
+			-moz-box-shadow: 0px 0px 10px 2px rgba(245,245,245,1);
+			box-shadow: 0px 0px 10px 2px rgba(245,245,245,1);
+		}
+
+		input[name="terms"] {
+			border: 2px solid #a2c4da;
+			font-size: 1.2em;
+			padding: 2px 3px;
+			width: 250px;
+		}
+
+		input[type="submit"] {
+			border: 1px solid #6fd6f7;
+			font-weight: bold;
+			padding: 4px;
+			text-shadow: 1px 1px 1px #fff;
+			vertical-align: top;
+			width: 30px;
+
+		}
+
+		input[type="submit"]:hover {
+			background: #88bfe8; /* Old browsers */
+			background: -moz-linear-gradient(top, #88bfe8 0%, #70b0e0 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #88bfe8), color-stop(100%, #70b0e0)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #88bfe8 0%, #70b0e0 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #88bfe8 0%, #70b0e0 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #88bfe8 0%, #70b0e0 100%); /* IE10+ */
+			background: linear-gradient(to bottom, #88bfe8 0%, #70b0e0 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#88bfe8', endColorstr='#70b0e0', GradientType=0); /* IE6-9 */
+		}
+	}
+
+	#userProfileHeader {
+		float: right;
+		margin-top: 10px;
+
+		> ul {
+			display: table-row;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			> li {
+				cursor: pointer;
+				display: table-cell;
+				list-style-type: none;
+				padding-left: 15px;
+				vertical-align: middle;
+
+				&:not(.profileImg) {
+					color: #f3f3f3;
+					font-size: 18px;
+				}
+
+				&:last-of-type {
+					padding-right: 15px;
+				}
+			}
+		}
+
+		.profileImg img {
+			height: 25px;
+			width: 25px;
+		}
+	}
+}
+
+// Footer
+#footer {
+	padding-bottom: 50px;
+	text-align: center;
+}
+
+// Page Container
+#page {
+	display: block;
+	margin: 10px auto 0;
+	padding: 1em 2em;
+	width: 800px;
+}
+
+// Feed Container
+#feedContainer {
+	background: #f7f7f7;
+	border-radius: 10px;
+	float: left;
+	padding: 15px;
+	width: 520px;
+}
+
+// Feed UL
+#feedUl {
+	margin: 0;
+	padding: 0;
+}
+
+// User Profile Box
+#userProfile {
+	background: #f7f7f7;
+	border-radius: 10px;
+	float: left;
+	margin-right: 10px;
+	padding: 15px;
+	width: 200px;
+
+	.profileImg {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+// Post
+.post {
+	display: block;
+	list-style: none;
+	margin: 0 0 15px;
+	padding: 0;
+
+	.postUsername {
+		color: #0279c9;
+		font-weight: bold;
+		margin: 0;
+	}
+
+	.profileImg {
+		float: left;
+		width: 25px;
+	}
+
+	.postBody {
+		margin-left: 60px;
+		p {
+			margin: 0;
+		}
+	}
+
+	.postDate {
+		float: right;
+	}
+
+	.postComments {
+		background: #ededed;
+		display: block;
+		list-style: none;
+		margin: 15px 0;
+		padding: 0;
+
+		> li:first-of-type {
+			.comment {
+				border-top: 0;
+			}
+		}
+
+		.comment {
+			border-top: 1px solid #d8d8d8;
+			padding: 10px;
+		}
+
+		.commentTxt {
+			margin-left: 40px;
+			p {
+				margin: 0;
+			}
+		}
+
+		.addComment {
+			margin: 3px 3px;
+			border-top: 1px solid #d8d8d8;
+
+			textarea {
+				margin: 4px 0;
+				height: 25px;
+				resize: vertical;
+				width: 100%;
+			}
+		}
+
+	}
+}
+
+.noTitleStuff .ui-dialog-titlebar-close {
+	display: none
+}
+
+.noTitleStuff .ui-dialog-titlebar {
+	display: none
+}
+
+// Modal
+#modalBg {
+	position: relative;
+}
+
+#modalBox {
+	h4 {
+		margin: 10px 0;
+		padding: 0;
+	}
+	textarea {
+		font-size: 16px;
+		margin-bottom: 10px;
+		width: 100%;
+	}
+	p {
+		margin: 0;
+		padding: 0;
+	}
+}
+
