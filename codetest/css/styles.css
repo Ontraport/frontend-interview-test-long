@@ -1,0 +1,211 @@
+/*
+ * base styles 
+ * 
+ */
+
+html{
+  height: 100%;
+}
+
+body{
+  background: rgb(167,199,220); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(167,199,220,1) 0%, rgba(133,178,211,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(167,199,220,1)), color-stop(100%,rgba(133,178,211,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* IE10+ */
+  background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
+  font-size: 13px;
+  min-width: 800px;
+}
+
+br{
+  clear: left;
+}
+
+#header{
+  background: rgba( 0, 0, 0, 0.7);
+  padding: 10px 5px;
+  box-shadow: 0px 1px 5px #fff;
+}
+
+
+/*logo in header*/
+#logo{
+  display: inline-block;
+  float: left;
+}
+
+/*search in header*/
+
+#search{
+  display: inline;
+  float: left;
+  left: 50%;
+  margin-left: -25%;
+  position: relative;
+  width: 300px;
+  margin-top: 1em;
+}
+
+#search input[name="terms"]{
+  width: 250px;
+  padding: 2px 3px;
+  border: 2px solid #A2C4DA;
+  font-size: 1.2em;
+}
+
+#search input[type="submit"]{
+  width: 30px;
+  padding: 4px;
+  vertical-align: top;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+  border: 1px solid #6FD6F7;
+
+  color: #fef4e9;
+  background: #f78d1d;
+  background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+  background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+
+#search input[type="submit"]:hover{
+  background: #f47c20;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+  background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+
+/*page content*/
+
+#page{
+  width: 800px;
+  
+  /*background: rgba( 255, 255, 255, 0.3 );
+  border: 1px solid #ffffff;*/
+  margin: 10px auto 0px;
+  padding: 1em 2em;
+}
+
+/* Navigation Bar */
+
+.navbar-nav .nav-link {
+  color: #F7F7F7;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  background: transparent;
+  color: #F7F7F7;
+}
+
+.navbar-nav .nav-img {
+  margin-top: -5px;
+  margin-right: 15px;
+}
+
+.navbar-nav .nav-img:hover,
+.navbar-nav .nav-img:focus {
+  background: transparent;
+}
+
+#search input[name="terms"]:focus {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow:    0px 0px 15px 0px rgba(255, 255, 255, 0.75);
+  box-shadow:         0px 0px 15px 0px rgba(255, 255, 255, 0.75);
+}
+
+/* Modal */
+.status-update .modal-dialog {
+  width: 400px;
+}
+
+.modal-body textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Panel */
+.lg-profile-image {
+  width: 50px;
+  height: 50px;
+}
+
+.sm-profile-image {
+  width: 25px;
+  height: 25px;
+}
+
+#profile-panel-name {
+  margin-top: 32px;
+}
+
+#profile-panel-img {
+  float: left;
+}
+
+#profile-panel {
+  padding: 5px;
+  background-color: #F7F7F7;
+}
+
+/* Posts */
+.post-user-name {
+  color: #0279C9;
+  font-weight: bold;
+  vertical-align: top;
+  text-align: left;
+}
+
+.post-user-img {
+  float: left;
+  margin-right: 10px;
+}
+
+.post-user-comment {
+  overflow: hidden 
+}
+
+textarea.post_comment {
+  width: 100%;
+  max-width: 100%;
+}
+
+#post-panel {
+  padding: 5px;
+  background-color: #F7F7F7;
+}
+
+/* Comments */
+.comment {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.comment-panel {
+  margin-left: 10px;
+}
+
+.comment-panel .panel-body {
+  background-color: #EDEDED;
+  padding: 3px;
+}
+
+.comment-panel .panel-body hr {
+  border-color: #D8D8D8;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.post_comment {
+  height: 23px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+}
+
+
