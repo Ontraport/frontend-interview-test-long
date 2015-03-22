@@ -10,13 +10,13 @@ tn.collections = {};
 tn.api = {};
 tn.updateStorage = function(posts, user, users) {
 	if( posts ) {
-		store.set('posts', tn.collections.posts);
+		store.set('posts', tn.collections.posts.toJSON());
 	}
 	if( users ) {
-		store.set('users', tn.collections.users);
+		store.set('users', tn.collections.users.toJSON());
 	}
 	if( user ) {
-		store.set('currentUser', tn.currentUser);
+		store.set('currentUser', tn.currentUser.toJSON());
 	}
 };
 
@@ -133,11 +133,6 @@ tn.views.HeaderView = Mn.ItemView.extend({
 	},
 	postAnUpdate : function() {
 		var that = this;
-
-		function isInPost(element) {
-			return element.postId == that.model.get('id');
-		}
-
 		$('#modalBg').dialog({
 			dialogClass : 'noTitleStuff',
 			resizable : false,
@@ -154,10 +149,12 @@ tn.views.HeaderView = Mn.ItemView.extend({
 							content : this.value,
 							userId : tn.currentUserId
 						});
+						function isInPost(element) { return element.postId == that.model.get('id'); }
 						postModel.set('comments', postModel.get('comments').filter(isInPost));
 						tn.collections.posts.add(postModel);
 						$eTarget.find('textarea').val('');
 						$eTarget.dialog('close');
+						tn.updateStorage(true);
 					}
 				});
 			}
