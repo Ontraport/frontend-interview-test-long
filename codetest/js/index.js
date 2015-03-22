@@ -10,13 +10,13 @@ tn.collections = {};
 tn.api = {};
 tn.updateStorage = function(posts, user, users) {
 	if( posts ) {
-		store.set('posts', tn.collections.posts);
+		store.set('posts', tn.collections.posts.toJSON());
 	}
 	if( users ) {
-		store.set('users', tn.collections.users);
+		store.set('users', tn.collections.users.toJSON());
 	}
 	if( user ) {
-		store.set('currentUser', tn.currentUser);
+		store.set('currentUser', tn.currentUser.toJSON());
 	}
 };
 
@@ -158,6 +158,7 @@ tn.views.HeaderView = Mn.ItemView.extend({
 						tn.collections.posts.add(postModel);
 						$eTarget.find('textarea').val('');
 						$eTarget.dialog('close');
+						tn.updateStorage(true);
 					}
 				});
 			}
