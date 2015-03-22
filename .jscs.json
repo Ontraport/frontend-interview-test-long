@@ -1,0 +1,93 @@
+{
+  "preset": "jquery",
+  "disallowCommaBeforeLineBreak": null,
+  "disallowDanglingUnderscores": true,
+  "disallowEmptyBlocks": true,
+  "disallowImplicitTypeConversion": ["string"],
+  "disallowKeywordsOnNewLine": ["else"],
+  "disallowKeywords": ["with"],
+  "disallowMixedSpacesAndTabs": true,
+  "disallowMultipleLineBreaks": true,
+  "disallowMultipleLineStrings": true,
+  "disallowMultipleVarDecl": null,
+  "disallowPaddingNewlinesInBlocks": null,
+  "disallowQuotedKeysInObjects": true,
+  "disallowSpaceAfterBinaryOperators": null,
+  "disallowSpaceAfterKeywords": [
+	"for",
+	"while",
+	"do",
+	"switch"
+  ],
+  "disallowSpaceAfterLineComment": null,
+  "disallowSpaceAfterObjectKeys": null,
+  "disallowSpaceAfterPrefixUnaryOperators": true,
+  "disallowSpaceBeforeBinaryOperators": null,
+  "disallowSpaceBeforeBlockStatements": null,
+  "disallowSpaceBeforePostfixUnaryOperators": true,
+  "disallowSpacesInConditionalExpression": null,
+  "disallowSpacesInFunctionDeclaration": null,
+  "disallowSpacesInNamedFunctionExpression": null,
+  "disallowSpacesInsideArrayBrackets": null,
+  "disallowSpacesInsideObjectBrackets": null,
+  "disallowSpacesInsideParentheses": null,
+  "disallowTrailingComma": null,
+  "disallowTrailingWhitespace": true,
+  "disallowYodaConditions": true,
+  "maximumLineLength": 120,
+  "requireBlocksOnNewline": true,
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+  "requireCapitalizedConstructors": true,
+  "requireCommaBeforeLineBreak": true,
+  "requireCurlyBraces": [
+	"if",
+	"else",
+	"for",
+	"while",
+	"do",
+	"try",
+	"catch"
+  ],
+  "requireDotNotation": true,
+  "requireKeywordsOnNewLine": null,
+  "requireLineFeedAtFileEnd": true,
+  "requireMultipleVarDecl": true,
+  "requireOperatorBeforeLineBreak": true,
+  "requirePaddingNewlinesInBlocks": null,
+  "requireParenthesesAroundIIFE": true,
+  "requireSpaceAfterBinaryOperators": null,
+  "requireSpaceAfterKeywords": [
+	"else",
+	"return"
+  ],
+  "requireSpaceAfterLineComment": true,
+  "requireSpaceAfterObjectKeys": true,
+  "requireSpaceAfterPrefixUnaryOperators": null,
+  "requireSpaceBeforeBinaryOperators": true,
+  "requireSpaceBeforeBlockStatements": true,
+  "requireSpaceBeforePostfixUnaryOperators": null,
+  "requireSpacesInConditionalExpression": true,
+  "requireSpacesInFunctionDeclaration": {
+	"beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInFunctionExpression": {
+	"beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInNamedFunctionExpression": {
+	"beforeOpeningCurlyBrace": true
+  },
+  "requireSpacesInsideArrayBrackets": "all",
+  "requireSpacesInsideObjectBrackets": "allButNested",
+  "requireSpacesInsideParentheses": null,
+  "requireTrailingComma": null,
+  "safeContextKeyword": [
+	"that",
+	true
+  ],
+  "validateIndentation": "\t",
+  "validateJSDoc": {
+	"checkParamNames": true,
+	"requireParamTypes": true
+  },
+  "validateQuoteMarks": "'"
+}

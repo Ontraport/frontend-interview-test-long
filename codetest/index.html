@@ -1,32 +1,104 @@
 <!DOCTYPE HTML >
 <html>
 <head>
-	<title>The network</title>
-	
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>The network</title>
+    <link rel="stylesheet" type="text/css" href="normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/jquery-ui-dialog/jquery-ui.theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/jquery-ui-dialog/jquery-ui.structure.min.css"/>
+    <script src="resources/jquery/dist/jquery.min.js"></script>
+    <script src="resources/jquery-ui-dialog/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
-<body>
-	
-	<div id="header">
-		<div id="logo">
-			<img src="images/logo.png" alt="the network"/>
-		</div>	
-		<div id="search">
-			<form method="get" action="#">
-				<input type="search" name="terms" placeholder="Search...."/>
-				<input type="submit" value="Go"/>
-			</form>
-		</div>
-	</div>
-	
-	<div id="page">
+<body class="group">
+<div id="appContainer"></div>
+<div id="modalBg" style="display: none;">
+    <div id="modalBox">
+        <h4>Status Update</h4>
+        <label>
+            <textarea></textarea>
+        </label>
 
-	</div>
-	
-	<div>
-		<p>This is a footer mesage</p>
-	</div>
-		
+        <p>hit enter to post</p>
+        <p><small>hit ESC to cancel</small></p>
+    </div>
+</div>
+<!-- Templates -->
+<script id="header-template" type="text/template">
+    <div id="logo">
+        <img src="images/logo.png" alt="the network"/>
+    </div>
+    <div id="search">
+        <form method="get" action="#">
+            <input type="search" name="terms" placeholder="Search...."/>
+            <input type="submit" value="Go"/>
+        </form>
+    </div>
+    <div id="userProfileHeader">
+        <ul>
+            <li>Home</li>
+            <li id="postAnUpdate">Post an update</li>
+            <li class="profileImg"><%= userImg() %></li>
+        </ul>
+    </div>
+</script>
+<script id="footer-template" type="text/template">
+    <p>This is a footer message | <a href="#" class="clearLocal">Clear Local Storage</a></p>
+</script>
+<script id="feed-template" type="text/template">
+    <div id="userProfile">
+        <div class="profileImg">
+            <span><%= userImg() %></span><span>  <%= username %></span>
+        </div>
+    </div>
+    <div id="feedContainer">
+        <h1>Updates</h1>
+        <ul id="feedUl"></ul>
+    </div>
+</script>
+<script id="post-template" type="text/template">
+    <ul class="post group" data-post-id="<%= id %>">
+        <li class="profileImg">
+            <%= userImg() %>
+        </li>
+        <li class="postBody">
+            <p class="postDate"><%= postDate() %></p>
+            <p class="postUsername"><%= userName() %></p>
+            <p><%= content %></p>
+            <ul class="postComments">
+                <% _.each(comments, function(comment, index){ %>
+                <li>
+                    <div class="comment" data-comment-id="<%= id %>">
+                        <div class="profileImg">
+                            <%= userImgComment(index) %>
+                        </div>
+                        <div class="commentTxt">
+                            <p><%= postDate() %></p>
+                            <p class="postUsername"><%= userNameComment(index) %></p>
+                            <p><%= comment.content %></p>
+                        </div>
+                    </div>
+                </li>
+                <% }) %>
+                <div class="addComment">
+                    <textarea class="addCommentText" placeholder="post a comment"></textarea>
+                </div>
+            </ul>
+        </li>
+
+    </ul>
+</script>
+<script id="layout-view-template" type="text/template">
+    <header id="header" class="group"></header>
+    <main id="page" class="group"></main>
+    <footer id="footer" class="group"></footer>
+</script>
+<!-- Libs -->
+<script src="resources/underscore/underscore.min.js"></script>
+<script src="resources/store.js/store+json2.min.js"></script>
+<script src="resources/jquery-ui-dialog/jquery-ui.min.js"></script>
+<script src="resources/backbone/backbone.min.js"></script>
+<script src="resources/marionette/lib/backbone.marionette.min.js"></script>
+<!-- App -->
+<script src="js/index.min.js"></script>
 </body>
 </html>
