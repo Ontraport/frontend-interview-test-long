@@ -1,0 +1,16 @@
+{
+  "name": "frontend-interview-test-long",
+  "version": "1.0.0",
+  "homepage": "https://github.com/FrickenHamster/frontend-interview-test-long",
+  "authors": [
+    "Alexander Yan <frickenhamster@gmail.com>"
+  ],
+  "description": "A cool interview project",
+  "dependencies":
+  {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x"
+  }
+}
