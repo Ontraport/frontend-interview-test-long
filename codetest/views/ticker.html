@@ -1,11 +1,13 @@
 <!--<div id="ticker">-->
-	<div id="userSection">
-		<img ng-src="{{userImageURL}}" style="margin-right: 2px">
-		{{userName}}
-	</div>
-	<div id="tickerMain">
-		<div style="font-size: 16px; font-weight: bold; margin-bottom: 20px;">Updates</div>
-		<div ng-repeat="post in posts" class="tickerpost">
+<div id="userSection">
+	<img ng-src="{{userImageURL}}" style="margin-right: 2px">
+	{{userName}}
+</div>
+<div id="tickerMain">
+	{{localPosts.length}}
+	<div style="font-size: 16px; font-weight: bold; margin-bottom: 20px;">Updates</div>
+	<div ng-repeat="set in postSets">
+		<div ng-repeat="post in set.data" class="tickerpost">
 			<div class="postArea">
 				<img ng-src="{{users[post.userId].pic}}" class="postProfilePic">
 
@@ -17,7 +19,8 @@
 			<div class="commentArea">
 				<div ng-repeat="comment in post.comments" class="commentContainer">
 					<div style="display: inline-block; width: 100%;">
-						<span style="display: inline-block; vertical-align: top;"></span><img ng-src="{{users[comment.userId].pic}}" class="commentProfilePic">
+						<span style="display: inline-block; vertical-align: top;"></span><img
+							ng-src="{{users[comment.userId].pic}}" class="commentProfilePic">
 
 						<div style="padding-left: 40px;">
 							<div class="postusername">{{users[comment.userId].username}}</div>
@@ -26,10 +29,11 @@
 					</div>
 					<div class="borderthing"></div>
 				</div>
-				<textarea class="commentInput" placeholder="post a comment"></textarea>
+				<input class="commentInput" placeholder="post a comment" ng-model="commentInput.content" ng-keypress="submitComment($event, post.id, commentInput)">
 			</div>
 		</div>
 	</div>
+</div>
 
 
 <!--</div>-->

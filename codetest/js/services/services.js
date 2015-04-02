@@ -7,38 +7,30 @@ var ontraServices = angular.module('OntraAppServices', []);
 ontraServices.factory('UserService', ['$http',
 		function ($http)
 		{
-			var userService = {};
-			$http.get('data/users.json').then(function (response)
+			var userService = {users: []};
+
+			userService.loadUsers = function ()
 			{
-				for (var key in response.data)
-				{
-					var user = response.data[key];
-					Box.store("user" + user.id, user);
-				}
-				//Box.loads(response, 'json');
-			});
-			userService.getUserProfileImageURL = function (id)
-			{
-				return Box.fetch('user' + id).pic;
-			};
-			userService.getUserName = function (id)
-			{
-				return Box.fetch('user' + id).username;
-			};
-			
-			userService.getUsers = function()
-			{
-				return $http({
-						method: 'GET',
-						url: 'data/users.json'
+				$http({
+					method: 'GET',
+					url: 'data/users.json'
+				}).success(function (response)
+					{
+						for (var key in response)
+						{
+							userService.users[response[key].id] = response[key];
+						}
 					}
 				)
 			};
-			
-			userService.getCurrentUser = function()
+
+			userService.loadUsers();
+
+
+			userService.getCurrentUser = function ()
 			{
 				return 5;
-			}
+			};
 			return userService;
 		}
 	]
@@ -47,33 +39,157 @@ ontraServices.factory('UserService', ['$http',
 ontraServices.factory('PostService', ['$http',
 		function ($http)
 		{
-			var postService = {gay: 3};
-			$http.get('data/posts.json').then(function (response)
+			var postService = {posts: {data: []}, localPosts: {data: []}, bufferedComments:[]};
+			var localStored = $.jStorage.get('local_posts', []);
+			postService.localPosts.data = localStored.data;
+			var commentStored = $.jStorage.get('bufferedComments', []);
+			postService.bufferComments = commentStored;
+			
+			postService.loadBufferedComments = function()
 			{
-				postService.postData = response.data;
-				for (var key in response.data)
+				var commentStored = $.jStorage.get('bufferedComments', []);
+				postService.bufferComments = commentStored;
+				for (var i = 0; i < postService.bufferComments.length; i++)
 				{
-					var post = response.data[key];
-					Box.store("post" + post.id, post);
-				}
-				//Box.loads(response, 'json');
-			});
+					var cmt = postService.bufferComments[i];
+					console.log(cmt);
+					for (var j = 0; j < postService.posts.data.length; j++)
+					{
+						var post = postService.posts.data[j];
+						console.log(post, cmt.postId);
+						if (post.id == cmt.postId)
+						{
+							console.log("found");
+							post.comments.push(cmt);
+							break;
+						}
 
-			postService.getPosts = function ()
+					}
+				}
+			};
+			
+			
+			
+			postService.loadPosts = function ()
 			{
-				//console.log(postService);
-				//return postService.postData;
-				return $http({
+				$http({
 						method: 'GET',
 						url: 'data/posts.json'
+					}
+				).success(
+					function (response)
+					{
+						postService.posts.data = response;
+						postService.loadBufferedComments();
 					}
 				)
 			};
 
-			postService.getContent = function (id)
+			postService.loadPosts();
+
+
+			postService.storeLocalPosts = function (posts)
 			{
-				return Box.fetch("post" + id).content;
+				/*if (Box.supported())
+				 {
+				 Box.store("local_posts", posts);
+				 }*/
+				$.jStorage.set('local_posts', posts)
+				;
 			};
+			
+			postService.storeBufferComments = function(comments)
+			{
+				$.jStorage.set('bufferedComments', comments);
+			}
+
+			postService.makeLocalPost = function (userid, content)
+			{
+				var nn = getNewPostNumber;
+				var post = {id: nn, userId: userid, content: content, comments: []};
+				postService.localPosts.data.push(post);
+				postService.storeLocalPosts(postService.localPosts);
+
+			};
+
+			postService.addComment = function (userid, postid, content)
+			{
+				console.log(postid);
+				for (var i = 0; i < postService.posts.data.length; i++)
+				{
+					var post = postService.posts.data[i];
+					if (post.id == postid)
+					{
+						console.log('found');
+						console.log(post);
+						var cmt = {
+							id: getNewPostNumber(),
+							postId: postid,
+							userId: userid,
+							date: "",
+							content: content
+						};
+						post.comments.push(cmt);
+						postService.bufferComments.push(cmt);
+						postService.storeBufferComments(postService.bufferComments);
+						break;
+					}
+				}
+				for (var i = 0; i < postService.localPosts.data.length; i++)
+				{
+					var post = postService.localPosts.data[i];
+					if (post.id == postid)
+					{
+						post.comments.push({
+							id: getNewPostNumber(),
+							postId: postid,
+							userId: userid,
+							date: "",
+							content: content
+						});
+						break;
+					}
+				}
+			};
+
+			function getNewPostNumber()
+			{
+				var nn = 1;
+				for (var i = 0; i < postService.posts.length; i++)
+				{
+					var post = postService.posts[i];
+					if (post.id >= nn)
+					{
+						nn = post.id + 1;
+					}
+					for (var j = 0; post.comments.length; j++)
+					{
+						var comment = post.comments[j];
+						if (comment.id >= nn)
+						{
+							nn = comment.id + 1;
+						}
+					}
+				}
+				for (var i = 0; i < postService.localPosts.length; i++)
+				{
+					var post = postService.localPosts[i];
+					if (post.id >= nn)
+					{
+						nn = post.id + 1;
+					}
+					for (var j = 0; post.comments.length; j++)
+					{
+						var comment = post.comments[j];
+						if (comment.id >= nn)
+						{
+							nn = comment.id + 1;
+						}
+					}
+				}
+				return nn;
+			}
+
 
 			return postService;
 		}

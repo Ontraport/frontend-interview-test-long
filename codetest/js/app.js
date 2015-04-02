@@ -7,12 +7,14 @@ var ontra = angular.module('OntraApp',
 	[
 		'OntraApp.controllers',
 		'OntraAppServices',
-		'ngRoute'
+		'ngRoute',
+		'ui.bootstrap'
 	]).
 	config(['$routeProvider', function ($routeProvider)
 	{
 		$routeProvider.
 			when("/ticker", {templateUrl: "views/ticker.html", controller: "TickerController"}).
+			when('/clear', {templateUrl: "views/clear.html", controller: "ClearController"}).
 			otherwise({redirectTo: '/ticker/'});
 	}]);
 
