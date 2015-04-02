@@ -33,7 +33,7 @@ br{
 	padding: 10px 5px;
 	box-shadow: 0px 1px 5px #fff;
 	
-	height:80px;
+	height:70px;
 }
 
 
@@ -80,7 +80,8 @@ br{
 }
 
 #search input[type="submit"]:hover{
-	
+	border-color: #2b542c;
+	background-color: #730375;
 }
 
 #headPicContainer
@@ -146,9 +147,10 @@ br{
 	float: left;
 	width: 250px;
 	height: 60px;
+	vertical-align: text-bottom;
 	
 	background-color: #ffffff;
-	border: 0px solid;
+	border: 0 solid;
 	border-radius: 8px;
 
 	margin-left: calc(50% - 600px);
@@ -156,6 +158,13 @@ br{
 	
 	padding-left: 5px;
 	padding-top: 5px;
+}
+
+#userSectionName
+{
+	display: table-cell;
+	vertical-align: bottom;
+	height: 54px;
 }
 
 #tickerMain

@@ -6,49 +6,41 @@
 
 var ontraContollers = angular.module('OntraApp.controllers', []);
 
+//controller for main ticker page
 ontraContollers.controller('TickerController', ['$scope', 'UserService', 'PostService',
 		function ($scope, UserService, PostService)
 		{
-
+			//bound values
 			$scope.users = UserService.users;
-
-
-			/*var callUsers = function(rUser)
-			 {
-			 /!*$scope.users = [];
-			 for (var key in response)
-			 {
-			 $scope.users[response[key].id] = response[key];
-
-			 }*!/
-			 $scope.users = rUser;
-
-			 };*/
-			//UserService.getUsers(callUsers)//TODO add failures here later
 			$scope.userImageURL = $scope.users[UserService.getCurrentUser()].pic;
 			$scope.userName = $scope.users[UserService.getCurrentUser()].username;
 			$scope.postSets = [PostService.posts, PostService.localPosts];
 			
+			/*
+			* Add post from comment box by pressing enter
+			* */
 			$scope.submitComment = function(keyEvent, postId, content)
 			{
 				if (keyEvent.which === 13)
 				{
 					PostService.addComment(UserService.getCurrentUser(), postId, content.content);
-					console.log(content.content);
 					content.content = "";
 				}
 			}
-
 		}]
 );
 
-
+//Controller for layout header
 ontraContollers.controller('HeaderController',
 	['$scope', '$modal', 'UserService',
 		function ($scope, $modal, UserService)
 		{
 			$scope.users = UserService.users;
-			console.log(UserService);
+			
+			/*
+			* opens new post modal open
+			* called when Submit Post is pressed
+			* */
 			$scope.openPostModal = function ()
 			{
 				$modal.open({
@@ -63,19 +55,25 @@ ontraContollers.controller('HeaderController',
 					}
 				})
 			}
-
+			//only one page so no binding for home
 		}
 	]
 );
 
+//modal window controller
 ontraContollers.controller('PostModalController',
 	['$scope', '$modalInstance', 'PostService', "currentUser",
 		function ($scope, $modalInstance, PostService, currentUser)
 		{
+			//bound variables;
 			$scope.postInput = "";
 			$scope.currentUser = currentUser;
 
-			$scope.hamKeyPress = function (keyEvent)
+			/*
+			* enter pressed on modal window
+			* submits new post
+			* */
+			$scope.postModalKeyPress = function (keyEvent)
 			{
 				if (keyEvent.which === 13)
 				{
@@ -83,12 +81,15 @@ ontraContollers.controller('PostModalController',
 				}
 			};
 
+			//set initial focus
 			$("#postModalInput").focus();
 
+			/*
+			* submit a new post
+			* closes modal window
+			* */
 			function submitPost()
 			{
-				console.log('submitting post' + $scope.postInput);
-
 				PostService.makeLocalPost($scope.currentUser, $scope.postInput);
 
 				$modalInstance.dismiss('submitted post');
@@ -98,6 +99,7 @@ ontraContollers.controller('PostModalController',
 	]
 );
 
+//helper directive to focus textarea when modal window opened
 ontraContollers.directive('focusMe', function ($timeout)
 {
 	return {
@@ -118,10 +120,15 @@ ontraContollers.directive('focusMe', function ($timeout)
 	};
 });
 
+//controller to clear local storage
 ontraContollers.controller('ClearController',
-	['$location',
-		function ($location)
+	['$location', '$timeout',
+		function ($location, $timeout)
 		{
+			$timeout(function(){
+				
+				$location.path('./#/ticket');
+			}, 1000);
 			$.jStorage.flush();
-			$location.path('./#/ticket');
+			
 		}]);

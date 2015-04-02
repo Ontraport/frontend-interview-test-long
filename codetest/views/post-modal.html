@@ -3,8 +3,7 @@
 <div id="postModalContainer">
 	<form name="postForm" style="margin-left: auto; margin-right: auto;">
 		<div class="modalTitle">Status Update</div>
-		<textarea id="postModalInput" ng-keypress="hamKeyPress($event)" name="content" ng-model="postInput" placeholder="whats on your mind?" focus-me="true"></textarea>
-		<!--<input type="submit", style="position: absolute; left: -9999px; width: 1px; height: 1px;">-->
+		<textarea id="postModalInput" ng-keypress="postModalKeyPress($event)" name="content" ng-model="postInput" placeholder="whats on your mind?" focus-me="true"></textarea>
 		<div>hit enter to post</div>
 	</form>
 </div>

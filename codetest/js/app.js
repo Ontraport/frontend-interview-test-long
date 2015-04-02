@@ -6,7 +6,7 @@
 var ontra = angular.module('OntraApp',
 	[
 		'OntraApp.controllers',
-		'OntraAppServices',
+		'OntraApp.services',
 		'ngRoute',
 		'ui.bootstrap'
 	]).
