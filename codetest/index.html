@@ -1,32 +1,53 @@
 <!DOCTYPE HTML >
-<html>
+<html ng-app="OntraApp">
 <head>
 	<title>The network</title>
+
+	<link rel="stylesheet" type="text/css" href="normalize.css"/>
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-ui/build/angular-ui.css"/>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
+	<link rel="stylesheet" type="text/css" href="modal.css"/>
 	
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-ui/build/angular-ui.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/TickerController.js"></script>
+	<script src="js/services/services.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="resources/jstorage.js"></script>
 </head>
 <body>
-	
-	<div id="header">
-		<div id="logo">
-			<img src="images/logo.png" alt="the network"/>
-		</div>	
-		<div id="search">
-			<form method="get" action="#">
-				<input type="search" name="terms" placeholder="Search...."/>
-				<input type="submit" value="Go"/>
-			</form>
-		</div>
-	</div>
-	
-	<div id="page">
 
+<div id="header" ng-controller="HeaderController">
+	<div id="logo">
+		<img src="images/logo.png" alt="the network"/>
 	</div>
-	
-	<div>
-		<p>This is a footer mesage</p>
+	<div id="search">
+		<form method="get" action="#">
+			<input type="search" name="terms" placeholder="Search...."/>
+			<input type="submit" value="Go"/>
+		</form>
 	</div>
-		
+	<!--<span style="vertical-align: middle; height: 100%; float:right; margin-right: 30px; margin-left: 20px; display: inline-block"></span>-->
+	<div id="headPicContainer">
+		<span class="vertImgHelper"></span> <img ng-src="{{profilePic}}" id="headerPic">
+	</div>
+	<a href ng-click="openPostModal()" class="topLink">Post an Update</a>
+	<a href="" class="topLink">Home</a>
+</div>
+
+<div ng-view id="page">
+
+</div>
+
+<div style="margin-left: auto; margin-right: auto; width: 200px;">
+	<p>This is a footer mesage</p>
+</div>
+
 </body>
 </html>
