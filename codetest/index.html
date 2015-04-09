@@ -5,6 +5,217 @@
 	
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<style type="text/css" id="userBullets"></style>
+<!--	hosted library used purely so i dont need to download and then re-upload a copy elsewhere-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript">
+			
+		$(document).ready(function(){
+			
+			// create the data objects for users and posts
+			var pagePosts 	= '';
+			var pageUsers 	= '';
+			// arbitrary declare user id is 5
+			myUID			= 5;
+			// create counter item to track current high post ID
+			CurrHighPostID = '';
+//			start pulling json data into objects
+			$.getJSON('data/posts.json')
+			.done(function (data) {
+				pagePosts  = data;
+				$.getJSON('data/users.json')
+				.done(function (data) {
+					pageUsers  = data;
+//					call function to layout json data into page layout
+					pageLayout();
+//					focus glowy effect for search bar as required by scenario
+					$('input[name="terms"]').focus(function(){
+						$(this).addClass('glowbox');
+					});
+//					turn off above glowy effect if search bar not selected
+					$('input[name="terms"]').blur(function(){
+						$(this).removeClass('glowbox');
+					});
+//					lightbox display function
+					$('#postUpdate').click(function(){
+						$('#lightBoxshadowing').css({'display':'block'});
+						$('#PostForm').css({'display':'block'});
+						
+					});
+//					lightbox submission function
+					$('#brandNewPost').keydown(function(e){
+//						if enter pressed, submit
+						if (e.which =='13') {
+//							re-hide lightbox
+							$('#lightBoxshadowing').css({'display':'none'});
+							$('#PostForm').css({'display':'none'});
+//							define variables for post
+							var NewPostVal = $('#brandNewPost').val();
+							var ThisPostPic = $('#profPic').attr('src');
+							CurrHighPostID++;
+							var NewPostUsername = $('#loggedInNm').text();
+//							create new UL block to display the post
+							var newPostBlock = '';
+							newPostBlock += "<div class='posts' id='Post"+CurrHighPostID+"'>";
+							newPostBlock += "<ul class='no_bullet'>";
+							newPostBlock += "<li class='ubullet"+myUID+"BulletP'>";
+							newPostBlock += "<div class='posterName'>"+NewPostUsername+"</div>";
+							newPostBlock += "<div class='postContent columns'>"+NewPostVal+"</div>";
+							newPostBlock += "<div class='subComment' id='Comments"+CurrHighPostID+"'><ul class='no_bullet'></ul></div>";
+							newPostBlock += "<input type='text' class='commentInput' placeholder='post a comment' id='postComment"+CurrHighPostID+"'>";
+							newPostBlock += "</ul></div>";
+//							append new post to wall
+							$('#postsWall').append(newPostBlock);
+							$('#brandNewPost').val('');
+						}
+						
+						
+					});
+//					comment append function
+//					uses .on as the new posts wouldnt be able to accept comments otherwise
+					$(document).on('keydown', 'input[id^="postComment"]', function(e){
+//						if enter pressed, submit
+						if (e.which =='13') {
+//							define current post so appened to proper post
+							var postID = $(this).attr('id');
+							var stringPattern = /(\D)/g;
+							var PostID = postID.replace(stringPattern, '');
+//							keep tracking / incrementing the post ID counter
+							CurrHighPostID++;
+//							create new LI block
+							var NewComment = '';
+							NewComment += "<li class='ubullet" + myUID + "BulletC'><div id='Post"+PostID+"Comment"+CurrHighPostID+"'>";
+							NewComment += "<div class='posterName'>"+$('#loggedInNm').text()+"</div>";
+							NewComment += "<div class='commentContent'>" + $(this).val() + "</div></li>";
+//							append new block to proper comments section
+							$('#Comments'+PostID).children('ul').append(NewComment);
+//							clear text box after submission
+							$(this).val('');
+						}
+					});
+				});
+			});
+
+			function pageLayout(){
+//				minor function to determine size of objects
+				Object.size = function(obj) {
+				var size = 0, key;
+				for (key in obj) {
+				    if (obj.hasOwnProperty(key)) size++;
+				}
+				return size;
+			    };
+			// Get the size of json objects
+				var postsSize = Object.size(pagePosts);
+				var usersSize = Object.size(pageUsers);
+//				create css for bullet portraits based off of current existing users
+//				this method keeps the page dynamic in not having to add new user bullets manually
+				for (var q = 0; q<usersSize; q++) {
+//					BulletP is the full 50 x 50 portrait
+					var newBullet = '';
+					newBullet += "li.ubullet"+pageUsers[q].id+"BulletP{";
+					newBullet += "background: url('"+pageUsers[q].pic+"') no-repeat left top;";
+					newBullet += "background-size: 50px 50px;";
+					newBullet += "background-color: #f7f7f7;";
+					newBullet += "padding-left: 55px;";
+					newBullet += "padding-top: 3px;";
+					newBullet += "} \n ";
+//					BulletC i the smaller comment sized portrait
+					newBullet += "li.ubullet"+pageUsers[q].id+"BulletC{";
+					newBullet += "background: url('"+pageUsers[q].pic+"') no-repeat left 9px;";
+					newBullet += "background-size: 25px 25px;";
+					newBullet += "background-color: #ededed;";
+					newBullet += "display: block;";
+					newBullet += "padding-left: 35px;";
+					newBullet += "padding-top: 5px;";
+					newBullet += "} \n ";
+//					append new css into actual css block in header
+					$('#userBullets').append(newBullet);
+				}
+				
+//				define whom is in the logged in box to the left of the comment wall
+				loggedIn(pageUsers, myUID, usersSize);
+				
+//				empty vars for laters use
+				var thisUser = '';
+				var thisPost = '';
+//				cycle through all posts in object
+				for (var r = 0; r < postsSize; r++){
+//					increment / track ID counter
+					if (pagePosts[r].id > CurrHighPostID) {
+						CurrHighPostID = pagePosts[r].id;
+					}
+//					determine current userId for each post
+					thisUser = findUser(pagePosts, pagePosts[r].userId, postsSize);
+//					use determined ID to define user name, picture path and content
+					var thisUserNm = pageUsers[thisUser].username;
+					var thisUserPic = pageUsers[thisUser].pic;
+					var thisContent = pagePosts[r].content;
+//					start creating the post blocks
+					thisPost += "<div class='posts' id='Post"+r+"'>";
+					thisPost += "<ul class='no_bullet'>";
+					thisPost += "<li class='ubullet"+pagePosts[r].userId+"BulletP'>";
+					thisPost += "<div class='posterName'>"+thisUserNm+"</div>";
+					thisPost += "<div class='postContent columns'>"+thisContent+"</div>";
+//					determine size of each comment section
+					var thisCommentSz = Object.size(pagePosts[r].comments);
+//					sub loop to cycle through the comments of each post
+					thisPost += "<div class='subComment' id='Comments"+r+"'><ul class='no_bullet'>";
+					for(var c = 0; c < thisCommentSz; c++){
+//						increment / track ID counter
+						if (pagePosts[r].comments[c].id > CurrHighPostID) {
+							CurrHighPostID = pagePosts[r].comments[c].id;
+						}
+//						find the userID for comment poster
+						thisComUser = findUser(pagePosts, pagePosts[r].comments[c].userId, postsSize);
+//						define name, pic and content based of thisComUser
+						var thisComUserNm = pageUsers[thisComUser].username;
+						var thisComUserPic = pageUsers[thisComUser].pic;
+						var thisComComment = pagePosts[r].comments[c].content;
+//						define li blocks for comments, making sure to use commend specific css for smaller portrait
+						thisPost += "<li class='ubullet"+pagePosts[r].comments[c].userId+"BulletC'><div id='Post"+r+"Comment"+c+"'>";
+						thisPost += "<div class='posterName'>"+thisComUserNm+"</div>";
+						thisPost += "<div class='commentContent'>"+thisComComment+"</div></li>";
+					}
+//					close comments UL
+					thisPost += "</ul></div>";
+//					close post UL and include new comment input before closing post DIV
+					thisPost += "</ul><input type='text' class='commentInput' placeholder='post a comment' id='postComment"+r+"'></div>";
+				}
+//				add the above html block to the wall
+				$('#postsWall').append(thisPost);
+				
+			}
+//			small function to cycle through object to find index value of search item
+			function findUser(obj, uid, usize){
+				var index = 0;
+				var found;
+				var entry;
+				for (index = 0; index < usize; ++index) {
+					entry = obj[index];
+					if (entry.id == uid) {
+						found = index;
+						break;
+					}
+				}
+				return found;
+			}
+//			arbitrary function to load / display particular user, in this case, userId 5 is arbitrarily defined above for the scenario
+			function loggedIn(obj, myUID, uSz){
+				var loggedUserNm = '';
+				var loggedUserPic = '';
+//				find user index based off of userID, then use said index to populate name and pic for box
+				loggedUserIndex = findUser(obj, myUID, uSz);
+				loggedUserNm = obj[loggedUserIndex].username;
+				loggedUserPic = obj[loggedUserIndex].pic;
+//				insert user portrait into header, along with putting the user in the 'currently logged in' box
+				$('#profPic').attr({'src':loggedUserPic, 'height':'25px;', 'width':'25px;'});
+				$('#userLoggedIn').html('<img id="loggedInPic" src="'+loggedUserPic+'" /><span id="loggedInNm">'+loggedUserNm+'</div>');
+			}
+		});
+	</script>
+	
+	
 </head>
 <body>
 	
@@ -18,14 +229,28 @@
 				<input type="submit" value="Go"/>
 			</form>
 		</div>
+		<img class='headerItems' id='profPic' />
+		<a class='headerItems' href='#' id='postUpdate' >Post an update</a>
+		<a class='headerItems' href="#" id='homeLink'>Home</a>
 	</div>
 	
 	<div id="page">
-
+		<div id='userLoggedIn'></div>
+		<div id='postsWall' class='updateWall'>
+			<h3>Updates</h3>
+		</div>
 	</div>
-	
-	<div>
-		<p>This is a footer mesage</p>
+	<div id='PostForm'>
+		<form id="newPostForm">
+			<h2>Status Update</h2>
+			<!--<input id="brandNewPost" type="text" rows="4" cols="50" placeholder="whats on your mind">-->
+			<textarea id="brandNewPost" cols="50" rows="4" placeholder="whats on your mind"></textarea>
+			<div>hit enter to post</div>
+		</form>
+	</div>
+	<div id="lightBoxshadowing"></div>
+	<div id="footer">
+		<p>This is a footer message</p>
 	</div>
 		
 </body>
