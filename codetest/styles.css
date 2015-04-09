@@ -27,11 +27,15 @@ br{
 	clear: left;
 }
 
+img{
+	padding: 10px 5px;
+}
 
 #header{
 	background: rgba( 0, 0, 0, 0.7);
 	padding: 10px 5px;
 	box-shadow: 0px 1px 5px #fff;
+	height: 50px;
 }
 
 
@@ -73,10 +77,21 @@ br{
 }
 
 #search input[type="submit"]:hover{
-	
+	background-color: #6ff;
 }
 
-
+#home{
+	display: inline;
+    float: left;
+    left: 50%;
+    margin-left: 0%;
+    position: relative;
+    color: #fff;
+    font: bold;
+    font-size: 1.5em;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
 
 
 
@@ -92,3 +107,112 @@ br{
 }
 
 
+#postsWall{
+	width: 500px;
+	background-color: #f7f7f7;
+	margin: 10px auto;
+	padding: 5px 10px 15px;
+	margin-left: 290px;
+	border-radius: 8px;
+	
+}
+
+#userLoggedIn{
+	width: 275px;
+	height: 70px;
+	background-color: #f7f7f7;
+	margin: 10px 0px 0px auto;
+	border-radius: 8px;
+	float: left;
+	
+}
+#loggedInNm{
+	position: relative;
+	top: -1em;
+}
+
+#footer{
+	width: 800px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+#lightBoxshadowing{
+	display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: #708599;
+	z-index:10;
+	opacity:0.7;
+	filter: alpha(opacity=50);
+}
+
+#PostForm{
+	display: none;
+	position: fixed;
+	top: 25%;
+	left: 35%;
+	width: 40%;
+	height: 40%;
+	max-height:200px;
+	max-width: 400px;
+	padding: 25px;
+	margin:0px auto;
+	border: 1px solid black;
+	background-color: white;
+	z-index:11;
+	overflow: auto;
+	border-radius: 8px;
+}
+
+.posterName{
+	color: #0279c9;
+	font-weight: bold;
+}
+
+.commentInput{
+	display: block;
+}
+
+.subComment{
+	width:400px;
+	position: relative;
+	left:50px;
+	background-color: #ededed;
+}
+
+.commentInput{
+	position: relative;
+	left:50px;
+	width: 380px;
+	margin-top: 5px;
+}
+
+.posts{
+	padding: 10px 0px 25px;
+}
+
+.headerItems{
+	display: inline;
+	float: right;
+	font: bold;
+	color: #fff;
+	font-size: 1.25em;
+	padding: 15px 15px;
+}
+
+
+ul.no_bullet {
+list-style-type: none;
+padding: 0px;
+margin: 0px;
+}
+
+.glowbox{
+	-webkit-box-shadow:0 0 20px white; 
+	-moz-box-shadow: 0 0 20px white; 
+	box-shadow:0 0 20px white;
+}
