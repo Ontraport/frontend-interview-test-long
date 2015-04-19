@@ -1,0 +1,15 @@
+{
+  "USER":{
+    "LOAD":"USER:LOAD",
+    "ADD":"USER:ADD",
+    "EDIT":"USER:EDIT",
+    "DELETE":"USER:DELETE"
+  },
+  "POST":{
+    "LOAD":"POST:LOAD",
+    "ADD":"POST:ADD",
+    "ADD_COMMENT":"POST:ADD_COMMENT",
+    "EDIT":"POST:EDIT",
+    "DELETE":"POST:DELETE"
+  }
+}
