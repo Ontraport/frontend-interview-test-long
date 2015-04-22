@@ -62,11 +62,11 @@ gulp.task('watch', function() {
 
     browserSync({
         files: [
-            bundles + '/*.*',
+            'src/_bundles/*.*',
             'src/*.html'
         ],
         server: {
-            baseDir: "dist" // Change this to your web root dir
+            baseDir: "src" // Change this to your web root dir
         }
     });
 });

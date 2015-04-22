@@ -13653,7 +13653,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var SpringTransition = require('famous/transitions/SpringTransition');
 
     Engine.setOptions({
-        // appMode: false
+        appMode: false
     });
 
     var mainContext = Engine.createContext();
@@ -13666,7 +13666,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     mainContext.add(MasterView.getRenderNode());
 });
 
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9c6d988.js","/")
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_adc0451a.js","/")
 },{"./views/MasterView.js":57,"VCmEsw":43,"buffer":40,"famous-polyfills":3,"famous/core/Engine":8,"famous/transitions/SpringTransition":34,"famous/transitions/Transitionable":35}],56:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
@@ -13824,14 +13824,14 @@ function MasterView() {
 
     this._footer = new Surface({
         size: [undefined, true],
-        content: 'This is a footer mesage',
+        content: 'This is a footer message',
         classes: ['center-inner']
     });
 
-    this._footer.modAlign = new StateModifier({
-        origin: [0.5, 0],
-        align: [0.5, 0]
-    });
+    // this._footer.modAlign = new StateModifier({
+    //     origin: [0.5, 0],
+    //     align: [0.5, 0]
+    // });
 
     this._footer.modPos = new Modifier({});
 
@@ -13846,10 +13846,12 @@ function MasterView() {
         ratios: [true, true],
         direction: 1
     });
+    
     layout.sequenceFrom([
         ProfileView.getRenderNode(),
         this._footer.renderNode
     ])
+
     var layoutMod = new Modifier({
         size: [undefined, undefined]
     });
@@ -13867,8 +13869,13 @@ function MasterView() {
 
     this.add(HeaderView.getRenderNode());
     this.add(layoutMod).add(layout);
-    // this.add(ProfileView.getRenderNode());
-    // this.add(this._footer.renderNode);
+    this.add(new Surface({
+        size:[undefined,undefined],
+        properties:{
+            backgroundColor:'rgb(167, 199, 220)',
+            zIndex: '-100'
+        }
+    }))
 }
 
 MasterView.prototype = Object.create(View.prototype);

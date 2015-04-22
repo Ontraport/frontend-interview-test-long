@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var SpringTransition = require('famous/transitions/SpringTransition');
 
     Engine.setOptions({
-        // appMode: false
+        appMode: false
     });
 
     var mainContext = Engine.createContext();

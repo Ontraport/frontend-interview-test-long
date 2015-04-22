@@ -38,14 +38,14 @@ function MasterView() {
 
     this._footer = new Surface({
         size: [undefined, true],
-        content: 'This is a footer mesage',
+        content: 'This is a footer message',
         classes: ['center-inner']
     });
 
-    this._footer.modAlign = new StateModifier({
-        origin: [0.5, 0],
-        align: [0.5, 0]
-    });
+    // this._footer.modAlign = new StateModifier({
+    //     origin: [0.5, 0],
+    //     align: [0.5, 0]
+    // });
 
     this._footer.modPos = new Modifier({});
 
@@ -60,10 +60,12 @@ function MasterView() {
         ratios: [true, true],
         direction: 1
     });
+    
     layout.sequenceFrom([
         ProfileView.getRenderNode(),
         this._footer.renderNode
     ])
+
     var layoutMod = new Modifier({
         size: [undefined, undefined]
     });
@@ -81,8 +83,13 @@ function MasterView() {
 
     this.add(HeaderView.getRenderNode());
     this.add(layoutMod).add(layout);
-    // this.add(ProfileView.getRenderNode());
-    // this.add(this._footer.renderNode);
+    this.add(new Surface({
+        size:[undefined,undefined],
+        properties:{
+            backgroundColor:'rgb(167, 199, 220)',
+            zIndex: '-100'
+        }
+    }))
 }
 
 MasterView.prototype = Object.create(View.prototype);
