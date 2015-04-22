@@ -13664,9 +13664,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var MasterView = require('./views/MasterView.js');
 
     mainContext.add(MasterView.getRenderNode());
+
+    // test read from local disk
+    //var userService = require('./services/UserService');
+    //var profileService = require('./services/ProfileService');
+    Engine.on('keydown', function(e) {
+    });
 });
 
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_adc0451a.js","/")
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b161ad75.js","/")
 },{"./views/MasterView.js":57,"VCmEsw":43,"buffer":40,"famous-polyfills":3,"famous/core/Engine":8,"famous/transitions/SpringTransition":34,"famous/transitions/Transitionable":35}],56:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'

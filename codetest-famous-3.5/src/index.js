@@ -19,4 +19,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var MasterView = require('./views/MasterView.js');
 
     mainContext.add(MasterView.getRenderNode());
+
+    // test read from local disk
+    //var userService = require('./services/UserService');
+    //var profileService = require('./services/ProfileService');
+    Engine.on('keydown', function(e) {
+    });
 });
