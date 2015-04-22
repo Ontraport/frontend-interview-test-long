@@ -1,0 +1,48 @@
+/**
+ * This Source Code is licensed under the MIT license. If a copy of the
+ * MIT-license was not distributed with this file, You can obtain one at:
+ * http://opensource.org/licenses/mit-license.html.
+ *
+ * @author: Hein Rutjes (IjzerenHein)
+ * @license MIT
+ * @copyright Gloey Apps, 2015
+ */
+
+/* datepicker */
+.ff-datepicker.item {
+  text-align: center;
+}
+.ff-datepicker.item > div {
+  /* align content vertically */
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.ff-datepicker.top, .ff-datepicker.middle, .ff-datepicker.bottom {
+  pointer-events: none;
+}
+
+
+/* tabbar common */
+.ff-tabbar.item {
+  text-align: center;
+  white-space: nowrap;
+  color: #333333;
+}
+.ff-tabbar.item > div {
+  /* align content vertically */
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.ff-tabbar.selectedItemOverlay {
+  border-bottom: 6px solid #1185c3;
+}

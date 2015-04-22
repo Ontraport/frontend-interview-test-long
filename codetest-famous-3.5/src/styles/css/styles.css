@@ -1,0 +1,121 @@
+/*
+ * base styles 
+ * 
+ */
+
+html {
+    height: 100%;
+}
+body {
+    background: rgb(167, 199, 220);
+    /* Old browsers */
+    
+    background: -moz-linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%);
+    /* FF3.6+ */
+    
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(167, 199, 220, 1)), color-stop(100%, rgba(133, 178, 211, 1)));
+    /* Chrome,Safari4+ */
+    
+    background: -webkit-linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%);
+    /* Chrome10+,Safari5.1+ */
+    
+    background: -o-linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%);
+    /* Opera 11.10+ */
+    
+    background: -ms-linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%);
+    /* IE10+ */
+    
+    background: linear-gradient(top, rgba(167, 199, 220, 1) 0%, rgba(133, 178, 211, 1) 100%);
+    /* W3C */
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3', GradientType=0);
+    /* IE6-9 */
+    
+    font-size: 13px;
+    min-width: 800px;
+}
+br {
+    clear: left;
+}
+/*init*/
+
+input[type="button"]:focus {
+    outline: none;
+}
+input[type="text"]:focus {
+    outline: none;
+}
+/*universal*/
+
+.center-inner {
+    text-align: center;
+}
+.inline {
+    display: inline;
+}
+.container {
+    background-color: #F7F7F7;
+    padding: 3px;
+    border-radius: 6px;
+}
+/*header*/
+
+#header-bg {
+    background-color: rgba( 0, 0, 0, 0.7);
+    box-shadow: 0px 1px 5px #fff;
+    z-index: 100;
+}
+/*search in header*/
+
+input[type="text"].search-form {
+    width: 250px;
+    border: 2px solid #A2C4DA;
+    font-size: 1.2em;
+    z-index: 101;
+}
+input[type="text"].search-form:focus {
+    box-shadow: 0px 0px 8px 1px #fff;
+}
+input[type="button"].search-form {
+    width: 30px;
+    background-color: rgb(8, 178, 231);
+    padding: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #fff;
+    border: 1px solid #6FD6F7;
+    z-index: 102;
+}
+input[type="button"].search-form:hover {
+    background-color: rgb(90, 182, 231);
+}
+/*navBar in header*/
+
+input[type="button"].menu-bar {
+    display:inline;
+    color: #F7F7F7;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1.2em;
+    border-style: none;
+    float:left;
+}
+/*user profile*/
+
+.user-icon-normal {
+    width: 50px;
+    height: 50px;
+}
+.user-icon-small {
+    width: 25px;
+    height: 25px;
+}
+/*page content*/
+.testCell{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+}
+.testCell2{
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}

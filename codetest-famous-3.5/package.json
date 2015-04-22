@@ -1,0 +1,32 @@
+{
+  "name": "codetest-famous-3.5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server --startPath src --port 1337 --files *.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.6.4",
+    "browserify": "^9.0.8",
+    "famous": "^0.3.5",
+    "famous-flex": "^0.3.0",
+    "famous-polyfills": "^0.3.0",
+    "famous-sizeconstraint": "0.0.5",
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-gzip": "^1.1.0",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-minify-html": "^1.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "imagemin-jpegtran": "^4.1.0",
+    "imagemin-optipng": "^4.2.0",
+    "run-sequence": "^1.0.2"
+  }
+}
