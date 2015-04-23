@@ -21,8 +21,17 @@ document.addEventListener('DOMContentLoaded', function(e) {
     mainContext.add(MasterView.getRenderNode());
 
     // test read from local disk
-    //var userService = require('./services/UserService');
-    //var profileService = require('./services/ProfileService');
+    var userService = require('./services/UsersService');
+    var postService = require('./services/PostsService');
     Engine.on('keydown', function(e) {
+        // postService.addPost({
+        //     test: 'yay'
+        // }).then(function(data) {
+        //     console.log(data);
+        // });
+
+        postService.fetchAllPosts().then(function(data) {
+            console.log(data);
+        });
     });
 });
