@@ -22,8 +22,12 @@ function SearchForm() {
         align: [0.5, 0.5]
     });
 
+    this._marginLeftNode = new StateModifier({
+        transform: Transform.translate(50, 0, 0)
+    });
+
     this._selfRenderNode = new RenderNode();
-    this._selfRenderNode.add(this._selfMod).add(this);
+    this._selfRenderNode.add(this._selfMod).add(this._marginLeftNode).add(this);
 
     /**
      * Go button

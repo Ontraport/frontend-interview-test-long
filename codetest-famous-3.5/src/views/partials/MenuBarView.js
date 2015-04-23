@@ -28,8 +28,7 @@ function NavBarView() {
     // Model
 
     this._model = {
-        //profileIcon: model.pic
-        profilePic: 'assets/images/profile/daniel-craig.jpg'
+        pic: ''
     }
 
     /**
@@ -74,6 +73,9 @@ function NavBarView() {
         content: this._model.profilePic
     });
 
+    // set model here for now.
+    this.setModel(JSON.parse(localStorage.getItem('user')));
+
     this._userIcon.mod = new StateModifier({
         origin: [1, 0],
         align: [1, 0],
@@ -108,13 +110,13 @@ NavBarView.prototype.getRenderNode = function() {
 };
 
 NavBarView.prototype.setModel = function(model) {
-    this._model = model;
+    this._model.pic = 'assets/' + model.pic;
 
-    this._updateModel();
+    this._updateContent();
 };
 
-NavBarView.prototype._updateModel = function() {
-    this._userIcon.setContent(this._model.profilePic);
+NavBarView.prototype._updateContent = function() {
+    this._userIcon.setContent(this._model.pic);
 };
 
 

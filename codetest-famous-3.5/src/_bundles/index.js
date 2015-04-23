@@ -13451,6 +13451,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var Engine = require('famous/core/Engine'),
         Transitionable = require('famous/transitions/Transitionable'),
         SpringTransition = require('famous/transitions/SpringTransition');
+    var AppService = require('./services/AppService');
+    AppService.login(4);
+    var MasterView = require('./views/MasterView.js');
 
     Transitionable.registerMethod('spring', SpringTransition);
 
@@ -13460,74 +13463,51 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     var mainContext = Engine.createContext();
     mainContext.setPerspective(-1900);
-    var MasterView = require('./views/MasterView.js');
-    mainContext.add(MasterView.getRenderNode());
+
+    /**
+     * Add to context
+     */
+
+    mainContext.add(MasterView);
+
+    /**
+     * Login
+     */
+
+    //localStorage.clear();
 
     /**
      * Test shit
      */
 
     // Test services.
-    var AppService = require('./services/AppService');
-    var UserService = require('./services/UserService');
-    var PostService = require('./services/PostService');
-    var LocalPostService = require('./services/LocalPostService');
-    var PostModel = require('./models/PostModel');
-    var CommentModel = require('./models/CommentModel');
+    // var UserService = require('./services/UserService');
+    // var PostService = require('./services/PostService');
+    // var LocalPostService = require('./services/LocalPostService');
+    // var PostModel = require('./models/PostModel');
+    // var CommentModel = require('./models/CommentModel');
 
-    localStorage.clear();
-    AppService.login(9);
-    Engine.on('keydown', function(e) {
-        // alt+o
-        if (e.keyCode === 79 &&
-            e.altKey) {
-            AppService._online = !AppService._online;
-            console.log('Is online: ' + AppService.isOnline());
-        }
-        // l
-        if (e.keyCode === 76) {
-            LocalPostService.addPost(new PostModel(5, "content"))
-        }
-        // k
-        if (e.keyCode === 75) {
-            LocalPostService.deletePost(8);
-            LocalPostService.addComment(new CommentModel(5, 7, "comment content"));
-        }
-    });
+    // Engine.on('keydown', function(e) {
+    //     // alt+o
+    //     if (e.keyCode === 79 &&
+    //         e.altKey) {
+    //         AppService._online = !AppService._online;
+    //         console.log('Is online: ' + AppService.isOnline());
+    //     }
+    //     // l
+    //     if (e.keyCode === 76) {
+    //         LocalPostService.addPost(new PostModel(5, "content"))
+    //     }
+    //     // k
+    //     if (e.keyCode === 75) {
+    //         LocalPostService.deletePost(8);
+    //         LocalPostService.addComment(new CommentModel(5, 7, "comment content"));
+    //     }
+    // });
 });
 
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_19d54bd5.js","/")
-},{"./models/CommentModel":56,"./models/PostModel":57,"./services/AppService":59,"./services/LocalPostService":60,"./services/PostService":61,"./services/UserService":62,"./views/MasterView.js":64,"VCmEsw":45,"buffer":42,"famous-polyfills":5,"famous/core/Engine":10,"famous/transitions/SpringTransition":36,"famous/transitions/Transitionable":37}],56:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict'
-
-function CommentModel(userId, postId, content) {
-    this.id = null;
-    this.userId = userId || null;
-    this.postId = postId || null;
-    this.date = new Date().toISOString();
-    this.content = content || '';
-}
-
-module.exports = CommentModel;
-
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models\\CommentModel.js","/models")
-},{"VCmEsw":45,"buffer":42}],57:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict'
-
-function PostModel(userId, content) {
-    this.id = null;
-    this.userId = userId || null;
-    this.date = new Date().toISOString();
-    this.content = content || '';
-    this.comments = [];
-}
-
-module.exports = PostModel;
-
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models\\PostModel.js","/models")
-},{"VCmEsw":45,"buffer":42}],58:[function(require,module,exports){
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6e438821.js","/")
+},{"./services/AppService":57,"./views/MasterView.js":60,"VCmEsw":45,"buffer":42,"famous-polyfills":5,"famous/core/Engine":10,"famous/transitions/SpringTransition":36,"famous/transitions/Transitionable":37}],56:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13543,7 +13523,7 @@ function UserModel(id, info) {
 module.exports = UserModel;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models\\UserModel.js","/models")
-},{"VCmEsw":45,"buffer":42}],59:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],57:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13551,8 +13531,10 @@ var UserService = require('./UserService'),
     UserModel = require('./../models/UserModel');
 
 function AppService() {
+    this._user = null;
     this._loggedIn = false;
     this._online = false;
+    this._localStorageSupported = (localStorage !== undefined);
 
     this.login = function(userId) {
         var _this = this;
@@ -13565,7 +13547,12 @@ function AppService() {
                 about: user.about
             });
 
-            localStorage.setItem('user', JSON.stringify(user));
+            // This is just to show local storage support.
+            if (_this._localStorageSupported) {
+                localStorage.setItem('user', JSON.stringify(user));
+                _this._user = user;
+            } else
+                _this._user = user;
 
             _this._loggedIn = true;
         });
@@ -13578,139 +13565,16 @@ function AppService() {
     this.isOnline = function() {
         return this._online;
     };
+
+    this.getUser = function() {
+        return this._user;
+    };
 }
 
 module.exports = new AppService();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\AppService.js","/services")
-},{"./../models/UserModel":58,"./UserService":62,"VCmEsw":45,"buffer":42}],60:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict'
-
-var
-//Local
-    CommentModel = require('./../models/CommentModel'),
-    PostModel = require('./../models/PostModel'),
-    PostService = require('./PostService');
-
-function LocalPostService() {
-    this._savePosts = function(posts) {
-        localStorage.setItem('posts', JSON.stringify(posts));
-        console.log(localStorage.getItem('posts'));
-    };
-
-    this.fetchPosts = function() {
-        var posts = localStorage.getItem('posts');
-        return posts ? JSON.parse(posts) : [];
-    };
-
-    this.addPost = function(postModel) {
-        var _this = this;
-
-        if (postModel instanceof PostModel) {
-            PostService.getPostCount().then(function(count) {
-                var localCount = _this.getPostCount();
-                postModel.id = localCount + count + 1;
-
-                var posts = _this.fetchPosts();
-                posts.push(postModel);
-                _this._savePosts(posts);
-            });
-        }
-
-    };
-
-    this.deletePost = function(postId) {
-        var posts = this.fetchPosts();
-        for (var i = 0, n = posts.length; i < n; ++i) {
-            if (posts[i].id === postId) {
-                posts.splice(i, 1);
-                break;
-            }
-        }
-        this._savePosts(posts);
-    };
-
-    this.addComment = function(commentModel) {
-        var _this = this;
-        if (commentModel instanceof CommentModel) {
-            var posts = this.fetchPosts();
-            for (var i = 0, n = posts.length; i < n; ++i) {
-                if (posts[i].id === commentModel.postId) {
-                    // Save the comment.
-                    PostService.getCommentCount().then(function(count) {
-                        commentModel.id = _this.getCommentCount() + count + 1;
-                        posts[i].comments.push(commentModel);
-                        _this._savePosts(posts);
-                    });
-                    break;
-                }
-            }
-        }
-    };
-
-    this.getPostCount = function() {
-        return this.fetchPosts().length;
-    };
-
-    this.getCommentCount = function() {
-        var posts = this.fetchPosts();
-        var count = 0;
-        for (var i = 0, n = posts.length; i < n; ++i) {
-            count += posts[i].comments.length;
-        }
-        return count;
-    };
-}
-
-module.exports = new LocalPostService();
-
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\LocalPostService.js","/services")
-},{"./../models/CommentModel":56,"./../models/PostModel":57,"./PostService":61,"VCmEsw":45,"buffer":42}],61:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict'
-
-var http = require('chickendinosaur-http');
-
-function PostService() {
-    this.fetchPosts = function() {
-        return http.get('_data/posts.json');
-    };
-
-    this.addPost = function(postModel) {
-        throw new Error('Not implemented.');
-        console.log('addPost');
-    };
-
-    this.deletePost = function(postId) {
-        throw new Error('Not implemented.');
-    };
-
-    this.addComment = function(postId, comment) {
-        throw new Error('Not implemented.');
-    };
-
-    this.getPostCount = function() {
-        return http.get('_data/posts.json').then(function(posts) {
-            return posts.length;
-        });
-    };
-
-    this.getCommentCount = function() {
-        return http.get('_data/posts.json').then(function(posts) {
-            var count = 0;
-            for (var i = 0, n = posts.length; i < n; ++i) {
-                count += posts[i].comments.length;
-            }
-            return count;
-        });
-    };
-}
-
-module.exports = new PostService();
-
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\PostService.js","/services")
-},{"VCmEsw":45,"buffer":42,"chickendinosaur-http":2}],62:[function(require,module,exports){
+},{"./../models/UserModel":56,"./UserService":58,"VCmEsw":45,"buffer":42}],58:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13736,7 +13600,7 @@ function UserService() {
 module.exports = new UserService();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\UserService.js","/services")
-},{"VCmEsw":45,"buffer":42,"chickendinosaur-http":2}],63:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"chickendinosaur-http":2}],59:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13851,7 +13715,7 @@ HeaderView.prototype.getRenderNode = function() {
 module.exports = new HeaderView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\HeaderView.js","/views")
-},{"./partials/MenuBarView":66,"./partials/SearchForm":67,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":68,"famous-flex/LayoutController":69,"famous-flex/layouts/CollectionLayout":70,"famous-flex/layouts/NavBarLayout":72,"famous-sizeconstraint/SizeConstraint":73,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33,"famous/transitions/Easing":34}],64:[function(require,module,exports){
+},{"./partials/MenuBarView":62,"./partials/SearchForm":63,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/LayoutController":67,"famous-flex/layouts/CollectionLayout":68,"famous-flex/layouts/NavBarLayout":70,"famous-sizeconstraint/SizeConstraint":71,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33,"famous/transitions/Easing":34}],60:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13877,59 +13741,39 @@ function MasterView() {
     var _this = this;
 
     /**
-     * Self mod
-     */
-
-    this._selfMod = new Modifier({
-        size: [undefined, undefined]
-    });
-
-    this._selfRenderNode = new RenderNode();
-    this._selfRenderNode.add(this._selfMod).add(this);
-
-    /**
      * Footer
      */
 
-    this._footer = new Surface({
-        size: [undefined, true],
-        content: 'This is a footer message',
-        classes: ['center-inner']
-    });
-
-    // this._footer.modAlign = new StateModifier({
-    //     origin: [0.5, 0],
-    //     align: [0.5, 0]
+    // this._footer = new Surface({
+    //     size: [undefined, true],
+    //     content: 'This is a footer message',
+    //     classes: ['center-inner']
     // });
 
-    this._footer.modPos = new Modifier({});
+    // this._footer.mod = new Modifier({});
 
-    this._footer.renderNode = new RenderNode();
-    this._footer.renderNode.add(this._footer.modAlign).add(this._footer);
+    // this._footer.renderNode = new RenderNode();
+    // this._footer.renderNode.add(this._footer.mod).add(this._footer);
 
     /**
      * Layout
      */
 
-    var layout = new FlexibleLayout({
-        ratios: [true, true],
-        direction: 1
-    });
-    
-    layout.sequenceFrom([
-        ProfileView.getRenderNode(),
-        this._footer.renderNode
-    ])
-
-    var layoutMod = new Modifier({
-        size: [undefined, undefined]
-    });
-
     //In animation
-    layoutMod.setTransform(Transform.translate(0, window.innerHeight, 0));
-    layoutMod.setTransform(Transform.translate(0, 75, 0), {
+
+    this._contentTransitionInMod = new Modifier({
+        size: [800, undefined]
+    });
+
+    this._contentTransitionInMod.setTransform(Transform.translate(0, window.innerHeight, 0));
+    this._contentTransitionInMod.setTransform(Transform.translate(0, 75, 0), {
         duration: 2000,
         curve: Easing.outBounce
+    });
+
+    this._centerContentNode = new Modifier({
+        origin: [0.5, 0],
+        align: [0.5, 0]
     });
 
     /**
@@ -13937,11 +13781,12 @@ function MasterView() {
      */
 
     this.add(HeaderView.getRenderNode());
-    this.add(layoutMod).add(layout);
+    this.add(this._centerContentNode).add(this._contentTransitionInMod).add(ProfileView);
+    // background
     this.add(new Surface({
-        size:[undefined,undefined],
-        properties:{
-            backgroundColor:'rgb(167, 199, 220)',
+        size: [undefined, undefined],
+        properties: {
+            backgroundColor: 'rgb(167, 199, 220)',
             zIndex: '-100'
         }
     }))
@@ -13950,30 +13795,28 @@ function MasterView() {
 MasterView.prototype = Object.create(View.prototype);
 MasterView.constructor = MasterView;
 
-MasterView.prototype.getRenderNode = function() {
-    return this._selfRenderNode;
-};
-
 module.exports = new MasterView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\MasterView.js","/views")
-},{"./HeaderView":63,"./ProfileView":65,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":68,"famous-flex/layouts/ListLayout":71,"famous/core/Engine":10,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34,"famous/views/FlexibleLayout":41}],65:[function(require,module,exports){
+},{"./HeaderView":59,"./ProfileView":61,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/layouts/ListLayout":69,"famous/core/Engine":10,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34,"famous/views/FlexibleLayout":41}],61:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
 var View = require('famous/core/View');
-var Modifier = require('famous/core/Modifier');
 var StateModifier = require('famous/modifiers/StateModifier');
-var RenderNode = require('famous/core/RenderNode');
-var FlexibleLayout = require('famous/views/FlexibleLayout');
+var Modifier = require('famous/core/Modifier');
 var Transform = require('famous/core/Transform');
 var Surface = require('famous/core/Surface');
-var Engine = require('famous/core/Engine');
 var Easing = require('famous/transitions/Easing');
 var ListLayout = require('famous-flex/layouts/ListLayout'),
     FlexScrollView = require('famous-flex/FlexScrollView'),
     LayoutController = require('famous-flex/LayoutController'),
-    CollectionLayout = require('famous-flex/layouts/CollectionLayout');
+    CollectionLayout = require('famous-flex/layouts/CollectionLayout'),
+    // Local
+    AppService = require('./../services/AppService'),
+    UserInfoView = require('./partials/UserInfoView'),
+    UpdatesView = require('./partials/UpdatesView');
+
 
 function ProfileView() {
     View.call(this);
@@ -13981,58 +13824,35 @@ function ProfileView() {
     var _this = this;
 
     /**
-     * Self mod
+     * Inject models
      */
-
-    this._selfMod = new Modifier({
-    });
-
-    this._selfRenderNode = new RenderNode();
-    this._selfRenderNode.add(this._selfMod).add(this);
-
-    /**
-     * User info
-     */
-
-    this._userInfo = new Surface({
-        size: [250, 55],
-        content: [
-            '<img class="user-icon-normal" src="assets/images/profile/daniel-craig.jpg"/>',
-            'TODO: feed user model'
-        ].join(''),
-        classes: ['container']
-    })
-
-    this._userInfoMod = new StateModifier({
-        origin: [0, 0],
-        align: [0, 0]
-    });
-
-    this._userInfoRenderNode = new RenderNode();
-    this._userInfoRenderNode.add(this._userInfoMod).add(this._userInfo);
+    
+    UserInfoView.setModel(JSON.parse(localStorage.getItem('user')));
 
     /**
      * Layout
      */
+    
+    this._updatesViewNode = new StateModifier({
+        origin: [1, 0],
+        align: [1, 0]
+    });
 
     /**
      * Add to view
      */
 
-    this.add(this._userInfo);
+    this.add(UserInfoView);
+    this.add(this._updatesViewNode).add(UpdatesView);
 }
 
 ProfileView.prototype = Object.create(View.prototype);
 ProfileView.constructor = ProfileView;
 
-ProfileView.prototype.getRenderNode = function() {
-    return this._selfRenderNode;
-};
-
 module.exports = new ProfileView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\ProfileView.js","/views")
-},{"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":68,"famous-flex/LayoutController":69,"famous-flex/layouts/CollectionLayout":70,"famous-flex/layouts/ListLayout":71,"famous/core/Engine":10,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34,"famous/views/FlexibleLayout":41}],66:[function(require,module,exports){
+},{"./../services/AppService":57,"./partials/UpdatesView":64,"./partials/UserInfoView":65,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/LayoutController":67,"famous-flex/layouts/CollectionLayout":68,"famous-flex/layouts/ListLayout":69,"famous/core/Modifier":15,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34}],62:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -14064,8 +13884,7 @@ function NavBarView() {
     // Model
 
     this._model = {
-        //profileIcon: model.pic
-        profilePic: 'assets/images/profile/daniel-craig.jpg'
+        pic: ''
     }
 
     /**
@@ -14110,6 +13929,9 @@ function NavBarView() {
         content: this._model.profilePic
     });
 
+    // set model here for now.
+    this.setModel(JSON.parse(localStorage.getItem('user')));
+
     this._userIcon.mod = new StateModifier({
         origin: [1, 0],
         align: [1, 0],
@@ -14144,20 +13966,20 @@ NavBarView.prototype.getRenderNode = function() {
 };
 
 NavBarView.prototype.setModel = function(model) {
-    this._model = model;
+    this._model.pic = 'assets/' + model.pic;
 
-    this._updateModel();
+    this._updateContent();
 };
 
-NavBarView.prototype._updateModel = function() {
-    this._userIcon.setContent(this._model.profilePic);
+NavBarView.prototype._updateContent = function() {
+    this._userIcon.setContent(this._model.pic);
 };
 
 
 module.exports = new NavBarView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\MenuBarView.js","/views\\partials")
-},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33}],67:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33}],63:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -14183,8 +14005,12 @@ function SearchForm() {
         align: [0.5, 0.5]
     });
 
+    this._marginLeftNode = new StateModifier({
+        transform: Transform.translate(50, 0, 0)
+    });
+
     this._selfRenderNode = new RenderNode();
-    this._selfRenderNode.add(this._selfMod).add(this);
+    this._selfRenderNode.add(this._selfMod).add(this._marginLeftNode).add(this);
 
     /**
      * Go button
@@ -14289,7 +14115,108 @@ SearchForm.prototype.getRenderNode = function() {
 module.exports = new SearchForm();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\SearchForm.js","/views\\partials")
-},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34}],68:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34}],64:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict'
+
+var View = require('famous/core/View');
+var StateModifier = require('famous/modifiers/StateModifier');
+var RenderNode = require('famous/core/RenderNode');
+var Surface = require('famous/core/Surface');
+
+function UpdatesView() {
+    View.call(this);
+
+    /**
+     * Self mod
+     */
+
+    var selfMod = new StateModifier({});
+
+    this._selfRenderNode = new RenderNode()
+    this._selfRenderNode.add(selfMod).add(this);
+
+    /**
+     * Background
+     */
+
+    var bg = new Surface({
+        size: [535, true],
+        content: 'Updates',
+        classes: ['container']
+    });
+
+    /**
+     * Add to view
+     */
+    
+    this.add(bg);
+}
+
+UpdatesView.prototype = Object.create(View.prototype);
+UpdatesView.constructor = UpdatesView;
+
+UpdatesView.prototype.setModel = function(model) {
+    this._updateContent();
+};
+
+UpdatesView.prototype._updateContent = function() {
+};
+
+module.exports = new UpdatesView();
+
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\UpdatesView.js","/views\\partials")
+},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/View":21,"famous/modifiers/StateModifier":25}],65:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict'
+
+var View = require('famous/core/View'),
+    Surface = require('famous/core/Surface');
+
+function UserInfoView() {
+    View.call(this);
+
+    this._model = {
+        pic: '',
+        username: ''
+    };
+
+    this._userInfo = new Surface({
+        size: [250, true],
+        content: '',
+        classes: ['container']
+    });
+
+    /**
+     * Add to view
+     */
+
+    this.add(this._userInfo);
+}
+
+UserInfoView.prototype = Object.create(View.prototype);
+UserInfoView.constructor = UserInfoView;
+
+UserInfoView.prototype.setModel = function(model) {
+    this._model.pic = 'assets/' + model.pic;
+    this._model.username = model.username;
+
+    this._updateContent();
+};
+
+UserInfoView.prototype._updateContent = function() {
+    this._userInfo.setContent([
+        '<img class="user-icon-normal" src=',
+        this._model.pic,
+        ' />',
+        this._model.username
+    ].join(''));
+};
+
+module.exports = new UserInfoView();
+
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\UserInfoView.js","/views\\partials")
+},{"VCmEsw":45,"buffer":42,"famous/core/Surface":19,"famous/core/View":21}],66:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -14895,9 +14822,9 @@ module.exports = new SearchForm();
     module.exports = FlexScrollView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\FlexScrollView.js","/..\\res\\famous-flex")
-},{"./LayoutUtility":51,"./ScrollController":52,"./layouts/ListLayout":54,"VCmEsw":45,"buffer":42}],69:[function(require,module,exports){
+},{"./LayoutUtility":51,"./ScrollController":52,"./layouts/ListLayout":54,"VCmEsw":45,"buffer":42}],67:[function(require,module,exports){
 module.exports=require(48)
-},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":40,"./FlowLayoutNode":46,"./LayoutNode":49,"./LayoutNodeManager":50,"./LayoutUtility":51,"./helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],70:[function(require,module,exports){
+},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":40,"./FlowLayoutNode":46,"./LayoutNode":49,"./LayoutNodeManager":50,"./LayoutUtility":51,"./helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],68:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -15195,9 +15122,9 @@ module.exports=require(48)
     module.exports = CollectionLayout;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\layouts\\CollectionLayout.js","/..\\res\\famous-flex\\layouts")
-},{"../../../node_modules/famous/utilities/Utility":40,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],71:[function(require,module,exports){
+},{"../../../node_modules/famous/utilities/Utility":40,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],69:[function(require,module,exports){
 module.exports=require(54)
-},{"../../../node_modules/famous/utilities/Utility":40,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],72:[function(require,module,exports){
+},{"../../../node_modules/famous/utilities/Utility":40,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],70:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -15303,7 +15230,7 @@ module.exports=require(54)
     };
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\layouts\\NavBarLayout.js","/..\\res\\famous-flex\\layouts")
-},{"../helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],73:[function(require,module,exports){
+},{"../helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],71:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the

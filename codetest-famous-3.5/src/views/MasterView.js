@@ -22,59 +22,39 @@ function MasterView() {
     var _this = this;
 
     /**
-     * Self mod
-     */
-
-    this._selfMod = new Modifier({
-        size: [undefined, undefined]
-    });
-
-    this._selfRenderNode = new RenderNode();
-    this._selfRenderNode.add(this._selfMod).add(this);
-
-    /**
      * Footer
      */
 
-    this._footer = new Surface({
-        size: [undefined, true],
-        content: 'This is a footer message',
-        classes: ['center-inner']
-    });
-
-    // this._footer.modAlign = new StateModifier({
-    //     origin: [0.5, 0],
-    //     align: [0.5, 0]
+    // this._footer = new Surface({
+    //     size: [undefined, true],
+    //     content: 'This is a footer message',
+    //     classes: ['center-inner']
     // });
 
-    this._footer.modPos = new Modifier({});
+    // this._footer.mod = new Modifier({});
 
-    this._footer.renderNode = new RenderNode();
-    this._footer.renderNode.add(this._footer.modAlign).add(this._footer);
+    // this._footer.renderNode = new RenderNode();
+    // this._footer.renderNode.add(this._footer.mod).add(this._footer);
 
     /**
      * Layout
      */
 
-    var layout = new FlexibleLayout({
-        ratios: [true, true],
-        direction: 1
-    });
-    
-    layout.sequenceFrom([
-        ProfileView.getRenderNode(),
-        this._footer.renderNode
-    ])
-
-    var layoutMod = new Modifier({
-        size: [undefined, undefined]
-    });
-
     //In animation
-    layoutMod.setTransform(Transform.translate(0, window.innerHeight, 0));
-    layoutMod.setTransform(Transform.translate(0, 75, 0), {
+
+    this._contentTransitionInMod = new Modifier({
+        size: [800, undefined]
+    });
+
+    this._contentTransitionInMod.setTransform(Transform.translate(0, window.innerHeight, 0));
+    this._contentTransitionInMod.setTransform(Transform.translate(0, 75, 0), {
         duration: 2000,
         curve: Easing.outBounce
+    });
+
+    this._centerContentNode = new Modifier({
+        origin: [0.5, 0],
+        align: [0.5, 0]
     });
 
     /**
@@ -82,11 +62,12 @@ function MasterView() {
      */
 
     this.add(HeaderView.getRenderNode());
-    this.add(layoutMod).add(layout);
+    this.add(this._centerContentNode).add(this._contentTransitionInMod).add(ProfileView);
+    // background
     this.add(new Surface({
-        size:[undefined,undefined],
-        properties:{
-            backgroundColor:'rgb(167, 199, 220)',
+        size: [undefined, undefined],
+        properties: {
+            backgroundColor: 'rgb(167, 199, 220)',
             zIndex: '-100'
         }
     }))
@@ -94,9 +75,5 @@ function MasterView() {
 
 MasterView.prototype = Object.create(View.prototype);
 MasterView.constructor = MasterView;
-
-MasterView.prototype.getRenderNode = function() {
-    return this._selfRenderNode;
-};
 
 module.exports = new MasterView();

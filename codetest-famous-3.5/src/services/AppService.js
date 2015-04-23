@@ -4,8 +4,10 @@ var UserService = require('./UserService'),
     UserModel = require('./../models/UserModel');
 
 function AppService() {
+    this._user = null;
     this._loggedIn = false;
     this._online = false;
+    this._localStorageSupported = (localStorage !== undefined);
 
     this.login = function(userId) {
         var _this = this;
@@ -18,7 +20,12 @@ function AppService() {
                 about: user.about
             });
 
-            localStorage.setItem('user', JSON.stringify(user));
+            // This is just to show local storage support.
+            if (_this._localStorageSupported) {
+                localStorage.setItem('user', JSON.stringify(user));
+                _this._user = user;
+            } else
+                _this._user = user;
 
             _this._loggedIn = true;
         });
@@ -30,6 +37,10 @@ function AppService() {
 
     this.isOnline = function() {
         return this._online;
+    };
+
+    this.getUser = function() {
+        return this._user;
     };
 }
 
