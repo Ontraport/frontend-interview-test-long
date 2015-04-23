@@ -1,3 +1,5 @@
+'use strict'
+
 var http = require('chickendinosaur-http');
 
 function UserService() {
@@ -12,7 +14,7 @@ function UserService() {
                     break;
                 }
             }
-            return result;
+            return result = result || {};
         });
     };
 }

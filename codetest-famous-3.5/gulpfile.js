@@ -58,6 +58,7 @@ gulp.task('watch', function() {
     gulp.watch('src/services/**/*.*', ['build--concat']);
     gulp.watch('src/styles/**/*.*', ['build--concat']);
     gulp.watch('src/views/**/*.*', ['build--concat']);
+    gulp.watch('src/models/**/*.*', ['build--concat']);
     gulp.watch('src/*.js', ['build--concat']);
 
     browserSync({
@@ -89,12 +90,6 @@ gulp.task('build--browserify', function() {
         .pipe(browserify({
             insertGlobals: true,
             debug: false,
-            shim: {
-                box: {
-                    path: 'res/box.js/box.js',
-                    exports: 'box'
-                }
-            },
             paths: ['res'],
             transform: []
         }))
