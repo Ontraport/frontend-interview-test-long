@@ -37,7 +37,7 @@ function ProfileView() {
         }))
         .add(
             new Modifier({
-                size: [535, undefined]
+                size: [535, window.innerHeight-115]
             }))
         .add(new UpdatesView());
 

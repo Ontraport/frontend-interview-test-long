@@ -35,8 +35,8 @@ function HeaderView(model) {
     this._selfRenderNode.add(this._selfMod).add(this);
 
     // In animation
-    this._selfMod.setTransform(Transform.translate(0, -this._selfMod.getSize()[1], 0));
-    this._selfMod.setTransform(Transform.translate(0, 0, 0), {
+    this._selfMod.setTransform(Transform.translate(0, -this._selfMod.getSize()[1], 2));
+    this._selfMod.setTransform(Transform.translate(0, 0, 2), {
         duration: 2000,
         curve: Easing.outBounce
     });

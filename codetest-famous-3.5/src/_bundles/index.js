@@ -959,7 +959,7 @@
 
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\chickendinosaur-http\\node_modules\\es6-promise\\dist\\es6-promise.js","/..\\node_modules\\chickendinosaur-http\\node_modules\\es6-promise\\dist")
-},{"VCmEsw":45,"buffer":42}],2:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @author John Pittman <johnrichardpittman@gmail.com>
@@ -1079,7 +1079,7 @@
 }));
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\chickendinosaur-http\\src\\Http.js","/..\\node_modules\\chickendinosaur-http\\src")
-},{"VCmEsw":45,"buffer":42,"es6-promise":1}],3:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43,"es6-promise":1}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
 /*
@@ -1221,7 +1221,7 @@ if (objCtr.defineProperty) {
 }
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous-polyfills\\classList.js","/..\\node_modules\\famous-polyfills")
-},{"VCmEsw":45,"buffer":42}],4:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 if (!Function.prototype.bind) {
     Function.prototype.bind = function (oThis) {
@@ -1248,13 +1248,13 @@ if (!Function.prototype.bind) {
 }
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous-polyfills\\functionPrototypeBind.js","/..\\node_modules\\famous-polyfills")
-},{"VCmEsw":45,"buffer":42}],5:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 require('./classList.js');
 require('./functionPrototypeBind.js');
 require('./requestAnimationFrame.js');
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous-polyfills\\index.js","/..\\node_modules\\famous-polyfills")
-},{"./classList.js":3,"./functionPrototypeBind.js":4,"./requestAnimationFrame.js":6,"VCmEsw":45,"buffer":42}],6:[function(require,module,exports){
+},{"./classList.js":3,"./functionPrototypeBind.js":4,"./requestAnimationFrame.js":6,"VCmEsw":46,"buffer":43}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // adds requestAnimationFrame functionality
 // Source: http://strd6.com/2011/05/better-window-requestanimationframe-shim/
@@ -1271,7 +1271,7 @@ window.requestAnimationFrame || (window.requestAnimationFrame =
 });
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous-polyfills\\requestAnimationFrame.js","/..\\node_modules\\famous-polyfills")
-},{"VCmEsw":45,"buffer":42}],7:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1386,7 +1386,7 @@ Context.prototype.unpipe = function unpipe(target) {
 };
 module.exports = Context;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Context.js","/..\\node_modules\\famous\\core")
-},{"../transitions/Transitionable":37,"./ElementAllocator":8,"./EventHandler":13,"./RenderNode":17,"./Transform":20,"VCmEsw":45,"buffer":42}],8:[function(require,module,exports){
+},{"../transitions/Transitionable":38,"./ElementAllocator":8,"./EventHandler":13,"./RenderNode":17,"./Transform":20,"VCmEsw":46,"buffer":43}],8:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1441,7 +1441,7 @@ ElementAllocator.prototype.getNodeCount = function getNodeCount() {
 };
 module.exports = ElementAllocator;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\ElementAllocator.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":45,"buffer":42}],9:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1626,7 +1626,7 @@ ElementOutput.prototype.detach = function detach() {
 };
 module.exports = ElementOutput;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\ElementOutput.js","/..\\node_modules\\famous\\core")
-},{"./Entity":11,"./EventHandler":13,"./Transform":20,"VCmEsw":45,"buffer":42}],10:[function(require,module,exports){
+},{"./Entity":11,"./EventHandler":13,"./Transform":20,"VCmEsw":46,"buffer":43}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1807,7 +1807,7 @@ optionsManager.on('change', function (data) {
 });
 module.exports = Engine;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Engine.js","/..\\node_modules\\famous\\core")
-},{"./Context":7,"./EventHandler":13,"./OptionsManager":16,"VCmEsw":45,"buffer":42}],11:[function(require,module,exports){
+},{"./Context":7,"./EventHandler":13,"./OptionsManager":16,"VCmEsw":46,"buffer":43}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1838,7 +1838,7 @@ module.exports = {
     set: set
 };
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Entity.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":45,"buffer":42}],12:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1883,7 +1883,7 @@ EventEmitter.prototype.bindThis = function bindThis(owner) {
 };
 module.exports = EventEmitter;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\EventEmitter.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":45,"buffer":42}],13:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1993,7 +1993,7 @@ EventHandler.prototype.unsubscribe = function unsubscribe(source) {
 };
 module.exports = EventHandler;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\EventHandler.js","/..\\node_modules\\famous\\core")
-},{"./EventEmitter":12,"VCmEsw":45,"buffer":42}],14:[function(require,module,exports){
+},{"./EventEmitter":12,"VCmEsw":46,"buffer":43}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2066,7 +2066,7 @@ Group.prototype.commit = function commit(context) {
 };
 module.exports = Group;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Group.js","/..\\node_modules\\famous\\core")
-},{"./Context":7,"./Surface":19,"./Transform":20,"VCmEsw":45,"buffer":42}],15:[function(require,module,exports){
+},{"./Context":7,"./Surface":19,"./Transform":20,"VCmEsw":46,"buffer":43}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2321,7 +2321,7 @@ Modifier.prototype.modify = function modify(target) {
 };
 module.exports = Modifier;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Modifier.js","/..\\node_modules\\famous\\core")
-},{"../transitions/Transitionable":37,"../transitions/TransitionableTransform":38,"./Transform":20,"VCmEsw":45,"buffer":42}],16:[function(require,module,exports){
+},{"../transitions/Transitionable":38,"../transitions/TransitionableTransform":39,"./Transform":20,"VCmEsw":46,"buffer":43}],16:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2405,7 +2405,7 @@ OptionsManager.prototype.unpipe = function unpipe() {
 };
 module.exports = OptionsManager;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\OptionsManager.js","/..\\node_modules\\famous\\core")
-},{"./EventHandler":13,"VCmEsw":45,"buffer":42}],17:[function(require,module,exports){
+},{"./EventHandler":13,"VCmEsw":46,"buffer":43}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2512,7 +2512,7 @@ RenderNode.prototype.render = function render() {
 };
 module.exports = RenderNode;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\RenderNode.js","/..\\node_modules\\famous\\core")
-},{"./Entity":11,"./SpecParser":18,"VCmEsw":45,"buffer":42}],18:[function(require,module,exports){
+},{"./Entity":11,"./SpecParser":18,"VCmEsw":46,"buffer":43}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2646,7 +2646,7 @@ SpecParser.prototype._parseSpec = function _parseSpec(spec, parentContext, sizeC
 };
 module.exports = SpecParser;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\SpecParser.js","/..\\node_modules\\famous\\core")
-},{"./Transform":20,"VCmEsw":45,"buffer":42}],19:[function(require,module,exports){
+},{"./Transform":20,"VCmEsw":46,"buffer":43}],19:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2958,7 +2958,7 @@ Surface.prototype.setSize = function setSize(size) {
 };
 module.exports = Surface;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Surface.js","/..\\node_modules\\famous\\core")
-},{"./ElementOutput":9,"VCmEsw":45,"buffer":42}],20:[function(require,module,exports){
+},{"./ElementOutput":9,"VCmEsw":46,"buffer":43}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -3665,7 +3665,7 @@ Transform.behind = [
 ];
 module.exports = Transform;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Transform.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":45,"buffer":42}],21:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],21:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -3711,7 +3711,7 @@ View.prototype.getSize = function getSize() {
 };
 module.exports = View;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\View.js","/..\\node_modules\\famous\\core")
-},{"../utilities/Utility":40,"./EventHandler":13,"./OptionsManager":16,"./RenderNode":17,"VCmEsw":45,"buffer":42}],22:[function(require,module,exports){
+},{"../utilities/Utility":41,"./EventHandler":13,"./OptionsManager":16,"./RenderNode":17,"VCmEsw":46,"buffer":43}],22:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -3962,7 +3962,7 @@ ViewSequence.prototype.render = function render() {
 };
 module.exports = ViewSequence;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\ViewSequence.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":45,"buffer":42}],23:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],23:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4103,7 +4103,7 @@ ScrollSync.prototype.setOptions = function setOptions(options) {
 };
 module.exports = ScrollSync;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\inputs\\ScrollSync.js","/..\\node_modules\\famous\\inputs")
-},{"../core/Engine":10,"../core/EventHandler":13,"../core/OptionsManager":16,"VCmEsw":45,"buffer":42}],24:[function(require,module,exports){
+},{"../core/Engine":10,"../core/EventHandler":13,"../core/OptionsManager":16,"VCmEsw":46,"buffer":43}],24:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4260,7 +4260,7 @@ Vector.prototype.get1D = function () {
 };
 module.exports = Vector;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\math\\Vector.js","/..\\node_modules\\famous\\math")
-},{"VCmEsw":45,"buffer":42}],25:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4417,7 +4417,7 @@ StateModifier.prototype.modify = function modify(target) {
 };
 module.exports = StateModifier;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\modifiers\\StateModifier.js","/..\\node_modules\\famous\\modifiers")
-},{"../core/Modifier":15,"../core/Transform":20,"../transitions/Transitionable":37,"../transitions/TransitionableTransform":38,"VCmEsw":45,"buffer":42}],26:[function(require,module,exports){
+},{"../core/Modifier":15,"../core/Transform":20,"../transitions/Transitionable":38,"../transitions/TransitionableTransform":39,"VCmEsw":46,"buffer":43}],26:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4694,7 +4694,7 @@ PhysicsEngine.prototype.on = function on(event, fn) {
 };
 module.exports = PhysicsEngine;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\PhysicsEngine.js","/..\\node_modules\\famous\\physics")
-},{"../core/EventHandler":13,"VCmEsw":45,"buffer":42}],27:[function(require,module,exports){
+},{"../core/EventHandler":13,"VCmEsw":46,"buffer":43}],27:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4900,7 +4900,7 @@ Particle.prototype.unpipe = function unpipe() {
 };
 module.exports = Particle;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\bodies\\Particle.js","/..\\node_modules\\famous\\physics\\bodies")
-},{"../../core/EventHandler":13,"../../core/Transform":20,"../../math/Vector":24,"../integrators/SymplecticEuler":31,"VCmEsw":45,"buffer":42}],28:[function(require,module,exports){
+},{"../../core/EventHandler":13,"../../core/Transform":20,"../../math/Vector":24,"../integrators/SymplecticEuler":31,"VCmEsw":46,"buffer":43}],28:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4948,7 +4948,7 @@ Drag.prototype.setOptions = function setOptions(options) {
 };
 module.exports = Drag;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\forces\\Drag.js","/..\\node_modules\\famous\\physics\\forces")
-},{"./Force":29,"VCmEsw":45,"buffer":42}],29:[function(require,module,exports){
+},{"./Force":29,"VCmEsw":46,"buffer":43}],29:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4978,7 +4978,7 @@ Force.prototype.getEnergy = function getEnergy() {
 };
 module.exports = Force;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\forces\\Force.js","/..\\node_modules\\famous\\physics\\forces")
-},{"../../core/EventHandler":13,"../../math/Vector":24,"VCmEsw":45,"buffer":42}],30:[function(require,module,exports){
+},{"../../core/EventHandler":13,"../../math/Vector":24,"VCmEsw":46,"buffer":43}],30:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5111,7 +5111,7 @@ Spring.prototype.getEnergy = function getEnergy(targets, source) {
 };
 module.exports = Spring;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\forces\\Spring.js","/..\\node_modules\\famous\\physics\\forces")
-},{"../../math/Vector":24,"./Force":29,"VCmEsw":45,"buffer":42}],31:[function(require,module,exports){
+},{"../../math/Vector":24,"./Force":29,"VCmEsw":46,"buffer":43}],31:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5152,7 +5152,7 @@ SymplecticEuler.integrateOrientation = function integrateOrientation(body, dt) {
 };
 module.exports = SymplecticEuler;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\integrators\\SymplecticEuler.js","/..\\node_modules\\famous\\physics\\integrators")
-},{"VCmEsw":45,"buffer":42}],32:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],32:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5203,7 +5203,7 @@ ContainerSurface.prototype.commit = function commit(context, transform, opacity,
 };
 module.exports = ContainerSurface;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\surfaces\\ContainerSurface.js","/..\\node_modules\\famous\\surfaces")
-},{"../core/Context":7,"../core/Surface":19,"VCmEsw":45,"buffer":42}],33:[function(require,module,exports){
+},{"../core/Context":7,"../core/Surface":19,"VCmEsw":46,"buffer":43}],33:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5278,7 +5278,97 @@ ImageSurface.prototype.recall = function recall(target) {
 };
 module.exports = ImageSurface;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\surfaces\\ImageSurface.js","/..\\node_modules\\famous\\surfaces")
-},{"../core/Surface":19,"VCmEsw":45,"buffer":42}],34:[function(require,module,exports){
+},{"../core/Surface":19,"VCmEsw":46,"buffer":43}],34:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * @license MPL 2.0
+ * @copyright Famous Industries, Inc. 2015
+ */
+var Surface = require('../core/Surface');
+function TextareaSurface(options) {
+    this._placeholder = options.placeholder || '';
+    this._value = options.value || '';
+    this._name = options.name || '';
+    this._wrap = options.wrap || '';
+    this._cols = options.cols || '';
+    this._rows = options.rows || '';
+    Surface.apply(this, arguments);
+    this.on('click', this.focus.bind(this));
+}
+TextareaSurface.prototype = Object.create(Surface.prototype);
+TextareaSurface.prototype.constructor = TextareaSurface;
+TextareaSurface.prototype.elementType = 'textarea';
+TextareaSurface.prototype.elementClass = 'famous-surface';
+TextareaSurface.prototype.setPlaceholder = function setPlaceholder(str) {
+    this._placeholder = str;
+    this._contentDirty = true;
+    return this;
+};
+TextareaSurface.prototype.focus = function focus() {
+    if (this._currentTarget)
+        this._currentTarget.focus();
+    return this;
+};
+TextareaSurface.prototype.blur = function blur() {
+    if (this._currentTarget)
+        this._currentTarget.blur();
+    return this;
+};
+TextareaSurface.prototype.setValue = function setValue(str) {
+    this._value = str;
+    this._contentDirty = true;
+    return this;
+};
+TextareaSurface.prototype.getValue = function getValue() {
+    if (this._currentTarget) {
+        return this._currentTarget.value;
+    } else {
+        return this._value;
+    }
+};
+TextareaSurface.prototype.setName = function setName(str) {
+    this._name = str;
+    this._contentDirty = true;
+    return this;
+};
+TextareaSurface.prototype.getName = function getName() {
+    return this._name;
+};
+TextareaSurface.prototype.setWrap = function setWrap(str) {
+    this._wrap = str;
+    this._contentDirty = true;
+    return this;
+};
+TextareaSurface.prototype.setColumns = function setColumns(num) {
+    this._cols = num;
+    this._contentDirty = true;
+    return this;
+};
+TextareaSurface.prototype.setRows = function setRows(num) {
+    this._rows = num;
+    this._contentDirty = true;
+    return this;
+};
+TextareaSurface.prototype.deploy = function deploy(target) {
+    if (this._placeholder !== '')
+        target.placeholder = this._placeholder;
+    if (this._value !== '')
+        target.value = this._value;
+    if (this._name !== '')
+        target.name = this._name;
+    if (this._wrap !== '')
+        target.wrap = this._wrap;
+    if (this._cols !== '')
+        target.cols = this._cols;
+    if (this._rows !== '')
+        target.rows = this._rows;
+};
+module.exports = TextareaSurface;
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\surfaces\\TextAreaSurface.js","/..\\node_modules\\famous\\surfaces")
+},{"../core/Surface":19,"VCmEsw":46,"buffer":43}],35:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5447,7 +5537,7 @@ var Easing = {
 };
 module.exports = Easing;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\Easing.js","/..\\node_modules\\famous\\transitions")
-},{"VCmEsw":45,"buffer":42}],35:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],36:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5486,7 +5576,7 @@ MultipleTransition.prototype.reset = function reset(startState) {
 };
 module.exports = MultipleTransition;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\MultipleTransition.js","/..\\node_modules\\famous\\transitions")
-},{"../utilities/Utility":40,"VCmEsw":45,"buffer":42}],36:[function(require,module,exports){
+},{"../utilities/Utility":41,"VCmEsw":46,"buffer":43}],37:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5628,7 +5718,7 @@ SpringTransition.prototype.set = function set(endState, definition, callback) {
 };
 module.exports = SpringTransition;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\SpringTransition.js","/..\\node_modules\\famous\\transitions")
-},{"../math/Vector":24,"../physics/PhysicsEngine":26,"../physics/bodies/Particle":27,"../physics/forces/Spring":30,"VCmEsw":45,"buffer":42}],37:[function(require,module,exports){
+},{"../math/Vector":24,"../physics/PhysicsEngine":26,"../physics/bodies/Particle":27,"../physics/forces/Spring":30,"VCmEsw":46,"buffer":43}],38:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5766,7 +5856,7 @@ Transitionable.prototype.halt = function halt() {
 };
 module.exports = Transitionable;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\Transitionable.js","/..\\node_modules\\famous\\transitions")
-},{"./MultipleTransition":35,"./TweenTransition":39,"VCmEsw":45,"buffer":42}],38:[function(require,module,exports){
+},{"./MultipleTransition":36,"./TweenTransition":40,"VCmEsw":46,"buffer":43}],39:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5893,7 +5983,7 @@ TransitionableTransform.prototype.halt = function halt() {
 };
 module.exports = TransitionableTransform;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\TransitionableTransform.js","/..\\node_modules\\famous\\transitions")
-},{"../core/Transform":20,"../utilities/Utility":40,"./Transitionable":37,"VCmEsw":45,"buffer":42}],39:[function(require,module,exports){
+},{"../core/Transform":20,"../utilities/Utility":41,"./Transitionable":38,"VCmEsw":46,"buffer":43}],40:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -6141,7 +6231,7 @@ TweenTransition.customCurve = function customCurve(v1, v2) {
 };
 module.exports = TweenTransition;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\TweenTransition.js","/..\\node_modules\\famous\\transitions")
-},{"VCmEsw":45,"buffer":42}],40:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],41:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -6208,7 +6298,7 @@ Utility.clone = function clone(b) {
 };
 module.exports = Utility;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\utilities\\Utility.js","/..\\node_modules\\famous\\utilities")
-},{"VCmEsw":45,"buffer":42}],41:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],42:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -6363,7 +6453,7 @@ FlexibleLayout.prototype.commit = function commit(context) {
 };
 module.exports = FlexibleLayout;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\views\\FlexibleLayout.js","/..\\node_modules\\famous\\views")
-},{"../core/Entity":11,"../core/EventHandler":13,"../core/OptionsManager":16,"../core/Transform":20,"../transitions/Transitionable":37,"VCmEsw":45,"buffer":42}],42:[function(require,module,exports){
+},{"../core/Entity":11,"../core/EventHandler":13,"../core/OptionsManager":16,"../core/Transform":20,"../transitions/Transitionable":38,"VCmEsw":46,"buffer":43}],43:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
  * The buffer module from node.js, for the browser.
@@ -7476,7 +7566,7 @@ function assert (test, message) {
 }
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\index.js","/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer")
-},{"VCmEsw":45,"base64-js":43,"buffer":42,"ieee754":44}],43:[function(require,module,exports){
+},{"VCmEsw":46,"base64-js":44,"buffer":43,"ieee754":45}],44:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
@@ -7604,7 +7694,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js","/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib")
-},{"VCmEsw":45,"buffer":42}],44:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],45:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
@@ -7692,7 +7782,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js","/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754")
-},{"VCmEsw":45,"buffer":42}],45:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],46:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // shim for using process in browser
 
@@ -7759,7 +7849,7 @@ process.chdir = function (dir) {
 };
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\process\\browser.js","/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\process")
-},{"VCmEsw":45,"buffer":42}],46:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],47:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -8290,7 +8380,7 @@ process.chdir = function (dir) {
     module.exports = FlowLayoutNode;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\FlowLayoutNode.js","/..\\res\\famous-flex")
-},{"./LayoutNode":49,"VCmEsw":45,"buffer":42,"famous/core/OptionsManager":16,"famous/core/Transform":20,"famous/math/Vector":24,"famous/physics/PhysicsEngine":26,"famous/physics/bodies/Particle":27,"famous/physics/forces/Spring":30,"famous/transitions/Transitionable":37}],47:[function(require,module,exports){
+},{"./LayoutNode":50,"VCmEsw":46,"buffer":43,"famous/core/OptionsManager":16,"famous/core/Transform":20,"famous/math/Vector":24,"famous/physics/PhysicsEngine":26,"famous/physics/bodies/Particle":27,"famous/physics/forces/Spring":30,"famous/transitions/Transitionable":38}],48:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -8554,7 +8644,7 @@ process.chdir = function (dir) {
     module.exports = LayoutContext;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutContext.js","/..\\res\\famous-flex")
-},{"VCmEsw":45,"buffer":42}],48:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],49:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -9656,7 +9746,7 @@ process.chdir = function (dir) {
     module.exports = LayoutController;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutController.js","/..\\res\\famous-flex")
-},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":40,"./FlowLayoutNode":46,"./LayoutNode":49,"./LayoutNodeManager":50,"./LayoutUtility":51,"./helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],49:[function(require,module,exports){
+},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":41,"./FlowLayoutNode":47,"./LayoutNode":50,"./LayoutNodeManager":51,"./LayoutUtility":52,"./helpers/LayoutDockHelper":54,"VCmEsw":46,"buffer":43}],50:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -9850,7 +9940,7 @@ process.chdir = function (dir) {
     module.exports = LayoutNode;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutNode.js","/..\\res\\famous-flex")
-},{"./LayoutUtility":51,"VCmEsw":45,"buffer":42,"famous/core/Transform":20}],50:[function(require,module,exports){
+},{"./LayoutUtility":52,"VCmEsw":46,"buffer":43,"famous/core/Transform":20}],51:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -10604,7 +10694,7 @@ process.chdir = function (dir) {
     module.exports = LayoutNodeManager;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutNodeManager.js","/..\\res\\famous-flex")
-},{"./LayoutContext":47,"./LayoutUtility":51,"VCmEsw":45,"buffer":42}],51:[function(require,module,exports){
+},{"./LayoutContext":48,"./LayoutUtility":52,"VCmEsw":46,"buffer":43}],52:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -10895,7 +10985,7 @@ process.chdir = function (dir) {
     module.exports = LayoutUtility;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutUtility.js","/..\\res\\famous-flex")
-},{"VCmEsw":45,"buffer":42,"famous/utilities/Utility":40}],52:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43,"famous/utilities/Utility":41}],53:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -12878,7 +12968,7 @@ process.chdir = function (dir) {
     module.exports = ScrollController;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\ScrollController.js","/..\\res\\famous-flex")
-},{"./FlowLayoutNode":46,"./LayoutController":48,"./LayoutNode":49,"./LayoutNodeManager":50,"./LayoutUtility":51,"VCmEsw":45,"buffer":42,"famous/core/EventHandler":13,"famous/core/Group":14,"famous/core/Transform":20,"famous/core/ViewSequence":22,"famous/inputs/ScrollSync":23,"famous/math/Vector":24,"famous/physics/PhysicsEngine":26,"famous/physics/bodies/Particle":27,"famous/physics/forces/Drag":28,"famous/physics/forces/Spring":30,"famous/surfaces/ContainerSurface":32}],53:[function(require,module,exports){
+},{"./FlowLayoutNode":47,"./LayoutController":49,"./LayoutNode":50,"./LayoutNodeManager":51,"./LayoutUtility":52,"VCmEsw":46,"buffer":43,"famous/core/EventHandler":13,"famous/core/Group":14,"famous/core/Transform":20,"famous/core/ViewSequence":22,"famous/inputs/ScrollSync":23,"famous/math/Vector":24,"famous/physics/PhysicsEngine":26,"famous/physics/bodies/Particle":27,"famous/physics/forces/Drag":28,"famous/physics/forces/Spring":30,"famous/surfaces/ContainerSurface":32}],54:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -13145,7 +13235,7 @@ process.chdir = function (dir) {
     module.exports = LayoutDockHelper;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\helpers\\LayoutDockHelper.js","/..\\res\\famous-flex\\helpers")
-},{"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],54:[function(require,module,exports){
+},{"../LayoutUtility":52,"VCmEsw":46,"buffer":43}],55:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -13441,7 +13531,23 @@ process.chdir = function (dir) {
     module.exports = ListLayout;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\layouts\\ListLayout.js","/..\\res\\famous-flex\\layouts")
-},{"../../../node_modules/famous/utilities/Utility":40,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],55:[function(require,module,exports){
+},{"../../../node_modules/famous/utilities/Utility":41,"../LayoutUtility":52,"VCmEsw":46,"buffer":43}],56:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+var MenuBarView = require('./../views/partials/MenuBarView'),
+    SearchForm = require('./../views/partials/SearchForm'),
+    PostUpdateModalView = require('./../views/PostUpdateModalView'),
+    ProfileView = require('./../views/ProfileView');
+
+function MasterController() {
+    MenuBarView.on('profile.postUpdate',function(e) {
+    	PostUpdateModalView.open();
+    });
+}
+
+module.exports = new MasterController();
+
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/controllers\\MasterController.js","/controllers")
+},{"./../views/PostUpdateModalView":63,"./../views/ProfileView":64,"./../views/partials/MenuBarView":65,"./../views/partials/SearchForm":66,"VCmEsw":46,"buffer":43}],57:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13453,6 +13559,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         SpringTransition = require('famous/transitions/SpringTransition');
     var AppService = require('./services/AppService');
     var MasterView = require('./views/MasterView.js');
+    var PostUpdateModalView = require('./views/PostUpdateModalView');
 
     Transitionable.registerMethod('spring', SpringTransition);
 
@@ -13461,18 +13568,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 
     var mainContext = Engine.createContext();
-    mainContext.setPerspective(-1900);
+    mainContext.setPerspective(1900);
 
     /**
      * Add to context
      */
 
-    AppService.login(4);
     mainContext.add(new MasterView());
+    mainContext.add(PostUpdateModalView);
 
     /**
      * Login
      */
+    
+    AppService.login(4);
 
     //localStorage.clear();
 
@@ -13506,8 +13615,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
     // });
 });
 
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d1a08da5.js","/")
-},{"./services/AppService":57,"./views/MasterView.js":60,"VCmEsw":45,"buffer":42,"famous-polyfills":5,"famous/core/Engine":10,"famous/transitions/SpringTransition":36,"famous/transitions/Transitionable":37}],56:[function(require,module,exports){
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a4799fce.js","/")
+},{"./services/AppService":59,"./views/MasterView.js":62,"./views/PostUpdateModalView":63,"VCmEsw":46,"buffer":43,"famous-polyfills":5,"famous/core/Engine":10,"famous/transitions/SpringTransition":37,"famous/transitions/Transitionable":38}],58:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13523,7 +13632,7 @@ function UserModel(id, info) {
 module.exports = UserModel;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models\\UserModel.js","/models")
-},{"VCmEsw":45,"buffer":42}],57:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43}],59:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13577,7 +13686,7 @@ function AppService() {
 module.exports = new AppService();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\AppService.js","/services")
-},{"./../models/UserModel":56,"./UserService":58,"VCmEsw":45,"buffer":42}],58:[function(require,module,exports){
+},{"./../models/UserModel":58,"./UserService":60,"VCmEsw":46,"buffer":43}],60:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13603,7 +13712,7 @@ function UserService() {
 module.exports = new UserService();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\UserService.js","/services")
-},{"VCmEsw":45,"buffer":42,"chickendinosaur-http":2}],59:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43,"chickendinosaur-http":2}],61:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13642,8 +13751,8 @@ function HeaderView(model) {
     this._selfRenderNode.add(this._selfMod).add(this);
 
     // In animation
-    this._selfMod.setTransform(Transform.translate(0, -this._selfMod.getSize()[1], 0));
-    this._selfMod.setTransform(Transform.translate(0, 0, 0), {
+    this._selfMod.setTransform(Transform.translate(0, -this._selfMod.getSize()[1], 2));
+    this._selfMod.setTransform(Transform.translate(0, 0, 2), {
         duration: 2000,
         curve: Easing.outBounce
     });
@@ -13718,7 +13827,7 @@ HeaderView.prototype.getRenderNode = function() {
 module.exports = new HeaderView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\HeaderView.js","/views")
-},{"./partials/MenuBarView":62,"./partials/SearchForm":63,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/LayoutController":67,"famous-flex/layouts/CollectionLayout":68,"famous-flex/layouts/NavBarLayout":70,"famous-sizeconstraint/SizeConstraint":71,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33,"famous/transitions/Easing":34}],60:[function(require,module,exports){
+},{"./partials/MenuBarView":65,"./partials/SearchForm":66,"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/LayoutController":70,"famous-flex/layouts/CollectionLayout":71,"famous-flex/layouts/NavBarLayout":73,"famous-sizeconstraint/SizeConstraint":74,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33,"famous/transitions/Easing":35}],62:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13734,6 +13843,7 @@ var ListLayout = require('famous-flex/layouts/ListLayout');
 var Engine = require('famous/core/Engine');
 var Easing = require('famous/transitions/Easing');
 var FlexibleLayout = require('famous/views/FlexibleLayout');
+var MasterController = require('./../controllers//MasterController');
 
 var HeaderView = require('./HeaderView');
 var ProfileView = require('./ProfileView');
@@ -13783,6 +13893,7 @@ function MasterView() {
      * Add to view
      */
 
+this.add();
     this.add(HeaderView.getRenderNode());
     this.add(this._centerContentNode).add(this._contentTransitionInMod).add(new ProfileView());
 }
@@ -13793,7 +13904,140 @@ MasterView.constructor = MasterView;
 module.exports = MasterView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\MasterView.js","/views")
-},{"./HeaderView":59,"./ProfileView":61,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/layouts/ListLayout":69,"famous/core/Engine":10,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34,"famous/views/FlexibleLayout":41}],61:[function(require,module,exports){
+},{"./../controllers//MasterController":56,"./HeaderView":61,"./ProfileView":64,"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/layouts/ListLayout":72,"famous/core/Engine":10,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35,"famous/views/FlexibleLayout":42}],63:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict'
+
+var View = require('famous/core/View'),
+    Surface = require('famous/core/Surface'),
+    RenderNode = require('famous/core/RenderNode'),
+    Easing = require('famous/transitions/Easing'),
+    Transform = require('famous/core/Transform'),
+    TextAreaSurface = require('famous/surfaces/TextAreaSurface'),
+    ListLayout = require('famous-flex/layouts/ListLayout'),
+    FlexScrollView = require('famous-flex/FlexScrollView'),
+    StateModifier = require('famous/modifiers/StateModifier');
+
+function PostUpdateModalView() {
+    View.call(this);
+
+    var _this = this;
+
+    this._opened = false;
+
+    /**
+     * Modal
+     */
+
+    this._textArea = new TextAreaSurface({
+        size: [undefined, 150]
+    });
+
+    var footer = new RenderNode();
+
+    footer.add(new StateModifier({})).add(new Surface({
+        size: [undefined, true],
+        content: 'Press "Ctrl + Enter" to close.'
+    }));
+
+    var modal = new FlexScrollView({
+        layout: ListLayout,
+        layoutOptions: {
+            margins: [3, 3, 3, 3],
+            spacing: 5
+        },
+        useContainer: true,
+        container: {
+            classes: ['container'],
+            properties: {
+                color: 'grey',
+                backgroundColor: 'white',
+                textAlign: 'center'
+            }
+        },
+        dataSource: [
+            this._textArea,
+            footer
+        ]
+    });
+
+    /**
+     * Position node
+     */
+
+    this._positionMod = new StateModifier({
+        origin: [0.5, 0],
+        align: [0.5, 0]
+    });
+
+    /**
+     * Animation node
+     */
+
+    this._animationMod = new StateModifier({
+        size: [400, 180],
+        transform: Transform.translate(0, -400, 1)
+    });
+
+    /**
+     * Add to container
+     */
+
+    this.add(this._positionMod)
+        .add(this._animationMod)
+        .add(modal);
+
+    /**
+     * Events
+     */
+
+    window.addEventListener('keydown', function(e) {
+        if (_this._opened === true) {
+            // Ctrl + Enter
+            if (e.which === 13 &&
+                e.ctrlKey === true) {
+                _this.close();
+                _this._eventOutput.emit('close', {
+                    text: _this._textArea.getValue()
+                });
+                _this.clear();
+            }
+        }
+    });
+}
+
+PostUpdateModalView.prototype = Object.create(View.prototype);
+PostUpdateModalView.constructor = PostUpdateModalView;
+
+PostUpdateModalView.prototype.open = function() {
+    if (this._opened === false) {
+        this._animationMod.setTransform(Transform.translate(0, window.innerHeight/7.5, 1), {
+            duration: 1000,
+            curve: Easing.outBounce
+        });
+        this._opened = true;
+    }
+};
+
+PostUpdateModalView.prototype.close = function() {
+    var _this = this;
+    this._animationMod.setTransform(Transform.translate(window.innerWidth + this._animationMod.getSize()[0] / 2, window.innerHeight/7.5, 1), {
+        duration: 750,
+        curve: Easing.outCirc
+    }, function() {
+        _this._animationMod.setTransform(Transform.translate(0, -_this._animationMod.getSize()[1], 1));
+    });
+    this._opened = false;
+};
+
+PostUpdateModalView.prototype.clear = function() {
+    this._textArea._currentTarget.value='';
+};
+
+module.exports = new PostUpdateModalView();
+
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\PostUpdateModalView.js","/views")
+},{"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/layouts/ListLayout":72,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/TextAreaSurface":34,"famous/transitions/Easing":35}],64:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13834,7 +14078,7 @@ function ProfileView() {
         }))
         .add(
             new Modifier({
-                size: [535, undefined]
+                size: [535, window.innerHeight-115]
             }))
         .add(new UpdatesView());
 
@@ -13860,7 +14104,7 @@ ProfileView.constructor = ProfileView;
 module.exports = ProfileView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\ProfileView.js","/views")
-},{"./../services/AppService":57,"./partials/UpdatesView":64,"./partials/UserInfoView":65,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/LayoutController":67,"famous-flex/layouts/CollectionLayout":68,"famous-flex/layouts/ListLayout":69,"famous/core/Modifier":15,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34}],62:[function(require,module,exports){
+},{"./../services/AppService":59,"./partials/UpdatesView":67,"./partials/UserInfoView":68,"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/LayoutController":70,"famous-flex/layouts/CollectionLayout":71,"famous-flex/layouts/ListLayout":72,"famous/core/Modifier":15,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35}],65:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13957,7 +14201,7 @@ function NavBarView() {
         _this._eventOutput.emit('home');
     });
     postUpdateEl.addEventListener('click', function() {
-        _this._eventOutput.emit('post.update');
+        _this._eventOutput.emit('profile.postUpdate');
     });
 
     // Add to view
@@ -13987,7 +14231,7 @@ NavBarView.prototype._updateContent = function() {
 module.exports = new NavBarView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\MenuBarView.js","/views\\partials")
-},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33}],63:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33}],66:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -14123,7 +14367,7 @@ SearchForm.prototype.getRenderNode = function() {
 module.exports = new SearchForm();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\SearchForm.js","/views\\partials")
-},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34}],64:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35}],67:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -14141,16 +14385,6 @@ function UpdatesView() {
     View.call(this);
 
     /**
-     * Add background
-     */
-
-    this.add(new Surface({
-    	size:[undefined, undefined],
-        content: 'Updates',
-        classes: ['container']
-    }));
-
-    /**
      * Add posts list
      */
 
@@ -14158,11 +14392,17 @@ function UpdatesView() {
         layout: ListLayout,
         layoutOptions: {
             //itemSize: [true, true],
-            margins: [50, 3, 50, 3],
-            spacing: 5
+            margins: [0, 3, 0, 3],
+            spacing: 0
         },
-        overscroll: true,
+        //enabled:false,
         useContainer: true,
+        container: {
+            properties: {
+                overflow: 'hidden'
+            },
+            classes: ['container']
+        },
         autoPipeEvents: true,
         mouseMove: true,
         flow: true,
@@ -14181,14 +14421,8 @@ function UpdatesView() {
         direction: 1,
         dataSource: [
             new Surface({
-                size: [300, 50],
-                content: 'One',
-                classes: ['test-cell']
-            }),
-            new Surface({
-                size: [300, 50],
-                content: 'Two',
-                classes: ['test-cell2']
+                size: [undefined, 40],
+                content: '<span class="updates-header">Updates</span>'
             })
         ]
     });
@@ -14199,7 +14433,7 @@ function UpdatesView() {
     Engine.on('keydown', function(e) {
 
         postsList.push(new Surface({
-            size: [300, 50],
+            size: [undefined, 400],
             content: 'One',
             classes: ['test-cell']
         }));
@@ -14218,7 +14452,7 @@ UpdatesView.prototype._updateContent = function() {};
 module.exports = UpdatesView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\UpdatesView.js","/views\\partials")
-},{"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/layouts/ListLayout":69,"famous/core/Engine":10,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34}],65:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/layouts/ListLayout":72,"famous/core/Engine":10,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35}],68:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -14270,7 +14504,7 @@ UserInfoView.prototype._updateContent = function() {
 module.exports = UserInfoView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\UserInfoView.js","/views\\partials")
-},{"VCmEsw":45,"buffer":42,"famous/core/Surface":19,"famous/core/View":21}],66:[function(require,module,exports){
+},{"VCmEsw":46,"buffer":43,"famous/core/Surface":19,"famous/core/View":21}],69:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -14876,9 +15110,9 @@ module.exports = UserInfoView;
     module.exports = FlexScrollView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\FlexScrollView.js","/..\\res\\famous-flex")
-},{"./LayoutUtility":51,"./ScrollController":52,"./layouts/ListLayout":54,"VCmEsw":45,"buffer":42}],67:[function(require,module,exports){
-module.exports=require(48)
-},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":40,"./FlowLayoutNode":46,"./LayoutNode":49,"./LayoutNodeManager":50,"./LayoutUtility":51,"./helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],68:[function(require,module,exports){
+},{"./LayoutUtility":52,"./ScrollController":53,"./layouts/ListLayout":55,"VCmEsw":46,"buffer":43}],70:[function(require,module,exports){
+module.exports=require(49)
+},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":41,"./FlowLayoutNode":47,"./LayoutNode":50,"./LayoutNodeManager":51,"./LayoutUtility":52,"./helpers/LayoutDockHelper":54,"VCmEsw":46,"buffer":43}],71:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -15176,9 +15410,9 @@ module.exports=require(48)
     module.exports = CollectionLayout;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\layouts\\CollectionLayout.js","/..\\res\\famous-flex\\layouts")
-},{"../../../node_modules/famous/utilities/Utility":40,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],69:[function(require,module,exports){
-module.exports=require(54)
-},{"../../../node_modules/famous/utilities/Utility":40,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],70:[function(require,module,exports){
+},{"../../../node_modules/famous/utilities/Utility":41,"../LayoutUtility":52,"VCmEsw":46,"buffer":43}],72:[function(require,module,exports){
+module.exports=require(55)
+},{"../../../node_modules/famous/utilities/Utility":41,"../LayoutUtility":52,"VCmEsw":46,"buffer":43}],73:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -15284,7 +15518,7 @@ module.exports=require(54)
     };
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\layouts\\NavBarLayout.js","/..\\res\\famous-flex\\layouts")
-},{"../helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],71:[function(require,module,exports){
+},{"../helpers/LayoutDockHelper":54,"VCmEsw":46,"buffer":43}],74:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -15497,4 +15731,4 @@ module.exports=require(54)
     module.exports = SizeConstraint;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-sizeconstraint\\SizeConstraint.js","/..\\res\\famous-sizeconstraint")
-},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/RenderNode":17,"VCmEsw":45,"buffer":42}]},{},[55])
+},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/RenderNode":17,"VCmEsw":46,"buffer":43}]},{},[57])

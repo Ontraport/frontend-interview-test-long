@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         SpringTransition = require('famous/transitions/SpringTransition');
     var AppService = require('./services/AppService');
     var MasterView = require('./views/MasterView.js');
+    var PostUpdateModalView = require('./views/PostUpdateModalView');
 
     Transitionable.registerMethod('spring', SpringTransition);
 
@@ -16,18 +17,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
     });
 
     var mainContext = Engine.createContext();
-    mainContext.setPerspective(-1900);
+    mainContext.setPerspective(1900);
 
     /**
      * Add to context
      */
 
-    AppService.login(4);
     mainContext.add(new MasterView());
+    mainContext.add(PostUpdateModalView);
 
     /**
      * Login
      */
+    
+    AppService.login(4);
 
     //localStorage.clear();
 

@@ -14,16 +14,6 @@ function UpdatesView() {
     View.call(this);
 
     /**
-     * Add background
-     */
-
-    this.add(new Surface({
-    	size:[undefined, undefined],
-        content: 'Updates',
-        classes: ['container']
-    }));
-
-    /**
      * Add posts list
      */
 
@@ -31,11 +21,17 @@ function UpdatesView() {
         layout: ListLayout,
         layoutOptions: {
             //itemSize: [true, true],
-            margins: [50, 3, 50, 3],
-            spacing: 5
+            margins: [0, 3, 0, 3],
+            spacing: 0
         },
-        overscroll: true,
+        //enabled:false,
         useContainer: true,
+        container: {
+            properties: {
+                overflow: 'hidden'
+            },
+            classes: ['container']
+        },
         autoPipeEvents: true,
         mouseMove: true,
         flow: true,
@@ -54,14 +50,8 @@ function UpdatesView() {
         direction: 1,
         dataSource: [
             new Surface({
-                size: [300, 50],
-                content: 'One',
-                classes: ['test-cell']
-            }),
-            new Surface({
-                size: [300, 50],
-                content: 'Two',
-                classes: ['test-cell2']
+                size: [undefined, 40],
+                content: '<span class="updates-header">Updates</span>'
             })
         ]
     });
@@ -72,7 +62,7 @@ function UpdatesView() {
     Engine.on('keydown', function(e) {
 
         postsList.push(new Surface({
-            size: [300, 50],
+            size: [undefined, 400],
             content: 'One',
             classes: ['test-cell']
         }));

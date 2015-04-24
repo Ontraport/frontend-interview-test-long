@@ -93,7 +93,7 @@ function NavBarView() {
         _this._eventOutput.emit('home');
     });
     postUpdateEl.addEventListener('click', function() {
-        _this._eventOutput.emit('post.update');
+        _this._eventOutput.emit('profile.postUpdate');
     });
 
     // Add to view

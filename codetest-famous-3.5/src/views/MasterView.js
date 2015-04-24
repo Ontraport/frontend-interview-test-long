@@ -12,6 +12,7 @@ var ListLayout = require('famous-flex/layouts/ListLayout');
 var Engine = require('famous/core/Engine');
 var Easing = require('famous/transitions/Easing');
 var FlexibleLayout = require('famous/views/FlexibleLayout');
+var MasterController = require('./../controllers//MasterController');
 
 var HeaderView = require('./HeaderView');
 var ProfileView = require('./ProfileView');
@@ -61,6 +62,7 @@ function MasterView() {
      * Add to view
      */
 
+this.add();
     this.add(HeaderView.getRenderNode());
     this.add(this._centerContentNode).add(this._contentTransitionInMod).add(new ProfileView());
 }

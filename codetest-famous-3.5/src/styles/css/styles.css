@@ -45,6 +45,12 @@ input[type="button"]:focus {
 input[type="text"]:focus {
     outline: none;
 }
+input[type="text"]:focus {
+    outline: none;
+}
+textarea:focus {
+    outline: none;
+}
 /*universal*/
 
 .center-inner {
@@ -109,6 +115,12 @@ input[type="button"].menu-bar {
     height: 25px;
 }
 /*page content*/
+.updates-header{
+    font-weight: bold;
+}
+.post-update-modal{
+    z-index: 99;
+}
 .test-cell{
     background-color: blue;
 }

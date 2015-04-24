@@ -59,6 +59,7 @@ gulp.task('watch', function() {
     gulp.watch('src/styles/**/*.*', ['build--concat']);
     gulp.watch('src/views/**/*.*', ['build--concat']);
     gulp.watch('src/models/**/*.*', ['build--concat']);
+    gulp.watch('src/controllers/**/*.*', ['build--concat']);
     gulp.watch('src/*.js', ['build--concat']);
 
     browserSync({
