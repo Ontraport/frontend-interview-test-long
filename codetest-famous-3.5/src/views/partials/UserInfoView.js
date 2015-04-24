@@ -3,7 +3,7 @@
 var View = require('famous/core/View'),
     Surface = require('famous/core/Surface');
 
-function UserInfoView() {
+function UserInfoView(userModel) {
     View.call(this);
 
     this._model = {
@@ -22,6 +22,8 @@ function UserInfoView() {
      */
 
     this.add(this._userInfo);
+
+    this.setModel(userModel);
 }
 
 UserInfoView.prototype = Object.create(View.prototype);
@@ -43,4 +45,4 @@ UserInfoView.prototype._updateContent = function() {
     ].join(''));
 };
 
-module.exports = new UserInfoView();
+module.exports = UserInfoView;

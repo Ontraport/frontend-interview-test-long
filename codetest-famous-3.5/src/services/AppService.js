@@ -40,6 +40,9 @@ function AppService() {
     };
 
     this.getUser = function() {
+        if(this._loggedIn === false)
+            this.login(4);
+        
         return this._user;
     };
 }

@@ -13452,13 +13452,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
         Transitionable = require('famous/transitions/Transitionable'),
         SpringTransition = require('famous/transitions/SpringTransition');
     var AppService = require('./services/AppService');
-    AppService.login(4);
     var MasterView = require('./views/MasterView.js');
 
     Transitionable.registerMethod('spring', SpringTransition);
 
     Engine.setOptions({
-        appMode: false
+        appMode: true
     });
 
     var mainContext = Engine.createContext();
@@ -13468,7 +13467,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
      * Add to context
      */
 
-    mainContext.add(MasterView);
+    AppService.login(4);
+    mainContext.add(new MasterView());
 
     /**
      * Login
@@ -13506,7 +13506,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     // });
 });
 
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6e438821.js","/")
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d1a08da5.js","/")
 },{"./services/AppService":57,"./views/MasterView.js":60,"VCmEsw":45,"buffer":42,"famous-polyfills":5,"famous/core/Engine":10,"famous/transitions/SpringTransition":36,"famous/transitions/Transitionable":37}],56:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
@@ -13567,6 +13567,9 @@ function AppService() {
     };
 
     this.getUser = function() {
+        if(this._loggedIn === false)
+            this.login(4);
+        
         return this._user;
     };
 }
@@ -13744,11 +13747,11 @@ function MasterView() {
      * Footer
      */
 
-    // this._footer = new Surface({
-    //     size: [undefined, true],
-    //     content: 'This is a footer message',
-    //     classes: ['center-inner']
-    // });
+    this._footer = new Surface({
+        size: [undefined, true],
+        content: 'This is a footer message',
+        classes: ['center-inner']
+    });
 
     // this._footer.mod = new Modifier({});
 
@@ -13762,7 +13765,7 @@ function MasterView() {
     //In animation
 
     this._contentTransitionInMod = new Modifier({
-        size: [800, undefined]
+        size: [800, window.innerHeight - 115]
     });
 
     this._contentTransitionInMod.setTransform(Transform.translate(0, window.innerHeight, 0));
@@ -13781,21 +13784,13 @@ function MasterView() {
      */
 
     this.add(HeaderView.getRenderNode());
-    this.add(this._centerContentNode).add(this._contentTransitionInMod).add(ProfileView);
-    // background
-    this.add(new Surface({
-        size: [undefined, undefined],
-        properties: {
-            backgroundColor: 'rgb(167, 199, 220)',
-            zIndex: '-100'
-        }
-    }))
+    this.add(this._centerContentNode).add(this._contentTransitionInMod).add(new ProfileView());
 }
 
 MasterView.prototype = Object.create(View.prototype);
 MasterView.constructor = MasterView;
 
-module.exports = new MasterView();
+module.exports = MasterView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\MasterView.js","/views")
 },{"./HeaderView":59,"./ProfileView":61,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/layouts/ListLayout":69,"famous/core/Engine":10,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34,"famous/views/FlexibleLayout":41}],61:[function(require,module,exports){
@@ -13824,32 +13819,45 @@ function ProfileView() {
     var _this = this;
 
     /**
-     * Inject models
+     * Add UserInfoView
      */
-    
-    UserInfoView.setModel(JSON.parse(localStorage.getItem('user')));
+
+    this.add(new UserInfoView(JSON.parse(localStorage.getItem('user'))));
 
     /**
-     * Layout
+     * Add UpdatesView
      */
-    
-    this._updatesViewNode = new StateModifier({
-        origin: [1, 0],
-        align: [1, 0]
-    });
+
+    this.add(new StateModifier({
+            origin: [1, 0],
+            align: [1, 0]
+        }))
+        .add(
+            new Modifier({
+                size: [535, undefined]
+            }))
+        .add(new UpdatesView());
 
     /**
-     * Add to view
+     * Footer
      */
 
-    this.add(UserInfoView);
-    this.add(this._updatesViewNode).add(UpdatesView);
+    this.add(new StateModifier({
+            origin: [0.5, 0],
+            align: [0.5, 1],
+            transform: Transform.translate(0,15,0)
+        }))
+        .add(new Surface({
+            size: [400, true],
+            content: 'This is a footer message',
+            classes: ['center-inner']
+        }));
 }
 
 ProfileView.prototype = Object.create(View.prototype);
 ProfileView.constructor = ProfileView;
 
-module.exports = new ProfileView();
+module.exports = ProfileView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\ProfileView.js","/views")
 },{"./../services/AppService":57,"./partials/UpdatesView":64,"./partials/UserInfoView":65,"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/LayoutController":67,"famous-flex/layouts/CollectionLayout":68,"famous-flex/layouts/ListLayout":69,"famous/core/Modifier":15,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34}],62:[function(require,module,exports){
@@ -14120,37 +14128,82 @@ module.exports = new SearchForm();
 'use strict'
 
 var View = require('famous/core/View');
+var ViewSequence = require('famous/core/ViewSequence');
 var StateModifier = require('famous/modifiers/StateModifier');
 var RenderNode = require('famous/core/RenderNode');
 var Surface = require('famous/core/Surface');
+var Transform = require('famous/core/Transform');
+var Easing = require('famous/transitions/Easing');
+var ListLayout = require('famous-flex/layouts/ListLayout'),
+    FlexScrollView = require('famous-flex/FlexScrollView');
 
 function UpdatesView() {
     View.call(this);
 
     /**
-     * Self mod
+     * Add background
      */
 
-    var selfMod = new StateModifier({});
-
-    this._selfRenderNode = new RenderNode()
-    this._selfRenderNode.add(selfMod).add(this);
-
-    /**
-     * Background
-     */
-
-    var bg = new Surface({
-        size: [535, true],
+    this.add(new Surface({
+    	size:[undefined, undefined],
         content: 'Updates',
         classes: ['container']
-    });
+    }));
 
     /**
-     * Add to view
+     * Add posts list
      */
-    
-    this.add(bg);
+
+    var postsList = new FlexScrollView({
+        layout: ListLayout,
+        layoutOptions: {
+            //itemSize: [true, true],
+            margins: [50, 3, 50, 3],
+            spacing: 5
+        },
+        overscroll: true,
+        useContainer: true,
+        autoPipeEvents: true,
+        mouseMove: true,
+        flow: true,
+        flowOptions: {
+            spring: { // spring-options used when transitioning between states
+                dampingRatio: 0.1, // spring damping ratio
+                period: 1200 // duration of the animation
+            },
+            insertSpec: { // render-spec used when inserting renderables
+                opacity: 0, // start opacity is 0, causing a fade-in effect,
+                //size: [0, 0], // uncommented to create a grow-effect
+                transform: Transform.translate(0, 0, 0) // uncomment for slide-in effect
+            },
+            removeSpec: {} // render-spec used when removing renderables
+        },
+        direction: 1,
+        dataSource: [
+            new Surface({
+                size: [300, 50],
+                content: 'One',
+                classes: ['test-cell']
+            }),
+            new Surface({
+                size: [300, 50],
+                content: 'Two',
+                classes: ['test-cell2']
+            })
+        ]
+    });
+
+    this.add(postsList);
+
+    var Engine = require('famous/core/Engine');
+    Engine.on('keydown', function(e) {
+
+        postsList.push(new Surface({
+            size: [300, 50],
+            content: 'One',
+            classes: ['test-cell']
+        }));
+    });
 }
 
 UpdatesView.prototype = Object.create(View.prototype);
@@ -14160,20 +14213,19 @@ UpdatesView.prototype.setModel = function(model) {
     this._updateContent();
 };
 
-UpdatesView.prototype._updateContent = function() {
-};
+UpdatesView.prototype._updateContent = function() {};
 
-module.exports = new UpdatesView();
+module.exports = UpdatesView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\UpdatesView.js","/views\\partials")
-},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/View":21,"famous/modifiers/StateModifier":25}],65:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":66,"famous-flex/layouts/ListLayout":69,"famous/core/Engine":10,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":34}],65:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
 var View = require('famous/core/View'),
     Surface = require('famous/core/Surface');
 
-function UserInfoView() {
+function UserInfoView(userModel) {
     View.call(this);
 
     this._model = {
@@ -14192,6 +14244,8 @@ function UserInfoView() {
      */
 
     this.add(this._userInfo);
+
+    this.setModel(userModel);
 }
 
 UserInfoView.prototype = Object.create(View.prototype);
@@ -14213,7 +14267,7 @@ UserInfoView.prototype._updateContent = function() {
     ].join(''));
 };
 
-module.exports = new UserInfoView();
+module.exports = UserInfoView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\UserInfoView.js","/views\\partials")
 },{"VCmEsw":45,"buffer":42,"famous/core/Surface":19,"famous/core/View":21}],66:[function(require,module,exports){

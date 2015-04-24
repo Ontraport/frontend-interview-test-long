@@ -25,11 +25,11 @@ function MasterView() {
      * Footer
      */
 
-    // this._footer = new Surface({
-    //     size: [undefined, true],
-    //     content: 'This is a footer message',
-    //     classes: ['center-inner']
-    // });
+    this._footer = new Surface({
+        size: [undefined, true],
+        content: 'This is a footer message',
+        classes: ['center-inner']
+    });
 
     // this._footer.mod = new Modifier({});
 
@@ -43,7 +43,7 @@ function MasterView() {
     //In animation
 
     this._contentTransitionInMod = new Modifier({
-        size: [800, undefined]
+        size: [800, window.innerHeight - 115]
     });
 
     this._contentTransitionInMod.setTransform(Transform.translate(0, window.innerHeight, 0));
@@ -62,18 +62,10 @@ function MasterView() {
      */
 
     this.add(HeaderView.getRenderNode());
-    this.add(this._centerContentNode).add(this._contentTransitionInMod).add(ProfileView);
-    // background
-    this.add(new Surface({
-        size: [undefined, undefined],
-        properties: {
-            backgroundColor: 'rgb(167, 199, 220)',
-            zIndex: '-100'
-        }
-    }))
+    this.add(this._centerContentNode).add(this._contentTransitionInMod).add(new ProfileView());
 }
 
 MasterView.prototype = Object.create(View.prototype);
 MasterView.constructor = MasterView;
 
-module.exports = new MasterView();
+module.exports = MasterView;

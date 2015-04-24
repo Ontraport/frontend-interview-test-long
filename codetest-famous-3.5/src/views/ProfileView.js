@@ -22,29 +22,42 @@ function ProfileView() {
     var _this = this;
 
     /**
-     * Inject models
+     * Add UserInfoView
      */
-    
-    UserInfoView.setModel(JSON.parse(localStorage.getItem('user')));
+
+    this.add(new UserInfoView(JSON.parse(localStorage.getItem('user'))));
 
     /**
-     * Layout
+     * Add UpdatesView
      */
-    
-    this._updatesViewNode = new StateModifier({
-        origin: [1, 0],
-        align: [1, 0]
-    });
+
+    this.add(new StateModifier({
+            origin: [1, 0],
+            align: [1, 0]
+        }))
+        .add(
+            new Modifier({
+                size: [535, undefined]
+            }))
+        .add(new UpdatesView());
 
     /**
-     * Add to view
+     * Footer
      */
 
-    this.add(UserInfoView);
-    this.add(this._updatesViewNode).add(UpdatesView);
+    this.add(new StateModifier({
+            origin: [0.5, 0],
+            align: [0.5, 1],
+            transform: Transform.translate(0,15,0)
+        }))
+        .add(new Surface({
+            size: [400, true],
+            content: 'This is a footer message',
+            classes: ['center-inner']
+        }));
 }
 
 ProfileView.prototype = Object.create(View.prototype);
 ProfileView.constructor = ProfileView;
 
-module.exports = new ProfileView();
+module.exports = ProfileView;

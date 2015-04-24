@@ -7,13 +7,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
         Transitionable = require('famous/transitions/Transitionable'),
         SpringTransition = require('famous/transitions/SpringTransition');
     var AppService = require('./services/AppService');
-    AppService.login(4);
     var MasterView = require('./views/MasterView.js');
 
     Transitionable.registerMethod('spring', SpringTransition);
 
     Engine.setOptions({
-        appMode: false
+        appMode: true
     });
 
     var mainContext = Engine.createContext();
@@ -23,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
      * Add to context
      */
 
-    mainContext.add(MasterView);
+    AppService.login(4);
+    mainContext.add(new MasterView());
 
     /**
      * Login
