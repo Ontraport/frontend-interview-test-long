@@ -1,0 +1,69 @@
+{
+  "name": "famous-sizeconstraint",
+  "version": "0.0.5",
+  "homepage": "https://github.com/IjzerenHein/sizeconstraint",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/IjzerenHein/famous-sizeconstraint.git"
+  },
+  "author": {
+    "name": "Hein Rutjes",
+    "email": "hrutjes@gmail.com"
+  },
+  "description": "SizeConstraint makes it possible to set the scale, padding, max-size, min-size and aspect-ratio for renderables",
+  "keywords": [
+    "famo.us",
+    "famous",
+    "size",
+    "sizeConstraint",
+    "aspectratio",
+    "min",
+    "max",
+    "scale",
+    "padding"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/IjzerenHein/famous-sizeconstraint/blob/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/IjzerenHein/famous-sizeconstraint/issues"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-eslint": "latest",
+    "grunt-jscs": "latest",
+    "grunt-jsdoc-to-markdown": "latest"
+  },
+  "files": [
+    "SizeConstraint.js",
+    "LICENSE"
+  ],
+  "gitHead": "37f86f2d1e9089e725906c51cdcff8cc15408fc5",
+  "_id": "famous-sizeconstraint@0.0.5",
+  "scripts": {},
+  "_shasum": "5f40555cbc8da63b6baed4e64ce6f13fceb0f41f",
+  "_from": "famous-sizeconstraint@",
+  "_npmVersion": "1.4.16",
+  "_npmUser": {
+    "name": "ijzerenhein",
+    "email": "hrutjes@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "ijzerenhein",
+      "email": "hrutjes@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "5f40555cbc8da63b6baed4e64ce6f13fceb0f41f",
+    "tarball": "http://registry.npmjs.org/famous-sizeconstraint/-/famous-sizeconstraint-0.0.5.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/famous-sizeconstraint/-/famous-sizeconstraint-0.0.5.tgz"
+}
