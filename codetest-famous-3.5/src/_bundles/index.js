@@ -5,7 +5,7 @@
  * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
  * @license   Licensed under MIT license
  *            See https://raw.githubusercontent.com/jakearchibald/es6-promise/master/LICENSE
- * @version   2.1.0
+ * @version   2.1.1
  */
 
 (function() {
@@ -207,7 +207,7 @@
     function lib$es6$promise$$internal$$handleOwnThenable(promise, thenable) {
       if (thenable._state === lib$es6$promise$$internal$$FULFILLED) {
         lib$es6$promise$$internal$$fulfill(promise, thenable._result);
-      } else if (promise._state === lib$es6$promise$$internal$$REJECTED) {
+      } else if (thenable._state === lib$es6$promise$$internal$$REJECTED) {
         lib$es6$promise$$internal$$reject(promise, thenable._result);
       } else {
         lib$es6$promise$$internal$$subscribe(thenable, undefined, function(value) {
@@ -959,7 +959,7 @@
 
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\chickendinosaur-http\\node_modules\\es6-promise\\dist\\es6-promise.js","/..\\node_modules\\chickendinosaur-http\\node_modules\\es6-promise\\dist")
-},{"VCmEsw":46,"buffer":43}],2:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @author John Pittman <johnrichardpittman@gmail.com>
@@ -1079,7 +1079,7 @@
 }));
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\chickendinosaur-http\\src\\Http.js","/..\\node_modules\\chickendinosaur-http\\src")
-},{"VCmEsw":46,"buffer":43,"es6-promise":1}],3:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"es6-promise":1}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
 /*
@@ -1221,7 +1221,7 @@ if (objCtr.defineProperty) {
 }
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous-polyfills\\classList.js","/..\\node_modules\\famous-polyfills")
-},{"VCmEsw":46,"buffer":43}],4:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 if (!Function.prototype.bind) {
     Function.prototype.bind = function (oThis) {
@@ -1248,13 +1248,13 @@ if (!Function.prototype.bind) {
 }
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous-polyfills\\functionPrototypeBind.js","/..\\node_modules\\famous-polyfills")
-},{"VCmEsw":46,"buffer":43}],5:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 require('./classList.js');
 require('./functionPrototypeBind.js');
 require('./requestAnimationFrame.js');
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous-polyfills\\index.js","/..\\node_modules\\famous-polyfills")
-},{"./classList.js":3,"./functionPrototypeBind.js":4,"./requestAnimationFrame.js":6,"VCmEsw":46,"buffer":43}],6:[function(require,module,exports){
+},{"./classList.js":3,"./functionPrototypeBind.js":4,"./requestAnimationFrame.js":6,"VCmEsw":45,"buffer":42}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // adds requestAnimationFrame functionality
 // Source: http://strd6.com/2011/05/better-window-requestanimationframe-shim/
@@ -1271,7 +1271,7 @@ window.requestAnimationFrame || (window.requestAnimationFrame =
 });
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous-polyfills\\requestAnimationFrame.js","/..\\node_modules\\famous-polyfills")
-},{"VCmEsw":46,"buffer":43}],7:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1386,7 +1386,7 @@ Context.prototype.unpipe = function unpipe(target) {
 };
 module.exports = Context;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Context.js","/..\\node_modules\\famous\\core")
-},{"../transitions/Transitionable":38,"./ElementAllocator":8,"./EventHandler":13,"./RenderNode":17,"./Transform":20,"VCmEsw":46,"buffer":43}],8:[function(require,module,exports){
+},{"../transitions/Transitionable":38,"./ElementAllocator":8,"./EventHandler":13,"./RenderNode":17,"./Transform":20,"VCmEsw":45,"buffer":42}],8:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1441,7 +1441,7 @@ ElementAllocator.prototype.getNodeCount = function getNodeCount() {
 };
 module.exports = ElementAllocator;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\ElementAllocator.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":46,"buffer":43}],9:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1626,7 +1626,7 @@ ElementOutput.prototype.detach = function detach() {
 };
 module.exports = ElementOutput;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\ElementOutput.js","/..\\node_modules\\famous\\core")
-},{"./Entity":11,"./EventHandler":13,"./Transform":20,"VCmEsw":46,"buffer":43}],10:[function(require,module,exports){
+},{"./Entity":11,"./EventHandler":13,"./Transform":20,"VCmEsw":45,"buffer":42}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1807,7 +1807,7 @@ optionsManager.on('change', function (data) {
 });
 module.exports = Engine;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Engine.js","/..\\node_modules\\famous\\core")
-},{"./Context":7,"./EventHandler":13,"./OptionsManager":16,"VCmEsw":46,"buffer":43}],11:[function(require,module,exports){
+},{"./Context":7,"./EventHandler":13,"./OptionsManager":16,"VCmEsw":45,"buffer":42}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1838,7 +1838,7 @@ module.exports = {
     set: set
 };
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Entity.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":46,"buffer":43}],12:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1883,7 +1883,7 @@ EventEmitter.prototype.bindThis = function bindThis(owner) {
 };
 module.exports = EventEmitter;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\EventEmitter.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":46,"buffer":43}],13:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1993,7 +1993,7 @@ EventHandler.prototype.unsubscribe = function unsubscribe(source) {
 };
 module.exports = EventHandler;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\EventHandler.js","/..\\node_modules\\famous\\core")
-},{"./EventEmitter":12,"VCmEsw":46,"buffer":43}],14:[function(require,module,exports){
+},{"./EventEmitter":12,"VCmEsw":45,"buffer":42}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2066,7 +2066,7 @@ Group.prototype.commit = function commit(context) {
 };
 module.exports = Group;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Group.js","/..\\node_modules\\famous\\core")
-},{"./Context":7,"./Surface":19,"./Transform":20,"VCmEsw":46,"buffer":43}],15:[function(require,module,exports){
+},{"./Context":7,"./Surface":19,"./Transform":20,"VCmEsw":45,"buffer":42}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2321,7 +2321,7 @@ Modifier.prototype.modify = function modify(target) {
 };
 module.exports = Modifier;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Modifier.js","/..\\node_modules\\famous\\core")
-},{"../transitions/Transitionable":38,"../transitions/TransitionableTransform":39,"./Transform":20,"VCmEsw":46,"buffer":43}],16:[function(require,module,exports){
+},{"../transitions/Transitionable":38,"../transitions/TransitionableTransform":39,"./Transform":20,"VCmEsw":45,"buffer":42}],16:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2405,7 +2405,7 @@ OptionsManager.prototype.unpipe = function unpipe() {
 };
 module.exports = OptionsManager;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\OptionsManager.js","/..\\node_modules\\famous\\core")
-},{"./EventHandler":13,"VCmEsw":46,"buffer":43}],17:[function(require,module,exports){
+},{"./EventHandler":13,"VCmEsw":45,"buffer":42}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2512,7 +2512,7 @@ RenderNode.prototype.render = function render() {
 };
 module.exports = RenderNode;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\RenderNode.js","/..\\node_modules\\famous\\core")
-},{"./Entity":11,"./SpecParser":18,"VCmEsw":46,"buffer":43}],18:[function(require,module,exports){
+},{"./Entity":11,"./SpecParser":18,"VCmEsw":45,"buffer":42}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2646,7 +2646,7 @@ SpecParser.prototype._parseSpec = function _parseSpec(spec, parentContext, sizeC
 };
 module.exports = SpecParser;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\SpecParser.js","/..\\node_modules\\famous\\core")
-},{"./Transform":20,"VCmEsw":46,"buffer":43}],19:[function(require,module,exports){
+},{"./Transform":20,"VCmEsw":45,"buffer":42}],19:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -2958,7 +2958,7 @@ Surface.prototype.setSize = function setSize(size) {
 };
 module.exports = Surface;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Surface.js","/..\\node_modules\\famous\\core")
-},{"./ElementOutput":9,"VCmEsw":46,"buffer":43}],20:[function(require,module,exports){
+},{"./ElementOutput":9,"VCmEsw":45,"buffer":42}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -3665,7 +3665,7 @@ Transform.behind = [
 ];
 module.exports = Transform;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\Transform.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":46,"buffer":43}],21:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],21:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -3711,7 +3711,7 @@ View.prototype.getSize = function getSize() {
 };
 module.exports = View;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\View.js","/..\\node_modules\\famous\\core")
-},{"../utilities/Utility":41,"./EventHandler":13,"./OptionsManager":16,"./RenderNode":17,"VCmEsw":46,"buffer":43}],22:[function(require,module,exports){
+},{"../utilities/Utility":41,"./EventHandler":13,"./OptionsManager":16,"./RenderNode":17,"VCmEsw":45,"buffer":42}],22:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -3962,7 +3962,7 @@ ViewSequence.prototype.render = function render() {
 };
 module.exports = ViewSequence;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\core\\ViewSequence.js","/..\\node_modules\\famous\\core")
-},{"VCmEsw":46,"buffer":43}],23:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],23:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4103,7 +4103,7 @@ ScrollSync.prototype.setOptions = function setOptions(options) {
 };
 module.exports = ScrollSync;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\inputs\\ScrollSync.js","/..\\node_modules\\famous\\inputs")
-},{"../core/Engine":10,"../core/EventHandler":13,"../core/OptionsManager":16,"VCmEsw":46,"buffer":43}],24:[function(require,module,exports){
+},{"../core/Engine":10,"../core/EventHandler":13,"../core/OptionsManager":16,"VCmEsw":45,"buffer":42}],24:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4260,7 +4260,7 @@ Vector.prototype.get1D = function () {
 };
 module.exports = Vector;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\math\\Vector.js","/..\\node_modules\\famous\\math")
-},{"VCmEsw":46,"buffer":43}],25:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4417,7 +4417,7 @@ StateModifier.prototype.modify = function modify(target) {
 };
 module.exports = StateModifier;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\modifiers\\StateModifier.js","/..\\node_modules\\famous\\modifiers")
-},{"../core/Modifier":15,"../core/Transform":20,"../transitions/Transitionable":38,"../transitions/TransitionableTransform":39,"VCmEsw":46,"buffer":43}],26:[function(require,module,exports){
+},{"../core/Modifier":15,"../core/Transform":20,"../transitions/Transitionable":38,"../transitions/TransitionableTransform":39,"VCmEsw":45,"buffer":42}],26:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4694,7 +4694,7 @@ PhysicsEngine.prototype.on = function on(event, fn) {
 };
 module.exports = PhysicsEngine;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\PhysicsEngine.js","/..\\node_modules\\famous\\physics")
-},{"../core/EventHandler":13,"VCmEsw":46,"buffer":43}],27:[function(require,module,exports){
+},{"../core/EventHandler":13,"VCmEsw":45,"buffer":42}],27:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4900,7 +4900,7 @@ Particle.prototype.unpipe = function unpipe() {
 };
 module.exports = Particle;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\bodies\\Particle.js","/..\\node_modules\\famous\\physics\\bodies")
-},{"../../core/EventHandler":13,"../../core/Transform":20,"../../math/Vector":24,"../integrators/SymplecticEuler":31,"VCmEsw":46,"buffer":43}],28:[function(require,module,exports){
+},{"../../core/EventHandler":13,"../../core/Transform":20,"../../math/Vector":24,"../integrators/SymplecticEuler":31,"VCmEsw":45,"buffer":42}],28:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4948,7 +4948,7 @@ Drag.prototype.setOptions = function setOptions(options) {
 };
 module.exports = Drag;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\forces\\Drag.js","/..\\node_modules\\famous\\physics\\forces")
-},{"./Force":29,"VCmEsw":46,"buffer":43}],29:[function(require,module,exports){
+},{"./Force":29,"VCmEsw":45,"buffer":42}],29:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -4978,7 +4978,7 @@ Force.prototype.getEnergy = function getEnergy() {
 };
 module.exports = Force;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\forces\\Force.js","/..\\node_modules\\famous\\physics\\forces")
-},{"../../core/EventHandler":13,"../../math/Vector":24,"VCmEsw":46,"buffer":43}],30:[function(require,module,exports){
+},{"../../core/EventHandler":13,"../../math/Vector":24,"VCmEsw":45,"buffer":42}],30:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5111,7 +5111,7 @@ Spring.prototype.getEnergy = function getEnergy(targets, source) {
 };
 module.exports = Spring;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\forces\\Spring.js","/..\\node_modules\\famous\\physics\\forces")
-},{"../../math/Vector":24,"./Force":29,"VCmEsw":46,"buffer":43}],31:[function(require,module,exports){
+},{"../../math/Vector":24,"./Force":29,"VCmEsw":45,"buffer":42}],31:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5152,7 +5152,7 @@ SymplecticEuler.integrateOrientation = function integrateOrientation(body, dt) {
 };
 module.exports = SymplecticEuler;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\physics\\integrators\\SymplecticEuler.js","/..\\node_modules\\famous\\physics\\integrators")
-},{"VCmEsw":46,"buffer":43}],32:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],32:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5203,7 +5203,7 @@ ContainerSurface.prototype.commit = function commit(context, transform, opacity,
 };
 module.exports = ContainerSurface;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\surfaces\\ContainerSurface.js","/..\\node_modules\\famous\\surfaces")
-},{"../core/Context":7,"../core/Surface":19,"VCmEsw":46,"buffer":43}],33:[function(require,module,exports){
+},{"../core/Context":7,"../core/Surface":19,"VCmEsw":45,"buffer":42}],33:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5278,7 +5278,7 @@ ImageSurface.prototype.recall = function recall(target) {
 };
 module.exports = ImageSurface;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\surfaces\\ImageSurface.js","/..\\node_modules\\famous\\surfaces")
-},{"../core/Surface":19,"VCmEsw":46,"buffer":43}],34:[function(require,module,exports){
+},{"../core/Surface":19,"VCmEsw":45,"buffer":42}],34:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5368,7 +5368,7 @@ TextareaSurface.prototype.deploy = function deploy(target) {
 };
 module.exports = TextareaSurface;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\surfaces\\TextAreaSurface.js","/..\\node_modules\\famous\\surfaces")
-},{"../core/Surface":19,"VCmEsw":46,"buffer":43}],35:[function(require,module,exports){
+},{"../core/Surface":19,"VCmEsw":45,"buffer":42}],35:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5537,7 +5537,7 @@ var Easing = {
 };
 module.exports = Easing;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\Easing.js","/..\\node_modules\\famous\\transitions")
-},{"VCmEsw":46,"buffer":43}],36:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],36:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5576,7 +5576,7 @@ MultipleTransition.prototype.reset = function reset(startState) {
 };
 module.exports = MultipleTransition;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\MultipleTransition.js","/..\\node_modules\\famous\\transitions")
-},{"../utilities/Utility":41,"VCmEsw":46,"buffer":43}],37:[function(require,module,exports){
+},{"../utilities/Utility":41,"VCmEsw":45,"buffer":42}],37:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5718,7 +5718,7 @@ SpringTransition.prototype.set = function set(endState, definition, callback) {
 };
 module.exports = SpringTransition;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\SpringTransition.js","/..\\node_modules\\famous\\transitions")
-},{"../math/Vector":24,"../physics/PhysicsEngine":26,"../physics/bodies/Particle":27,"../physics/forces/Spring":30,"VCmEsw":46,"buffer":43}],38:[function(require,module,exports){
+},{"../math/Vector":24,"../physics/PhysicsEngine":26,"../physics/bodies/Particle":27,"../physics/forces/Spring":30,"VCmEsw":45,"buffer":42}],38:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5856,7 +5856,7 @@ Transitionable.prototype.halt = function halt() {
 };
 module.exports = Transitionable;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\Transitionable.js","/..\\node_modules\\famous\\transitions")
-},{"./MultipleTransition":36,"./TweenTransition":40,"VCmEsw":46,"buffer":43}],39:[function(require,module,exports){
+},{"./MultipleTransition":36,"./TweenTransition":40,"VCmEsw":45,"buffer":42}],39:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -5983,7 +5983,7 @@ TransitionableTransform.prototype.halt = function halt() {
 };
 module.exports = TransitionableTransform;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\TransitionableTransform.js","/..\\node_modules\\famous\\transitions")
-},{"../core/Transform":20,"../utilities/Utility":41,"./Transitionable":38,"VCmEsw":46,"buffer":43}],40:[function(require,module,exports){
+},{"../core/Transform":20,"../utilities/Utility":41,"./Transitionable":38,"VCmEsw":45,"buffer":42}],40:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -6231,7 +6231,7 @@ TweenTransition.customCurve = function customCurve(v1, v2) {
 };
 module.exports = TweenTransition;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\transitions\\TweenTransition.js","/..\\node_modules\\famous\\transitions")
-},{"VCmEsw":46,"buffer":43}],41:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],41:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -6298,162 +6298,7 @@ Utility.clone = function clone(b) {
 };
 module.exports = Utility;
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\utilities\\Utility.js","/..\\node_modules\\famous\\utilities")
-},{"VCmEsw":46,"buffer":43}],42:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- *
- * @license MPL 2.0
- * @copyright Famous Industries, Inc. 2015
- */
-var Entity = require('../core/Entity');
-var Transform = require('../core/Transform');
-var OptionsManager = require('../core/OptionsManager');
-var EventHandler = require('../core/EventHandler');
-var Transitionable = require('../transitions/Transitionable');
-function FlexibleLayout(options) {
-    this.options = Object.create(FlexibleLayout.DEFAULT_OPTIONS);
-    this.optionsManager = new OptionsManager(this.options);
-    if (options)
-        this.setOptions(options);
-    this.id = Entity.register(this);
-    this._ratios = new Transitionable(this.options.ratios);
-    this._nodes = [];
-    this._size = [
-        0,
-        0
-    ];
-    this._cachedDirection = null;
-    this._cachedLengths = [];
-    this._cachedTransforms = null;
-    this._ratiosDirty = false;
-    this._eventOutput = new EventHandler();
-    EventHandler.setOutputHandler(this, this._eventOutput);
-}
-FlexibleLayout.DIRECTION_X = 0;
-FlexibleLayout.DIRECTION_Y = 1;
-FlexibleLayout.DEFAULT_OPTIONS = {
-    direction: FlexibleLayout.DIRECTION_X,
-    transition: false,
-    ratios: []
-};
-function _reflow(ratios, length, direction) {
-    var currTransform;
-    var translation = 0;
-    var flexLength = length;
-    var ratioSum = 0;
-    var ratio;
-    var node;
-    var i;
-    this._cachedLengths = [];
-    this._cachedTransforms = [];
-    for (i = 0; i < ratios.length; i++) {
-        ratio = ratios[i];
-        node = this._nodes[i];
-        if (typeof ratio !== 'number')
-            flexLength -= node.getSize()[direction] || 0;
-        else
-            ratioSum += ratio;
-    }
-    for (i = 0; i < ratios.length; i++) {
-        node = this._nodes[i];
-        ratio = ratios[i];
-        length = typeof ratio === 'number' ? flexLength * ratio / ratioSum : node.getSize()[direction];
-        currTransform = direction === FlexibleLayout.DIRECTION_X ? Transform.translate(translation, 0, 0) : Transform.translate(0, translation, 0);
-        this._cachedTransforms.push(currTransform);
-        this._cachedLengths.push(length);
-        translation += length;
-    }
-}
-function _trueSizedDirty(ratios, direction) {
-    for (var i = 0; i < ratios.length; i++) {
-        if (typeof ratios[i] !== 'number') {
-            if (this._nodes[i].getSize()[direction] !== this._cachedLengths[i])
-                return true;
-        }
-    }
-    return false;
-}
-FlexibleLayout.prototype.render = function render() {
-    return this.id;
-};
-FlexibleLayout.prototype.setOptions = function setOptions(options) {
-    this.optionsManager.setOptions(options);
-};
-FlexibleLayout.prototype.sequenceFrom = function sequenceFrom(sequence) {
-    this._nodes = sequence;
-    if (this._ratios.get().length === 0) {
-        var ratios = [];
-        for (var i = 0; i < this._nodes.length; i++)
-            ratios.push(1);
-        this.setRatios(ratios);
-    }
-};
-FlexibleLayout.prototype.setRatios = function setRatios(ratios, transition, callback) {
-    if (transition === undefined)
-        transition = this.options.transition;
-    var currRatios = this._ratios;
-    if (currRatios.get().length === 0)
-        transition = undefined;
-    if (currRatios.isActive())
-        currRatios.halt();
-    currRatios.set(ratios, transition, callback);
-    this._ratiosDirty = true;
-};
-FlexibleLayout.prototype.getSize = function getSize() {
-    return this._size;
-};
-FlexibleLayout.prototype.commit = function commit(context) {
-    var parentSize = context.size;
-    var parentTransform = context.transform;
-    var parentOrigin = context.origin;
-    var parentOpacity = context.opacity;
-    var ratios = this._ratios.get();
-    var direction = this.options.direction;
-    var length = parentSize[direction];
-    var size;
-    if (length !== this._size[direction] || this._ratiosDirty || this._ratios.isActive() || direction !== this._cachedDirection || _trueSizedDirty.call(this, ratios, direction)) {
-        _reflow.call(this, ratios, length, direction);
-        if (length !== this._size[direction]) {
-            this._size[0] = parentSize[0];
-            this._size[1] = parentSize[1];
-        }
-        if (direction !== this._cachedDirection)
-            this._cachedDirection = direction;
-        if (this._ratiosDirty)
-            this._ratiosDirty = false;
-    }
-    var result = [];
-    for (var i = 0; i < ratios.length; i++) {
-        size = [
-            undefined,
-            undefined
-        ];
-        length = this._cachedLengths[i];
-        size[direction] = length;
-        result.push({
-            transform: this._cachedTransforms[i],
-            size: size,
-            target: this._nodes[i].render()
-        });
-    }
-    if (parentSize && (parentOrigin[0] !== 0 && parentOrigin[1] !== 0))
-        parentTransform = Transform.moveThen([
-            -parentSize[0] * parentOrigin[0],
-            -parentSize[1] * parentOrigin[1],
-            0
-        ], parentTransform);
-    return {
-        transform: parentTransform,
-        size: parentSize,
-        opacity: parentOpacity,
-        target: result
-    };
-};
-module.exports = FlexibleLayout;
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\famous\\views\\FlexibleLayout.js","/..\\node_modules\\famous\\views")
-},{"../core/Entity":11,"../core/EventHandler":13,"../core/OptionsManager":16,"../core/Transform":20,"../transitions/Transitionable":38,"VCmEsw":46,"buffer":43}],43:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],42:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
  * The buffer module from node.js, for the browser.
@@ -7566,7 +7411,7 @@ function assert (test, message) {
 }
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\index.js","/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer")
-},{"VCmEsw":46,"base64-js":44,"buffer":43,"ieee754":45}],44:[function(require,module,exports){
+},{"VCmEsw":45,"base64-js":43,"buffer":42,"ieee754":44}],43:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
@@ -7694,7 +7539,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js","/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib")
-},{"VCmEsw":46,"buffer":43}],45:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],44:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
@@ -7782,7 +7627,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js","/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754")
-},{"VCmEsw":46,"buffer":43}],46:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],45:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // shim for using process in browser
 
@@ -7849,7 +7694,7 @@ process.chdir = function (dir) {
 };
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\process\\browser.js","/..\\node_modules\\gulp-browserify\\node_modules\\browserify\\node_modules\\process")
-},{"VCmEsw":46,"buffer":43}],47:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],46:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -8380,7 +8225,7 @@ process.chdir = function (dir) {
     module.exports = FlowLayoutNode;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\FlowLayoutNode.js","/..\\res\\famous-flex")
-},{"./LayoutNode":50,"VCmEsw":46,"buffer":43,"famous/core/OptionsManager":16,"famous/core/Transform":20,"famous/math/Vector":24,"famous/physics/PhysicsEngine":26,"famous/physics/bodies/Particle":27,"famous/physics/forces/Spring":30,"famous/transitions/Transitionable":38}],48:[function(require,module,exports){
+},{"./LayoutNode":49,"VCmEsw":45,"buffer":42,"famous/core/OptionsManager":16,"famous/core/Transform":20,"famous/math/Vector":24,"famous/physics/PhysicsEngine":26,"famous/physics/bodies/Particle":27,"famous/physics/forces/Spring":30,"famous/transitions/Transitionable":38}],47:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -8644,7 +8489,7 @@ process.chdir = function (dir) {
     module.exports = LayoutContext;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutContext.js","/..\\res\\famous-flex")
-},{"VCmEsw":46,"buffer":43}],49:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42}],48:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -9746,7 +9591,7 @@ process.chdir = function (dir) {
     module.exports = LayoutController;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutController.js","/..\\res\\famous-flex")
-},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":41,"./FlowLayoutNode":47,"./LayoutNode":50,"./LayoutNodeManager":51,"./LayoutUtility":52,"./helpers/LayoutDockHelper":54,"VCmEsw":46,"buffer":43}],50:[function(require,module,exports){
+},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":41,"./FlowLayoutNode":46,"./LayoutNode":49,"./LayoutNodeManager":50,"./LayoutUtility":51,"./helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],49:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -9940,7 +9785,7 @@ process.chdir = function (dir) {
     module.exports = LayoutNode;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutNode.js","/..\\res\\famous-flex")
-},{"./LayoutUtility":52,"VCmEsw":46,"buffer":43,"famous/core/Transform":20}],51:[function(require,module,exports){
+},{"./LayoutUtility":51,"VCmEsw":45,"buffer":42,"famous/core/Transform":20}],50:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -10694,7 +10539,7 @@ process.chdir = function (dir) {
     module.exports = LayoutNodeManager;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutNodeManager.js","/..\\res\\famous-flex")
-},{"./LayoutContext":48,"./LayoutUtility":52,"VCmEsw":46,"buffer":43}],52:[function(require,module,exports){
+},{"./LayoutContext":47,"./LayoutUtility":51,"VCmEsw":45,"buffer":42}],51:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -10985,7 +10830,7 @@ process.chdir = function (dir) {
     module.exports = LayoutUtility;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\LayoutUtility.js","/..\\res\\famous-flex")
-},{"VCmEsw":46,"buffer":43,"famous/utilities/Utility":41}],53:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"famous/utilities/Utility":41}],52:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -11097,7 +10942,7 @@ process.chdir = function (dir) {
         options = LayoutUtility.combineOptions(ScrollController.DEFAULT_OPTIONS, options);
         var layoutManager = new LayoutNodeManager(options.flow ? FlowLayoutNode : LayoutNode, _initLayoutNode.bind(this));
         LayoutController.call(this, options, layoutManager);
-
+        
         // Scrolling
         this._scroll = {
             activeTouches: [],
@@ -11167,7 +11012,7 @@ process.chdir = function (dir) {
 
             // Create container surface, which has one child, which just returns
             // the entity-id of this scrollview. This causes the Commit function
-            // of this scrollview to be called
+            // of ethis scrollview to be called
             this.container.add({
                 render: function() {
                     return this.id;
@@ -12774,6 +12619,7 @@ process.chdir = function (dir) {
         return specs;
     }
 
+
     /**
      * Apply changes from this component to the corresponding document element.
      * This includes changes to classes, styles, size, content, opacity, origin,
@@ -12968,7 +12814,7 @@ process.chdir = function (dir) {
     module.exports = ScrollController;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\ScrollController.js","/..\\res\\famous-flex")
-},{"./FlowLayoutNode":47,"./LayoutController":49,"./LayoutNode":50,"./LayoutNodeManager":51,"./LayoutUtility":52,"VCmEsw":46,"buffer":43,"famous/core/EventHandler":13,"famous/core/Group":14,"famous/core/Transform":20,"famous/core/ViewSequence":22,"famous/inputs/ScrollSync":23,"famous/math/Vector":24,"famous/physics/PhysicsEngine":26,"famous/physics/bodies/Particle":27,"famous/physics/forces/Drag":28,"famous/physics/forces/Spring":30,"famous/surfaces/ContainerSurface":32}],54:[function(require,module,exports){
+},{"./FlowLayoutNode":46,"./LayoutController":48,"./LayoutNode":49,"./LayoutNodeManager":50,"./LayoutUtility":51,"VCmEsw":45,"buffer":42,"famous/core/EventHandler":13,"famous/core/Group":14,"famous/core/Transform":20,"famous/core/ViewSequence":22,"famous/inputs/ScrollSync":23,"famous/math/Vector":24,"famous/physics/PhysicsEngine":26,"famous/physics/bodies/Particle":27,"famous/physics/forces/Drag":28,"famous/physics/forces/Spring":30,"famous/surfaces/ContainerSurface":32}],53:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -13235,7 +13081,7 @@ process.chdir = function (dir) {
     module.exports = LayoutDockHelper;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\helpers\\LayoutDockHelper.js","/..\\res\\famous-flex\\helpers")
-},{"../LayoutUtility":52,"VCmEsw":46,"buffer":43}],55:[function(require,module,exports){
+},{"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],54:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -13531,23 +13377,47 @@ process.chdir = function (dir) {
     module.exports = ListLayout;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\layouts\\ListLayout.js","/..\\res\\famous-flex\\layouts")
-},{"../../../node_modules/famous/utilities/Utility":41,"../LayoutUtility":52,"VCmEsw":46,"buffer":43}],56:[function(require,module,exports){
+},{"../../../node_modules/famous/utilities/Utility":41,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],55:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var MenuBarView = require('./../views/partials/MenuBarView'),
     SearchForm = require('./../views/partials/SearchForm'),
     PostUpdateModalView = require('./../views/PostUpdateModalView'),
+    AppService = require('./../services/AppService'),
+    PostModel = require('./../models/PostModel'),
+    PostService = require('./../services/PostService'),
+    UpdatesView = require('./../views/partials/UpdatesView'),
     ProfileView = require('./../views/ProfileView');
 
 function MasterController() {
-    MenuBarView.on('profile.postUpdate',function(e) {
-    	PostUpdateModalView.open();
+    MenuBarView.on('profile.postUpdate', function(e) {
+        PostUpdateModalView.open();
+    });
+
+    PostUpdateModalView.on('save', function(e) {
+        if (e.text.trim().length > 0) {
+            var user = AppService.getUser();
+            // save
+            PostService.addPost(new PostModel(user.id, e.text)).then(function(postModel) {
+                // store the new post id
+                UpdatesView.addPost({
+                    id: postModel.id,
+                    username: user.username,
+                    pic: user.pic,
+                    text: e.text
+                });
+            });
+        }
+    });
+
+    SearchForm.on('submit',function(e){
+        UpdatesView.search(e.query);
     });
 }
 
 module.exports = new MasterController();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/controllers\\MasterController.js","/controllers")
-},{"./../views/PostUpdateModalView":63,"./../views/ProfileView":64,"./../views/partials/MenuBarView":65,"./../views/partials/SearchForm":66,"VCmEsw":46,"buffer":43}],57:[function(require,module,exports){
+},{"./../models/PostModel":58,"./../services/AppService":59,"./../services/PostService":61,"./../views/PostUpdateModalView":65,"./../views/ProfileView":66,"./../views/partials/MenuBarView":67,"./../views/partials/SearchForm":69,"./../views/partials/UpdatesView":70,"VCmEsw":45,"buffer":42}],56:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13555,115 +13425,122 @@ document.addEventListener('DOMContentLoaded', function(e) {
     // Vendor 
     require('famous-polyfills');
     var Engine = require('famous/core/Engine'),
+        Surface = require('famous/core/Surface'),
         Transitionable = require('famous/transitions/Transitionable'),
-        SpringTransition = require('famous/transitions/SpringTransition');
-    var AppService = require('./services/AppService');
-    var MasterView = require('./views/MasterView.js');
-    var PostUpdateModalView = require('./views/PostUpdateModalView');
+        SpringTransition = require('famous/transitions/SpringTransition'),
+        LocalPostService = require('./services/LocalPostService'),
+        AppService = require('./services/AppService'),
+        MasterView = require('./views/MasterView.js'),
+        PostUpdateModalView = require('./views/PostUpdateModalView');
 
     Transitionable.registerMethod('spring', SpringTransition);
 
     Engine.setOptions({
-        appMode: true
+        appMode: false
     });
 
     var mainContext = Engine.createContext();
+
     mainContext.setPerspective(1900);
 
-    /**
-     * Add to context
-     */
+    Engine.nextTick(function() {
+        mainContext.emit('resize', {});
+    });
 
-    mainContext.add(new MasterView());
-    mainContext.add(PostUpdateModalView);
+    // app mode off require setting background like this
+    document.getElementsByTagName('html')[0].style.backgroundColor = 'rgb(190, 210, 235)';
 
     /**
      * Login
      */
-    
-    AppService.login(4);
 
-    //localStorage.clear();
+    AppService.login(5).then(function(data) {
+        /**
+         * Add to context
+         */
+
+        mainContext.add(new MasterView());
+        mainContext.add(PostUpdateModalView);
+    });
 
     /**
-     * Test shit
+     * Hotkeys
      */
 
-    // Test services.
-    // var UserService = require('./services/UserService');
-    // var PostService = require('./services/PostService');
-    // var LocalPostService = require('./services/LocalPostService');
-    // var PostModel = require('./models/PostModel');
-    // var CommentModel = require('./models/CommentModel');
-
-    // Engine.on('keydown', function(e) {
-    //     // alt+o
-    //     if (e.keyCode === 79 &&
-    //         e.altKey) {
-    //         AppService._online = !AppService._online;
-    //         console.log('Is online: ' + AppService.isOnline());
-    //     }
-    //     // l
-    //     if (e.keyCode === 76) {
-    //         LocalPostService.addPost(new PostModel(5, "content"))
-    //     }
-    //     // k
-    //     if (e.keyCode === 75) {
-    //         LocalPostService.deletePost(8);
-    //         LocalPostService.addComment(new CommentModel(5, 7, "comment content"));
-    //     }
-    // });
+    Engine.on('keydown', function(e) {
+        // toggle the app being online or offline
+        // alt+o
+        if (e.keyCode === 79 &&
+            e.altKey) {
+            AppService._online = !AppService._online;
+            console.log('Is online: ' + AppService.isOnline());
+        }
+        // clear local storage
+        // alt+l
+        if (e.keyCode === 76 &&
+            e.altKey) {
+            LocalPostService.clear();
+            console.log('LocalPostService cleared.');
+        }
+    });
 });
 
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a4799fce.js","/")
-},{"./services/AppService":59,"./views/MasterView.js":62,"./views/PostUpdateModalView":63,"VCmEsw":46,"buffer":43,"famous-polyfills":5,"famous/core/Engine":10,"famous/transitions/SpringTransition":37,"famous/transitions/Transitionable":38}],58:[function(require,module,exports){
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1c6170a3.js","/")
+},{"./services/AppService":59,"./services/LocalPostService":60,"./views/MasterView.js":64,"./views/PostUpdateModalView":65,"VCmEsw":45,"buffer":42,"famous-polyfills":5,"famous/core/Engine":10,"famous/core/Surface":19,"famous/transitions/SpringTransition":37,"famous/transitions/Transitionable":38}],57:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
-function UserModel(id, info) {
-	info = info || {};
-
-    this.id = id || null;
-    this.username = info.username || '';
-    this.pic = info.pic || '';
-    this.about = info.about || '';
+function CommentModel(userId, postId, content) {
+    this.id = null;
+    this.userId = userId || null;
+    this.postId = postId || null;
+    this.date = new Date().toISOString();
+    this.content = content || '';
 }
 
-module.exports = UserModel;
+module.exports = CommentModel;
 
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models\\UserModel.js","/models")
-},{"VCmEsw":46,"buffer":43}],59:[function(require,module,exports){
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models\\CommentModel.js","/models")
+},{"VCmEsw":45,"buffer":42}],58:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
-var UserService = require('./UserService'),
-    UserModel = require('./../models/UserModel');
+function PostModel(userId, content) {
+    this.id = null;
+    this.userId = userId || null;
+    this.date = new Date().toISOString();
+    this.content = content || '';
+    this.comments = [];
+}
+
+module.exports = PostModel;
+
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models\\PostModel.js","/models")
+},{"VCmEsw":45,"buffer":42}],59:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict'
+
+var UserService = require('./UserService');
 
 function AppService() {
     this._user = null;
     this._loggedIn = false;
     this._online = false;
-    this._localStorageSupported = (localStorage !== undefined);
 
     this.login = function(userId) {
         var _this = this;
 
-        // Substitute for logging in.
-        UserService.fetchUserById(userId).then(function(user) {
-            var user = new UserModel(user.id, {
-                username: user.username,
-                pic: user.pic,
-                about: user.about
-            });
-
+        // // Substitute for logging in.
+        return UserService.fetchUserById(userId).then(function(user) {
             // This is just to show local storage support.
-            if (_this._localStorageSupported) {
+            if (localStorage)
                 localStorage.setItem('user', JSON.stringify(user));
-                _this._user = user;
-            } else
-                _this._user = user;
 
             _this._loggedIn = true;
+
+            _this._user = user;
+
+            return user;
         });
     };
 
@@ -13676,17 +13553,211 @@ function AppService() {
     };
 
     this.getUser = function() {
-        if(this._loggedIn === false)
-            this.login(4);
-        
-        return this._user;
+        var result;
+
+        if (localStorage) {
+            result = JSON.parse(localStorage.getItem('user'));
+        } else {
+            result = this._user;
+        }
+
+        return result;
     };
 }
 
 module.exports = new AppService();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\AppService.js","/services")
-},{"./../models/UserModel":58,"./UserService":60,"VCmEsw":46,"buffer":43}],60:[function(require,module,exports){
+},{"./UserService":62,"VCmEsw":45,"buffer":42}],60:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict'
+
+var
+//Local
+    CommentModel = require('./../models/CommentModel'),
+    PostModel = require('./../models/PostModel');
+
+function LocalPostService() {
+    this._savePosts = function(posts) {
+        localStorage.setItem('posts', JSON.stringify(posts));
+    };
+
+    this._saveComments = function(comments) {
+        localStorage.setItem('comments', JSON.stringify(comments));
+    };
+
+    this.fetchPosts = function() {
+        var posts = localStorage.posts;
+        return posts ? JSON.parse(localStorage.posts) : [];
+    };
+
+    this.fetchComments = function() {
+        var comments = localStorage.comments;
+        return comments ? JSON.parse(localStorage.comments) : [];
+    };
+
+    this.addPost = function(postModel) {
+        var _this = this;
+
+        if (postModel instanceof PostModel) {
+            var localCount = _this.getPostCount();
+            postModel.id = localCount + postModel.id + 1;
+
+            var posts = _this.fetchPosts();
+            posts.push(postModel);
+            _this._savePosts(posts);
+        }
+        return postModel;
+    };
+
+    this.deletePost = function(postId) {
+        var posts = this.fetchPosts();
+        for (var i = 0, n = posts.length; i < n; ++i) {
+            if (posts[i].id === postId) {
+                posts.splice(i, 1);
+                break;
+            }
+        }
+        this._savePosts(posts);
+    };
+
+    this.addComment = function(commentModel) {
+        var _this = this;
+        if (commentModel instanceof CommentModel) {
+            var posts = this.fetchPosts();
+            var found = false;
+            // set id
+            commentModel.id = _this.getCommentCount() + commentModel.id + 1;
+            // add to local storage post if new post
+            for (var i = 0, n = posts.length; i < n; ++i) {
+                if (posts[i].id === commentModel.postId) {
+                    found = true;
+                    // Save the comment.
+                    posts[i].comments.push(commentModel);
+                    _this._savePosts(posts);
+                    break;
+                }
+            }
+            // else store in separate comments storage to append to database when online
+            if (!found) {
+                var comments = this.fetchComments();
+                comments.push(commentModel);
+                this._saveComments(comments);
+            }
+        }
+        return commentModel;
+    };
+
+    this.clear = function() {
+        localStorage.removeItem('posts');
+        localStorage.removeItem('comments');
+    };
+
+    this.getPostCount = function() {
+        return this.fetchPosts().length;
+    };
+
+    this.getCommentCount = function() {
+        var posts = this.fetchPosts();
+        var count = 0;
+        for (var i = 0, n = posts.length; i < n; ++i) {
+            count += posts[i].comments.length;
+        }
+        return count;
+    };
+}
+
+module.exports = new LocalPostService();
+
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\LocalPostService.js","/services")
+},{"./../models/CommentModel":57,"./../models/PostModel":58,"VCmEsw":45,"buffer":42}],61:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict'
+
+var Http = require('chickendinosaur-http'),
+    AppService = require('./AppService'),
+    LocalPostService = require('./LocalPostService');
+
+function PostService() {
+    this.fetchPosts = function() {
+        return Http.get('assets/data/posts.json').then(function(posts) {
+            var allPosts = posts;
+            var localPosts = LocalPostService.fetchPosts();
+            var localComments = LocalPostService.fetchComments();
+
+            // add localstorage comments
+            for (var i = 0, n = allPosts.length; i < n; ++i) {
+                for (var j = 0, nn = localComments.length; j < nn; ++j) {
+                    if (allPosts[i].id === localComments[j].postId) {
+                        allPosts[i].comments.push(localComments[j]);
+                    }
+                }
+            }
+
+            // concat localstorage posts
+            for (i = 0, n = localPosts.length; i < n; ++i) {
+                allPosts.push(localPosts[i]);
+            }
+
+            return allPosts;
+        });
+    };
+
+    this.addPost = function(postModel) {
+        var result;
+        if (AppService.isOnline() === true)
+            throw new Error('Not implemented.');
+        else {
+            result = this.getPostCount().then(function(count) {
+                postModel.id = count;
+                return LocalPostService.addPost(postModel);
+            });
+        }
+        return result;
+    };
+
+    this.deletePost = function(postId) {
+        if (AppService.isOnline() === true)
+            throw new Error('Not implemented.');
+        else {
+            LocalPostService.deletePost(postId);
+        }
+    };
+
+    this.addComment = function(commentModel) {
+        var result;
+        if (AppService.isOnline() === true)
+            throw new Error('Not implemented.');
+        else {
+            result = this.getCommentCount().then(function(count) {
+                commentModel.id = count;
+                return LocalPostService.addComment(commentModel);
+            });
+        }
+        return result;
+    };
+
+    this.getPostCount = function() {
+        return Http.get('assets/data/posts.json').then(function(posts) {
+            return posts.length;
+        });
+    };
+
+    this.getCommentCount = function() {
+        return Http.get('assets/data/posts.json').then(function(posts) {
+            var count = 0;
+            for (var i = 0, n = posts.length; i < n; ++i) {
+                count += posts[i].comments.length;
+            }
+            return count;
+        });
+    };
+}
+
+module.exports = new PostService();
+
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\PostService.js","/services")
+},{"./AppService":59,"./LocalPostService":60,"VCmEsw":45,"buffer":42,"chickendinosaur-http":2}],62:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13695,7 +13766,7 @@ var http = require('chickendinosaur-http');
 function UserService() {
     this.fetchUserById = function(id) {
         // return a promise with user data
-        return http.get('_data/users.json').then(function(data) {
+        return http.get('assets/data/users.json').then(function(data) {
             var result;
             for (var i = 0, n = data.length; i < n; ++i) {
                 var user = data[i];
@@ -13707,12 +13778,16 @@ function UserService() {
             return result = result || {};
         });
     };
+    this.fetchUsers = function() {
+        // return a promise with user data
+        return http.get('assets/data/users.json');
+    };
 }
 
 module.exports = new UserService();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\UserService.js","/services")
-},{"VCmEsw":46,"buffer":43,"chickendinosaur-http":2}],61:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"chickendinosaur-http":2}],63:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13725,11 +13800,8 @@ var View = require('famous/core/View'),
     RenderNode = require('famous/core/RenderNode'),
     Transform = require('famous/core/Transform'),
     Easing = require('famous/transitions/Easing'),
-    FlexScrollView = require('famous-flex/FlexScrollView'),
     LayoutController = require('famous-flex/LayoutController'),
-    SizeConstraint = require('famous-sizeconstraint/SizeConstraint'),
     NavBarLayout = require('famous-flex/layouts/NavBarLayout'),
-    CollectionLayout = require('famous-flex/layouts/CollectionLayout'),
     // Local
     MenuBarView = require('./partials/MenuBarView'),
     SearchForm = require('./partials/SearchForm');
@@ -13765,6 +13837,9 @@ function HeaderView(model) {
         size: [undefined, undefined],
         attributes: {
             id: 'header-bg'
+        },
+        properties:{
+            position: 'fixed'
         }
     });
 
@@ -13813,7 +13888,6 @@ function HeaderView(model) {
      * Add to view
      */
 
-    // this.add(bgRenderNode);
     this.add(this._layout);
 }
 
@@ -13827,22 +13901,15 @@ HeaderView.prototype.getRenderNode = function() {
 module.exports = new HeaderView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\HeaderView.js","/views")
-},{"./partials/MenuBarView":65,"./partials/SearchForm":66,"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/LayoutController":70,"famous-flex/layouts/CollectionLayout":71,"famous-flex/layouts/NavBarLayout":73,"famous-sizeconstraint/SizeConstraint":74,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33,"famous/transitions/Easing":35}],62:[function(require,module,exports){
+},{"./partials/MenuBarView":67,"./partials/SearchForm":69,"VCmEsw":45,"buffer":42,"famous-flex/LayoutController":73,"famous-flex/layouts/NavBarLayout":75,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33,"famous/transitions/Easing":35}],64:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
 var View = require('famous/core/View');
-var RenderNode = require('famous/core/RenderNode');
-var Modifier = require('famous/core/Modifier');
-var ViewSequence = require('famous/core/ViewSequence');
+var Surface = require('famous/core/Surface');
 var StateModifier = require('famous/modifiers/StateModifier');
 var Transform = require('famous/core/Transform');
-var Surface = require('famous/core/Surface');
-var FlexScrollView = require('famous-flex/FlexScrollView');
-var ListLayout = require('famous-flex/layouts/ListLayout');
-var Engine = require('famous/core/Engine');
 var Easing = require('famous/transitions/Easing');
-var FlexibleLayout = require('famous/views/FlexibleLayout');
 var MasterController = require('./../controllers//MasterController');
 
 var HeaderView = require('./HeaderView');
@@ -13854,28 +13921,12 @@ function MasterView() {
     var _this = this;
 
     /**
-     * Footer
-     */
-
-    this._footer = new Surface({
-        size: [undefined, true],
-        content: 'This is a footer message',
-        classes: ['center-inner']
-    });
-
-    // this._footer.mod = new Modifier({});
-
-    // this._footer.renderNode = new RenderNode();
-    // this._footer.renderNode.add(this._footer.mod).add(this._footer);
-
-    /**
      * Layout
      */
 
     //In animation
 
-    this._contentTransitionInMod = new Modifier({
-        size: [800, window.innerHeight - 115]
+    this._contentTransitionInMod = new StateModifier({
     });
 
     this._contentTransitionInMod.setTransform(Transform.translate(0, window.innerHeight, 0));
@@ -13884,18 +13935,20 @@ function MasterView() {
         curve: Easing.outBounce
     });
 
-    this._centerContentNode = new Modifier({
-        origin: [0.5, 0],
-        align: [0.5, 0]
-    });
-
     /**
      * Add to view
      */
 
-this.add();
     this.add(HeaderView.getRenderNode());
-    this.add(this._centerContentNode).add(this._contentTransitionInMod).add(new ProfileView());
+    this.add(this._contentTransitionInMod).add(ProfileView);
+    // ghetto bandaid background color for the body
+    this.add(new Surface({
+        size: [undefined, undefined],
+        properties:{
+            backgroundColor: 'rgb(167, 199, 220)'
+        },
+        classes:['behind']
+    }));
 }
 
 MasterView.prototype = Object.create(View.prototype);
@@ -13904,7 +13957,7 @@ MasterView.constructor = MasterView;
 module.exports = MasterView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\MasterView.js","/views")
-},{"./../controllers//MasterController":56,"./HeaderView":61,"./ProfileView":64,"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/layouts/ListLayout":72,"famous/core/Engine":10,"famous/core/Modifier":15,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35,"famous/views/FlexibleLayout":42}],63:[function(require,module,exports){
+},{"./../controllers//MasterController":55,"./HeaderView":63,"./ProfileView":66,"VCmEsw":45,"buffer":42,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35}],65:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -13937,7 +13990,7 @@ function PostUpdateModalView() {
 
     footer.add(new StateModifier({})).add(new Surface({
         size: [undefined, true],
-        content: 'Press "Ctrl + Enter" to close.'
+        content: 'Press \'Enter\' to save.'
     }));
 
     var modal = new FlexScrollView({
@@ -13946,12 +13999,12 @@ function PostUpdateModalView() {
             margins: [3, 3, 3, 3],
             spacing: 5
         },
+        enabled: false,
         useContainer: true,
         container: {
             classes: ['container'],
             properties: {
                 color: 'grey',
-                backgroundColor: 'white',
                 textAlign: 'center'
             }
         },
@@ -13988,20 +14041,15 @@ function PostUpdateModalView() {
         .add(modal);
 
     /**
-     * Events
+     *
      */
 
-    window.addEventListener('keydown', function(e) {
-        if (_this._opened === true) {
-            // Ctrl + Enter
-            if (e.which === 13 &&
-                e.ctrlKey === true) {
-                _this.close();
-                _this._eventOutput.emit('close', {
-                    text: _this._textArea.getValue()
-                });
-                _this.clear();
-            }
+    this._textArea.on('keydown', function(e) {
+        // Enter
+        if (e.which === 13) {
+            _this.save();
+            _this.close();
+            e.preventDefault();
         }
     });
 }
@@ -14010,47 +14058,60 @@ PostUpdateModalView.prototype = Object.create(View.prototype);
 PostUpdateModalView.constructor = PostUpdateModalView;
 
 PostUpdateModalView.prototype.open = function() {
+    var _this = this;
     if (this._opened === false) {
-        this._animationMod.setTransform(Transform.translate(0, window.innerHeight/7.5, 1), {
+        this._textArea.focus();
+        this._animationMod.setTransform(Transform.translate(0, window.innerHeight * 0.5 - this._animationMod.getSize()[1] / 2, 1), {
             duration: 1000,
             curve: Easing.outBounce
         });
-        this._opened = true;
+        _this._opened = true;
     }
 };
 
 PostUpdateModalView.prototype.close = function() {
     var _this = this;
-    this._animationMod.setTransform(Transform.translate(window.innerWidth + this._animationMod.getSize()[0] / 2, window.innerHeight/7.5, 1), {
-        duration: 750,
-        curve: Easing.outCirc
-    }, function() {
-        _this._animationMod.setTransform(Transform.translate(0, -_this._animationMod.getSize()[1], 1));
-    });
-    this._opened = false;
+    if (this._opened === true) {
+        var body = document.body,
+            html = document.documentElement;
+
+        var height = Math.max(body.scrollHeight, body.offsetHeight,
+            html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+        this._animationMod.setTransform(Transform.translate(0, height, 1), {
+            duration: 1000,
+            curve: Easing.outBounce
+        }, function() {
+            _this._animationMod.setTransform(Transform.translate(0, -_this._animationMod.getSize()[1], 1));
+            _this._opened = false;
+        });
+        _this._eventOutput.emit('close');
+    }
 };
 
+PostUpdateModalView.prototype.save = function() {
+    var _this = this;
+    _this._eventOutput.emit('save', {
+        text: _this._textArea.getValue()
+    });
+    _this.clear();
+};
+
+
 PostUpdateModalView.prototype.clear = function() {
-    this._textArea._currentTarget.value='';
+    this._textArea._currentTarget.value = '';
 };
 
 module.exports = new PostUpdateModalView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\PostUpdateModalView.js","/views")
-},{"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/layouts/ListLayout":72,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/TextAreaSurface":34,"famous/transitions/Easing":35}],64:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"famous-flex/FlexScrollView":72,"famous-flex/layouts/ListLayout":74,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/TextAreaSurface":34,"famous/transitions/Easing":35}],66:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
-var View = require('famous/core/View');
-var StateModifier = require('famous/modifiers/StateModifier');
-var Modifier = require('famous/core/Modifier');
-var Transform = require('famous/core/Transform');
-var Surface = require('famous/core/Surface');
-var Easing = require('famous/transitions/Easing');
-var ListLayout = require('famous-flex/layouts/ListLayout'),
-    FlexScrollView = require('famous-flex/FlexScrollView'),
-    LayoutController = require('famous-flex/LayoutController'),
-    CollectionLayout = require('famous-flex/layouts/CollectionLayout'),
+var View = require('famous/core/View'),
+    Surface = require('famous/core/Surface'),
+    StateModifier = require('famous/modifiers/StateModifier'),
     // Local
     AppService = require('./../services/AppService'),
     UserInfoView = require('./partials/UserInfoView'),
@@ -14062,49 +14123,43 @@ function ProfileView() {
 
     var _this = this;
 
-    /**
-     * Add UserInfoView
-     */
+    this._content = document.createElement('div');
+    this._content.className = 'profile-content block';
 
-    this.add(new UserInfoView(JSON.parse(localStorage.getItem('user'))));
+    // bandaid to separate footer from middle content.
+    this._wrapper = document.createElement('div');
+    this._wrapper.appendChild(this._content);
+    this._wrapper.className = 'profile block';
 
-    /**
-     * Add UpdatesView
-     */
+    // add user info view
+    this._content.appendChild(new UserInfoView(AppService.getUser()).getContent());
 
-    this.add(new StateModifier({
-            origin: [1, 0],
-            align: [1, 0]
-        }))
-        .add(
-            new Modifier({
-                size: [535, window.innerHeight-115]
-            }))
-        .add(new UpdatesView());
+    // add updates view
+    this._content.appendChild(UpdatesView.getContent());
 
-    /**
-     * Footer
-     */
+    // add footer
+    this._pageFooter = document.createElement('div');
+    this._pageFooter.className = 'block center-inner footer';
+    this._pageFooter.innerHTML = 'This is a footer message';
 
-    this.add(new StateModifier({
-            origin: [0.5, 0],
-            align: [0.5, 1],
-            transform: Transform.translate(0,15,0)
-        }))
-        .add(new Surface({
-            size: [400, true],
-            content: 'This is a footer message',
-            classes: ['center-inner']
-        }));
+    this._wrapper.appendChild(this._pageFooter);
+
+    // content surface to position within the famous context
+    this._contentSurface = new Surface({
+        size: [undefined, undefined],
+        content: this._wrapper
+    });
+
+    this.add(this._contentSurface);
 }
 
 ProfileView.prototype = Object.create(View.prototype);
 ProfileView.constructor = ProfileView;
 
-module.exports = ProfileView;
+module.exports = new ProfileView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\ProfileView.js","/views")
-},{"./../services/AppService":59,"./partials/UpdatesView":67,"./partials/UserInfoView":68,"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/LayoutController":70,"famous-flex/layouts/CollectionLayout":71,"famous-flex/layouts/ListLayout":72,"famous/core/Modifier":15,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35}],65:[function(require,module,exports){
+},{"./../services/AppService":59,"./partials/UpdatesView":70,"./partials/UserInfoView":71,"VCmEsw":45,"buffer":42,"famous/core/Surface":19,"famous/core/View":21,"famous/modifiers/StateModifier":25}],67:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -14130,7 +14185,7 @@ function NavBarView() {
         align: [0.5, 0.5]
     });
 
-    this._selfRenderNode = new RenderNode()
+    this._selfRenderNode = new RenderNode();
     this._selfRenderNode.add(selfMod).add(this);
 
     // Model
@@ -14231,7 +14286,152 @@ NavBarView.prototype._updateContent = function() {
 module.exports = new NavBarView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\MenuBarView.js","/views\\partials")
-},{"VCmEsw":46,"buffer":43,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33}],66:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/surfaces/ImageSurface":33}],68:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict'
+
+var EventHandler = require('famous/core/EventHandler'),
+    CommentModel = require('./../../models/CommentModel'),
+    PostService = require('./../../services/PostService'),
+    AppService = require('./../../services/AppService');
+
+function PostView(model) {
+    EventHandler.call(this);
+
+    var _this = this;
+
+    this._model = {
+        id: null,
+        pic: '',
+        username: '',
+        text: '',
+        comments: []
+    };
+
+    // content
+
+    this._content = document.createElement('div');
+    this._content.className = 'block post';
+
+    // post comment input element
+    this._commentInput = document.createElement('input');
+    this._commentInput.type = 'text';
+    this._commentInput.className = 'block comment-input';
+    this._commentInput.placeholder = 'post a comment';
+
+    // add a new comment on enter
+    this._commentInput.addEventListener('keydown', function(e) {
+        if (e.which === 13) {
+            if (this.value.trim().length > 0) {
+                // insert to local storage
+                var user = AppService.getUser();
+                PostService.addComment(new CommentModel(user.id, _this._model.id, this.value));
+
+                // add to view
+                _this.addComment({
+                    username: user.username,
+                    pic: user.pic,
+                    text: this.value
+                });
+
+                this.value = '';
+            }
+        }
+    });
+
+    // render entire post
+    this.setModel(model);
+}
+
+PostView.prototype = Object.create(EventHandler.prototype);
+PostView.constructor = PostView;
+
+PostView.prototype.setModel = function(model) {
+    this._model.pic = 'assets/' + model.pic;
+    this._model.username = model.username;
+    this._model.text = model.text;
+    this._model.id = model.id;
+
+    if (model.comments &&
+        model.comments.length > 0) {
+        for (var i = 0, n = model.comments.length; i < n; ++i) {
+            this._model.comments.push(model.comments[i]);
+        }
+    }
+
+    this._render();
+};
+
+PostView.prototype.show = function() {
+    this._content.style.display = 'block';
+}
+
+PostView.prototype.hide = function() {
+    this._content.style.display = 'none';
+}
+
+PostView.prototype._render = function() {
+    this._content.innerHTML = [
+        '<img class="user-icon-normal top" src=',
+        this._model.pic,
+        ' />',
+        '<div class="inline-block post-body">',
+        '<p class="link bold no-spacing">',
+        this._model.username,
+        '</p>',
+        '<p class="no-spacing">',
+        this._model.text,
+        '</p>',
+        '</div>'
+    ].join('');
+
+    // Add input to post a comment
+    this._content.appendChild(this._commentInput);
+
+    // insert comments
+    for (var i = 0, n = this._model.comments.length; i < n; ++i) {
+        this.addComment(this._model.comments[i]);
+    }
+
+    return this._content;
+};
+
+PostView.prototype.toString = function() {
+    return JSON.stringify(this._model).toLowerCase();
+};
+
+PostView.prototype.addComment = function(commentModel) {
+    var commentNode = document.createElement('div');
+    commentNode.className = 'comment block';
+    commentNode.innerHTML = [
+        '<img class="user-icon-small top" src=assets/',
+        commentModel.pic,
+        ' />',
+        '<div class="inline-block comment-body">',
+        '<p class="link bold no-spacing">',
+        commentModel.username,
+        '</p>',
+        '<p class="no-spacing">',
+        commentModel.text,
+        '</p>',
+        '</div>'
+    ].join('');
+
+    this._model.comments.push(commentModel);
+
+    // add to post
+    this._content.insertBefore(commentNode, this._commentInput);
+};
+
+PostView.prototype.getContent = function() {
+    return this._content;
+};
+
+
+module.exports = PostView;
+
+}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\PostView.js","/views\\partials")
+},{"./../../models/CommentModel":57,"./../../services/AppService":59,"./../../services/PostService":61,"VCmEsw":45,"buffer":42,"famous/core/EventHandler":13}],69:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
@@ -14345,8 +14545,14 @@ function SearchForm() {
 
     goButtonEl.addEventListener('click', function() {
         _this._eventOutput.emit('submit', {
-            query: searchEl.value
+            query: searchEl.value.trim().toLowerCase()
         });
+    });
+
+    searchEl.addEventListener('keydown', function(e) {
+        if (e.which === 13) {
+            goButtonEl.click();
+        }
     });
 
     /**
@@ -14367,144 +14573,174 @@ SearchForm.prototype.getRenderNode = function() {
 module.exports = new SearchForm();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\SearchForm.js","/views\\partials")
-},{"VCmEsw":46,"buffer":43,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35}],67:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35}],70:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
-var View = require('famous/core/View');
-var ViewSequence = require('famous/core/ViewSequence');
-var StateModifier = require('famous/modifiers/StateModifier');
-var RenderNode = require('famous/core/RenderNode');
-var Surface = require('famous/core/Surface');
-var Transform = require('famous/core/Transform');
-var Easing = require('famous/transitions/Easing');
-var ListLayout = require('famous-flex/layouts/ListLayout'),
-    FlexScrollView = require('famous-flex/FlexScrollView');
+var EventHandler = require('famous/core/EventHandler'),
+    PostService = require('./../../services/PostService'),
+    UserService = require('./../../services/UserService'),
+    PostView = require('./PostView');
 
 function UpdatesView() {
-    View.call(this);
+    EventHandler.call(this);
 
-    /**
-     * Add posts list
-     */
+    var _this = this;
 
-    var postsList = new FlexScrollView({
-        layout: ListLayout,
-        layoutOptions: {
-            //itemSize: [true, true],
-            margins: [0, 3, 0, 3],
-            spacing: 0
-        },
-        //enabled:false,
-        useContainer: true,
-        container: {
-            properties: {
-                overflow: 'hidden'
-            },
-            classes: ['container']
-        },
-        autoPipeEvents: true,
-        mouseMove: true,
-        flow: true,
-        flowOptions: {
-            spring: { // spring-options used when transitioning between states
-                dampingRatio: 0.1, // spring damping ratio
-                period: 1200 // duration of the animation
-            },
-            insertSpec: { // render-spec used when inserting renderables
-                opacity: 0, // start opacity is 0, causing a fade-in effect,
-                //size: [0, 0], // uncommented to create a grow-effect
-                transform: Transform.translate(0, 0, 0) // uncomment for slide-in effect
-            },
-            removeSpec: {} // render-spec used when removing renderables
-        },
-        direction: 1,
-        dataSource: [
-            new Surface({
-                size: [undefined, 40],
-                content: '<span class="updates-header">Updates</span>'
-            })
-        ]
-    });
+    this._model = {
+        posts: [],
+    };
+    this._searchQuery = '';
 
-    this.add(postsList);
+    this._content = document.createElement('div');
+    this._content.className = 'inline-block container updates';
 
-    var Engine = require('famous/core/Engine');
-    Engine.on('keydown', function(e) {
+    // special case
+    // I should do this all in some service I guess since not merged from backend services
 
-        postsList.push(new Surface({
-            size: [undefined, 400],
-            content: 'One',
-            classes: ['test-cell']
-        }));
+    this._mergeUserData = function(posts, users) {
+        var merged = [];
+        for (var i = 0, n = posts.length; i < n; ++i) {
+            for (var j = 0, nn = users.length; j < nn; ++j) {
+                if (posts[i].userId === users[j].id) {
+                    merged.push({
+                        id: posts[i].id,
+                        username: users[j].username,
+                        pic: users[j].pic,
+                        text: posts[i].content,
+                    });
+                }
+            }
+        }
+        return merged;
+    };
+
+    // bandaid
+
+    // inject posts to the updates view
+    PostService.fetchPosts().then(function(posts) {
+        // join user and post data
+        // this should be on the backend
+        UserService.fetchUsers().then(function(users) {
+            var mergedPosts = _this._mergeUserData(posts, users);
+            for (var i = 0, n = mergedPosts.length; i < n; ++i) {
+                mergedPosts[i].comments = _this._mergeUserData(posts[i].comments, users);
+            }
+
+            // set model
+            _this.setModel({
+                posts: mergedPosts
+            });
+        });
     });
 }
 
-UpdatesView.prototype = Object.create(View.prototype);
+UpdatesView.prototype = Object.create(EventHandler.prototype);
 UpdatesView.constructor = UpdatesView;
 
 UpdatesView.prototype.setModel = function(model) {
-    this._updateContent();
+    if (model.posts &&
+        model.posts.length > 0) {
+        this._model.posts = [];
+        for (var i = 0, n = model.posts.length; i < n; ++i) {
+            this._createPost(model.posts[i]);
+        }
+    }
+
+    this._render();
+    // this.search(this._searchQuery);
 };
 
-UpdatesView.prototype._updateContent = function() {};
+UpdatesView.prototype._render = function() {
+    this._content.innerHTML = '<div class="bold updates-header">Updates</div>';
 
-module.exports = UpdatesView;
+    for (var i = 0, n = this._model.posts.length; i < n; ++i) {
+        var postView = this._model.posts[i];
+        // add to post
+        this._content.appendChild(postView.getContent());
+    }
+};
+
+UpdatesView.prototype._createPost = function(postModel) {
+    var postView = new PostView(postModel);
+
+    this._model.posts.push(postView);
+
+    return postView;
+};
+
+UpdatesView.prototype.addPost = function(postModel) {
+    var postView = this._createPost(postModel);
+
+    this._content.appendChild(postView.getContent());
+
+    this.search(this._searchQuery);
+};
+
+UpdatesView.prototype.search = function(query) {
+    this._searchQuery = query;
+    for (var i = 0, n = this._model.posts.length; i < n; ++i) {
+        if (this._model.posts[i].toString().indexOf(query) !== -1) {
+            this._model.posts[i].show();
+        } else
+            this._model.posts[i].hide();
+    }
+};
+
+UpdatesView.prototype.getContent = function() {
+    return this._content;
+};
+
+module.exports = new UpdatesView();
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\UpdatesView.js","/views\\partials")
-},{"VCmEsw":46,"buffer":43,"famous-flex/FlexScrollView":69,"famous-flex/layouts/ListLayout":72,"famous/core/Engine":10,"famous/core/RenderNode":17,"famous/core/Surface":19,"famous/core/Transform":20,"famous/core/View":21,"famous/core/ViewSequence":22,"famous/modifiers/StateModifier":25,"famous/transitions/Easing":35}],68:[function(require,module,exports){
+},{"./../../services/PostService":61,"./../../services/UserService":62,"./PostView":68,"VCmEsw":45,"buffer":42,"famous/core/EventHandler":13}],71:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict'
 
-var View = require('famous/core/View'),
-    Surface = require('famous/core/Surface');
+var EventHandler = require('famous/core/EventHandler');
 
 function UserInfoView(userModel) {
-    View.call(this);
+    EventHandler.call(this);
 
     this._model = {
         pic: '',
         username: ''
     };
 
-    this._userInfo = new Surface({
-        size: [250, true],
-        content: '',
-        classes: ['container']
-    });
-
-    /**
-     * Add to view
-     */
-
-    this.add(this._userInfo);
+    this._content = document.createElement('div');
+    this._content.className = 'inline-block user-info container';
 
     this.setModel(userModel);
 }
 
-UserInfoView.prototype = Object.create(View.prototype);
+UserInfoView.prototype = Object.create(EventHandler.prototype);
 UserInfoView.constructor = UserInfoView;
 
 UserInfoView.prototype.setModel = function(model) {
     this._model.pic = 'assets/' + model.pic;
     this._model.username = model.username;
 
-    this._updateContent();
+    this._render();
 };
 
-UserInfoView.prototype._updateContent = function() {
-    this._userInfo.setContent([
+UserInfoView.prototype._render = function() {
+    this._content.innerHTML = [
         '<img class="user-icon-normal" src=',
         this._model.pic,
         ' />',
         this._model.username
-    ].join(''));
+    ].join('');
+};
+
+UserInfoView.prototype.getContent = function() {
+    return this._content;
 };
 
 module.exports = UserInfoView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/views\\partials\\UserInfoView.js","/views\\partials")
-},{"VCmEsw":46,"buffer":43,"famous/core/Surface":19,"famous/core/View":21}],69:[function(require,module,exports){
+},{"VCmEsw":45,"buffer":42,"famous/core/EventHandler":13}],72:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -15110,309 +15346,11 @@ module.exports = UserInfoView;
     module.exports = FlexScrollView;
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\FlexScrollView.js","/..\\res\\famous-flex")
-},{"./LayoutUtility":52,"./ScrollController":53,"./layouts/ListLayout":55,"VCmEsw":46,"buffer":43}],70:[function(require,module,exports){
-module.exports=require(49)
-},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":41,"./FlowLayoutNode":47,"./LayoutNode":50,"./LayoutNodeManager":51,"./LayoutUtility":52,"./helpers/LayoutDockHelper":54,"VCmEsw":46,"buffer":43}],71:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-/**
- * This Source Code is licensed under the MIT license. If a copy of the
- * MIT-license was not distributed with this file, You can obtain one at:
- * http://opensource.org/licenses/mit-license.html.
- *
- * @author: Hein Rutjes (IjzerenHein)
- * @license MIT
- * @copyright Gloey Apps, 2014
- */
-
-/*global console*/
-/*eslint no-console: 0*/
-
-/**
- * Lays a collection of renderables from left to right or top to bottom, and when the right/bottom edge is reached,
- * continues at the next column/row.
- *
- * |options|type|description|
- * |---|---|---|
- * |`[itemSize]`|Size/Function|Size of an item to layout or callback function which should return the size, e.g.: `function(renderNode, contextSize)`|
- * |`[cells]`|Array.Number|Number of columns and rows: [columns, rows]. When used causes the itemSize to be calculated from the number of number of cells that should be displayed.|
- * |`[margins]`|Number/Array|Margins shorthand (e.g. 5, [10, 20], [2, 5, 2, 10])|
- * |`[spacing]`|Number/Array|Spacing between items (e.g. 5, [10, 10])|
- * |`[justify]`|Bool/Array.Bool|Justify the renderables accross the width/height|
- *
- * Example:
- *
- * ```javascript
- * var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
- *
- * // Create scrollable layout where items have a fixed width/height
- * var scrollView = new FlexScrollView({
- *   layout: CollectionLayout,
- *   layoutOptions: {
- *     itemSize: [100, 100],    // item has width and height of 100 pixels
- *     margins: [10, 5, 10, 5], // outer margins
- *     spacing: [10, 10]        // spacing between items
- *   },
- *   dataSource: [
- *     new Surface({content: 'item 1'}),
- *     new Surface({content: 'item 2'}),
- *     new Surface({content: 'item 3'})
- *   ]
- * });
- *
- * // Create grid layout with a fixed number of columns and rows.
- * var gridLayout = new LayoutController({
- *   layout: CollectionLayout,
- *   layoutOptions: {
- *     cells: [3, 5],           // 3 columns and 5 rows
- *     margins: [10, 5, 10, 5], // outer margins
- *     spacing: [10, 10]        // spacing between items
- *   },
- *   dataSource: [
- *     new Surface({content: 'item 1'}),
- *     new Surface({content: 'item 2'}),
- *     new Surface({content: 'item 3'})
- *   ]
- * });
- * ```
- *
- * Notes:
- *
- * * Recall that the **`direction`** option is given to `FlexScrollView` and not
- * the `ColllectionLayout`.  As such, it affects *scroll direction* and not
- * *layout direction*.  With direction `Y`, items are *laid out horizontally*,
- * but multiple rows *scroll vertically*, and this is the correct behaviour.
- * @module
- */
-
-    // import dependencies
-    var Utility = require('../../../node_modules/famous/utilities/Utility');
-    var LayoutUtility = require('../LayoutUtility');
-
-    // Define capabilities of this layout function
-    var capabilities = {
-        sequence: true,
-        direction: [Utility.Direction.Y, Utility.Direction.X],
-        scrolling: true,
-        trueSize: true,
-        sequentialScrollingOptimized: true
-    };
-
-    // Prepare
-    var context;
-    var size;
-    var direction;
-    var alignment;
-    var lineDirection;
-    var lineLength;
-    var offset;
-    var margins;
-    var margin = [0, 0];
-    var spacing;
-    var justify;
-    var itemSize;
-    var getItemSize;
-    var lineNodes;
-
-    /**
-     * Lays out the renderables in a single line. Taking into account
-     * the following variables:
-     * - true-size
-     * - margins
-     * - spacing
-     * - justify
-     * - center align
-     */
-    function _layoutLine(next, endReached) {
-        if (!lineNodes.length) {
-            return 0;
-        }
-
-        // Determine size of the line
-        var i;
-        var lineSize = [0, 0];
-        var lineNode;
-        for (i = 0; i < lineNodes.length; i++) {
-            lineSize[direction] = Math.max(lineSize[direction], lineNodes[i].size[direction]);
-            lineSize[lineDirection] += ((i > 0) ? spacing[lineDirection] : 0) + lineNodes[i].size[lineDirection];
-        }
-
-        // Layout nodes from left to right or top to bottom
-        var justifyOffset = justify[lineDirection] ? ((lineLength - lineSize[lineDirection]) / (lineNodes.length * 2)) : 0;
-        var lineOffset = (direction ? margins[3] : margins[0]) + justifyOffset;
-        var scrollLength;
-        for (i = 0; i < lineNodes.length; i++) {
-            lineNode = lineNodes[i];
-            var translate = [0, 0, 0];
-            translate[lineDirection] = lineOffset;
-            translate[direction] = next ? offset : (offset - (lineSize[direction]));
-            scrollLength = 0;
-            if (i === 0) {
-                scrollLength = lineSize[direction];
-                if (endReached && ((next && !alignment) || (!next && alignment))) {
-                    scrollLength += direction ? (margins[0] + margins[2]) : (margins[3] + margins[1]);
-                }
-                else {
-                    scrollLength += spacing[direction];
-                }
-            }
-            lineNode.set = {
-                size: lineNode.size,
-                translate: translate,
-                scrollLength: scrollLength
-            };
-            lineOffset += lineNode.size[lineDirection] + spacing[lineDirection] + (justifyOffset * 2);
-        }
-
-        // Set nodes
-        for (i = 0; i < lineNodes.length; i++) {
-            lineNode = next ? lineNodes[i] : lineNodes[(lineNodes.length - 1) - i];
-            context.set(lineNode.node, lineNode.set);
-        }
-
-        // Prepare for next line
-        lineNodes = [];
-        return lineSize[direction] + spacing[direction];
-    }
-
-    /**
-     * Helper function to resolving the size of a node.
-     */
-    function _resolveNodeSize(node) {
-        var localItemSize = itemSize;
-        if (getItemSize) {
-            localItemSize = getItemSize(node.renderNode, size);
-        }
-        if ((localItemSize[0] === true) || (localItemSize[1] === true)) {
-            var result = context.resolveSize(node, size);
-            if (localItemSize[0] !== true) {
-                result[0] = itemSize[0];
-            }
-            if (localItemSize[1] !== true) {
-                result[1] = itemSize[1];
-            }
-            return result;
-        }
-        else {
-            return localItemSize;
-        }
-    }
-
-    /**
-     * Collection-layout
-     */
-    function CollectionLayout(context_, options) {
-
-        // Prepare
-        context = context_;
-        size = context.size;
-        direction = context.direction;
-        alignment = context.alignment;
-        lineDirection = (direction + 1) % 2;
-        if ((options.gutter !== undefined) && console.warn) {
-            console.warn('option `gutter` has been deprecated for CollectionLayout, use margins & spacing instead');
-        }
-        if (options.gutter && !options.margins && !options.spacing) {
-            var gutter = Array.isArray(options.gutter) ? options.gutter : [options.gutter, options.gutter];
-            margins = [gutter[1], gutter[0], gutter[1], gutter[0]];
-            spacing = gutter;
-        }
-        else {
-            margins = LayoutUtility.normalizeMargins(options.margins);
-            spacing = options.spacing || 0;
-            spacing = Array.isArray(spacing) ? spacing : [spacing, spacing];
-        }
-        margin[0] = margins[direction ? 0 : 3];
-        margin[1] = -margins[direction ? 2 : 1];
-        justify = Array.isArray(options.justify) ? options.justify : (options.justify ? [true, true] : [false, false]);
-        lineLength = size[lineDirection] - (direction ? (margins[3] + margins[1]) : (margins[0] + margins[2]));
-        var node;
-        var nodeSize;
-        var lineOffset;
-        var bound;
-
-        //
-        // Prepare item-size
-        //
-        if (options.cells) {
-            if (options.itemSize && console.warn) {
-                console.warn('options `cells` and `itemSize` cannot both be specified for CollectionLayout, only use one of the two');
-            }
-            itemSize = [
-                (size[0] - (margins[1] + margins[3] + (spacing[0] * (options.cells[0] - 1)))) / options.cells[0],
-                (size[1] - (margins[0] + margins[2] + (spacing[1] * (options.cells[1] - 1)))) / options.cells[1]
-            ];
-        }
-        else if (!options.itemSize) {
-            itemSize = [true, true]; // when no item-size specified, use size from renderables
-        }
-        else if (options.itemSize instanceof Function) {
-            getItemSize = options.itemSize;
-        }
-        else if ((options.itemSize[0] === undefined) || (options.itemSize[0] === undefined)){
-            // resolve 'undefined' into a fixed size
-            itemSize = [
-                (options.itemSize[0] === undefined) ? size[0] : options.itemSize[0],
-                (options.itemSize[1] === undefined) ? size[1] : options.itemSize[1]
-            ];
-        }
-        else {
-            itemSize = options.itemSize;
-        }
-
-        //
-        // Process all next nodes
-        //
-        offset = context.scrollOffset + (alignment ? 0 : margin[alignment]);
-        bound = context.scrollEnd + (alignment ? 0 : margin[alignment]);
-        lineOffset = 0;
-        lineNodes = [];
-        while (offset < bound) {
-            node = context.next();
-            if (!node) {
-                _layoutLine(true, true);
-                break;
-            }
-            nodeSize = _resolveNodeSize(node);
-            lineOffset += (lineNodes.length ? spacing[lineDirection] : 0) + nodeSize[lineDirection];
-            if (lineOffset > lineLength) {
-                offset += _layoutLine(true, !node);
-                lineOffset = nodeSize[lineDirection];
-            }
-            lineNodes.push({node: node, size: nodeSize});
-        }
-
-        //
-        // Process previous nodes
-        //
-        offset = context.scrollOffset + (alignment ? margin[alignment] : 0);
-        bound = context.scrollStart + (alignment ? margin[alignment] : 0);
-        lineOffset = 0;
-        lineNodes = [];
-        while (offset > bound) {
-            node = context.prev();
-            if (!node) {
-                _layoutLine(false, true);
-                break;
-            }
-            nodeSize = _resolveNodeSize(node);
-            lineOffset += (lineNodes.length ? spacing[lineDirection] : 0) + nodeSize[lineDirection];
-            if (lineOffset > lineLength) {
-                offset -= _layoutLine(false, !node);
-                lineOffset = nodeSize[lineDirection];
-            }
-            lineNodes.unshift({node: node, size: nodeSize});
-        }
-    }
-
-    CollectionLayout.Capabilities = capabilities;
-    CollectionLayout.Name = 'CollectionLayout';
-    CollectionLayout.Description = 'Multi-cell collection-layout with margins & spacing';
-    module.exports = CollectionLayout;
-
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\layouts\\CollectionLayout.js","/..\\res\\famous-flex\\layouts")
-},{"../../../node_modules/famous/utilities/Utility":41,"../LayoutUtility":52,"VCmEsw":46,"buffer":43}],72:[function(require,module,exports){
-module.exports=require(55)
-},{"../../../node_modules/famous/utilities/Utility":41,"../LayoutUtility":52,"VCmEsw":46,"buffer":43}],73:[function(require,module,exports){
+},{"./LayoutUtility":51,"./ScrollController":52,"./layouts/ListLayout":54,"VCmEsw":45,"buffer":42}],73:[function(require,module,exports){
+module.exports=require(48)
+},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/EventHandler":13,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/Transform":20,"../../node_modules/famous/core/ViewSequence":22,"../../node_modules/famous/utilities/Utility":41,"./FlowLayoutNode":46,"./LayoutNode":49,"./LayoutNodeManager":50,"./LayoutUtility":51,"./helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}],74:[function(require,module,exports){
+module.exports=require(54)
+},{"../../../node_modules/famous/utilities/Utility":41,"../LayoutUtility":51,"VCmEsw":45,"buffer":42}],75:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * This Source Code is licensed under the MIT license. If a copy of the
@@ -15518,217 +15456,4 @@ module.exports=require(55)
     };
 
 }).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-flex\\layouts\\NavBarLayout.js","/..\\res\\famous-flex\\layouts")
-},{"../helpers/LayoutDockHelper":54,"VCmEsw":46,"buffer":43}],74:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-/**
- * This Source Code is licensed under the MIT license. If a copy of the
- * MIT-license was not distributed with this file, You can obtain one at:
- * http://opensource.org/licenses/mit-license.html.
- *
- * @author: Hein Rutjes (IjzerenHein)
- * @license MIT
- * @copyright Gloey Apps, 2014
- */
-
-/*global define*/
-
-/**
- * SizeConstraint makes it possible to set the following constraints on renderables:
- *
- * |Option|Description|
- * |--------|-----------|
- * |```scale```|Scales the size proportionally to the parent-size (factor).|
- * |```padding```|Inner width/height padding (pixels).|
- * |```max```|Sets the maximum-size (pixels).|
- * |```min```|Sets the minimum-size (pixels).|
- * |```ratio```|Aspect ratio to enforce (factor).|
- * |```size```|Default size to use instead of parent-size (pixels).|
- *
- * @module
- */
-    // import dependencies
-    var Entity = require('../../node_modules/famous/core/Entity');
-    var RenderNode = require('../../node_modules/famous/core/RenderNode');
-    var OptionsManager = require('../../node_modules/famous/core/OptionsManager');
-
-    /**
-     * Supported constraints
-     */
-    var Constraints = {
-        scale: 'scale',
-        padding: 'padding',
-        max: 'max',
-        min: 'min',
-        ratio: 'ratio',
-        size: 'size'
-    };
-
-    /**
-     * Updates the internal constraint value and getter-function
-     */
-    function _updateConstraints() {
-        for (var constraint in Constraints) {
-            if (this._constraints[constraint] === undefined) {
-                this._constraints[constraint] = {};
-            }
-            this._constraints[constraint].getter = (this.options[constraint] instanceof Function) ? this.options[constraint] : null;
-            this._constraints[constraint].value = this.options[constraint];
-        }
-    }
-
-    /**
-     * @class
-     * @param {Object} options Options.
-     * @param {Array.Number|Function} [options.scale] Scale
-     * @param {Array.Number|Function} [options.padding] Width/height padding
-     * @param {Array.Number|Function} [options.max] Maximum-size
-     * @param {Array.Number|Function} [options.min] Minimum-size
-     * @param {Array.Number|Function} [options.ratio] Aspect-ratio
-     * @param {Array.Number|Function} [options.size] Default size
-     * @alias module:SizeConstraint
-     */
-    function SizeConstraint(options) {
-        this.options = Object.create(SizeConstraint.DEFAULT_OPTIONS);
-        this._optionsManager = new OptionsManager(this.options);
-        this._constraints = {};
-        _updateConstraints.call(this);
-        if (options) {
-            this.setOptions(options);
-        }
-
-        this._entityId = Entity.register(this);
-
-        this._node = new RenderNode();
-    }
-
-    SizeConstraint.DEFAULT_OPTIONS = {
-        scale: undefined,
-        padding: undefined,
-        max: undefined,
-        min: undefined,
-        ratio: undefined,
-        size: undefined
-    };
-
-    /**
-     * Add a child
-     */
-    SizeConstraint.prototype.add = function add() {
-        return this._node.add.apply(this._node, arguments);
-    };
-
-    /**
-     * Get the size
-     *
-     * @return {Array.Number} Size
-     */
-    SizeConstraint.prototype.getSize = function getSize() {
-        return this._node.getSize.apply(this._node, arguments);
-    };
-
-    /**
-     * Patches the SizeConstraint instance's options with the passed-in ones.
-     *
-     * @param {Options} options An object of configurable options for the SizeConstraint instance.
-     */
-    SizeConstraint.prototype.setOptions = function setOptions(options) {
-        var result = this._optionsManager.setOptions(options);
-        _updateConstraints.call(this);
-        return result;
-    };
-
-    /**
-     * Calculates the modified size based on the parent-size.
-     *
-     * @param {Array.Number} parentSize Size of the parent
-     * @return {Array.Number} [width, height]
-     */
-    SizeConstraint.prototype.calcSize = function(parentSize) {
-
-        // Get options
-        var scale = this._constraints.scale.getter ? this._constraints.scale.getter() : this._constraints.scale.value;
-        var padding = this._constraints.padding.getter ? this._constraints.padding.getter() : this._constraints.padding.value;
-        var max = this._constraints.max.getter ? this._constraints.max.getter() : this._constraints.max.value;
-        var min = this._constraints.min.getter ? this._constraints.min.getter() : this._constraints.min.value;
-        var ratio = this._constraints.ratio.getter ? this._constraints.ratio.getter() : this._constraints.ratio.value;
-        var fallbackSize = this._constraints.size.getter ? this._constraints.size.getter() : this._constraints.size.value;
-        if (!scale && !padding && !max && !min && !ratio && !fallbackSize) {
-            return null;
-        }
-
-        // init
-        var size = [parentSize[0], parentSize[1]];
-
-        // apply fallback-size
-        if (fallbackSize) {
-            size[0] = fallbackSize[0] || size[0];
-            size[1] = fallbackSize[1] || size[1];
-        }
-
-        // apply scale
-        if (scale) {
-            size[0] = size[0] * ((scale[0] !== undefined) ? scale[0] : 1);
-            size[1] = size[1] * ((scale[1] !== undefined) ? scale[1] : 1);
-        }
-
-        // apply scale
-        if (padding) {
-            size[0] = size[0] - ((padding[0] !== undefined) ? padding[0] : 0);
-            size[1] = size[1] - ((padding[1] !== undefined) ? padding[1] : 0);
-        }
-
-        // apply max
-        if (max) {
-            size[0] = Math.min(size[0], max[0] !== undefined ? max[0] : size[0]);
-            size[1] = Math.min(size[1], max[1] !== undefined ? max[1] : size[1]);
-        }
-
-        // apply min
-        if (min) {
-            size[0] = Math.max(size[0], min[0] !== undefined ? min[0] : size[0]);
-            size[1] = Math.max(size[1], min[1] !== undefined ? min[1] : size[1]);
-        }
-
-        // apply ratio
-        if (ratio) {
-            var ratioVal = ratio[0] / ratio[1];
-            if (ratioVal < (size[0] / size[1])) {
-                size[0] = size[1] * ratioVal;
-            }
-            else {
-                size[1] = size[0] / ratioVal;
-            }
-        }
-        return size;
-    };
-
-    /**
-     * Generate a render spec from the contents of this component.
-     *
-     * @private
-     * @method render
-     * @return {Object} Render spec for this component
-     */
-    SizeConstraint.prototype.render = function render() {
-        return this._entityId;
-    };
-
-    /**
-     * @private
-     * @ignore
-     * @method commit
-     * @param {Context} context commit context
-     */
-    SizeConstraint.prototype.commit = function(context) {
-        return {
-            align: this.options.align || context.align,
-            origin: this.options.origin || context.origin,
-            size: this.calcSize(context.size),
-            target: this._node.render()
-        };
-    };
-
-    module.exports = SizeConstraint;
-
-}).call(this,require("VCmEsw"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\res\\famous-sizeconstraint\\SizeConstraint.js","/..\\res\\famous-sizeconstraint")
-},{"../../node_modules/famous/core/Entity":11,"../../node_modules/famous/core/OptionsManager":16,"../../node_modules/famous/core/RenderNode":17,"VCmEsw":46,"buffer":43}]},{},[57])
+},{"../helpers/LayoutDockHelper":53,"VCmEsw":45,"buffer":42}]},{},[56])

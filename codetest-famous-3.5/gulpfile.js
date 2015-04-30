@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 var concatCSS = require('gulp-concat-css');
 var minifyCSS = require('gulp-minify-css');
 var minifyHTML = require('gulp-minify-html');
+var jsonminify = require('gulp-jsonminify');
 var gzip = require('gulp-gzip');
 var imageminOptipng = require('imagemin-optipng');
 var imageminJpegtran = require('imagemin-jpegtran');
@@ -32,7 +33,8 @@ gulp.task('build--compress', [], function(cb) {
         [
             'build--compress-html',
             'build--compress-css',
-            'build--compress-js'
+            'build--compress-js',
+            'build--compress-json'
         ],
         'build--compress-gzip',
         'build--compress-images',
@@ -143,6 +145,15 @@ gulp.task('build--compress-html', [], function() {
             spare: true
         }))
         .pipe(gulp.dest(dist));
+});
+
+// Minify json
+gulp.task('build--compress-json', [], function() {
+    return gulp.src([
+            path.join('src', '**', '*.json')
+        ])
+        .pipe(jsonminify())
+        .pipe(gulp.dest(path.join(dist)));
 });
 
 // Image compression. 

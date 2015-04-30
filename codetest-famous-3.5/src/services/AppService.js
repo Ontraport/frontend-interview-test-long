@@ -1,33 +1,26 @@
 'use strict'
 
-var UserService = require('./UserService'),
-    UserModel = require('./../models/UserModel');
+var UserService = require('./UserService');
 
 function AppService() {
     this._user = null;
     this._loggedIn = false;
     this._online = false;
-    this._localStorageSupported = (localStorage !== undefined);
 
     this.login = function(userId) {
         var _this = this;
 
-        // Substitute for logging in.
-        UserService.fetchUserById(userId).then(function(user) {
-            var user = new UserModel(user.id, {
-                username: user.username,
-                pic: user.pic,
-                about: user.about
-            });
-
+        // // Substitute for logging in.
+        return UserService.fetchUserById(userId).then(function(user) {
             // This is just to show local storage support.
-            if (_this._localStorageSupported) {
+            if (localStorage)
                 localStorage.setItem('user', JSON.stringify(user));
-                _this._user = user;
-            } else
-                _this._user = user;
 
             _this._loggedIn = true;
+
+            _this._user = user;
+
+            return user;
         });
     };
 
@@ -40,10 +33,15 @@ function AppService() {
     };
 
     this.getUser = function() {
-        if(this._loggedIn === false)
-            this.login(4);
-        
-        return this._user;
+        var result;
+
+        if (localStorage) {
+            result = JSON.parse(localStorage.getItem('user'));
+        } else {
+            result = this._user;
+        }
+
+        return result;
     };
 }
 

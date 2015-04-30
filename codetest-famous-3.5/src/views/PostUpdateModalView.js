@@ -29,7 +29,7 @@ function PostUpdateModalView() {
 
     footer.add(new StateModifier({})).add(new Surface({
         size: [undefined, true],
-        content: 'Press "Ctrl + Enter" to close.'
+        content: 'Press \'Enter\' to save.'
     }));
 
     var modal = new FlexScrollView({
@@ -38,12 +38,12 @@ function PostUpdateModalView() {
             margins: [3, 3, 3, 3],
             spacing: 5
         },
+        enabled: false,
         useContainer: true,
         container: {
             classes: ['container'],
             properties: {
                 color: 'grey',
-                backgroundColor: 'white',
                 textAlign: 'center'
             }
         },
@@ -80,20 +80,15 @@ function PostUpdateModalView() {
         .add(modal);
 
     /**
-     * Events
+     *
      */
 
-    window.addEventListener('keydown', function(e) {
-        if (_this._opened === true) {
-            // Ctrl + Enter
-            if (e.which === 13 &&
-                e.ctrlKey === true) {
-                _this.close();
-                _this._eventOutput.emit('close', {
-                    text: _this._textArea.getValue()
-                });
-                _this.clear();
-            }
+    this._textArea.on('keydown', function(e) {
+        // Enter
+        if (e.which === 13) {
+            _this.save();
+            _this.close();
+            e.preventDefault();
         }
     });
 }
@@ -102,28 +97,48 @@ PostUpdateModalView.prototype = Object.create(View.prototype);
 PostUpdateModalView.constructor = PostUpdateModalView;
 
 PostUpdateModalView.prototype.open = function() {
+    var _this = this;
     if (this._opened === false) {
-        this._animationMod.setTransform(Transform.translate(0, window.innerHeight/7.5, 1), {
+        this._textArea.focus();
+        this._animationMod.setTransform(Transform.translate(0, window.innerHeight * 0.5 - this._animationMod.getSize()[1] / 2, 1), {
             duration: 1000,
             curve: Easing.outBounce
         });
-        this._opened = true;
+        _this._opened = true;
     }
 };
 
 PostUpdateModalView.prototype.close = function() {
     var _this = this;
-    this._animationMod.setTransform(Transform.translate(window.innerWidth + this._animationMod.getSize()[0] / 2, window.innerHeight/7.5, 1), {
-        duration: 750,
-        curve: Easing.outCirc
-    }, function() {
-        _this._animationMod.setTransform(Transform.translate(0, -_this._animationMod.getSize()[1], 1));
-    });
-    this._opened = false;
+    if (this._opened === true) {
+        var body = document.body,
+            html = document.documentElement;
+
+        var height = Math.max(body.scrollHeight, body.offsetHeight,
+            html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+        this._animationMod.setTransform(Transform.translate(0, height, 1), {
+            duration: 1000,
+            curve: Easing.outBounce
+        }, function() {
+            _this._animationMod.setTransform(Transform.translate(0, -_this._animationMod.getSize()[1], 1));
+            _this._opened = false;
+        });
+        _this._eventOutput.emit('close');
+    }
 };
 
+PostUpdateModalView.prototype.save = function() {
+    var _this = this;
+    _this._eventOutput.emit('save', {
+        text: _this._textArea.getValue()
+    });
+    _this.clear();
+};
+
+
 PostUpdateModalView.prototype.clear = function() {
-    this._textArea._currentTarget.value='';
+    this._textArea._currentTarget.value = '';
 };
 
 module.exports = new PostUpdateModalView();

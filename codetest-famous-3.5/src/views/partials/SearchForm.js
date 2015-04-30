@@ -110,8 +110,14 @@ function SearchForm() {
 
     goButtonEl.addEventListener('click', function() {
         _this._eventOutput.emit('submit', {
-            query: searchEl.value
+            query: searchEl.value.trim().toLowerCase()
         });
+    });
+
+    searchEl.addEventListener('keydown', function(e) {
+        if (e.which === 13) {
+            goButtonEl.click();
+        }
     });
 
     /**

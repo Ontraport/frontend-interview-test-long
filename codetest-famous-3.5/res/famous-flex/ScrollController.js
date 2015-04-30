@@ -108,7 +108,7 @@
         options = LayoutUtility.combineOptions(ScrollController.DEFAULT_OPTIONS, options);
         var layoutManager = new LayoutNodeManager(options.flow ? FlowLayoutNode : LayoutNode, _initLayoutNode.bind(this));
         LayoutController.call(this, options, layoutManager);
-
+        
         // Scrolling
         this._scroll = {
             activeTouches: [],
@@ -178,7 +178,7 @@
 
             // Create container surface, which has one child, which just returns
             // the entity-id of this scrollview. This causes the Commit function
-            // of this scrollview to be called
+            // of ethis scrollview to be called
             this.container.add({
                 render: function() {
                     return this.id;
@@ -1784,6 +1784,7 @@
         }
         return specs;
     }
+
 
     /**
      * Apply changes from this component to the corresponding document element.

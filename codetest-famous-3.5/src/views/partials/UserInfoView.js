@@ -1,48 +1,42 @@
 'use strict'
 
-var View = require('famous/core/View'),
-    Surface = require('famous/core/Surface');
+var EventHandler = require('famous/core/EventHandler');
 
 function UserInfoView(userModel) {
-    View.call(this);
+    EventHandler.call(this);
 
     this._model = {
         pic: '',
         username: ''
     };
 
-    this._userInfo = new Surface({
-        size: [250, true],
-        content: '',
-        classes: ['container']
-    });
-
-    /**
-     * Add to view
-     */
-
-    this.add(this._userInfo);
+    this._content = document.createElement('div');
+    this._content.className = 'inline-block user-info container';
 
     this.setModel(userModel);
 }
 
-UserInfoView.prototype = Object.create(View.prototype);
+UserInfoView.prototype = Object.create(EventHandler.prototype);
 UserInfoView.constructor = UserInfoView;
 
 UserInfoView.prototype.setModel = function(model) {
     this._model.pic = 'assets/' + model.pic;
     this._model.username = model.username;
 
-    this._updateContent();
+    this._render();
 };
 
-UserInfoView.prototype._updateContent = function() {
-    this._userInfo.setContent([
+UserInfoView.prototype._render = function() {
+    this._content.innerHTML = [
         '<img class="user-icon-normal" src=',
         this._model.pic,
         ' />',
         this._model.username
-    ].join(''));
+    ].join('');
+};
+
+UserInfoView.prototype.getContent = function() {
+    return this._content;
 };
 
 module.exports = UserInfoView;

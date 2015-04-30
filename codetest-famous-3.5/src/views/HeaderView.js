@@ -9,11 +9,8 @@ var View = require('famous/core/View'),
     RenderNode = require('famous/core/RenderNode'),
     Transform = require('famous/core/Transform'),
     Easing = require('famous/transitions/Easing'),
-    FlexScrollView = require('famous-flex/FlexScrollView'),
     LayoutController = require('famous-flex/LayoutController'),
-    SizeConstraint = require('famous-sizeconstraint/SizeConstraint'),
     NavBarLayout = require('famous-flex/layouts/NavBarLayout'),
-    CollectionLayout = require('famous-flex/layouts/CollectionLayout'),
     // Local
     MenuBarView = require('./partials/MenuBarView'),
     SearchForm = require('./partials/SearchForm');
@@ -49,6 +46,9 @@ function HeaderView(model) {
         size: [undefined, undefined],
         attributes: {
             id: 'header-bg'
+        },
+        properties:{
+            position: 'fixed'
         }
     });
 
@@ -97,7 +97,6 @@ function HeaderView(model) {
      * Add to view
      */
 
-    // this.add(bgRenderNode);
     this.add(this._layout);
 }
 

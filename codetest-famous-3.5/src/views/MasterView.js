@@ -1,17 +1,10 @@
 'use strict'
 
 var View = require('famous/core/View');
-var RenderNode = require('famous/core/RenderNode');
-var Modifier = require('famous/core/Modifier');
-var ViewSequence = require('famous/core/ViewSequence');
+var Surface = require('famous/core/Surface');
 var StateModifier = require('famous/modifiers/StateModifier');
 var Transform = require('famous/core/Transform');
-var Surface = require('famous/core/Surface');
-var FlexScrollView = require('famous-flex/FlexScrollView');
-var ListLayout = require('famous-flex/layouts/ListLayout');
-var Engine = require('famous/core/Engine');
 var Easing = require('famous/transitions/Easing');
-var FlexibleLayout = require('famous/views/FlexibleLayout');
 var MasterController = require('./../controllers//MasterController');
 
 var HeaderView = require('./HeaderView');
@@ -23,28 +16,12 @@ function MasterView() {
     var _this = this;
 
     /**
-     * Footer
-     */
-
-    this._footer = new Surface({
-        size: [undefined, true],
-        content: 'This is a footer message',
-        classes: ['center-inner']
-    });
-
-    // this._footer.mod = new Modifier({});
-
-    // this._footer.renderNode = new RenderNode();
-    // this._footer.renderNode.add(this._footer.mod).add(this._footer);
-
-    /**
      * Layout
      */
 
     //In animation
 
-    this._contentTransitionInMod = new Modifier({
-        size: [800, window.innerHeight - 115]
+    this._contentTransitionInMod = new StateModifier({
     });
 
     this._contentTransitionInMod.setTransform(Transform.translate(0, window.innerHeight, 0));
@@ -53,18 +30,20 @@ function MasterView() {
         curve: Easing.outBounce
     });
 
-    this._centerContentNode = new Modifier({
-        origin: [0.5, 0],
-        align: [0.5, 0]
-    });
-
     /**
      * Add to view
      */
 
-this.add();
     this.add(HeaderView.getRenderNode());
-    this.add(this._centerContentNode).add(this._contentTransitionInMod).add(new ProfileView());
+    this.add(this._contentTransitionInMod).add(ProfileView);
+    // ghetto bandaid background color for the body
+    this.add(new Surface({
+        size: [undefined, undefined],
+        properties:{
+            backgroundColor: 'rgb(167, 199, 220)'
+        },
+        classes:['behind']
+    }));
 }
 
 MasterView.prototype = Object.create(View.prototype);

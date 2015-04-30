@@ -22,7 +22,7 @@ function NavBarView() {
         align: [0.5, 0.5]
     });
 
-    this._selfRenderNode = new RenderNode()
+    this._selfRenderNode = new RenderNode();
     this._selfRenderNode.add(selfMod).add(this);
 
     // Model

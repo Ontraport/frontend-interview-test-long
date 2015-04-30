@@ -1,15 +1,8 @@
 'use strict'
 
-var View = require('famous/core/View');
-var StateModifier = require('famous/modifiers/StateModifier');
-var Modifier = require('famous/core/Modifier');
-var Transform = require('famous/core/Transform');
-var Surface = require('famous/core/Surface');
-var Easing = require('famous/transitions/Easing');
-var ListLayout = require('famous-flex/layouts/ListLayout'),
-    FlexScrollView = require('famous-flex/FlexScrollView'),
-    LayoutController = require('famous-flex/LayoutController'),
-    CollectionLayout = require('famous-flex/layouts/CollectionLayout'),
+var View = require('famous/core/View'),
+    Surface = require('famous/core/Surface'),
+    StateModifier = require('famous/modifiers/StateModifier'),
     // Local
     AppService = require('./../services/AppService'),
     UserInfoView = require('./partials/UserInfoView'),
@@ -21,43 +14,37 @@ function ProfileView() {
 
     var _this = this;
 
-    /**
-     * Add UserInfoView
-     */
+    this._content = document.createElement('div');
+    this._content.className = 'profile-content block';
 
-    this.add(new UserInfoView(JSON.parse(localStorage.getItem('user'))));
+    // bandaid to separate footer from middle content.
+    this._wrapper = document.createElement('div');
+    this._wrapper.appendChild(this._content);
+    this._wrapper.className = 'profile block';
 
-    /**
-     * Add UpdatesView
-     */
+    // add user info view
+    this._content.appendChild(new UserInfoView(AppService.getUser()).getContent());
 
-    this.add(new StateModifier({
-            origin: [1, 0],
-            align: [1, 0]
-        }))
-        .add(
-            new Modifier({
-                size: [535, window.innerHeight-115]
-            }))
-        .add(new UpdatesView());
+    // add updates view
+    this._content.appendChild(UpdatesView.getContent());
 
-    /**
-     * Footer
-     */
+    // add footer
+    this._pageFooter = document.createElement('div');
+    this._pageFooter.className = 'block center-inner footer';
+    this._pageFooter.innerHTML = 'This is a footer message';
 
-    this.add(new StateModifier({
-            origin: [0.5, 0],
-            align: [0.5, 1],
-            transform: Transform.translate(0,15,0)
-        }))
-        .add(new Surface({
-            size: [400, true],
-            content: 'This is a footer message',
-            classes: ['center-inner']
-        }));
+    this._wrapper.appendChild(this._pageFooter);
+
+    // content surface to position within the famous context
+    this._contentSurface = new Surface({
+        size: [undefined, undefined],
+        content: this._wrapper
+    });
+
+    this.add(this._contentSurface);
 }
 
 ProfileView.prototype = Object.create(View.prototype);
 ProfileView.constructor = ProfileView;
 
-module.exports = ProfileView;
+module.exports = new ProfileView();
