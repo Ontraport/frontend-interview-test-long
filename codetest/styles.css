@@ -1,6 +1,6 @@
 /*
- * base styles 
- * 
+ * base styles
+ *
  */
 
 html{
@@ -17,10 +17,10 @@ body{
 	background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
 
-	
+
 	font-size: 13px;
 	min-width: 800px;
-	
+
 }
 
 br{
@@ -32,6 +32,7 @@ br{
 	background: rgba( 0, 0, 0, 0.7);
 	padding: 10px 5px;
 	box-shadow: 0px 1px 5px #fff;
+	height: 44px;
 }
 
 
@@ -39,6 +40,37 @@ br{
 #logo{
 	display: inline-block;
 	float: left;
+}
+
+#profile-icon{
+	height: 25px;
+	width: 25px;
+}
+
+.header-buttons {
+	display: inline-block;
+	vertical-align: middle;
+	list-style: none;
+  float: right;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: 25px;
+}
+
+.header-buttons > li {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0 10px 0 10px;
+}
+
+.header-buttons a {
+  color: #FFFFFF;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.header-buttons img {
 }
 
 /*search in header*/
@@ -68,27 +100,56 @@ br{
 	text-shadow: 1px 1px 1px #fff;
 	border: 1px solid #6FD6F7;
 
-
+background-image: -webkit-linear-gradient(top, #6FD6F7, #0daee1);
+background-image: -moz-linear-gradient(top, #6FD6F7, #0daee1);
+background-image: -ms-linear-gradient(top, #6FD6F7, #0daee1);
+background-image: -o-linear-gradient(top, #6FD6F7, #0daee1);
+background-image: linear-gradient(to bottom, #6FD6F7, #0daee1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6FD6F7, endColorstr=#0daee1);
 
 }
+
+
 
 #search input[type="submit"]:hover{
-	
+	border: 1px solid #6FD6F7;
+	background-image: -webkit-linear-gradient(top, #0daee1, #6FD6F7);
+	background-image: -moz-linear-gradient(top, #0daee1, #6FD6F7);
+	background-image: -ms-linear-gradient(top, #0daee1, #6FD6F7);
+	background-image: -o-linear-gradient(top, #0daee1, #6FD6F7);
+	background-image: linear-gradient(to bottom, #0daee1, #6FD6F7);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#0daee1, endColorstr=#a7c7dc);
 }
 
-
-
-
+#search input[type="search"]:focus {
+    border-color: #FFFFFF;
+    box-shadow: 0px 0px 30px #FFFFFF;
+}
 
 /*page content*/
 
 #page{
 	width: 800px;
-	
-	/*background: rgba( 255, 255, 255, 0.3 );
-	border: 1px solid #ffffff;*/
+	margin:0 auto;
+	height: auto;
+	background: rgba( 255, 255, 255, 0.3 );
+	border: 1px solid #ffffff;
 	margin: 10px auto 0px;
 	padding: 1em 2em;
 }
 
+#updates {
+	float: right;
+	width: 525px;
+	background-color: #F7F7F7;
+}
 
+#sidebar {
+	float: left;
+	width: 250px;
+	height: 64px;
+	background-color: #F7F7F7;
+}
+
+#footer {
+	clear: both;
+	text-align: center;
+}
