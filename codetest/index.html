@@ -5,6 +5,7 @@
 
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -26,17 +27,31 @@
 	</div>
 
 	<div id="page">
-		<div id="sidebar">
-			hi
-		</div>
-		<div id="updates">
-			hello
-		</div>
 	</div>
 
 	<div id="footer">
 		<p>This is a footer mesage</p>
 	</div>
 
+	<script type="text/template" id="posts-template">
+		<div id="sidebar">
+		</div>
+		<div id="posts">
+			<div id="feed-header">Updates</div>
+			<ul id="feed">
+			</ul>
+		</div>
+	</script>
+
+	<script type="text/template" id="post-template">
+		<div class="post-icon"><img src="<%= user.escape("pic") %>" alt="" /></div>
+		<div class="post-body">
+			<div class="poster-name"><%= user.escape("username") %> </div>
+			<div class="content"><%= post.escape("content") %> </div>
+		</div>
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" type="text/javascript"></script>
+	<script src="javascripts/app.js"></script>
 </body>
 </html>

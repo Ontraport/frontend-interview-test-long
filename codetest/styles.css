@@ -23,10 +23,22 @@ body{
 
 }
 
+	/*clearfix*/
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+.group:after {
+    clear: both;
+}
+.group {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
 br{
 	clear: left;
 }
-
 
 #header{
 	background: rgba( 0, 0, 0, 0.7);
@@ -76,15 +88,15 @@ br{
 /*search in header*/
 
 #search{
-
 	display: inline;
-    float: left;
-    left: 50%;
-    margin-left: -25%;
-    position: relative;
-    width: 300px;
-    margin-top: 1em;
+  float: left;
+  left: 50%;
+  margin-left: -25%;
+  position: relative;
+  width: 300px;
+  margin-top: 1em;
 }
+
 #search input[name="terms"]{
 	width: 250px;
 	padding: 2px 3px;
@@ -99,16 +111,12 @@ br{
 	font-weight: bold;
 	text-shadow: 1px 1px 1px #fff;
 	border: 1px solid #6FD6F7;
-
-background-image: -webkit-linear-gradient(top, #6FD6F7, #0daee1);
-background-image: -moz-linear-gradient(top, #6FD6F7, #0daee1);
-background-image: -ms-linear-gradient(top, #6FD6F7, #0daee1);
-background-image: -o-linear-gradient(top, #6FD6F7, #0daee1);
-background-image: linear-gradient(to bottom, #6FD6F7, #0daee1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6FD6F7, endColorstr=#0daee1);
-
+	background-image: -webkit-linear-gradient(top, #6FD6F7, #0daee1);
+	background-image: -moz-linear-gradient(top, #6FD6F7, #0daee1);
+	background-image: -ms-linear-gradient(top, #6FD6F7, #0daee1);
+	background-image: -o-linear-gradient(top, #6FD6F7, #0daee1);
+	background-image: linear-gradient(to bottom, #6FD6F7, #0daee1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6FD6F7, endColorstr=#0daee1);
 }
-
-
 
 #search input[type="submit"]:hover{
 	border: 1px solid #6FD6F7;
@@ -120,8 +128,8 @@ background-image: linear-gradient(to bottom, #6FD6F7, #0daee1);filter:progid:DXI
 }
 
 #search input[type="search"]:focus {
-    border-color: #FFFFFF;
-    box-shadow: 0px 0px 30px #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 0px 0px 30px #FFFFFF;
 }
 
 /*page content*/
@@ -130,16 +138,17 @@ background-image: linear-gradient(to bottom, #6FD6F7, #0daee1);filter:progid:DXI
 	width: 800px;
 	margin:0 auto;
 	height: auto;
-	background: rgba( 255, 255, 255, 0.3 );
-	border: 1px solid #ffffff;
+	/*background: rgba( 255, 255, 255, 0.3 );
+	border: 1px solid #ffffff;*/
 	margin: 10px auto 0px;
 	padding: 1em 2em;
 }
 
-#updates {
+#posts {
 	float: right;
 	width: 525px;
 	background-color: #F7F7F7;
+	border-radius: 5px;
 }
 
 #sidebar {
@@ -151,5 +160,39 @@ background-image: linear-gradient(to bottom, #6FD6F7, #0daee1);filter:progid:DXI
 
 #footer {
 	clear: both;
+	padding: 15px;
 	text-align: center;
+}
+
+/*feed*/
+
+#feed {
+	list-style: none;
+	margin: 15px 0 15px 0;
+	padding: 1px 0 10px 0;
+}
+
+#feed-header {
+	margin: 12px 0 12px 4px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.post {
+	padding: 5px;
+	margin: 10px 0 10px 0;
+}
+
+.post-icon {
+	float: left;
+	margin-right: 10px;
+}
+
+.post-content{
+	float: right;
+}
+
+.poster-name{
+	color: #0279c9;
+	font-weight: bold;
 }
