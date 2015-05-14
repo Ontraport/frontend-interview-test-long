@@ -156,6 +156,15 @@ br{
 	width: 250px;
 	height: 64px;
 	background-color: #F7F7F7;
+	border-radius: 5px;
+}
+
+#badge {
+	margin: 5px 0 7px 5px;
+}
+
+#badge div {
+	display: inline-block;
 }
 
 #footer {

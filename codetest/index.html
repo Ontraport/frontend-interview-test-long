@@ -22,7 +22,7 @@
 		<ul class="header-buttons">
 			<li><a href="">Home</a></li>
 			<li><a href="">Post an Update</a></li>
-			<li><img src="images/profile/daniel-craig.jpg" alt="Daniel Craig" id="profile-icon" /></li>
+			<li id="header-icon"></li>
 		</ul>
 	</div>
 
@@ -35,6 +35,10 @@
 
 	<script type="text/template" id="posts-template">
 		<div id="sidebar">
+			<div id="badge" class="group">
+				<div id="sidebar-name"><img src="<%= currentUser.escape("pic") %>" alt="" /></div>
+				<div id="sidebar-icon"><%= currentUser.escape("username") %></div>
+			</div>
 		</div>
 		<div id="posts">
 			<div id="feed-header">Updates</div>

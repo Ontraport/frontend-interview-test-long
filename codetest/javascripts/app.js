@@ -53,8 +53,10 @@ Network.Views.Index = Backbone.View.extend({
     console.log("render");
     console.log(this.collection.users.length);
     console.log(this.collection.posts.length);
-    $(this.el).html(this.template());
-    // debugger;
+    this.currentUser = this.collection.users.findWhere({id: 5});
+    this.showUserIconHeader();
+    var view = this.template({ currentUser: this.currentUser })
+    $(this.el).html(view);
     this.addAllPosts();
   },
 
@@ -64,13 +66,20 @@ Network.Views.Index = Backbone.View.extend({
       model: post,
       collection: this.collection.users
     });
-    // debugger;
     $("#feed", this.el).append(view.render());
   },
 
   addAllPosts: function(){
     console.log("addAllPosts");
     this.collection.posts.each(this.addPost);
+  },
+
+  showUserIconHeader: function(){
+    $("#header-icon").html(
+      '<img src="' +
+      this.currentUser.attributes.pic +
+      '" alt="Daniel Craig" id="profile-icon" />'
+      );
   }
 });
 
@@ -84,11 +93,11 @@ Network.Views.post = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({
+    var view = this.template({
       post: this.model,
       user: this.user
     });
-    this.$el.html(content);
+    this.$el.html(view);
     return this.$el;
   }
 });
