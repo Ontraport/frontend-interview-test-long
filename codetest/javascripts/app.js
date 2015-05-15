@@ -35,7 +35,7 @@ Network.Models.Comment = Backbone.Model.extend({
 // Collections
 
 Network.Collections.Posts = Backbone.Collection.extend({
-  url: "../data/posts.json",
+  url: "./data/posts.json",
   model: Network.Models.Post,
   initialize: function() {
     console.log("posts collect")
@@ -43,7 +43,7 @@ Network.Collections.Posts = Backbone.Collection.extend({
 });
 
 Network.Collections.Users = Backbone.Collection.extend({
-  url: "../data/users.json",
+  url: "./data/users.json",
   model: Network.Models.User,
   initialize: function() {
     console.log("users collect")
