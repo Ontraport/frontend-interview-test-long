@@ -178,7 +178,7 @@ br{
 #feed {
 	list-style: none;
 	margin: 15px 0 15px 0;
-	padding: 1px 0 10px 0;
+	padding: 1px 0 5px 0;
 }
 
 #feed-header {
@@ -197,11 +197,70 @@ br{
 	margin-right: 10px;
 }
 
+.post-body{
+	overflow: hidden;
+	padding: 3px;
+}
+
 .post-content{
-	float: right;
 }
 
 .poster-name{
 	color: #0279c9;
 	font-weight: bold;
+}
+
+	/*comments*/
+
+.comments {
+	width: 460px;
+	background-color: #EDEDED;
+	padding: 0 0 5px 0;
+	margin: 0 0 0 55px;
+	list-style: none;
+}
+
+.comment {
+	padding: 12px 5px 12px 5px;
+	border-bottom: 1px #e1e1e1 solid;
+}
+
+.comment-icon {
+	float: left;
+	margin-right: 10px;
+}
+
+.comment-icon img {
+	height: 25px;
+	length: 25px;
+}
+
+.comment-content{
+}
+
+.comment-body{
+	overflow: hidden;
+}
+
+.commenter-name{
+	color: #0279c9;
+	font-weight: bold;
+}
+
+.form-wrapper {
+	width: 460px;
+	background-color: #EDEDED;
+	padding: 2px;
+	margin: 0 0 0 55px;
+	list-style: none;
+}
+
+.comment-box {
+	box-sizing: border-box;
+	border-top: 1px #cbcbcb solid;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	height: 20px;
+	width: 455px;
 }

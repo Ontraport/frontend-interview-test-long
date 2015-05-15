@@ -8,11 +8,28 @@ var Network = {
 // Models
 
 Network.Models.Post = Backbone.Model.extend({
+  parse: function (payload) {
+    if (payload.comments) {
+      this.comments().set(payload.comments, { parse: true });
+      delete payload.comments;
+    }
 
+    return payload;
+  },
+
+  comments: function() {
+    this._comments = this._comments ||
+      new Network.Collections.Comments([], {
+        post: this
+      });
+    return this._comments;
+  }
 });
 
 Network.Models.User = Backbone.Model.extend({
+});
 
+Network.Models.Comment = Backbone.Model.extend({
 });
 
 // Collections
@@ -33,15 +50,23 @@ Network.Collections.Users = Backbone.Collection.extend({
   }
 });
 
+Network.Collections.Comments = Backbone.Collection.extend({
+  model: Network.Models.Comment,
+  initialize: function() {
+    console.log("comment collect")
+  }
+});
+
 //Templates
-Network.Templates.posts = _.template($("#posts-template").html());
-Network.Templates.post = _.template($("#post-template").html());
-// Network.Templates.comment = _.template($("#comment-template").html());
+Network.Templates.Posts = _.template($("#posts-template").html());
+Network.Templates.Post = _.template($("#post-template").html());
+Network.Templates.Comment = _.template($("#comment-template").html());
+Network.Templates.Form = _.template($("#form-template").html());
 
 // Views
 Network.Views.Index = Backbone.View.extend({
   el: $("#page"),
-  template: Network.Templates.posts,
+  template: Network.Templates.Posts,
 
   initialize: function() {
     _.bindAll(this, 'render', 'addPost', 'addAllPosts');
@@ -50,9 +75,6 @@ Network.Views.Index = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("render");
-    console.log(this.collection.users.length);
-    console.log(this.collection.posts.length);
     this.currentUser = this.collection.users.findWhere({id: 5});
     this.showUserIconHeader();
     var view = this.template({ currentUser: this.currentUser })
@@ -61,8 +83,7 @@ Network.Views.Index = Backbone.View.extend({
   },
 
   addPost: function(post){
-    console.log("addPost");
-    var view = new Network.Views.post({
+    var view = new Network.Views.Post({
       model: post,
       collection: this.collection.users
     });
@@ -70,7 +91,6 @@ Network.Views.Index = Backbone.View.extend({
   },
 
   addAllPosts: function(){
-    console.log("addAllPosts");
     this.collection.posts.each(this.addPost);
   },
 
@@ -83,13 +103,16 @@ Network.Views.Index = Backbone.View.extend({
   }
 });
 
-Network.Views.post = Backbone.View.extend({
+Network.Views.Post = Backbone.View.extend({
   tagName: "li",
   className: "post group",
-  template: Network.Templates.post,
-  initialize: function(options) {
+  template: Network.Templates.Post,
+  initialize: function() {
     this.user = this.collection.findWhere({id: this.model.attributes.userId});
+    _.bindAll(this, 'render', 'addComment', 'addAllComments');
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model.comments(), 'sync', this.render);
+    this.listenTo(this.model.comments(), 'add', this.addComment);
   },
 
   render: function () {
@@ -98,15 +121,61 @@ Network.Views.post = Backbone.View.extend({
       user: this.user
     });
     this.$el.html(view);
+    if (this.model.comments().length > 0) {
+      $(".comments-wrapper", this.$el).html('<ul class="comments"></ul>');
+      this.addAllComments();
+    }
+    this.addForm();
+    return this.$el;
+  },
+
+  addAllComments: function() {
+    this.model.comments().each(this.addComment);
+  },
+
+  addComment: function (comment) {
+    var view = new Network.Views.Comment({
+      model: comment,
+      collection: this.collection
+    });
+    $(".comments", this.$el).append(view.render());
+  },
+
+  addForm: function() {
+    var view = new Network.Views.Form({});
+    $(".form-wrapper", this.$el).append(view.render());
+  }
+});
+
+Network.Views.Comment = Backbone.View.extend({
+  tagName: "li",
+  className: "comment group",
+  template: Network.Templates.Comment,
+  initialize: function() {
+    this.user = this.collection.findWhere({id: this.model.attributes.userId});
+    this.listenTo(this.model, 'sync', this.render);
+  },
+
+  render: function () {
+    var view = this.template({
+      comment: this.model,
+      user: this.user
+    });
+    this.$el.html(view);
     return this.$el;
   }
 });
 
-// Network.Views.comment = Backbone.View.extend({
-//   tagName: "li",
-//   template: Network.Templates.comment,
-//
-// })
+Network.Views.Form = Backbone.View.extend({
+  className: "comment-form group",
+  template: Network.Templates.Form,
+
+  render: function () {
+    var view = this.template({});
+    this.$el.html(view);
+    return this.$el;
+  }
+})
 
 // Router
 

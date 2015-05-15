@@ -48,12 +48,34 @@
 	</script>
 
 	<script type="text/template" id="post-template">
-		<div class="post-icon"><img src="<%= user.escape("pic") %>" alt="" /></div>
-		<div class="post-body">
-			<div class="poster-name"><%= user.escape("username") %> </div>
-			<div class="content"><%= post.escape("content") %> </div>
+		<div class="post-main group">
+			<div class="post-icon"><img src="<%= user.escape("pic") %>" alt="" /></div>
+			<div class="post-body group">
+				<div class="poster-name"> <%= user.escape("username") %> </div>
+				<div class="content"> <%= post.escape("content") %> </div>
+			</div>
+		</div>
+		<div class="comments-wrapper">
+		</div>
+		<div class="form-wrapper">
 		</div>
 	</script>
+
+	<script type="text/template" id="comment-template">
+		<div class="comment-icon"><img src="<%= user.escape("pic") %>" alt="" /></div>
+		<div class="comment-body group">
+			<div class="commenter-name"> <%= user.escape("username") %> </div>
+			<div class="comment-content"> <%= comment.escape("content") %> </div>
+		</div>
+	</script>
+
+	<script type="text/template" id="form-template">
+		<form>
+			<textarea class="comment-box" placeholder="post a comment"></textarea>
+		</form>
+	</script>
+
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" type="text/javascript"></script>
 	<script src="javascripts/app.js"></script>
