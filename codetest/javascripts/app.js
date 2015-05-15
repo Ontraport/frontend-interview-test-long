@@ -8,6 +8,8 @@ var Network = {
 // Models
 
 Network.Models.Post = Backbone.Model.extend({
+  // Parses JSON to check for comments, and creates a collection for them
+  // if comments exist
   parse: function (payload) {
     if (payload.comments) {
       this.comments(payload.id).set(payload.comments, { parse: true });
@@ -18,8 +20,8 @@ Network.Models.Post = Backbone.Model.extend({
   },
 
   comments: function(id) {
+    // Returns the collection or creates a new one
     this._comments = this._comments || createCommentsCollections(id);
-
     return this._comments;
   }
 });
@@ -48,7 +50,7 @@ Network.Collections.Users = Backbone.Collection.extend({
   }
 });
 
-// Pass in an ID to allow each
+// Pass in an ID to allow each comments collection to have its own localStorage
 var createCommentsCollections = function(id){
   Network.Collections.Comments = Backbone.Collection.extend({
     model: Network.Models.Comment,
@@ -140,6 +142,8 @@ Network.Views.Post = Backbone.View.extend({
       user: this.user
     });
     this.$el.html(view);
+
+    // Only adds the comment ul if comments exists
     if (this.model.comments().length > 0) {
       $(".comments-wrapper", this.$el).html('<ul class="comments"></ul>');
       this.addAllComments();
