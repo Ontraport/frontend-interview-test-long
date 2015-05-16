@@ -85,6 +85,22 @@ br{
 .header-buttons img {
 }
 
+#post-modal {
+	display: none;
+	height: 200px;
+	width: 340px;
+	background-color: #F7F7F7;
+}
+
+#post-box {
+	height: 50px;
+	width: 275px;
+}
+
+.modal-body{
+	margin: 38px 28px;
+}
+
 /*search in header*/
 
 #search{

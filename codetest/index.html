@@ -3,9 +3,10 @@
 <head>
 	<title>The network</title>
 
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
-	<script src="https://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+	<link rel="stylesheet" href="stylesheets/jquery.modal.css" type="text/css" media="screen" />
+	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
 </head>
 <body>
 
@@ -21,7 +22,7 @@
 		</div>
 		<ul class="header-buttons">
 			<li><a href="">Home</a></li>
-			<li><a href="">Post an Update</a></li>
+			<li><a href="#post-modal" rel="modal:open" id="post-link">Post an Update</a></li>
 			<li id="header-icon"></li>
 		</ul>
 	</div>
@@ -75,11 +76,19 @@
 		</form>
 	</script>
 
+	<div id="post-modal">
+		<div class="modal-body">
+		  <h3>Status Update</h3>
+			<textarea id="post-box"></textarea>
+			<p>hit enter to post</p>
+		</div>
+	</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
-  <script src="javascripts/backbone.js" type="text/javascript"></script>
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js"></script>
-	<script src="resources/box.js/box.js"></script>
-	<script src="javascripts/app.js"></script>
 </body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
+	<script src="javascripts/backbone.js" type="text/javascript"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js"></script>
+	<script src="javascripts/jquery-modal/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/app.js"></script>
+	<script src="javascripts/modal.js"></script>
 </html>
