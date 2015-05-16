@@ -68,6 +68,9 @@
 			<div class="commenter-name"> <%= user.escape("username") %> </div>
 			<div class="comment-content"> <%= comment.escape("content") %> </div>
 		</div>
+		<div class="timestamp">
+			<%= timestamp %>
+		</div>
 	</script>
 
 	<script type="text/template" id="form-template">
@@ -76,12 +79,17 @@
 		</form>
 	</script>
 
-	<div id="post-modal">
+	<script type="text/template" id="modal-template">
 		<div class="modal-body">
-		  <h3>Status Update</h3>
-			<textarea id="post-box"></textarea>
+			<h3>Status Update</h3>
+			<form>
+				<textarea id="post-box"></textarea>
+			</form>
 			<p>hit enter to post</p>
 		</div>
+	</script>
+
+	<div id="post-modal">
 	</div>
 
 </body>

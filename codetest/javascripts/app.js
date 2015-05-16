@@ -11,7 +11,7 @@ Network.Models.Post = Backbone.Model.extend({
   // Parses JSON to check for comments, and creates a collection for them
   // if comments exist
   parse: function (payload) {
-    if (payload.comments) {
+    if (payload.comments && payload.id) {
       this.comments(payload.id).set(payload.comments, { parse: true });
       delete payload.comments;
     }
@@ -68,24 +68,27 @@ Network.Templates.Posts = _.template($("#posts-template").html());
 Network.Templates.Post = _.template($("#post-template").html());
 Network.Templates.Comment = _.template($("#comment-template").html());
 Network.Templates.Form = _.template($("#form-template").html());
+Network.Templates.Modal = _.template($("#modal-template").html());
 
 // Views
 Network.Views.Index = Backbone.View.extend({
   el: $("#page"),
   template: Network.Templates.Posts,
 
-  initialize: function() {
+  initialize: function(options) {
     _.bindAll(this, 'render', 'addPost', 'addAllPosts');
     this.listenTo(this.collection.posts, 'sync', this.render);
     this.listenTo(this.collection.posts, 'add', this.addPost);
   },
 
   render: function() {
+    console.log("rendering");
     this.currentUser = this.collection.users.findWhere({id: 5});
     this.showUserIconHeader();
     var view = this.template({ currentUser: this.currentUser })
     $(this.el).html(view);
     this.addAllPosts();
+    this.addModal();
   },
 
   addPost: function(post){
@@ -98,6 +101,13 @@ Network.Views.Index = Backbone.View.extend({
 
   addAllPosts: function(){
     this.collection.posts.each(this.addPost);
+  },
+
+  addModal: function() {
+    this.modal = this.modal || new Network.Views.Modal({
+      collection: this.collection.posts
+    });
+    this.modal.render();
   },
 
   showUserIconHeader: function(){
@@ -124,10 +134,10 @@ Network.Views.Post = Backbone.View.extend({
         this.model.comments().localStorage.create(comment);
       }
     }).bind(this));
-
     // Then refetches the comments. Has to be done this way otherwise the
     // the collection would be overwritten by the localStorage data
     this.model.comments().fetch();
+
 
     this.user = this.collection.findWhere({id: this.model.attributes.userId});
     _.bindAll(this, 'render', 'addComment', 'addAllComments');
@@ -182,10 +192,30 @@ Network.Views.Comment = Backbone.View.extend({
     this.user = this.collection.findWhere({id: this.model.attributes.userId});
   },
 
+  getTimeStamp: function() {
+    if (this.model.attributes.date === "") return "";
+    var milliseconds = 1000*60*60*24;
+    var postDate = new Date(this.model.attributes.date);
+    var today = new Date();
+    var difference = today - postDate;
+    var days = Math.round(difference/milliseconds);
+    switch (days) {
+      case 0:
+        return "Today"
+        break;
+      case 1:
+        return "Yesterday"
+        break;
+      default:
+        return days + " days ago"
+    }
+  },
+
   render: function () {
     var view = this.template({
       comment: this.model,
-      user: this.user
+      user: this.user,
+      timestamp: this.getTimeStamp()
     });
     this.$el.html(view);
     return this.$el;
@@ -198,7 +228,6 @@ Network.Views.Form = Backbone.View.extend({
 
   events: {
     'keyup .comment-box': 'processKey',
-    'submit form': 'submit'
   },
 
   initialize: function(){
@@ -239,7 +268,56 @@ Network.Views.Form = Backbone.View.extend({
     this.render();
   }
 
-})
+});
+
+Network.Views.Modal = Backbone.View.extend({
+  el: $('#post-modal'),
+  template: Network.Templates.Modal,
+
+  events:{
+    'keyup #post-box': 'processKey',
+  },
+
+  initialize: function() {
+    this.currentUser = this.collection.findWhere({id: 5});
+  },
+
+  createJSON: function(input) {
+    var params = {
+      "userId": this.currentUser.attributes.id,
+      "date": new Date(),
+      "content": input.trim(),
+      "comments": []
+    };
+
+    return params;
+  },
+
+  processKey: function(e) {
+    if(e.which === 13) {
+      var input = e.currentTarget.value;
+      var params = this.createJSON(input);
+      this.savePost(params);
+      $.modal.close();
+    }
+  },
+
+  render: function() {
+    var view = this.template({});
+    this.$el.html(view);
+    return this.$el;
+  },
+
+  savePost: function(params) {
+    var post = new Network.Models.Post(params);
+    this.collection.add(post);
+    post.save();
+    post.fetch();
+    this.collection.fetch();
+    this.render();
+  }
+
+});
 
 // Router
 
@@ -258,17 +336,31 @@ Network.Router = Backbone.Router.extend({
       collection: {
         users: this.usersCollection,
         posts: this.postsCollection
-      }
+      },
     });
-
     // This first fills the collection with the local JSON data before
     // switching over to local storage
+
     this.usersCollection.fetch().done((function() {
       this.usersCollection.localStorage = new Backbone.LocalStorage("usersStore");
+      this.usersCollection.each((function(user) {
+        if (this.usersCollection.localStorage.records
+            .indexOf(user.attributes.id.toString()) === -1) {
+          this.usersCollection.localStorage.create(user);
+        }
+      }).bind(this));
+      this.usersCollection.fetch();
     }).bind(this));
 
     this.postsCollection.fetch().done((function() {
       this.postsCollection.localStorage = new Backbone.LocalStorage("postsStore");
+      this.postsCollection.each((function(post) {
+        if (this.postsCollection.localStorage.records
+            .indexOf(post.attributes.id.toString()) === -1) {
+          this.postsCollection.localStorage.create(post);
+        }
+      }).bind(this));
+      this.postsCollection.fetch();
     }).bind(this));
   }
 });
