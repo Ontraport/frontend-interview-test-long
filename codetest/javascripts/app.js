@@ -44,18 +44,12 @@ Network.Models.Comment = Backbone.Model.extend({
 
 Network.Collections.Posts = Backbone.Collection.extend({
   url: "./data/posts.json",
-  model: Network.Models.Post,
-  initialize: function() {
-    console.log("posts collect")
-  }
+  model: Network.Models.Post
 });
 
 Network.Collections.Users = Backbone.Collection.extend({
   url: "./data/users.json",
-  model: Network.Models.User,
-  initialize: function() {
-    console.log("users collect")
-  }
+  model: Network.Models.User
 });
 
 // Pass in a postId to allow each post's comments collection to have its own
@@ -84,14 +78,13 @@ Network.Views.Index = Backbone.View.extend({
   el: $("#page"),
   template: Network.Templates.Posts,
 
-  initialize: function(options) {
+  initialize: function() {
     _.bindAll(this, 'render', 'addPost', 'addAllPosts');
     this.listenTo(this.collection.posts, 'sync', this.render);
     this.listenTo(this.collection.posts, 'add', this.addPost);
   },
 
   render: function() {
-    console.log("rendering");
     this.currentUser = this.collection.users.findWhere({id: Network.loggedInUserId});
     this.showUserIconHeader();
     var view = this.template({ currentUser: this.currentUser })
@@ -101,11 +94,16 @@ Network.Views.Index = Backbone.View.extend({
   },
 
   addPost: function(post){
-    var view = new Network.Views.Post({
-      model: post,
-      collection: this.collection.users
-    });
-    $("#feed", this.el).append(view.render());
+    // Ensures posts only get added after collection is fetched
+    this.collection.users.fetch().done((function(){
+      var user = this.collection.users.findWhere({id: post.attributes.userId})
+      var view = new Network.Views.Post({
+        model: post,
+        collection: this.collection.users,
+        user: user
+      });
+      $("#feed", this.el).append(view.render());
+    }).bind(this));
   },
 
   addAllPosts: function(){
@@ -134,9 +132,9 @@ Network.Views.Post = Backbone.View.extend({
   className: "post group",
   template: Network.Templates.Post,
 
-  initialize: function() {
+  initialize: function(options) {
+    this.user = options.user
     this.buildCommentsCollection();
-    this.user = this.collection.findWhere({id: this.model.attributes.userId});
     _.bindAll(this, 'render', 'addComment', 'addAllComments');
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.comments(), 'sync', this.render);
@@ -202,7 +200,7 @@ Network.Views.Comment = Backbone.View.extend({
   className: "comment group",
   template: Network.Templates.Comment,
 
-  initialize: function() {
+  initialize: function(options) {
     this.user = this.collection.findWhere({id: this.model.attributes.userId});
   },
 
@@ -341,14 +339,15 @@ Network.Router = Backbone.Router.extend({
   },
 
   index: function() {
+    // This first fills the collection with the local JSON data before
+    // switching over to local storage
+
     var view = new Network.Views.Index({
       collection: {
         users: this.usersCollection,
         posts: this.postsCollection
       },
     });
-    // This first fills the collection with the local JSON data before
-    // switching over to local storage
 
     this.saveToStorageAndFetch(this.usersCollection, "usersStore");
     this.saveToStorageAndFetch(this.postsCollection, "postsStore");
