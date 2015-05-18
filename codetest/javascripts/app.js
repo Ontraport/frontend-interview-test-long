@@ -2,16 +2,18 @@ var Network = {
     Models: {},
     Collections: {},
     Views: {},
-    Templates:{}
+    Templates:{},
+    // Manually set logged in user to user with id 5
+    loggedInUserId: 5
 };
 
 // Models
 
 Network.Models.Post = Backbone.Model.extend({
-  // Parses JSON to check for comments, and creates a collection for them
-  // if comments exist
+  // Parses JSON to check for comments, and creates a collection for them,
+  // if comments exist.
   parse: function (payload) {
-    if (payload.comments && payload.id) {
+    if (payload.comments) {
       this.comments(payload.id).set(payload.comments, { parse: true });
       delete payload.comments;
     }
@@ -20,8 +22,14 @@ Network.Models.Post = Backbone.Model.extend({
   },
 
   comments: function(id) {
-    // Returns the collection or creates a new one
-    this._comments = this._comments || createCommentsCollections(id);
+    // Checks if a comment collection exists and has a valid id, otherwise, make
+    // a new collection. This is necessary as when the model is created, a
+    // localStorage entry with an undefined id is created.
+    if (this._comments && this._comments.postId) {
+      return this._comments;
+    } else {
+      this._comments = createCommentsCollections(id);
+    }
     return this._comments;
   }
 });
@@ -50,13 +58,14 @@ Network.Collections.Users = Backbone.Collection.extend({
   }
 });
 
-// Pass in an ID to allow each comments collection to have its own localStorage
+// Pass in a postId to allow each post's comments collection to have its own
+// localStorage.
 var createCommentsCollections = function(id){
   Network.Collections.Comments = Backbone.Collection.extend({
     model: Network.Models.Comment,
-    localStorage: new Backbone.LocalStorage("commentsStore" + id),
+    localStorage: new Backbone.LocalStorage("commentsStore-" + id),
     initialize: function() {
-      console.log("comment collect")
+      this.postId = id;
     }
   });
 
@@ -83,7 +92,7 @@ Network.Views.Index = Backbone.View.extend({
 
   render: function() {
     console.log("rendering");
-    this.currentUser = this.collection.users.findWhere({id: 5});
+    this.currentUser = this.collection.users.findWhere({id: Network.loggedInUserId});
     this.showUserIconHeader();
     var view = this.template({ currentUser: this.currentUser })
     $(this.el).html(view);
@@ -114,7 +123,8 @@ Network.Views.Index = Backbone.View.extend({
     $("#header-icon").html(
       '<img src="' +
       this.currentUser.attributes.pic +
-      '" alt="Daniel Craig" id="profile-icon" />'
+      '" alt="' + this.currentUser.attributes.username +
+      '" id="profile-icon" />'
     );
   }
 });
@@ -125,20 +135,7 @@ Network.Views.Post = Backbone.View.extend({
   template: Network.Templates.Post,
 
   initialize: function() {
-    this.model.comments().each((function(comment) {
-      // Goes through each comment, checks the localStorage records to see if
-      // a comment with the same ID already exists, and saves to localStorage
-      // if it does not
-      if (this.model.comments().localStorage.records
-          .indexOf(comment.attributes.id.toString()) === -1) {
-        this.model.comments().localStorage.create(comment);
-      }
-    }).bind(this));
-    // Then refetches the comments. Has to be done this way otherwise the
-    // the collection would be overwritten by the localStorage data
-    this.model.comments().fetch();
-
-
+    this.buildCommentsCollection();
     this.user = this.collection.findWhere({id: this.model.attributes.userId});
     _.bindAll(this, 'render', 'addComment', 'addAllComments');
     this.listenTo(this.model, 'sync', this.render);
@@ -180,6 +177,23 @@ Network.Views.Post = Backbone.View.extend({
       collection: this.collection
     });
     $(".form-wrapper", this.$el).append(view.render());
+  },
+
+  buildCommentsCollection: function () {
+    this.model.comments().each((function(comment) {
+      // Goes through each comment, checks the localStorage records to see if
+      // a comment with the same ID already exists, and saves to localStorage
+      // if it does not
+      if (this.model.comments().localStorage.records
+          .indexOf(comment.attributes.id.toString()) === -1) {
+        this.model.comments().localStorage.create(comment);
+      }
+    }).bind(this));
+
+    // Then refetches the comments. Has to be done this way otherwise the
+    // the collection built from the JSON file would be overwritten by the
+    // localStorage data on fetch
+    this.model.comments().fetch();
   }
 });
 
@@ -231,7 +245,7 @@ Network.Views.Form = Backbone.View.extend({
   },
 
   initialize: function(){
-    this.currentUser = this.collection.findWhere({id: 5});
+    this.currentUser = this.collection.findWhere({id: Network.loggedInUserId});
   },
 
   createJSON: function(input) {
@@ -249,7 +263,7 @@ Network.Views.Form = Backbone.View.extend({
     if(e.which === 13) {
       var input = e.currentTarget.value;
       var params = this.createJSON(input);
-      this.submit(params);
+      this.saveComment(params);
     }
   },
 
@@ -259,15 +273,13 @@ Network.Views.Form = Backbone.View.extend({
     return this.$el;
   },
 
-  submit: function(params) {
+  saveComment: function(params) {
     var comment = new Network.Models.Comment(params);
-    this.model.comments().add(comment);
+    this.model.comments(this.model.attributes.id).add(comment);
     comment.save();
     comment.fetch();
     this.model.fetch();
-    this.render();
   }
-
 });
 
 Network.Views.Modal = Backbone.View.extend({
@@ -279,7 +291,7 @@ Network.Views.Modal = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.currentUser = this.collection.findWhere({id: 5});
+    this.currentUser = this.collection.findWhere({id: Network.loggedInUserId});
   },
 
   createJSON: function(input) {
@@ -313,10 +325,7 @@ Network.Views.Modal = Backbone.View.extend({
     this.collection.add(post);
     post.save();
     post.fetch();
-    this.collection.fetch();
-    this.render();
   }
-
 });
 
 // Router
@@ -341,26 +350,27 @@ Network.Router = Backbone.Router.extend({
     // This first fills the collection with the local JSON data before
     // switching over to local storage
 
-    this.usersCollection.fetch().done((function() {
-      this.usersCollection.localStorage = new Backbone.LocalStorage("usersStore");
-      this.usersCollection.each((function(user) {
-        if (this.usersCollection.localStorage.records
-            .indexOf(user.attributes.id.toString()) === -1) {
-          this.usersCollection.localStorage.create(user);
-        }
-      }).bind(this));
-      this.usersCollection.fetch();
-    }).bind(this));
+    this.saveToStorageAndFetch(this.usersCollection, "usersStore");
+    this.saveToStorageAndFetch(this.postsCollection, "postsStore");
+  },
 
-    this.postsCollection.fetch().done((function() {
-      this.postsCollection.localStorage = new Backbone.LocalStorage("postsStore");
-      this.postsCollection.each((function(post) {
-        if (this.postsCollection.localStorage.records
-            .indexOf(post.attributes.id.toString()) === -1) {
-          this.postsCollection.localStorage.create(post);
+  saveToStorageAndFetch: function (collection, storageName) {
+    // Backbone will not combine localStorage data with an existing collection,
+    // so we must first save the collection to localStorage, then refetch.
+    collection.fetch().done((function() {
+      // Sets localStorage name
+      collection.localStorage = new Backbone.LocalStorage(storageName);
+      collection.each((function(model) {
+        // Checks to see if model already exists in localStorage
+        if (collection.localStorage.records
+            .indexOf(model.attributes.id.toString()) === -1) {
+          // Saves to local storage if it doesn't exist
+          collection.localStorage.create(model);
         }
       }).bind(this));
-      this.postsCollection.fetch();
+
+      // Refetches the collection, this time using the data from localStorage.
+      collection.fetch();
     }).bind(this));
   }
 });
