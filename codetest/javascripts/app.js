@@ -42,6 +42,8 @@ Network.Models.Comment = Backbone.Model.extend({
 
 // Collections
 
+// Collections start off loading from the json data, before switching over to
+// localStorage
 Network.Collections.Posts = Backbone.Collection.extend({
   url: "./data/posts.json",
   model: Network.Models.Post
