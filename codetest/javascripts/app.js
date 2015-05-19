@@ -69,7 +69,7 @@ var createCommentsCollections = function(id){
 }
 
 //Templates
-Network.Templates.Posts = _.template($("#posts-template").html());
+Network.Templates.Index = _.template($("#index-template").html());
 Network.Templates.Post = _.template($("#post-template").html());
 Network.Templates.Comment = _.template($("#comment-template").html());
 Network.Templates.Form = _.template($("#form-template").html());
@@ -78,7 +78,7 @@ Network.Templates.Modal = _.template($("#modal-template").html());
 // Views
 Network.Views.Index = Backbone.View.extend({
   el: $("#page"),
-  template: Network.Templates.Posts,
+  template: Network.Templates.Index,
 
   initialize: function() {
     _.bindAll(this, 'render', 'addPost', 'addAllPosts');
