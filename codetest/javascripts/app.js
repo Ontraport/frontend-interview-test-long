@@ -81,13 +81,13 @@ Network.Views.Index = Backbone.View.extend({
   template: Network.Templates.Index,
 
   initialize: function() {
+    this.currentUser = this.collection.users.findWhere({id: Network.loggedInUserId});
     _.bindAll(this, 'render', 'addPost', 'addAllPosts');
     this.listenTo(this.collection.posts, 'sync', this.render);
     this.listenTo(this.collection.posts, 'add', this.addPost);
   },
 
   render: function() {
-    this.currentUser = this.collection.users.findWhere({id: Network.loggedInUserId});
     this.showUserIconHeader();
     var view = this.template({ currentUser: this.currentUser })
     $(this.el).html(view);
@@ -111,7 +111,8 @@ Network.Views.Index = Backbone.View.extend({
 
   addModal: function() {
     this.modal = this.modal || new Network.Views.Modal({
-      collection: this.collection.posts
+      collection: this.collection.posts,
+      currentUser: this.currentUser
     });
     this.modal.render();
   },
@@ -275,7 +276,6 @@ Network.Views.Form = Backbone.View.extend({
     this.model.comments(this.model.attributes.id).add(comment);
     comment.save();
     comment.fetch();
-    this.model.fetch();
   }
 });
 
@@ -287,8 +287,8 @@ Network.Views.Modal = Backbone.View.extend({
     'keyup #post-box': 'processKey',
   },
 
-  initialize: function() {
-    this.currentUser = this.collection.findWhere({id: Network.loggedInUserId});
+  initialize: function(options) {
+    this.currentUser = options.currentUser;
   },
 
   createJSON: function(input) {
@@ -335,43 +335,47 @@ Network.Router = Backbone.Router.extend({
   initialize: function () {
     this.usersCollection = new Network.Collections.Users();
     this.postsCollection = new Network.Collections.Posts();
-  },
 
-  index: function() {
-    var view = new Network.Views.Index({
-      collection: {
-        users: this.usersCollection,
-        posts: this.postsCollection
-      },
-    });
-
-    // This first fills the collection with the local JSON data before
-    // switching over to local storage. It fetches users first, before fetching
-    // the post data, as the index will render as soon as the posts are fetched.
-    $.when(this.saveToStorageAndFetch(this.usersCollection, "usersStore")).done(
+    // Backbone will not combine localStorage data with the data from the JSON
+    // files, so we must first save the JSON models to localStorage.
+    $.when(this.saveToLocalStorage(this.usersCollection, "usersStore")).done(
       (function() {
-        this.saveToStorageAndFetch(this.postsCollection, "postsStore");
+        this.saveToLocalStorage(this.postsCollection, "postsStore");
       }).bind(this)
     );
   },
 
-  saveToStorageAndFetch: function (collection, storageName) {
-    // Backbone will not combine localStorage data with an existing collection,
-    // so we must first save the collection to localStorage, then refetch.
+  index: function() {
+    // When index is called, backbone fetches the collections a second time,
+    // this time from localStorage. Once localStorage is set on the collection,
+    // Backbone will no longer pull models from the JSON files. Users is fetched
+    // first because the posts require user information.
+    this.usersCollection.fetch().done(
+      (function () {
+        var view = new Network.Views.Index({
+          collection: {
+            users: this.usersCollection,
+            posts: this.postsCollection
+          }
+        });
+        this.postsCollection.fetch();
+      }).bind(this)
+    )
+  },
+
+  saveToLocalStorage: function (collection, storageName) {
+    // Fetch is first called to populate the collection with the local JSON models
     collection.fetch().done((function() {
-      // Sets localStorage name
+      // Sets localStorage, overriding the default collection url
       collection.localStorage = new Backbone.LocalStorage(storageName);
       collection.each((function(model) {
         // Checks to see if model already exists in localStorage
         if (collection.localStorage.records
             .indexOf(model.attributes.id.toString()) === -1) {
-          // Saves to local storage if it doesn't exist
+          // Saves the model to localStorage if it doesn't exist
           collection.localStorage.create(model);
         }
       }).bind(this));
-
-      // Refetches the collection, this time using the data from localStorage.
-      collection.fetch();
     }).bind(this));
   }
 });
