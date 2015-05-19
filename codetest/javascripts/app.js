@@ -65,7 +65,7 @@ var createCommentsCollections = function(id){
     }
   });
 
-  return new Network.Collections.Comments
+  return new Network.Collections.Comments;
 }
 
 //Templates
@@ -96,16 +96,13 @@ Network.Views.Index = Backbone.View.extend({
   },
 
   addPost: function(post){
-    // Ensures posts only get added after collection is fetched
-    this.collection.users.fetch().done((function(){
-      var user = this.collection.users.findWhere({id: post.attributes.userId})
-      var view = new Network.Views.Post({
-        model: post,
-        collection: this.collection.users,
-        user: user
-      });
-      $("#feed", this.el).append(view.render());
-    }).bind(this));
+    var user = this.collection.users.findWhere({id: post.attributes.userId});
+    var view = new Network.Views.Post({
+      model: post,
+      collection: this.collection.users,
+      user: user
+    });
+    $("#feed", this.el).append(view.render());
   },
 
   addAllPosts: function(){
@@ -135,7 +132,7 @@ Network.Views.Post = Backbone.View.extend({
   template: Network.Templates.Post,
 
   initialize: function(options) {
-    this.user = options.user
+    this.user = options.user;
     this.buildCommentsCollection();
     _.bindAll(this, 'render', 'addComment', 'addAllComments');
     this.listenTo(this.model, 'sync', this.render);
@@ -174,7 +171,7 @@ Network.Views.Post = Backbone.View.extend({
   addForm: function() {
     var view = new Network.Views.Form({
       model: this.model,
-      collection: this.collection
+      currentUser: this.collection.findWhere({id: Network.loggedInUserId})
     });
     $(".form-wrapper", this.$el).append(view.render());
   },
@@ -244,8 +241,8 @@ Network.Views.Form = Backbone.View.extend({
     'keyup .comment-box': 'processKey',
   },
 
-  initialize: function(){
-    this.currentUser = this.collection.findWhere({id: Network.loggedInUserId});
+  initialize: function(options){
+    this.currentUser = options.currentUser;
   },
 
   createJSON: function(input) {
@@ -341,9 +338,6 @@ Network.Router = Backbone.Router.extend({
   },
 
   index: function() {
-    // This first fills the collection with the local JSON data before
-    // switching over to local storage
-
     var view = new Network.Views.Index({
       collection: {
         users: this.usersCollection,
@@ -351,8 +345,14 @@ Network.Router = Backbone.Router.extend({
       },
     });
 
-    this.saveToStorageAndFetch(this.usersCollection, "usersStore");
-    this.saveToStorageAndFetch(this.postsCollection, "postsStore");
+    // This first fills the collection with the local JSON data before
+    // switching over to local storage. It fetches users first, before fetching
+    // the post data, as the index will render as soon as the posts are fetched.
+    $.when(this.saveToStorageAndFetch(this.usersCollection, "usersStore")).done(
+      (function() {
+        this.saveToStorageAndFetch(this.postsCollection, "postsStore");
+      }).bind(this)
+    );
   },
 
   saveToStorageAndFetch: function (collection, storageName) {
