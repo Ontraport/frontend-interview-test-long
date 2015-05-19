@@ -213,7 +213,8 @@ br{
 	padding: 3px;
 }
 
-.post-content{
+.content{
+	overflow-wrap: break-word;
 }
 
 .poster-name{
@@ -247,6 +248,7 @@ br{
 }
 
 .comment-content{
+	overflow-wrap: break-word;
 }
 
 .comment-body{
