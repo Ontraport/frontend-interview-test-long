@@ -124,7 +124,8 @@ br{
 	background-image: -moz-linear-gradient(top, #6FD6F7, #0daee1);
 	background-image: -ms-linear-gradient(top, #6FD6F7, #0daee1);
 	background-image: -o-linear-gradient(top, #6FD6F7, #0daee1);
-	background-image: linear-gradient(to bottom, #6FD6F7, #0daee1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6FD6F7, endColorstr=#0daee1);
+	background-image: linear-gradient(to bottom, #6FD6F7, #0daee1);
+	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#6FD6F7, endColorstr=#0daee1);
 }
 
 #search input[type="submit"]:hover{
@@ -133,7 +134,8 @@ br{
 	background-image: -moz-linear-gradient(top, #0daee1, #6FD6F7);
 	background-image: -ms-linear-gradient(top, #0daee1, #6FD6F7);
 	background-image: -o-linear-gradient(top, #0daee1, #6FD6F7);
-	background-image: linear-gradient(to bottom, #0daee1, #6FD6F7);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#0daee1, endColorstr=#a7c7dc);
+	background-image: linear-gradient(to bottom, #0daee1, #6FD6F7);
+	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#0daee1, endColorstr=#a7c7dc);
 }
 
 #search input[type="search"]:focus {
@@ -219,7 +221,7 @@ br{
 	font-weight: bold;
 }
 
-	/*comments*/
+/*comments*/
 
 .comments {
 	width: 460px;

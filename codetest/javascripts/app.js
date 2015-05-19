@@ -87,24 +87,6 @@ Network.Views.Index = Backbone.View.extend({
     this.listenTo(this.collection.posts, 'add', this.addPost);
   },
 
-  render: function() {
-    this.showUserIconHeader();
-    var view = this.template({ currentUser: this.currentUser })
-    $(this.el).html(view);
-    this.addAllPosts();
-    this.addModal();
-  },
-
-  addPost: function(post){
-    var user = this.collection.users.findWhere({id: post.attributes.userId});
-    var view = new Network.Views.Post({
-      model: post,
-      collection: this.collection.users,
-      user: user
-    });
-    $("#feed", this.el).append(view.render());
-  },
-
   addAllPosts: function(){
     this.collection.posts.each(this.addPost);
   },
@@ -117,6 +99,16 @@ Network.Views.Index = Backbone.View.extend({
     this.modal.render();
   },
 
+  addPost: function(post){
+    var user = this.collection.users.findWhere({id: post.attributes.userId});
+    var view = new Network.Views.Post({
+      model: post,
+      collection: this.collection.users,
+      user: user
+    });
+    $("#feed", this.el).append(view.render());
+  },
+
   showUserIconHeader: function(){
     $("#header-icon").html(
       '<img src="' +
@@ -124,6 +116,14 @@ Network.Views.Index = Backbone.View.extend({
       '" alt="' + this.currentUser.attributes.username +
       '" id="profile-icon" />'
     );
+  },
+
+  render: function() {
+    this.showUserIconHeader();
+    var view = this.template({ currentUser: this.currentUser });
+    $(this.el).html(view);
+    this.addAllPosts();
+    this.addModal();
   }
 });
 
@@ -139,22 +139,6 @@ Network.Views.Post = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.comments(), 'sync', this.render);
     this.listenTo(this.model.comments(), 'add', this.addComment);
-  },
-
-  render: function () {
-    var view = this.template({
-      post: this.model,
-      user: this.user
-    });
-    this.$el.html(view);
-
-    // Only adds the comment ul if comments exists
-    if (this.model.comments().length > 0) {
-      $(".comments-wrapper", this.$el).html('<ul class="comments"></ul>');
-      this.addAllComments();
-    }
-    this.addForm();
-    return this.$el;
   },
 
   addAllComments: function() {
@@ -192,6 +176,22 @@ Network.Views.Post = Backbone.View.extend({
     // the collection built from the JSON file would be overwritten by the
     // localStorage data on fetch
     this.model.comments().fetch();
+  },
+
+  render: function () {
+    var view = this.template({
+      post: this.model,
+      user: this.user
+    });
+    this.$el.html(view);
+
+    // Only adds the comment ul if comments exists
+    if (this.model.comments().length > 0) {
+      $(".comments-wrapper", this.$el).html('<ul class="comments"></ul>');
+      this.addAllComments();
+    }
+    this.addForm();
+    return this.$el;
   }
 });
 
@@ -206,7 +206,7 @@ Network.Views.Comment = Backbone.View.extend({
 
   getTimeStamp: function() {
     if (this.model.attributes.date === "") return "";
-    var milliseconds = 1000*60*60*24;
+    var milliseconds = 1000 * 60 * 60 * 24;
     var postDate = new Date(this.model.attributes.date);
     var today = new Date();
     var difference = today - postDate;
