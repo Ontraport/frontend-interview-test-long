@@ -8,9 +8,42 @@
 		<!-- Since HTML5 there is no need for the 'type="text/css"' attribute on the link tag if you specify the link's "rel" to be "stylesheet" -->
 		<link href="css/normalize.css" rel="stylesheet">
 		<link href="css/skeleton.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
     </head>
     <body>
+		
+		<header>
+			<div class="logo">
+				<img src="images/logo.png" alt="The Network"/>
+			</div>
+			<div class="search">
+				<form action="" method="GET">
+					<input type="text" placeholder="Search..." name="search" size="40" />
+					<button type="submit">Go</button>
+				</form>
+			</div>
+			<div class="links">
+				<a href="#">Home</a>
+				<a href="#">Post an update</a>
+				<a href="#"><img src="images/profile/daniel-craig.jpg" alt="Daniel Craig Profile" /></a>
+			</div>
+		</header>
+		<div class="body">
+			<div class="container">
+				<div class="row">
+					<div class="four columns profile">
+						<a href="#"><img src="images/profile/daniel-craig.jpg" alt="Daniel Craig Profile" /></a>
+						<a href="#">Daniel Craig</a>
+					</div>
+					<div class="eight columns feed">
+						<p>Updates</p>
+						<div class="posts">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
         
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	 <script src="http://cdn.jsdelivr.net/angularjs/1.3.15/angular-1.0.1.min.js"></script>

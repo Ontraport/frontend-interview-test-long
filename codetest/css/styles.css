@@ -1,0 +1,162 @@
+/* Set some basics for the whole document */
+html{
+	height:100%;
+}
+
+body{
+	background: rgb(167,199,220); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(167,199,220,1) 0%, rgba(133,178,211,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(167,199,220,1)), color-stop(100%,rgba(133,178,211,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* IE10+ */
+	background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
+	font-size: 13px;
+	min-width: 800px;
+}
+
+body, html{
+	font-family:sans-serif;
+}
+
+/* Set the color of the text of the input's placeholder attribute */
+::-webkit-input-placeholder {
+   color: #6E6E6E;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #6E6E6E;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #6E6E6E;  
+}
+
+:-ms-input-placeholder {  
+   color: #6E6E6E;  
+}
+
+/* Begin header styles */
+header{
+	background:#303B40;
+	padding-top:15px;
+	overflow:hidden;
+	height:60px;
+	border-top:1px solid black;
+	box-shadow:inset 1px 1px 2px rgba(255,255,255,.7),2px 2px 3px rgba(255,255,255,.7);
+}
+
+header div{
+	display:inline-block;
+}
+
+header .logo{
+	float:left;
+	margin-right:200px;
+	margin-left:15px;
+}
+
+header .search form button{
+	position:relative;
+	bottom:2px;
+	background: #7DDFF9;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7DDFF9), color-stop(100%,#00ADDC));
+	background-image: -webkit-linear-gradient(top, #7DDFF9 0%,#00ADDC 100%);
+	background-image: -moz-linear-gradient(top, #7DDFF9 0%, #00ADDC 100%);
+	background-image: -o-linear-gradient(top, #7DDFF9 0%,#00ADDC 100%);
+	background-image: -ms-linear-gradient(top, #7DDFF9 0%,#7DDFF9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7DDFF9', endColorstr='#00ADDC',GradientType=0 );
+	background-image: linear-gradient(top, #7DDFF9 0%,#00ADDC 100%);
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border-radius:0;
+	border:1px solid #66D6F3;
+	font-family:sans-serif;
+	text-transform:none;
+	text-shadow:1px 1px 2px white;
+	padding:0;
+	padding-left:10px;
+	padding-right:10px;
+	color:black;
+}
+
+header .search form button:hover{
+	-webkit-transition: all 0.3s ease-out;   
+	-moz-transition: all 0.3s ease-out;  
+	-o-transition: all 0.3s ease-out; 
+	-ms-transition: all 0.3s ease-out;  
+	transition: all 0.3s ease-out; 
+	background: #00ADDC;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00ADDC), color-stop(100%,#7DDFF9));
+	background-image: -webkit-linear-gradient(top, #00ADDC 0%,#7DDFF9 100%);
+	background-image: -moz-linear-gradient(top, #00ADDC 0%, #7DDFF9 100%);
+	background-image: -o-linear-gradient(top, #00ADDC 0%,#7DDFF9 100%);
+	background-image: -ms-linear-gradient(top, #00ADDC 0%,#00ADDC 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ADDC', endColorstr='#7DDFF9',GradientType=0 );
+	background-image: linear-gradient(top, #00ADDC 0%,#7DDFF9 100%);
+	box-shadow:1px 1px 2px white;
+}
+
+header .search form input{
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border-radius:0;
+	border:1px solid #A0C4D8;
+	color:#6E6E6E;
+}
+
+header .links{
+	float:right;
+}
+
+header .links img{
+	width:25px;
+	margin-right:15px;
+	position:relative;
+	top:10px;
+}
+
+header .links a{
+	text-decoration:none;
+	color:white;
+	padding-right:20px;
+	text-shadow:1px 1px 2px black;
+}
+
+/* End header styles */
+
+/* Begin body styles */
+
+body .container{
+	margin-top:15px;
+}
+
+.container .profile,
+.container .feed{
+	background:#F7F7F7;
+	padding:10px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+
+.container .profile a{
+	color:black;
+	text-decoration:none;
+}
+
+.container .profile a:hover{
+	text-decoration:underline;
+}
+
+.container .profile img{
+	margin-right:10px;
+}
+
+.container .feed p{
+	font-weight:bold;
+	font-size:20px;
+}
+
+/* End body styles */
