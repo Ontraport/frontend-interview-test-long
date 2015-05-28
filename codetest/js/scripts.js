@@ -17,14 +17,33 @@ $.getJSON("data/users.json", function(data) {
 					
 				for (var key in obj) {
 				   if (obj.hasOwnProperty(key)) {
-					   tempObj[key] = value;
+					   if(key == "userId"){
+						   var result = query(users, "id", obj[key]);
+						   tempObj["userInfo"] = result[0];
+					   } else if(key == "comments"){
+						   var comments = obj[key];
+						   if(comments.length > 0){
+							   for(key in comments){
+								   var comment = comments[key];
+								   for(var key in comment){
+									   if(key == "userId"){
+									   		var result = query(users, "id", comment[key]);
+											comment["userInfo"] = result[0];
+									   }
+								   }
+							   }
+						   }
+						   tempObj["comments"] = comments;
+						   
+					   } else if(key == "content"){
+						   tempObj[key] = obj[key];
+					   }
 				    }
 				}
 				info.push(tempObj)
 			});
 			
 			console.log(info);
-			
 		}
 		
 		// query's the id of the object passed and returns the a jquery object of the item with id
