@@ -1,10 +1,10 @@
 /* Set some basics for the whole document */
 html{
-	height:100%;
-}
-
-body{
-	background: rgb(167,199,220); /* Old browsers */
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background: rgba(167,199,220,1); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(167,199,220,1) 0%, rgba(133,178,211,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(167,199,220,1)), color-stop(100%,rgba(133,178,211,1))); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Chrome10+,Safari5.1+ */
@@ -12,6 +12,11 @@ body{
 	background: -ms-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* IE10+ */
 	background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
+	min-height:100%;
+}
+
+
+body{
 	font-size: 13px;
 	min-width: 800px;
 }
@@ -133,7 +138,7 @@ body .container{
 }
 
 .container .profile,
-.container .feed{
+.container .posts-container{
 	background:#F7F7F7;
 	padding:10px;
 	-webkit-border-radius:5px;
@@ -154,9 +159,78 @@ body .container{
 	margin-right:10px;
 }
 
-.container .feed p{
+.container .feed > p,
+.container .posts-container .header{
 	font-weight:bold;
 	font-size:20px;
+}
+
+.container .post{
+	overflow:hidden;
+}
+
+.container .post .left img{
+	width:50px;
+}
+
+.container .post .left{
+	overflow:hidden;
+	width:50px;	
+}
+
+.container .post .right a{
+	text-decoration:none;
+	color:#0279C9;
+	font-weight:bold;
+	font-size:16px;
+}
+
+.container .post textarea{
+	width:100%;
+	min-height:10px;
+	border:4px solid #EDEDED;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border-radius:0;
+	box-shadow:inset 0 1px 0 #ABADB2;
+}
+
+.container .post .right{
+	width:525px;
+}
+
+.container .post p{
+	margin-bottom:15px;
+}
+
+.container .footer p{
+	margin-top:20px;
+	text-align:center;
+}
+
+.container .post .comment{
+	background:red;
+}
+
+.container .post .comments img,
+.container .post .comment .left{
+	width:25px;
+}
+
+.container .post .comment .right{
+	width:445px;
+}
+
+.container .post .right .comments{
+	overflow:hidden;
+}
+
+.container .post .right .comments .comment{
+	overflow:hidden;
+	background:#EDEDED;
+	padding-top:15px;
+	padding-left:10px;
+	border-bottom:1px solid #D8D8D8;
 }
 
 /* End body styles */
