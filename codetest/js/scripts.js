@@ -1,12 +1,14 @@
 // get and parse the users data
 $.getJSON("data/users.json", function(data) {
-	var info = [],
+	var info = {}
 		posts = [],
 		users = data;
 
 	// get and parse the post data
 	$.getJSON("data/posts.json", function(theData){
-		posts = theData
+		var thePosts = [];
+		
+		posts = theData;
 		
 		// combines user and posts data to create a data store that the jQuery templating engine can use
 		function combineData(){
@@ -40,7 +42,8 @@ $.getJSON("data/users.json", function(data) {
 					   }
 				    }
 				}
-				info.push(tempObj)
+				thePosts.push(tempObj);
+				info["posts"] = thePosts;
 			});
 			
 			console.log(info);
@@ -62,5 +65,6 @@ $.getJSON("data/users.json", function(data) {
 		}
 		
 		combineData();
+		$("#post-template").tmpl(info).appendTo(".posts");
 	});
 });
