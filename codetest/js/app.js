@@ -37,7 +37,9 @@ $.getJSON("data/users.json", function(data) {
 						   }
 						   tempObj["comments"] = comments;
 						   
-					   } else if(key == "content"){
+					   } else if (key == "id"){
+						   tempObj[key] = obj[key];
+ 					   }else if(key == "content"){
 						   tempObj[key] = obj[key];
 					   }
 				    }
