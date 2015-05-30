@@ -39,6 +39,8 @@ window.onload = function(){
 	
 	if(localStorage.getItem("comment").length > 0){
 		// add to page
+			// add to data store
+			// refresh page
 		// set localStorage key "comment" to 0
 	}
 }
