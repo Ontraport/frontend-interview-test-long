@@ -28,6 +28,21 @@ function removeParam(key, sourceURL) {
     return rtn;
 }
 
+window.onload = function(){
+	var params = getURLVars(),
+		comment = "";
+		
+	if(params.length > 0 && params.hasOwnProperty("comment")){
+		comment = decodeURIComponent(params["comment"].replace(/(\+)/g," "));
+		localStorage.setItem("comment", comment);
+	}
+	
+	if(localStorage.getItem("comment").length > 0){
+		// add to page
+		// set localStorage key "comment" to 0
+	}
+}
+
 $("#dialog").dialog({
       autoOpen: false,
       show: {
