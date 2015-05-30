@@ -28,12 +28,15 @@ function removeParam(key, sourceURL) {
     return rtn;
 }
 
-// Set the location of the close and loading gifs/buttons
-$.facebox.settings.closeImage = 'facebox/src/closelabel.png';
-$.facebox.settings.loadingImage = 'facebox/src/loading.gif';
-
-// Activate facebox plugin
-$('a[rel=facebox]').facebox({ div: '#box' });
+$(".fancybox").fancybox({ 
+	"scrolling": "no",
+    "showCloseButton": false,
+    "transitionIn": "none",
+    "transitionOut": "none",
+    "height": "auto",
+    "width": "auto",
+    "content": "<form method=\"GET\" class=\"fancybox\"><textarea name=\"comment\" id=\"\" cols=\"30\" rows=\"10\" placeholder=\"Whats on your mind?\"></textarea><br><button type=\"submit\">Submit</button></form>"
+});
 
 // Get and parse the users data
 //
