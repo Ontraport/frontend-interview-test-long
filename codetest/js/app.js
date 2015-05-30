@@ -29,13 +29,14 @@ function removeParam(key, sourceURL) {
 }
 
 $(".fancybox").fancybox({ 
-	"scrolling": "no",
-    "showCloseButton": false,
-    "transitionIn": "none",
-    "transitionOut": "none",
-    "height": "auto",
-    "width": "auto",
-    "content": "<form method=\"GET\" class=\"fancybox\"><textarea name=\"comment\" id=\"\" cols=\"30\" rows=\"10\" placeholder=\"Whats on your mind?\"></textarea><br><button type=\"submit\">Submit</button></form>"
+    content: "<form method=\"GET\" class=\"fancybox\"><textarea name=\"comment\" id=\"\" cols=\"30\" rows=\"10\" placeholder=\"Whats on your mind?\"></textarea><br><button type=\"submit\">Submit</button></form>",
+	 closeClick: false, // prevents closing when clicking INSIDE fancybox 
+	 openEffect: 'none',
+	 closeEffect: 'none',
+	 helpers:{overlay: {closeClick: false }},
+	 afterShow: function () {
+	     $(this.content).attr("tabindex",1).focus()
+	  }
 });
 
 // Get and parse the users data
