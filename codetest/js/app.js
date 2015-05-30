@@ -1,16 +1,56 @@
-// get and parse the users data
+function getURLVars(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+function removeParam(key, sourceURL) {
+    var rtn = sourceURL.split("?")[0],
+        param,
+        params_arr = [],
+        queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+    if (queryString !== "") {
+        params_arr = queryString.split("&");
+        for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+            param = params_arr[i].split("=")[0];
+            if (param === key) {
+                params_arr.splice(i, 1);
+            }
+        }
+        rtn = rtn + "?" + params_arr.join("&");
+    }
+    return rtn;
+}
+
+// Set the location of the close and loading gifs/buttons
+$.facebox.settings.closeImage = 'facebox/src/closelabel.png';
+$.facebox.settings.loadingImage = 'facebox/src/loading.gif';
+
+// Activate facebox plugin
+$('a[rel=facebox]').facebox({ div: '#box' });
+
+// Get and parse the users data
+//
+// Use Box to write out "info" to localStorage
+// then use Box to read the data from localStorage, set it, and refresh the template
 $.getJSON("data/users.json", function(data) {
 	var info = {}
 		posts = [],
 		users = data;
 
-	// get and parse the post data
+	// Get and parse the post data
 	$.getJSON("data/posts.json", function(theData){
 		var thePosts = [];
 		
 		posts = theData;
 		
-		// combines user and posts data to create a data store that the jQuery templating engine can use
+		// Combines user and posts data to create a data store that the jQuery templating engine can use
 		function combineData(){
 			
 			$.each(posts, function(key, value){
@@ -47,11 +87,9 @@ $.getJSON("data/users.json", function(data) {
 				thePosts.push(tempObj);
 				info["posts"] = thePosts;
 			});
-			
-			console.log(info);
 		}
 		
-		// query's the id of the object passed and returns the a jquery object of the item with id
+		// Queries the id of the object passed and returns the a jquery object of the item with id
 		// a helper function to the combineData function
 		function query(obj, key, val) {
 		    var objects = [];
@@ -70,3 +108,14 @@ $.getJSON("data/users.json", function(data) {
 		$("#post-template").tmpl(info).appendTo(".posts");
 	});
 });
+
+window.onload = function(){
+	var params = getURLVars(),
+	 	comment = "";
+ 
+	if(params.length > 0 && params.hasOwnProperty("comment")){
+		comment = decodeURIComponent(params["comment"].replace(/(\+)/g," "));
+		localStorage.setItem("comment", comment);	
+		window.location = "index.html";
+	}
+};

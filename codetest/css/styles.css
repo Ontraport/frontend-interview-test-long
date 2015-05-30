@@ -42,6 +42,10 @@ body, html{
    color: #6E6E6E;  
 }
 
+.add-comment-container{
+	display:none;
+}
+
 /* Begin header styles */
 header{
 	background:#303B40;

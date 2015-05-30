@@ -11,6 +11,15 @@
 		<link href="css/styles.css" rel="stylesheet">
     </head>
     <body>
+		<!-- Add comment form for lightbox -->
+		<div class="add-comment-container" id="box">
+			<form method="GET">
+				<textarea name="comment" id="" cols="30" rows="10" placeholder="Whats on your mind?"></textarea>
+				<br>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+		<!-- End Comment form div -->
 		
 		<header>
 			<div class="logo">
@@ -24,7 +33,7 @@
 			</div>
 			<div class="links">
 				<a href="#">Home</a>
-				<a href="#">Post an update</a>
+				<a href="#" rel="facebox">Post an update</a>
 				<a href="#"><img src="images/profile/daniel-craig.jpg" alt="Daniel Craig Profile" /></a>
 			</div>
 		</header>
@@ -50,40 +59,42 @@
 			</div>
 		</div>
         
-	 <script type="text/x-jquery-tmpl" id="post-template">
-		 {{each posts}}
-		   	<div class="post" data-id="${id}">
-		   		<div class="two columns left">
-		   			<a href="#"><img src="${userInfo.pic}" alt="${userInfo.username}" /></a>
-		   		</div>
-		   		<div class="eleven columns right">
-					<a href="#">${userInfo.username}</a>
-					<p>${content}</p>
-					{{if comments.length > 0}}
-						<div class="comments">
-						 	{{each comments}}
-							 	<div class="comment">
-							 		<div class="one column left">
-							 			<a href="#"><img src="${userInfo.pic}" alt="${userInfo.username}" /></a>
-							 		</div>
-							 		<div class="eleven columns right">
-										<a href="#">${userInfo.username}</a>
-										<p>${content}</p>
-							 		</div>
-							 	</div>
-							{{/each}}
-						</div>
-					{{/if}}
-					<form>
-						<textarea name="comment" cols="0" rows="30" placeholder="post a comment"></textarea>
-					</form>
-		   		</div>
-		   	</div>	
-		 {{/each}}
-	 </script>
+		<!-- jQuery template for posts and comments -->
+		 <script type="text/x-jquery-tmpl" id="post-template">
+			 {{each posts}}
+			   	<div class="post" data-id="${id}">
+			   		<div class="two columns left">
+			   			<a href="#"><img src="${userInfo.pic}" alt="${userInfo.username}" /></a>
+			   		</div>
+			   		<div class="eleven columns right">
+						<a href="#">${userInfo.username}</a>
+						<p>${content}</p>
+						{{if comments.length > 0}}
+							<div class="comments">
+							 	{{each comments}}
+								 	<div class="comment">
+								 		<div class="one column left">
+								 			<a href="#"><img src="${userInfo.pic}" alt="${userInfo.username}" /></a>
+								 		</div>
+								 		<div class="eleven columns right">
+											<a href="#">${userInfo.username}</a>
+											<p>${content}</p>
+								 		</div>
+								 	</div>
+								{{/each}}
+							</div>
+						{{/if}}
+						<form>
+							<textarea name="comment" cols="0" rows="30" placeholder="post a comment"></textarea>
+						</form>
+			   		</div>
+			   	</div>	
+			 {{/each}}
+		 </script>
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	 <script src="js/jquery.tmpl.min.js"></script>
 	 <script src="resources/box.js/box.js"></script>
+	 <script src="facebox/src/facebox.js"></script>
 	 <script src="js/app.js"></script>
     </body>
 </html>
