@@ -28,15 +28,24 @@ function removeParam(key, sourceURL) {
     return rtn;
 }
 
-$(".fancybox").fancybox({ 
-    content: "<form method=\"GET\" class=\"fancybox\"><textarea name=\"comment\" id=\"\" cols=\"30\" rows=\"10\" placeholder=\"Whats on your mind?\"></textarea><br><button type=\"submit\">Submit</button></form>",
-	 closeClick: false, // prevents closing when clicking INSIDE fancybox 
-	 openEffect: 'none',
-	 closeEffect: 'none',
-	 helpers:{overlay: {closeClick: false }},
-	 afterShow: function () {
-	     $(this.content).attr("tabindex",1).focus()
-	  }
+$("#dialog").dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      },
+	  width: 390,
+	  height: 185,
+	  minHeight: 185,
+	  minWidth: 390
+    });
+
+$(".dialog-opener").click(function() {
+     $("#dialog").dialog("open");
 });
 
 // Get and parse the users data

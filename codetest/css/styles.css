@@ -42,15 +42,19 @@ body, html{
    color: #6E6E6E;  
 }
 
-.fancybox textarea{
-	min-width:330px;
+#dialog{
+	height:185px;
+}
+
+#dialog textarea{
+	min-width:100%;
 	resize:vertical;
 	font-family:sans-serif;
 	padding:10px;
 	font-size:14px;
 }
 
-.fancybox button{
+#dialog button{
 	border:none;
 	width:100%;
 	cursor:pointer;
@@ -68,7 +72,7 @@ body, html{
 	font-weight:bold;
 }
 
-.fancybox button:hover{
+#dialog button:hover{
 	-webkit-transition: all 0.3s ease-out;   
 	-moz-transition: all 0.3s ease-out;  
 	-o-transition: all 0.3s ease-out; 

@@ -8,8 +8,7 @@
 		<!-- Since HTML5 there is no need for the 'type="text/css"' attribute on the link tag if you specify the link's "rel" to be "stylesheet" -->
 		<link href="css/normalize.css" rel="stylesheet">
 		<link href="css/skeleton.css" rel="stylesheet">
-		<link href="fancyBox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" />
-		<link href="fancyBox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" rel="stylesheet" />
+		<link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
 		<link href="css/styles.css" rel="stylesheet">
     </head>
     <body>
@@ -26,7 +25,7 @@
 			</div>
 			<div class="links">
 				<a href="#">Home</a>
-				<a href="#" class="fancybox">Post an update</a>
+				<a href="#" class="dialog-opener">Post an update</a>
 				<a href="#"><img src="images/profile/daniel-craig.jpg" alt="Daniel Craig Profile" /></a>
 			</div>
 		</header>
@@ -50,6 +49,14 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		
+		<div id="dialog" title="Post an Update">
+			<form method="GET">
+				<textarea name="comment" id="" cols="30" rows="10" placeholder="Whats on your mind?"></textarea>
+				<br>
+				<button type="submit">Submit</button>
+			</form>
 		</div>
         
 		<!-- jQuery template for posts and comments -->
@@ -87,9 +94,7 @@
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	 <script src="js/jquery.tmpl.min.js"></script>
 	 <script src="resources/box.js/box.js"></script>
-	 <script src="fancyBox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-	 <script src="fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-	 <script src="fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+	 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	 <script src="js/app.js"></script>
     </body>
 </html>
