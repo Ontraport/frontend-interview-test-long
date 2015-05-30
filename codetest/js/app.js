@@ -36,13 +36,6 @@ window.onload = function(){
 		comment = decodeURIComponent(params["comment"].replace(/(\+)/g," "));
 		localStorage.setItem("comment", comment);
 	}
-	
-	if(localStorage.getItem("comment").length > 0){
-		// add to page
-			// add to data store
-			// refresh page
-		// set localStorage key "comment" to 0
-	}
 }
 
 $("#dialog").dialog({
@@ -136,6 +129,15 @@ $.getJSON("data/users.json", function(data) {
 		
 		combineData();
 		$("#post-template").tmpl(info).appendTo(".posts");
+		
+		var comment = localStorage.getItem("comment");
+		
+		if(comment.length > 0){
+			// add to page
+				// add to data store
+				// refresh page
+			// set localStorage key "comment" to 0
+		}
 	});
 });
 
