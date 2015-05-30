@@ -63,8 +63,8 @@
     <body>
         
 		<div id="info">
-			<form action="">
-				<textarea name="" id="" cols="30" rows="10" placeholder="Whats on your mind"></textarea>
+			<form method="GET">
+				<textarea name="comment" id="" cols="30" rows="10" placeholder="Whats on your mind?"></textarea>
 				<br>
 				<button type="submit">Submit</button>
 			</form>
@@ -74,12 +74,56 @@
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	 <script src="facebox/src/facebox.js"></script>
      <script>
+	 function getURLVars(){
+	     var vars = [], hash;
+	     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	     for(var i = 0; i < hashes.length; i++)
+	     {
+	         hash = hashes[i].split('=');
+	         vars.push(hash[0]);
+	         vars[hash[0]] = hash[1];
+	     }
+	     return vars;
+	 }
+	 
+	 function removeParam(key, sourceURL) {
+	     var rtn = sourceURL.split("?")[0],
+	         param,
+	         params_arr = [],
+	         queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+	     if (queryString !== "") {
+	         params_arr = queryString.split("&");
+	         for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+	             param = params_arr[i].split("=")[0];
+	             if (param === key) {
+	                 params_arr.splice(i, 1);
+	             }
+	         }
+	         rtn = rtn + "?" + params_arr.join("&");
+	     }
+	     return rtn;
+	 }
+	 
 	 $.facebox.settings.closeImage = 'facebox/src/closelabel.png';
 	 $.facebox.settings.loadingImage = 'facebox/src/loading.gif';
 	 
-	 	$('a[rel=facebox]').facebox({ 
-			div: '#box'
-		});
+	 // use localStorage to save the value of the comment so we can reload the page without the URL param
+	 window.onload = function(){
+		 var params = getURLVars(),
+		 	 comment = "";
+		 
+		 if(params.length > 0 && params.hasOwnProperty("comment")){
+			comment = decodeURIComponent(params["comment"].replace(/(\+)/g," "));
+			localStorage.setItem("comment", comment);	
+			window.location = "facebox.html";
+		}
+	 };
+		
+	 
+ 	 $('a[rel=facebox]').facebox({ 
+		 div: '#box'
+	 });
+
 	</script>
     </body>
 </html>
