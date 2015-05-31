@@ -28,6 +28,11 @@ function removeParam(key, sourceURL) {
     return rtn;
 }
 
+// Returns a random number between min (inclusive) and max (exclusive)
+function getRandomArbitrary(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
 window.onload = function(){
 	var params = getURLVars(),
 		comment = "";
@@ -132,11 +137,25 @@ $.getJSON("data/users.json", function(data) {
 		
 		var comment = localStorage.getItem("comment");
 		
+		console.log(info);
+		
 		if(comment.length > 0){
+			var update = {
+				"comments": [],
+				"content": comment.substring(0, comment.length - 1),
+				"id": getRandomArbitrary(10, 50),
+				"userInfo": query(users, "id", 5)[0]
+			}
+			
+			info["posts"].unshift(update);
+			$("#post-template").tmpl(info).appendTo(".posts");
+			localStorage.setItem("comment","");
 			// add to page
 				// add to data store
 				// refresh page
-			// set localStorage key "comment" to 0
+			// set localStorage key "comment" to ""
+			
+			
 		}
 	});
 });
