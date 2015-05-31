@@ -111,7 +111,7 @@ header .logo{
 
 header .search form button{
 	position:relative;
-	bottom:2px;
+	bottom:-1px;
 	background: #7DDFF9;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7DDFF9), color-stop(100%,#00ADDC));
 	background-image: -webkit-linear-gradient(top, #7DDFF9 0%,#00ADDC 100%);
@@ -134,11 +134,6 @@ header .search form button{
 }
 
 header .search form button:hover{
-	-webkit-transition: all 0.3s ease-out;   
-	-moz-transition: all 0.3s ease-out;  
-	-o-transition: all 0.3s ease-out; 
-	-ms-transition: all 0.3s ease-out;  
-	transition: all 0.3s ease-out; 
 	background: #00ADDC;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00ADDC), color-stop(100%,#7DDFF9));
 	background-image: -webkit-linear-gradient(top, #00ADDC 0%,#7DDFF9 100%);
@@ -147,7 +142,6 @@ header .search form button:hover{
 	background-image: -ms-linear-gradient(top, #00ADDC 0%,#00ADDC 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ADDC', endColorstr='#7DDFF9',GradientType=0 );
 	background-image: linear-gradient(top, #00ADDC 0%,#7DDFF9 100%);
-	box-shadow:1px 1px 2px white;
 }
 
 header .search form input{
@@ -156,6 +150,15 @@ header .search form input{
 	border-radius:0;
 	border:1px solid #A0C4D8;
 	color:#6E6E6E;
+}
+
+header .search form input:focus{
+	outline:1px solid white;
+	border:1px solid white;
+	box-shadow:0 3px 2px #eee, 
+			   3px 0 2px #eee, 
+			   -3px 0 2px #eee, 
+			   0 -3px 2px #eee;
 }
 
 header .links{
