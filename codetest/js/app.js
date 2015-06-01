@@ -1,38 +1,9 @@
-function getURLVars(){
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
-}
-
-function removeParam(key, sourceURL) {
-    var rtn = sourceURL.split("?")[0],
-        param,
-        params_arr = [],
-        queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
-    if (queryString !== "") {
-        params_arr = queryString.split("&");
-        for (var i = params_arr.length - 1; i >= 0; i -= 1) {
-            param = params_arr[i].split("=")[0];
-            if (param === key) {
-                params_arr.splice(i, 1);
-            }
-        }
-        rtn = rtn + "?" + params_arr.join("&");
-    }
-    return rtn;
-}
-
 // Returns a random number between min (inclusive) and max (exclusive)
 function getRandomArbitrary(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+// Initiate the jQuery UI modal for the "Post an Update" form
 $("#dialog").dialog({
       autoOpen: false,
 	  width: 390,
@@ -41,6 +12,7 @@ $("#dialog").dialog({
 	  minWidth: 390
     });
 
+// When the "Post an Update" link in the header is clicked open the modal
 $(".dialog-opener").click(function() {
      $("#dialog").dialog("open");
 });
@@ -119,19 +91,35 @@ $.getJSON("data/users.json", function(data) {
 		    return objects;
 		}
 		
+		// Store the current value of the of the post data in localStorage to a variable
 		var networkFeed = localStorage.getItem("the-network-feed");
 		
+		// Combine the data in data/users.json and data/posts.json to create a data structure that can be passed
+		// to the jQuery templating engine
 		combineData();
+		
+		// If the part of localStorage where we store the user and posts data is empty set it to the newly generated data
 		if(networkFeed === null || networkFeed == ""){
 			localStorage.setItem("the-network-feed", JSON.stringify(info));
 		}
 		
+		// Otherwise we can assume that the user/posts data is already in localStorage, so we'll just get it,
+		// parse it using jQuery/JavaScripts native JSON parser and then pass the parsed data to the jQuery templating engine
+		// and tell the jQuery templating plugin to append the HTML of the parsed template the "posts" div
 		$("#post-template").tmpl(JSON.parse(networkFeed)).appendTo(".posts");
 		
-		// adding post update to data store and subsequently the page
+		// When the page reloads as a result of the "Post an Update" form being submitted this code will get 
+		// (techically this code will be run every time the page reloads for any reason, but it will only have an effect
+		// when the page is reloaded as a result of the submission of the "Post an Update" form because of the how we stored
+		// the value of the comment in the localStorage key "comment")
+		// 
+		// Here we are retrieving the value of the textarea in the "Post an Update" modal
 		var comment = localStorage.getItem("comment");
 		
+		// Then if the value of the textarea is not nothing (this code would only be run when the page is reloaded because of the "Post an Update" form being submitted for the above reason)
 		if(comment.length > 0){
+			
+			// Build a JavaScript object to push on to the array of generated user/posts data
 			var update = {
 				"comments": [],
 				"content": comment,
@@ -139,16 +127,28 @@ $.getJSON("data/users.json", function(data) {
 				"userInfo": query(users, "id", 5)[0]
 			}
 			
+			// set a local variable of the generated user/posts data to value of the user/posts data from localStorage 
+			// (to get any new post updates that may have been added to localStorage recently)
 			info = JSON.parse(localStorage.getItem("the-network-feed"));
+			
+			// Push on to the local variable the object we built containing the object we built for our new post update
 			info["posts"].push(update);
+			
+			// Store the new post update in localStorage
 			localStorage.setItem("the-network-feed", JSON.stringify(info));
 			
+			// Re-render the jQuery template with our new data (which is really the old data just with the new post update appended to it)
 			$("#post-template").tmpl(JSON.parse(localStorage.getItem("the-network-feed"))).appendTo(".posts");
+			
+			// Set the localStorage key containing the new post update text to nothing since we've just finished adding the post to
+			// the data store and reloading the page with it
 			localStorage.setItem("comment","");
 		}
 	});
 });
 
+// When someone submits the "Post an Update" form inside the modal then we are
+// getting the value of the textarea. setting the "comment" key in localStorage, dismissing the modal and reloading the page
 $("#post-update").submit(function(e){
 	e.preventDefault();
 	
@@ -164,6 +164,7 @@ $("#post-update").submit(function(e){
 	return false;
 });
 
+// When the "Enter" or "Return" key is pressed (the Enter/Return key's code is 13) then trigger a submit on the "Post an Update" form 
 $(document).keypress(function(e) {
     if(e.which == 13) {
 		$("#post-update").trigger("submit");
