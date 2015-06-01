@@ -51,6 +51,9 @@ $(".dialog-opener").click(function() {
 // browsers support localStorage and the market share of browsers that have localStorage support
 // after such reasearch I have concluded that the number of browsers that do not support localStorage
 // at this point, is almost non-existent.
+//
+// I decided not to add in support for Box.js because I tested it out on the testing ground page and it 
+// said Box was unsupported in a browser (Safari 8) that I know supports localStorage so I just opted to use localStorage instead
 $.getJSON("data/users.json", function(data) {
 	var info = {}
 		posts = [],
@@ -136,8 +139,11 @@ $.getJSON("data/users.json", function(data) {
 				"userInfo": query(users, "id", 5)[0]
 			}
 			
+			info = JSON.parse(localStorage.getItem("the-network-feed"));
 			info["posts"].push(update);
-			$("#post-template").tmpl(info).appendTo(".posts");
+			localStorage.setItem("the-network-feed", JSON.stringify(info));
+			
+			$("#post-template").tmpl(JSON.parse(localStorage.getItem("the-network-feed"))).appendTo(".posts");
 			localStorage.setItem("comment","");
 		}
 	});
