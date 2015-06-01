@@ -44,6 +44,7 @@ body, html{
 
 #dialog{
 	height:185px;
+	display:none;
 }
 
 #dialog textarea{

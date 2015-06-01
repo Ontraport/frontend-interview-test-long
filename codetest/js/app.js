@@ -47,8 +47,10 @@ $(".dialog-opener").click(function() {
 
 // Get and parse the users data
 //
-// Use Box to write out "info" to localStorage
-// then use Box to read the data from localStorage, set it, and refresh the template
+// I have decided to not check for localStorage support because I have done research on what
+// browsers support localStorage and the market share of browsers that have localStorage support
+// after such reasearch I have concluded that the number of browsers that do not support localStorage
+// at this point, is almost non-existent.
 $.getJSON("data/users.json", function(data) {
 	var info = {}
 		posts = [],
@@ -114,12 +116,17 @@ $.getJSON("data/users.json", function(data) {
 		    return objects;
 		}
 		
+		var networkFeed = localStorage.getItem("the-network-feed");
+		
 		combineData();
-		$("#post-template").tmpl(info).appendTo(".posts");
+		if(networkFeed === null || networkFeed == ""){
+			localStorage.setItem("the-network-feed", JSON.stringify(info));
+		}
 		
+		$("#post-template").tmpl(JSON.parse(networkFeed)).appendTo(".posts");
+		
+		// adding post update to data store and subsequently the page
 		var comment = localStorage.getItem("comment");
-		
-		console.log(info);
 		
 		if(comment.length > 0){
 			var update = {
@@ -136,7 +143,7 @@ $.getJSON("data/users.json", function(data) {
 	});
 });
 
-$("form").submit(function(e){
+$("#post-update").submit(function(e){
 	e.preventDefault();
 	
 	var comment = $(this).find("textarea").val(),
@@ -153,6 +160,6 @@ $("form").submit(function(e){
 
 $(document).keypress(function(e) {
     if(e.which == 13) {
-		$("form").trigger("submit");
+		$("#post-update").trigger("submit");
     }
 });

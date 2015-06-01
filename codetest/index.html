@@ -51,8 +51,8 @@
 			</div>
 		</div>
 		
-		<div id="dialog" title="Post an Update" style="display:none;">
-			<form method="GET">
+		<div id="dialog" title="Post an Update">
+			<form method="GET" id="post-update">
 				<textarea name="comment" id="" cols="30" rows="10" placeholder="Whats on your mind?"></textarea>
 				<br>
 				<button type="submit">Submit</button>
@@ -84,7 +84,7 @@
 								{{/each}}
 							</div>
 						{{/if}}
-						<form>
+						<form id="post-comment">
 							<textarea name="comment" cols="0" rows="30" placeholder="post a comment"></textarea>
 						</form>
 			   		</div>
