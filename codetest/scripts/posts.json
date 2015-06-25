@@ -1,0 +1,86 @@
+[
+	{
+		"id": 1,
+		"userId": 1,
+		"date": "",
+		"content":"Love wine? Love food? Love to win an iPad 2 with gift certificates to your favorite IA winery & Dine IA restaurant. http://bit.ly/xQ4Ls8",
+		"comments": [
+			{
+				"id": 13,
+				"postId": 1,
+				"userId": 3,
+				"date": "",
+				"content": "Would you happen to know were Capone is? Since you are a secret agent and all"
+			}
+		
+		]
+	
+	},
+	{
+		"id": 2,
+		"userId": 3,
+		"date": "",
+		"content":"Day 2 of house sitting...awww my firends really do Trust me!",
+		"comments": []
+	
+	},
+	{
+		"id": 3,
+		"userId": 4,
+		"date": "",
+		"content":"Just got doing some sword fighting with Connor! THERE CAN BE ONLY ONE!",
+		"comments": [
+			{
+				"id": 10,
+				"postId": 3,
+				"userId": 1,
+				"date": "",
+				"content": "Let me know when you're going to be going at it again, I would love to join"
+			},
+			{
+				"id": 11,
+				"postId": 3,
+				"userId": 4,
+				"date": "",
+				"content": "sure thing"
+			}
+		
+		]
+	
+	},
+	{
+		"id": 4,
+		"userId": 2,
+		"date": "",
+		"content":"How do I even have friends?! Oh wait.... I don't. Glad I have internet firends! I'd be screwed without them... #LameTweetIsLame #hobit #somereallylonghashtag #longcomment #eggs #stuff",
+		"comments": []
+	
+	},
+	{
+		"id": 5,
+		"userId": 3,
+		"date": "",
+		"content":"I want to thank ALL MY FIRENDS BOTH OLD AND NEW FOR THE ENCOURAGING WORDS....LOVE YOU GUYS!!!!!",
+		"comments": []
+	
+	},
+	{
+		"id": 6,
+		"userId": 1,
+		"date": "",
+		"content":"Just got back from the moon, they have sharks with lazers on their heads",
+		"comments": [
+			{
+				"id": 12,
+				"postId": 6,
+				"userId": 2,
+				"date": "",
+				"content": "Hey, what else was there? I want to write a book on it"
+			}
+		
+		]
+	
+	}
+
+
+]
