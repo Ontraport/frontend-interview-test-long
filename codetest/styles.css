@@ -27,13 +27,15 @@ br{
 	clear: left;
 }
 
-
+span {
+	display: block;
+}
 #header{
 	background: rgba( 0, 0, 0, 0.7);
 	padding: 10px 5px;
 	box-shadow: 0px 1px 5px #fff;
+	overflow: auto;
 }
-
 
 /*logo in header*/
 #logo{
@@ -59,6 +61,11 @@ br{
 	border: 2px solid #A2C4DA;
 	font-size: 1.2em;
 }
+#search input[name="terms"]:focus{
+	-webkit-box-shadow: 0px 0px 5px 2px rgba(255,255,255,1);
+	-moz-box-shadow: 0px 0px 5px 5px rgba(255,255,255,1);
+	box-shadow: 0px 0px 5px 2px rgba(255,255,255,1);
+}
 
 #search input[type="submit"]{
 	width: 30px;
@@ -67,28 +74,177 @@ br{
 	font-weight: bold;
 	text-shadow: 1px 1px 1px #fff;
 	border: 1px solid #6FD6F7;
-
-
-
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1a82f7), to(#2F2727));
+	background: -webkit-linear-gradient(top, #2F2727, #1a82f7);
+	background: -moz-linear-gradient(top, #2F2727, #1a82f7);
+	background: -ms-linear-gradient(top, #2F2727, #1a82f7);
+	background: -o-linear-gradient(top, #2F2727, #1a82f7);
 }
 
 #search input[type="submit"]:hover{
-	
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2F2727), to(#1a82f7));
+	background: -webkit-linear-gradient(top, #1a82f7, #2F2727);
+	background: -moz-linear-gradient(top, #1a82f7, #2F2727);
+	background: -ms-linear-gradient(top, #1a82f7, #2F2727);
+	background: -o-linear-gradient(top, #1a82f7, #2F2727);	
 }
 
+#nav {
+	float: right;
+	color: #fff;
+	font-size: 20px;
+	padding: 0 20px;
+}
 
+#nav ul {
+	list-style: none;
+	margin: 0;
+	display: table;
+}
 
+#nav li {
+	padding: 0 15px;
+	vertical-align: middle;
+	display: table-cell;
+	list-style-type: none;
+	line-height: 100%;
+}
 
-
+.postUpdate:hover {
+	cursor:hand;
+	cursor:pointer;
+}
 /*page content*/
 
 #page{
 	width: 800px;
-	
-	/*background: rgba( 255, 255, 255, 0.3 );
-	border: 1px solid #ffffff;*/
+	/*background: rgba( 255, 255, 255, 0.3 ); */
+	border: 1px solid #ffffff;
 	margin: 10px auto 0px;
 	padding: 1em 2em;
+	overflow: auto;
 }
 
+#profile {
+	float:left;
+	width:21%;
+	background:#f7f7f7;
+	border-radius: 5px;
+}
 
+#main-area {
+	float:right;
+	width:71%;
+	margin:0 4%;
+	background:#f7f7f7;
+	border-radius: 5px;
+}
+
+.post {
+	margin-top: 20px;
+}
+
+.post-img {
+	/*float: left;*/
+	width: 50px;
+	position: absolute;
+}
+
+.post-img > img {
+	width: 50px;
+	height: 50px;
+}
+
+.post-text {
+	/*float:right;*/
+	margin-left: 60px;
+}
+
+.post-text > .content {
+	margin-bottom: 2px;
+}
+
+.user-name {
+	color:#0279c9;
+	font-weight: bold;
+}
+
+.comment {
+	background-color: #EDEDED;
+	border-bottom: 1px solid #A2C4DA;
+	padding: 10px;
+}
+
+.comment-img {
+	width:25px;
+	position: absolute;
+}
+
+.comment-img > img {
+	width: 25px;
+	height: 25px;
+}
+
+.comment-text {
+	margin-left: 35px;
+}
+
+.new-comment {
+	margin: 5px 0;
+}
+
+.commentText {
+	width:99%;
+}
+
+.postText {
+	width: 300px;
+}
+
+.modalBox {
+	padding: 30px;
+	width: 400px;
+}
+
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position:absolute;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.8;
+}
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index:10000;
+  position: absolute;
+  width: 50%; /* Default */
+
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000;
+}
+.ng-modal-dialog-content {
+  padding:10px;
+  text-align: left;
+}
+.ng-modal-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
+}
