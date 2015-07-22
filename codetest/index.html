@@ -1,16 +1,20 @@
 <!DOCTYPE HTML >
-<html>
+<html ng-app="postApp">
 <head>
 	<title>The network</title>
 	
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-resource.min.js"></script>
+	<script src="post.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
-<body>
-	
+<body ng-controller="postController">	
 	<div id="header">
 		<div id="logo">
-			<img src="images/logo.png" alt="the network"/>
+			<img src="images/logo.png" alt="The network"/>
 		</div>	
 		<div id="search">
 			<form method="get" action="#">
@@ -18,15 +22,64 @@
 				<input type="submit" value="Go"/>
 			</form>
 		</div>
+		<div id="nav">
+			<ul>
+				<li>Home</li>
+				<li ng-click="open()" class="postUpdate">Post an update</li>
+				<li><img ng-src="{{profilePic(loggedInUser)}}" alt="Profile Pic" ></li>
+		</div>
 	</div>
 	
 	<div id="page">
+		<div id="profile">
+			<img ng-src="{{profilePic(loggedInUser)}}">
+			{{profileName(loggedInUser)}}
+		</div>
+		<div id="main-area">
+			<div style="margin:0 5px 30px">
+				<p style="font-weight:bold;">Updates</p>
+				<div class="posts">
+					<div class="post" ng-repeat="post in postData.posts">
+						<div class="post-img">
+							<img ng-src="{{profilePic(post.userId)}}" />
+						</div>
+						<div class="post-text">
+							<span class="user-name">{{profileName(post.userId)}}</span>
+							<span class="content">{{post.content}}</span>
+							<div class="comment" ng-repeat="comment in post.comments">
+								<div class="comment-img">
+									<img src="{{profilePic(comment.userId)}}" />
+								</div>
+								<div class="comment-text">
+									<span class="user-name">{{profileName(comment.userId)}}</span>
+									<span class="content">{{comment.content}}</span>
+								</div>
+							</div>
+							<div class="new-comment">
+									<textarea class="commentText" ng-enter="addNewComment($index,post.id)" rows="1" ng-model="$parent.newCommentContent[post.id]" placeholder="Post a comment"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
+			
+		</div>
 	</div>
 	
-	<div>
+	<div style="clear:both">
 		<p>This is a footer mesage</p>
 	</div>
+	<script type="text/ng-template" id="modalContent.html">
+		<div class="modalBox">
+			<p style="font-weight:bold;">Status Update</p>
+			<textarea class="postText" ng-enter="ok()" rows="5" ng-model="$parent.newPost" placeholder="Whats on your mind"></textarea>
+			<p>Hit enter to post</p>
+		</div>
+	</script>
+	<!-- <modal-dialog show="modalShown" width="400px" height="40%">
 		
+		
+	</modal-dialog> -->
 </body>
 </html>
