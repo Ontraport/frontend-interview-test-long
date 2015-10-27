@@ -9,13 +9,6 @@ html{
 
 body{
 	background: rgb(167,199,220); /* Old browsers */
-	background: -moz-linear-gradient(top,  rgba(167,199,220,1) 0%, rgba(133,178,211,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(167,199,220,1)), color-stop(100%,rgba(133,178,211,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* IE10+ */
-	background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
 
 	
 	font-size: 13px;
@@ -46,12 +39,12 @@ br{
 #search{
 
 	display: inline;
-    float: left;
-    left: 50%;
-    margin-left: -25%;
-    position: relative;
-    width: 300px;
-    margin-top: 1em;
+	float: left;
+	left: 50%;
+	margin-left: -25%;
+	position: relative;
+	width: 300px;
+	margin-top: 1em;
 }
 #search input[name="terms"]{
 	width: 250px;
@@ -67,28 +60,140 @@ br{
 	font-weight: bold;
 	text-shadow: 1px 1px 1px #fff;
 	border: 1px solid #6FD6F7;
-
-
+	background: linear-gradient(to bottom, white, lightblue);
 
 }
-
 #search input[type="submit"]:hover{
-	
+	background: linear-gradient(to bottom, lightblue, white);
+
 }
 
 
-
-
+#search input:focus{
+	-moz-box-shadow: 0 0 10px #fff;
+	-webkit-box-shadow: 0 0 10px #fff;
+	box-shadow: 0 0 10px #fff;
+}
 
 /*page content*/
 
-#page{
-	width: 800px;
-	
+#page, .footer{
+	width:100%;
+	max-width: 1100px;
 	/*background: rgba( 255, 255, 255, 0.3 );
 	border: 1px solid #ffffff;*/
 	margin: 10px auto 0px;
-	padding: 1em 2em;
+	padding:0px;
+	clear:both;
+}
+.column{
+	margin:0px;
+	padding:5px;
+	background-color:#f7f7f7;
+	border-radius:5px;
+}
+.col-4-l{
+	width:27%;
+
+	float:left;
+}
+.col-8-r{
+	width:67%;
+	float:right;
+}
+.post{
+	width:100%;
 }
 
+.nav-links{
+	float:right;
+	margin-right:50px;
+	list-style-type: none;
+}
+#nav-pic{
+	float:right;
+	margin:10px 50px 0 0;
+	height:25px;
+	width:25px;
+}
+#prof-pic{
+	float:left;
+}
+.nav-links li{
+	display:inline; 
+	margin:0 10px;
+}
+.nav-links a{
+	color:white;
+	text-decoration: none;
+	list-style: inline;
+	font-size: 1.2em;
+	list-style-type: none;
+}
+#header{min-height:50px;}
+#posts h5{
+	color:#0279c9;
+	font-weight: bold;
+}
+#posts img{
+	float:left;
+	padding:0 10px;
+}
+.comment_col{
+	background-color: #EDEDED;
+	margin-left:55px;
+}
+.comments h5{
+	margin-top:5px;
+}
+.comments img{
+	margin:15px 5px;
+	height:25px;
+	width:25px;
+}
+input.hidden{
+	display:none;
+}
+#posts input{
+	width:100%;
 
+}
+hr{
+	margin:0;
+}
+#hide_modal{
+	-webkit-transition: opacity 2s ease-in;
+	-moz-transition: opacity 2s ease-in;
+	-o-transition: opacity 2s ease-in;
+	-ms-transition: opacity 2s ease-in;
+	transition: opacity 2s ease-in;
+	opacity:1;
+}
+#hide_modal.hidden{
+	opacity:0;
+	display:none;
+}
+.modal_background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
+.update_modal {
+	/* some styles to position the modal at the center of the page */
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	line-height: 200px;
+	height: 200px;
+	margin-left: -150px;
+	margin-top: -100px;
+	padding: 15px;
+	background-color: #ededed;
+	text-align: center;
+  	z-index: 15;
+}
