@@ -5,9 +5,23 @@
 	
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script type="text/javascript" src="resources/box.js/box.js"></script>
+
 </head>
 <body>
-	
+	<div id='hide_modal' class='hidden'> 
+		<div class='modal_background'>
+		</div>
+		<div class='update_modal'>
+			<div class='modal_body'>
+				<form id='modal_form'>
+					<input id='modal_input' type='text' placeholder='Add a status update'></input>
+					<input type='submit'></input>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<div id="header">
 		<div id="logo">
 			<img src="images/logo.png" alt="the network"/>
@@ -18,15 +32,34 @@
 				<input type="submit" value="Go"/>
 			</form>
 		</div>
+		<img id="nav-pic" alt="Profile Picture"/>
+		<ul class="nav-links">
+			<li>
+				<a href=''> Home </a>
+			</li>
+			<li>
+				<a href='/update-status' id='modal_link'> Post an update </a>
+			</li>
+		</ul>
 	</div>
 	
 	<div id="page">
+		<div id="profile" class='column col-4-l'>
+		<img id='prof-pic'/>
+		<p id='name'></p>
+		</div>
+		<div id="posts" class='column col-8-r'>
+			<h3> Updates </h3>
+
+		</div>
 
 	</div>
 	
-	<div>
-		<p>This is a footer mesage</p>
+	<div class="footer">
+		<p>This is a footer message</p>
+		<button id='reload'> Reload box.js </button>
 	</div>
 		
 </body>
+<script src='test.js'></script>
 </html>
