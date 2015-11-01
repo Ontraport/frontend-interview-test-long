@@ -26,7 +26,9 @@ body{
 br{
 	clear: left;
 }
-
+.clr{
+	clear:both;
+}
 
 #header{
 	background: rgba( 0, 0, 0, 0.7);
@@ -59,7 +61,9 @@ br{
 	border: 2px solid #A2C4DA;
 	font-size: 1.2em;
 }
-
+#search input[name="terms"].focus{
+	box-shadow: #fff 0 0 5px;
+}
 #search input[type="submit"]{
 	width: 30px;
 	padding: 4px;
@@ -73,11 +77,43 @@ br{
 }
 
 #search input[type="submit"]:hover{
-	
+	background-color: #63D1F4;
 }
 
+/*Profile*/
 
+#profile {
+    float: right;
+}
+#profile ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+#profile a {
+    color: #fff;
+    float: left;
+    font-size: 18px;
+    line-height: 43px;
+    padding: 0 20px 0 0;
+    text-decoration: none;
+}
+#profile li {
+    float: left;
+}
 
+#profile-img img {
+    height: 43px;
+	display:block;
+}
+#profile span {
+    display: block;
+}
+
+/*Footer*/
+#footer{
+	text-align:center;
+}
 
 
 /*page content*/
@@ -92,3 +128,79 @@ br{
 }
 
 
+#content {
+    float: right;
+    margin-left: 23px;
+    width: 525px;
+}
+#sidebar {
+    float: left;
+    width: 250px;
+}
+.box {
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    padding: 5px;
+}
+#post-updates h3 {
+    margin-top: 0;
+}
+
+
+.user-image img {
+    display: block;
+    width: 100%;
+}
+.user-image {
+    float: left;
+    margin-right: 10px;
+    width: 50px;
+}
+.post-header {
+    color: #0279c9;
+    font-weight: bold;
+}
+.post-content {
+    float: left;
+    width: 449px;
+}
+.post-content-main{
+	padding: 3px;
+}
+.comments {
+    background: #ededed none repeat scroll 0 0;
+    clear: both;
+}
+.comments ol {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.comment {
+    border-bottom: 1px solid #a7a7a7;
+    padding: 15px 5px;
+}
+.comment .post-content {
+    width: 395px;
+}
+.comment .user-image {
+    width: 25px;
+}
+
+.comment-form {
+    padding: 5px;
+}
+.comment-form textarea {
+    box-sizing: border-box;
+    height: 24px;
+    resize: vertical;
+    width: 100%;
+}
+.post{
+	margin-bottom:20px;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+}

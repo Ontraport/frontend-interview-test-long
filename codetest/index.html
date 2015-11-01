@@ -5,6 +5,9 @@
 	
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="css/jquery.modal.css" type="text/css" media="screen" />
+    <script src="js/store+json2.min.js" type="text/javascript"></script>
+    <script src="js/network.js" type="text/javascript"></script>    
 </head>
 <body>
 	
@@ -18,15 +21,34 @@
 				<input type="submit" value="Go"/>
 			</form>
 		</div>
+        <div id="profile">
+        	<ul>
+            	<li><a href="index.html">Home</a></li>
+                <li><a href="#post-form" rel="modal:open">Post an update</a></li>
+                <li><span id="profile-img"></span></li>
+            </ul>
+        </div>
+        <div class="clr"></div>
 	</div>
 	
 	<div id="page">
-
+    	<div id="content">
+        	<div id="post-updates" class="box">
+            	<h3>Updates</h3>
+                <div class="posts"></div>
+            </div>
+        </div>
+		<div id="sidebar">
+        	<div id="profile-box" class="box"></div>
+        </div>
+        <div class="clr"></div>
 	</div>
 	
-	<div>
+	<div id="footer">
 		<p>This is a footer mesage</p>
 	</div>
-		
+	<form id="post-form" style="display:none">
+    	<textarea name="post" id="post" placeholder="Write your post update here..."></textarea>
+    </form>
 </body>
 </html>
