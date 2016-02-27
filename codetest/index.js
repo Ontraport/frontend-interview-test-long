@@ -149,3 +149,61 @@ function loadPostsData() {
 
     getPostsRequest.send();
 }
+
+function loadSubmitButton() {
+    var header = document.getElementById('header');
+    
+    var postButton = document.createElement('div'),
+    postLink = document.createElement('a');
+    
+    postLink.setAttribute('href', '#openModal');
+    
+    postLink.innerHTML = 'Post an Update';
+    postButton.setAttribute("class", "postButton");
+    postButton.appendChild(postLink);
+
+    header.appendChild(postButton);
+    
+    var modal = document.createElement('div'),
+    innerModal = document.createElement('div'),
+    modal_input = document.createElement('input'),
+    modal_exit = document.createElement('a');
+    
+    modal_exit.innerHTML = 'X';
+    modal_exit.setAttribute("href", "#close");
+    
+    var attributes = {'id':'openModal', 'class':'modalDialog'};
+    
+    for(var key in attributes) {
+        modal.setAttribute(key, attributes[key]);
+    }
+    
+    innerModal.appendChild(modal_input);
+    innerModal.appendChild(modal_exit);
+    
+    modal.appendChild(innerModal);
+    
+    /*postButton.onclick = function(e) {
+        e.preventDefault();
+
+        modal.setAttribute('class', 'visible');
+        modal.innerHTML = "I'm here!";
+        
+        this.appendChild(modal);
+        
+        modal_exit.onclick = function() {
+            e.preventDefault();
+
+            modal.setAttribute('class', 'invisible');
+            modal.innerHTML = "";
+        };
+    };*/
+    
+    // do attach event here
+    /*var callback = function() {
+        modal.setAttribute('class', 'visible');
+        modal.innerHTML = "I'm here!";
+    };*/
+    
+    //postButton.addEventListener('click', callback, false);
+}
