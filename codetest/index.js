@@ -1,6 +1,7 @@
 (function() {
     
     loadUserData(4);
+    loadPostsData();
 
 })();
 
@@ -61,4 +62,90 @@ function loadUserData(userId) {
     getUserRequest.send();
 }
 
+function loadPostsData() {
 
+    var getPostsRequest = new XMLHttpRequest();
+    
+    getPostsRequest
+    .open('GET', 'https://raw.githubusercontent.com/jvald8/frontend-interview-test-long/master/codetest/data/posts.json', true);
+    
+    getPostsRequest.onload = function() {
+      if (getPostsRequest.status >= 200 && getPostsRequest.status < 400) {
+
+        var data = JSON.parse(getPostsRequest.responseText);
+        
+        localStorage.posts = getPostsRequest.responseText;
+        
+        var promise = new Promise(function(resolve, reject) {
+           if(data !== undefined) {
+            resolve(data);
+           } else {
+            reject(Error("promise didn't work for some reason"));
+           }
+        });
+        
+        var pageEl = document.getElementById('page'),
+        postEl = document.createElement('div');
+        
+        postEl.setAttribute("id", "posts");
+        postEl.setAttribute("class", "posts");
+        
+        pageEl.appendChild(postEl);
+        
+        // only works es6
+        promise.then(function(data) {
+            for(var i = data.length - 1;i >= 0 ; i--) {
+
+                var postEl = document.getElementById("posts"),
+                postDiv = document.createElement('div'),
+                postImage = document.createElement('img');
+                
+                var users = JSON.parse(localStorage.users);
+                
+                for(var p = 0; p < users.length; p++) {
+                    if(users[p].id === data[i].userId) {
+                        postImage.src = users[p].pic;
+                        console.log(postImage);
+                    }
+                }
+                
+                postDiv.innerHTML = data[i].content;
+                
+                postEl.insertBefore(postDiv, postEl.firstChild).insertBefore(postImage, postDiv.firstChild);
+                
+                if(data[i].comments.length > 0) {
+                    for(var j = 0; j < data[i].comments.length; j++) {
+                        
+                        var commentDiv = document.createElement('div'),
+                        commentUserImage = document.createElement('img');
+                        
+                        commentDiv.innerHTML = data[i].comments[j].content;
+                        
+                        postDiv
+                        .insertBefore(commentDiv, postDiv.secondChild);
+                        
+                        for(var h = 0; h < users.length; h++) {
+                            if(users[h].id === data[i].comments[j].userId) {
+                                commentUserImage.src = users[h].pic;
+                            }
+                        }
+                        
+                        commentDiv
+                        .insertBefore(commentUserImage, commentDiv.firstChild);
+                    }
+                }
+            } 
+        }, function(err) {
+            console.log(err);
+        });
+      } else {
+        console.log('error loading XMLHttpgetUserRequest');
+      }
+    };
+
+    getPostsRequest.onerror = function() {
+        console.log('connection error');
+    };
+
+    getPostsRequest.send();
+}
