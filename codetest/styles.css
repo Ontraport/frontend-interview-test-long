@@ -54,6 +54,7 @@ br{
 #header{
 	overflow: hidden;
 	zoom: 1;
+	position: relative;
 	background: rgba( 0, 0, 0, 0.7);
 	padding: 10px 5px;
 	box-shadow: 0px 1px 5px #fff;
@@ -92,20 +93,60 @@ br{
 	font-weight: bold;
 	text-shadow: 1px 1px 1px #fff;
 	border: 1px solid #6FD6F7;
-
-
-
 }
 
 #search input[type="submit"]:hover{
 	
 }
 
+#update {
+	position: absolute;
+    right: 23px;
+    top: 23px;
+}
 
-
-
+#update a {
+	color: #fff;
+}
 
 /*page content*/
+
+#modal {
+	display: none;
+}
+
+#modal.active {
+	display: block;
+}
+
+#modal-overlay {
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+#modal #popup {
+	background: #ccc;
+    padding: 30px;
+    text-align: center;
+    width: 300px;
+    border: 1px solid #000;
+    position: absolute;
+    margin-left: -150px;
+    top: 300px;
+    left: 50%;
+}
+
+#modal-close {
+	position: absolute;
+    top: 5px;
+    right: 10px;
+    text-decoration: none;
+}
 
 #page{
 	overflow: hidden;
@@ -154,7 +195,8 @@ br{
 	zoom: 1;
 	clear: both;
 	margin-left: 60px;
-	background-color: #ccc
+	background-color: #ccc;
+    border-bottom: black 1px solid;
 }
 
 #posts > div div {

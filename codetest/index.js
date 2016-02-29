@@ -3,13 +3,50 @@
 (function() {
     loadUserData(4);
     
-    //loadSubmitButton();
-    //loadModal();
+    // open modal
+    document.getElementById('submit').onclick = function(e) {
+        e.preventDefault();
+        
+        document.getElementById('modal').classList.add('active');
+    };
 
+    // close modal
+    document.getElementById('modal-close').onclick = function(e) {
+        e.preventDefault();
+        
+        closeModal();
+    };
+    
+    function closeModal() {
+        document.getElementById('modal').classList.remove('active');
+    }
+    
+    // submit post
+    document.getElementById('post-update').onsubmit = function(e) {
+        e.preventDefault();
+        
+        var posts = JSON.parse(localStorage.posts) || [];
+        
+        var newPost = {
+            "id": posts.length + 1,
+            "userId": 5,
+            "date": "",
+            "content": document.getElementById('post-value').value,
+            "comments": []
+        
+        };
+        
+        posts.push(newPost);
+        localStorage.posts = JSON.stringify(posts);
+        
+        document.getElementById('post-value').value = '';
+        document.getElementById('posts').remove();
+        loadPostsData();
+        closeModal();
+    };
 })();
 
 function loadUserData(userId) {
-    
     var getUserRequest = new XMLHttpRequest();
     
     getUserRequest
@@ -18,11 +55,13 @@ function loadUserData(userId) {
     getUserRequest.onload = function() {
       if (getUserRequest.status >= 200 && getUserRequest.status < 400) {
 
-        var data = JSON.parse(getUserRequest.responseText);
+        var data = getUserRequest.responseText;
         
-        if (localStorage.users === '') {
-            localStorage.users = getUserRequest.responseText;
+        if (!localStorage.users) {
+            localStorage.users = data;
         }
+        
+        data = JSON.parse(localStorage.users);
         
         var user = data[userId];
         
@@ -48,6 +87,7 @@ function loadUserData(userId) {
             userImage.src = user.pic;
             userName.innerHTML = user.username;
             
+            document.getElementById('modal').insertBefore(userImage, document.getElementById('modal-overlay'));
             userEl.insertBefore(userName, userEl.firstChild);
             userEl.insertBefore(userImage, userEl.firstChild);
             loadPostsData();
@@ -68,7 +108,6 @@ function loadUserData(userId) {
 }
 
 function loadPostsData() {
-
     var getPostsRequest = new XMLHttpRequest();
     
     getPostsRequest
@@ -77,11 +116,13 @@ function loadPostsData() {
     getPostsRequest.onload = function() {
       if (getPostsRequest.status >= 200 && getPostsRequest.status < 400) {
 
-        var data = JSON.parse(getPostsRequest.responseText);
+        var data = getPostsRequest.responseText;
         
-        if (localStorage.posts === '') {
-            localStorage.posts = getPostsRequest.responseText;
+        if (!localStorage.posts) {
+            localStorage.posts = data;
         }
+        
+        data = JSON.parse(localStorage.posts);
         
         var promise = new Promise(function(resolve, reject) {
            if (data !== undefined) {
@@ -108,6 +149,8 @@ function loadPostsData() {
                     postImage = document.createElement('img'),
                     postName = document.createElement('h4'),
                     users = JSON.parse(localStorage.users);
+                    
+                postDiv.classList.add(i + 1);
                 
                 for (var p = 0; p < users.length; p++) {
                     if (users[p].id === data[i].userId) {
@@ -189,7 +232,6 @@ function loadPostsData() {
 }
 
 function addComment(postDiv, commentDiv, commentInput) {
-    
     var newCommentDiv = document.createElement('div'),
         newCommentName = document.createElement('h4'),
         newCommentUserImage = document.createElement('img');
@@ -210,76 +252,14 @@ function addComment(postDiv, commentDiv, commentInput) {
 
     // add to localstorage
 
+    var postId = parseInt(postDiv.classList[0] - 1);
+    var commentObject = { "id": 13, "postId": postId + 1, "userId": 5, "date": "", "content": commentInput.value };
+    
+    var posts = JSON.parse(localStorage.posts);
+    
+    posts[postId].comments.push(commentObject);
+    
+    localStorage.setItem('posts', JSON.stringify(posts));
+    
     commentInput.value = '';
-}
-
-function loadSubmitButton() {
-    var header = document.getElementById('header');
-    
-    var postButton = document.createElement('div'),
-    postLink = document.createElement('a');
-    
-    postLink.setAttribute('href', '#openModal');
-    
-    postLink.innerHTML = 'Post an Update';
-    postButton.setAttribute("class", "postButton");
-    postButton.appendChild(postLink);
-
-    header.appendChild(postButton);
-    
-    var modal = document.createElement('div'),
-    innerModal = document.createElement('div'),
-    modal_input = document.createElement('input'),
-    modal_exit = document.createElement('a');
-    
-    modal_exit.innerHTML = 'X';
-    modal_exit.setAttribute("href", "#close");
-    
-    var attributes = {'id':'openModal', 'class':'modalDialog'};
-    
-    for(var key in attributes) {
-        modal.setAttribute(key, attributes[key]);
-    }
-    
-    innerModal.appendChild(modal_input);
-    innerModal.appendChild(modal_exit);
-    
-    modal.appendChild(innerModal);
-    
-    /*postButton.onclick = function(e) {
-        e.preventDefault();
-
-        modal.setAttribute('class', 'visible');
-        modal.innerHTML = "I'm here!";
-        
-        this.appendChild(modal);
-        
-        modal_exit.onclick = function(e) {
-            e.preventDefault();
-
-            modal.setAttribute('class', 'invisible');
-            modal.innerHTML = "";
-        };
-    };*/
-    
-    // do attach event here
-    /*var callback = function() {
-        modal.setAttribute('class', 'visible');
-        modal.innerHTML = "I'm here!";
-    };*/
-    
-    postButton.addEventListener('click', callback, false);
-}
-
-function loadModal() {
-    var body = document.getElementsByTagName('body')[0];
-    
-    // create a modal div with a hidden class
-    
-    var modal = document.createElement('div');
-    modal.setAttribute('class', 'hidden');
-    
-    body.appendChild(modal);
-    
-    
 }
