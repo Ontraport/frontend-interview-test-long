@@ -141,7 +141,6 @@ function loadPostsData() {
         postEl.setAttribute("id", "posts");
         postEl.setAttribute("class", "posts");
         postText.innerHTML = "Updates";
-        
         pageEl.appendChild(postEl);
         
         // only works es6
