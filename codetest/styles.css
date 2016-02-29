@@ -52,6 +52,8 @@ br{
 
 
 #header{
+	overflow: hidden;
+	zoom: 1;
 	background: rgba( 0, 0, 0, 0.7);
 	padding: 10px 5px;
 	box-shadow: 0px 1px 5px #fff;
@@ -106,6 +108,8 @@ br{
 /*page content*/
 
 #page{
+	overflow: hidden;
+	zoom: 1;
 	width: 800px;
 	
 	/*background: rgba( 255, 255, 255, 0.3 );
@@ -116,5 +120,62 @@ br{
 
 .footer {
 	width: 100%;
+}
+
+
+.visible{
+	-webkit-transition: opacity 2s ease-in;
+	-moz-transition: opacity 2s ease-in;
+	-o-transition: opacity 2s ease-in;
+	-ms-transition: opacity 2s ease-in;
+	transition: opacity 2s ease-in;
+	opacity:1;
+}
+.hidden{
+	opacity:0;
+	display:none;
+}
+
+#posts {
+	padding: 20px;
+}
+
+#posts > div {
+	padding-bottom: 15px;
+}
+
+#posts > div img {
+	float: left;
+	margin-right: 10px;
+}
+
+#posts > div > div {
+	overflow: hidden;
+	zoom: 1;
+	clear: both;
+	margin-left: 60px;
+	background-color: #ccc
+}
+
+#posts > div div {
+	padding: 10px;
+}
+
+#posts > div > div:first-of-type {
+	margin-top: 10px;
+}
+
+#posts > div > div img {
+	width: 25px;
+}
+
+#posts > div > div input {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+#posts > div > div div {
+	overflow: hidden;
+	zoom: 1;
 }
 

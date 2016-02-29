@@ -1,7 +1,10 @@
+'use strict';
+
 (function() {
-    
     loadUserData(4);
-    loadPostsData();
+    
+    //loadSubmitButton();
+    //loadModal();
 
 })();
 
@@ -17,12 +20,14 @@ function loadUserData(userId) {
 
         var data = JSON.parse(getUserRequest.responseText);
         
-        localStorage.users = getUserRequest.responseText;
+        if (localStorage.users === '') {
+            localStorage.users = getUserRequest.responseText;
+        }
         
         var user = data[userId];
         
         var promise = new Promise(function(resolve, reject) {
-           if(user !== undefined) {
+           if (user !== undefined) {
             resolve(user);
            } else {
             reject(Error("promise didn't work for some reason"));
@@ -32,9 +37,9 @@ function loadUserData(userId) {
         promise.then(function(user) {
           
             var pageEl = document.getElementById('page'),
-            userEl = document.createElement('div'),
-            userImage = document.createElement('img'),
-            userName = document.createElement('div');
+                userEl = document.createElement('div'),
+                userImage = document.createElement('img'),
+                userName = document.createElement('div');
             
             userEl.setAttribute("class", "user");
             
@@ -45,7 +50,7 @@ function loadUserData(userId) {
             
             userEl.insertBefore(userName, userEl.firstChild);
             userEl.insertBefore(userImage, userEl.firstChild);
-            
+            loadPostsData();
         }, function(err) {
             console.log(err);
         });
@@ -74,10 +79,12 @@ function loadPostsData() {
 
         var data = JSON.parse(getPostsRequest.responseText);
         
-        localStorage.posts = getPostsRequest.responseText;
+        if (localStorage.posts === '') {
+            localStorage.posts = getPostsRequest.responseText;
+        }
         
         var promise = new Promise(function(resolve, reject) {
-           if(data !== undefined) {
+           if (data !== undefined) {
             resolve(data);
            } else {
             reject(Error("promise didn't work for some reason"));
@@ -85,7 +92,7 @@ function loadPostsData() {
         });
         
         var pageEl = document.getElementById('page'),
-        postEl = document.createElement('div');
+            postEl = document.createElement('div');
         
         postEl.setAttribute("id", "posts");
         postEl.setAttribute("class", "posts");
@@ -94,46 +101,77 @@ function loadPostsData() {
         
         // only works es6
         promise.then(function(data) {
-            for(var i = data.length - 1;i >= 0 ; i--) {
+            for (var i = data.length - 1;i >= 0 ; i--) {
 
-                var postEl = document.getElementById("posts"),
-                postDiv = document.createElement('div'),
-                postImage = document.createElement('img');
+                let postEl = document.getElementById('posts'),
+                    postDiv = document.createElement('div'),
+                    postImage = document.createElement('img'),
+                    postName = document.createElement('h4'),
+                    users = JSON.parse(localStorage.users);
                 
-                var users = JSON.parse(localStorage.users);
-                
-                for(var p = 0; p < users.length; p++) {
-                    if(users[p].id === data[i].userId) {
+                for (var p = 0; p < users.length; p++) {
+                    if (users[p].id === data[i].userId) {
                         postImage.src = users[p].pic;
-                        console.log(postImage);
+                        postName.innerHTML = users[p].username;
                     }
                 }
                 
                 postDiv.innerHTML = data[i].content;
                 
-                postEl.insertBefore(postDiv, postEl.firstChild).insertBefore(postImage, postDiv.firstChild);
+                postEl
+                .insertBefore(postDiv, postEl.firstChild);
                 
-                if(data[i].comments.length > 0) {
-                    for(var j = 0; j < data[i].comments.length; j++) {
+                postDiv
+                .insertBefore(postName, postDiv.firstChild);
+                
+                postDiv
+                .insertBefore(postImage, postDiv.firstChild);
+                
+                if (data[i].comments.length > 0) {
+                    for (var j = 0; j < data[i].comments.length; j++) {
                         
                         var commentDiv = document.createElement('div'),
-                        commentUserImage = document.createElement('img');
+                            commentUserImage = document.createElement('img'),
+                            commentName = document.createElement('h4');
                         
                         commentDiv.innerHTML = data[i].comments[j].content;
                         
                         postDiv
                         .insertBefore(commentDiv, postDiv.secondChild);
                         
-                        for(var h = 0; h < users.length; h++) {
-                            if(users[h].id === data[i].comments[j].userId) {
+                        for (var h = 0; h < users.length; h++) {
+                            if (users[h].id === data[i].comments[j].userId) {
                                 commentUserImage.src = users[h].pic;
+                                commentName.innerHTML = users[h].username;
                             }
                         }
                         
                         commentDiv
+                        .insertBefore(commentName, commentDiv.firstChild);
+                        
+                        commentDiv
                         .insertBefore(commentUserImage, commentDiv.firstChild);
+    
                     }
                 }
+                
+                let commentInputDiv = document.createElement('div');
+                let commentForm = document.createElement('form');
+                let commentInput = document.createElement('input');
+                
+                commentForm.appendChild(commentInput);
+                
+                commentInputDiv.appendChild(commentForm);
+                
+                postDiv.appendChild(commentInputDiv);
+                
+                commentForm.onsubmit = function(e) {
+                    e.preventDefault();
+                    console.log(commentForm);
+                    
+                    addComment(postDiv, commentInputDiv, commentInput);
+                };
+                
             } 
         }, function(err) {
             console.log(err);
@@ -148,6 +186,31 @@ function loadPostsData() {
     };
 
     getPostsRequest.send();
+}
+
+function addComment(postDiv, commentDiv, commentInput) {
+    
+    var newCommentDiv = document.createElement('div'),
+        newCommentName = document.createElement('h4'),
+        newCommentUserImage = document.createElement('img');
+    
+    newCommentDiv.innerHTML = commentInput.value;
+    newCommentUserImage.src = JSON.parse(localStorage.users)[4].pic;
+    newCommentName.innerHTML = JSON.parse(localStorage.users)[4].username;
+    
+    
+    newCommentDiv
+    .insertBefore(newCommentName, newCommentDiv.firstChild);
+    
+    newCommentDiv
+    .insertBefore(newCommentUserImage, newCommentDiv.firstChild);
+    
+    postDiv
+    .insertBefore(newCommentDiv, postDiv.lastChild);
+
+    // add to localstorage
+
+    commentInput.value = '';
 }
 
 function loadSubmitButton() {
@@ -191,7 +254,7 @@ function loadSubmitButton() {
         
         this.appendChild(modal);
         
-        modal_exit.onclick = function() {
+        modal_exit.onclick = function(e) {
             e.preventDefault();
 
             modal.setAttribute('class', 'invisible');
@@ -205,5 +268,18 @@ function loadSubmitButton() {
         modal.innerHTML = "I'm here!";
     };*/
     
-    //postButton.addEventListener('click', callback, false);
+    postButton.addEventListener('click', callback, false);
+}
+
+function loadModal() {
+    var body = document.getElementsByTagName('body')[0];
+    
+    // create a modal div with a hidden class
+    
+    var modal = document.createElement('div');
+    modal.setAttribute('class', 'hidden');
+    
+    body.appendChild(modal);
+    
+    
 }
