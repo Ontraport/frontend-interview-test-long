@@ -18,15 +18,31 @@
 				<input type="submit" value="Go"/>
 			</form>
 		</div>
+		<div id="update">
+			<a href="./index.html" id="home_link">Home</a>
+			<a href="#" id="submit">Post an Update</a>
+			<img id="update_image">
+		</div>
 	</div>
 	
-	<div id="page">
-
+	<div id="modal">
+		<div id="modal-overlay"></div>
+		
+		<div id="popup">
+			<a href="#" id="modal-close">x</a>
+			
+			<form id="post-update">
+				<input type="text" id="post-value" placeholder="post an update">
+				<button>Submit</button>
+			</form>
+		</div>
 	</div>
 	
-	<div>
+	<div id="page"></div>
+	
+	<div id="footer">
 		<p>This is a footer mesage</p>
 	</div>
-		
+	<script src="index.js"></script>
 </body>
 </html>
