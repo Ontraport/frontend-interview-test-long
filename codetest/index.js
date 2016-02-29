@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-    loadUserData(4);
+    initialize(4);
     
     // open modal
     document.getElementById('submit').onclick = function(e) {
@@ -41,12 +41,13 @@
         
         document.getElementById('post-value').value = '';
         document.getElementById('posts').remove();
+        
         loadPostsData();
         closeModal();
     };
 })();
 
-function loadUserData(userId) {
+function initialize(userId) {
     var getUserRequest = new XMLHttpRequest();
     
     getUserRequest
@@ -90,6 +91,7 @@ function loadUserData(userId) {
             document.getElementById('update_image').src = user.pic;
             userEl.insertBefore(userName, userEl.firstChild);
             userEl.insertBefore(userImage, userEl.firstChild);
+            
             loadPostsData();
         }, function(err) {
             console.log(err);
@@ -196,24 +198,20 @@ function loadPostsData() {
                         
                         commentDiv
                         .insertBefore(commentUserImage, commentDiv.firstChild);
-    
                     }
                 }
                 
-                let commentInputDiv = document.createElement('div');
-                let commentForm = document.createElement('form');
-                let commentInput = document.createElement('input');
+                let commentInputDiv = document.createElement('div'),
+                    commentForm = document.createElement('form'),
+                    commentInput = document.createElement('input');
                 
                 commentInput.placeholder = "post a comment";
                 commentForm.appendChild(commentInput);
-                
                 commentInputDiv.appendChild(commentForm);
-                
                 postDiv.appendChild(commentInputDiv);
                 
                 commentForm.onsubmit = function(e) {
                     e.preventDefault();
-                    console.log(commentForm);
                     
                     addComment(postDiv, commentInputDiv, commentInput);
                 };
@@ -240,11 +238,14 @@ function addComment(postDiv, commentDiv, commentInput) {
     var newCommentDiv = document.createElement('div'),
         newCommentName = document.createElement('h4'),
         newCommentUserImage = document.createElement('img');
+        
+    var postId = parseInt(postDiv.classList[0] - 1),
+        commentObject = { "id": 13, "postId": postId + 1, "userId": 5, "date": "", "content": commentInput.value },
+        posts = JSON.parse(localStorage.posts);
     
     newCommentDiv.innerHTML = commentInput.value;
     newCommentUserImage.src = JSON.parse(localStorage.users)[4].pic;
     newCommentName.innerHTML = JSON.parse(localStorage.users)[4].username;
-    
     
     newCommentDiv
     .insertBefore(newCommentName, newCommentDiv.firstChild);
@@ -256,11 +257,6 @@ function addComment(postDiv, commentDiv, commentInput) {
     .insertBefore(newCommentDiv, postDiv.lastChild);
 
     // add to localstorage
-    var postId = parseInt(postDiv.classList[0] - 1);
-    var commentObject = { "id": 13, "postId": postId + 1, "userId": 5, "date": "", "content": commentInput.value };
-    
-    var posts = JSON.parse(localStorage.posts);
-    
     posts[postId].comments.push(commentObject);
     
     localStorage.setItem('posts', JSON.stringify(posts));

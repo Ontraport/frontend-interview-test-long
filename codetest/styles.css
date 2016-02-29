@@ -163,9 +163,6 @@ br{
 	overflow: hidden;
 	zoom: 1;
 	width: 800px;
-	
-	/*background: rgba( 255, 255, 255, 0.3 );
-	border: 1px solid #ffffff;*/
 	margin: 10px auto 0px;
 	padding: 1em 2em;
 }
