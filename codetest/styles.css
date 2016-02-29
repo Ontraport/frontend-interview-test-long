@@ -29,10 +29,10 @@ br{
 
 .user {
 	float:left;
-	width: 25%;
+	width: 30%;
 	background-color: white;
 	margin-top: 10px;
-	border-radius: 10px;
+	border-radius: 5px;
 	clear: both;
 	overflow: hidden;
 }
@@ -45,7 +45,7 @@ br{
 	float: right;
 	width:60%;
 	background-color: white;
-	border-radius: 10px;
+	border-radius: 5px;
 	overflow: hidden;
 	margin-top: 10px;
 }
@@ -86,6 +86,17 @@ br{
 	font-size: 1.2em;
 }
 
+#search input[name="terms"]:focus{
+    width: 250px;
+    padding: 2px 3px;
+    border: 2px solid #A2C4DA;
+    font-size: 1.2em;
+    -webkit-box-shadow:inset 0 0 10px #000;
+    -moz-box-shadow:inset 0 0 10px #000;
+    box-shadow:inset 0 0 10px #000;
+    background: #EDEDED;
+}
+
 #search input[type="submit"]{
 	width: 30px;
 	padding: 4px;
@@ -96,7 +107,7 @@ br{
 }
 
 #search input[type="submit"]:hover{
-	
+	border-color: purple;
 }
 
 #update {
@@ -107,6 +118,13 @@ br{
 
 #update a {
 	color: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#update img {
+    width: 25px;
+    height: 25px;
 }
 
 /*page content*/
@@ -159,11 +177,6 @@ br{
 	padding: 1em 2em;
 }
 
-.footer {
-	width: 100%;
-}
-
-
 .visible{
 	-webkit-transition: opacity 2s ease-in;
 	-moz-transition: opacity 2s ease-in;
@@ -178,11 +191,13 @@ br{
 }
 
 #posts {
-	padding: 20px;
+	padding: 0px 20px 20px 20px;
+    background-color: #F7F7F7;
 }
 
 #posts > div {
 	padding-bottom: 15px;
+    background-color: #F7F7F7;
 }
 
 #posts > div img {
@@ -195,8 +210,8 @@ br{
 	zoom: 1;
 	clear: both;
 	margin-left: 60px;
-	background-color: #ccc;
-    border-bottom: black 1px solid;
+	background-color: #EDEDED;
+    border-bottom: #CCC 1px solid;
 }
 
 #posts > div div {
@@ -221,3 +236,18 @@ br{
 	zoom: 1;
 }
 
+#posts > p {
+  font-weight: bold;  
+}
+
+h4 {
+    font-weight: bold;
+    color: #0279C9;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #fff;
+    font-size: 1.2em;
+}

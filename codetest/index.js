@@ -87,7 +87,7 @@ function loadUserData(userId) {
             userImage.src = user.pic;
             userName.innerHTML = user.username;
             
-            document.getElementById('modal').insertBefore(userImage, document.getElementById('modal-overlay'));
+            document.getElementById('update_image').src = user.pic;
             userEl.insertBefore(userName, userEl.firstChild);
             userEl.insertBefore(userImage, userEl.firstChild);
             loadPostsData();
@@ -133,10 +133,12 @@ function loadPostsData() {
         });
         
         var pageEl = document.getElementById('page'),
-            postEl = document.createElement('div');
+            postEl = document.createElement('div'),
+            postText = document.createElement('h2');
         
         postEl.setAttribute("id", "posts");
         postEl.setAttribute("class", "posts");
+        postText.innerHTML = "Updates";
         
         pageEl.appendChild(postEl);
         
@@ -202,6 +204,7 @@ function loadPostsData() {
                 let commentForm = document.createElement('form');
                 let commentInput = document.createElement('input');
                 
+                commentInput.placeholder = "post a comment";
                 commentForm.appendChild(commentInput);
                 
                 commentInputDiv.appendChild(commentForm);
@@ -214,6 +217,8 @@ function loadPostsData() {
                     
                     addComment(postDiv, commentInputDiv, commentInput);
                 };
+                
+                postEl.insertBefore(postText, postEl.firstChild);
                 
             } 
         }, function(err) {
@@ -251,7 +256,6 @@ function addComment(postDiv, commentDiv, commentInput) {
     .insertBefore(newCommentDiv, postDiv.lastChild);
 
     // add to localstorage
-
     var postId = parseInt(postDiv.classList[0] - 1);
     var commentObject = { "id": 13, "postId": postId + 1, "userId": 5, "date": "", "content": commentInput.value };
     
