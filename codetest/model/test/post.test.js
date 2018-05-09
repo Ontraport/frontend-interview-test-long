@@ -23,7 +23,10 @@ describe( 'Posts', () => {
         } );
 
         it( 'should return the newest comments first', () => {
-            
+            testPost.addComment(10, 3, new Date().toString(), "newest");
+            let comments = testPost.getComments();
+            expect( comments[0].id ).toBe(10);
+            expect( comments[1].id ).not.toBe(10);
         } );
         
         it( 'cant comment on posts that are comments', () => {
@@ -33,8 +36,11 @@ describe( 'Posts', () => {
         } );
 
         it( 'should still return an array when the post is a comment itself', () => {
-            testPost.getComments();
-            commentPost.getComments();
+            //make sure we've actually got a comment post
+            expect( commentPost.isComment() ).toBeTruthy();
+            
+            expect( commentPost.getComments() ).toBeDefined();
+            expect( commentPost.getComments() ).not.toBeNull();
         } );
         
     });
