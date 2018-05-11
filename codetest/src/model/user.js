@@ -2,7 +2,7 @@
  * user.js - model class for the user object
  */
 
-class User {
+export class User {
     /**
      * Build a new user object
      * 
@@ -17,6 +17,5 @@ class User {
         this.pic = pic;
         this.about = about;
     }
-
     
 }
