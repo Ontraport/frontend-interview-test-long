@@ -2,7 +2,7 @@
  * 
  */
 
-import PostStorageInterface from 'post.js';
+import PostStorageInterface from './post.js';
 
 class JsonPostStorage extends PostStorageInterface {
     constructor( jsonFile ) {
