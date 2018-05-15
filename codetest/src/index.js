@@ -25,15 +25,6 @@ const users_source = new JsonUserStorage( '' );
 
 const post_renderer = new PostRenderer( users_source );
 
-// function renderPost(post) {
-//     $('#page').append('<div class="post">'
-//                       + '<div class="post-username">'
-//                       + post.userId + ' at ' + post.date
-//                       + '</div>'
-//                       + post.content
-//                       + '</div>');
-// }
-
 setTimeout( function () {
     posts_source.loadAll().forEach( ( post_data ) => {
         // renderPost(Post.fromJson(post_data));

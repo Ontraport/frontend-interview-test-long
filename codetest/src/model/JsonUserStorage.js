@@ -14,7 +14,8 @@ export class JsonUserStorage extends UserStorageInterface {
         this.allData = [ {
                 "id": 1,
                 "username": "James Bond",
-                "pic": "images/profile/Sean-Connery-as-James-Bond.jpg",
+                // "pic": "images/profile/Sean-Connery-as-James-Bond.jpg",
+                "pic": "https://i.imgur.com/74HtSJK.jpg",
                 "about": "Secret Agent, for MI6 code name 007, need I say more?"
             },
             {
@@ -26,7 +27,8 @@ export class JsonUserStorage extends UserStorageInterface {
             {
                 "id": 3,
                 "username": "Jim Malone",
-                "pic": "images/profile/sean_connery_the_untouchables.jpg",
+                // "pic": "images/profile/sean_connery_the_untouchables.jpg",
+                "pic": "https://i.imgur.com/sjpa0Gg.jpg",
                 "about": " I picked the men out for Ness's crew from the police academy to go after Capone  "
             },
             {

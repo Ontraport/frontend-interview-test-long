@@ -24,7 +24,7 @@ export default class PostRenderer {
         <div class="post_comment-container">
         </div>
         <div class="post_add-comment">
-        <input></input>
+        <input placeholder="post a comment"></input>
         </div>
         </div>`;
 
@@ -48,7 +48,8 @@ export default class PostRenderer {
     renderPostContent( post ) {
         let postUser = this.userSource.loadOne( post.userId );
         let $post = $( this.postTemplate );
-        // $post.find('.post_user-pic img').src(postUser.pic);
+        $post.find('.post_user-pic').append('<img src="' + postUser.pic + '" />');
+            // .attr( 'src' , postUser.pic );
         $post.find( '.post_user-name' ).append( postUser.username );
         $post.find( '.post_content' ).append( post.content );
         return $post;
