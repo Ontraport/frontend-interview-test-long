@@ -2,7 +2,7 @@
     "scripts": {
         "test": "jest",
         "build": "webpack",
-        "start:dev": "webpack-dev-server"
+        "dev": "webpack --mode=development --watch"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",

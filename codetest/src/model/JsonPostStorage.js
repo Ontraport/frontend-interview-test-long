@@ -2,17 +2,18 @@
  * 
  */
 
-import PostStorageInterface from './post.js';
+import {PostStorageInterface} from './post.js';
 
-class JsonPostStorage extends PostStorageInterface {
+export class JsonPostStorage extends PostStorageInterface {
     constructor( jsonFile ) {
+        super();
         this.sourceFile = jsonFile;
         // this.allData = this.sourceFile;
         // TODO load the freakin file in here
         this.allData = [ {
                 "id": 1,
                 "userId": 1,
-                "date": "",
+                "date": "unknown",
                 "content": "Love wine? Love food? Love to win an iPad 2 with gift certificates to your favorite IA winery & Dine IA restaurant. https://bit.ly/IqT6zt",
                 "comments": [ {
                         "id": 13,
@@ -26,7 +27,7 @@ class JsonPostStorage extends PostStorageInterface {
             {
                 "id": 2,
                 "userId": 3,
-                "date": "",
+                "date": "just now",
                 "content": "Day 2 of house sitting...awww my firends really do Trust me!",
                 "comments": []
             }
@@ -40,7 +41,7 @@ class JsonPostStorage extends PostStorageInterface {
      * @return Post || null if no post has id postId
      */
     loadOne( postId ) {
-        this.allData.find( ( post ) => {
+        return this.allData.find( ( post ) => {
             return post.id === postId;
         } );
     }
@@ -50,7 +51,7 @@ class JsonPostStorage extends PostStorageInterface {
      *
      * FIXME should have some sort of pagination
      */
-    loadAll( limit ) {
+    loadAll( ) {
         return this.allData;
     }
 }

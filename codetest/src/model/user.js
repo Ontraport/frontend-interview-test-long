@@ -28,3 +28,15 @@ export class User {
         this.pic = url;
     }
 }
+
+export class UserStorageInterface {
+    constructor() {}
+
+    loadOne(userId) {
+        return;
+    }
+
+    loadAll() {
+        return;
+    }
+}

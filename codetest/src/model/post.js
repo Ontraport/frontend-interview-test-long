@@ -35,8 +35,8 @@ export class Post {
      * @param JSON as string
      * @return Post
      */
-    static fromJson( json_string ) {
-        let json_object = JSON.parse( json_string );
+    static fromJson( json_object ) {
+        // let json_object = JSON.parse( json_string );
         
         return new Post( json_object.id,
             json_object.userId,
@@ -72,14 +72,15 @@ export class Post {
     }
 }
 
-
 export class PostStorageInterface {
     /**
      * Load a post.
      *
      * @param postId id of the post to load
-     * @return Post || null if no post has id postId
+     * @return Post || null if no post has id post
      */
+    constructor() {}
+
     loadOne(postId) {
         return;
     }
