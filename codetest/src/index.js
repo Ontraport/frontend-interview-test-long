@@ -34,7 +34,7 @@ const post_renderer = new PostRenderer( users_source );
 //                       + '</div>');
 // }
 
-setTimeout( () => {
+setTimeout( function () {
     posts_source.loadAll().forEach( ( post_data ) => {
         // renderPost(Post.fromJson(post_data));
 

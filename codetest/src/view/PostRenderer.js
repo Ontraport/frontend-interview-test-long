@@ -80,9 +80,9 @@ export default class PostRenderer {
     renderFullPost( post ) {
         let $fullPost = $( this.postContainerTemplate );
 
-        debugger;
-        $fullPost.find( '.post-container' ).prepend( this.renderPostContent( post ) );
+        $fullPost.prepend( this.renderPostContent( post ) );
         $fullPost.find( '.post_comment-container' ).append( this.renderAllComments( post.comments ) );
+
         return $fullPost;
     }
 
