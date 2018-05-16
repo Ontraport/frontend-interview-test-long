@@ -22,11 +22,11 @@ export default class PostRenderer {
         };
         
         this.postBodyTemplate = `<div class="${this.classes.postBody}">
-                <div class="${this.classes.postBody + '--left'}">
+                <div class="${this.classes.postBody + '--left'} row-elem">
                     <div class="${this.classes.userPicture}">
                     </div>
                 </div>
-                <div class="${this.classes.postBody + '--right'}">
+                <div class="${this.classes.postBody + '--right'} row-elem">
                     <div class="${this.classes.userName}">
                     </div>
                     <div class="${this.classes.postContent}">

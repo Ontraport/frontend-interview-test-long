@@ -14,6 +14,7 @@ import {JsonUserStorage} from './model/JsonUserStorage.js';
 
 //and views too
 import PostRenderer from './view/PostRenderer.js';
+import UserRenderer from './view/UserRenderer.js';
 
 // for purposes of this, we're always user 5. Otherwise would have another mechanism for getting this id.
 const current_user_id = 5;
@@ -25,11 +26,12 @@ const users_source = new JsonUserStorage( '' );
 
 const post_renderer = new PostRenderer( users_source );
 
-setTimeout( function () {
+setTimeout( function() {
     posts_source.loadAll().forEach( ( post_data ) => {
         // renderPost(Post.fromJson(post_data));
 
         $( '#page' ).append( post_renderer.renderFullPost( post_data ) );
 
     } );
+    $( '#user-box' ).append( UserRenderer.renderUser( users_source.loadOne( current_user_id ) ) );
 }, 100 );
