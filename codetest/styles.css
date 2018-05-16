@@ -49,7 +49,6 @@ br {
 /*search in header*/
 
 #search {
-
     display: inline;
     float: left;
     left: 50%;
@@ -73,7 +72,6 @@ br {
     font-weight: bold;
     text-shadow: 1px 1px 1px #fff;
     border: 1px solid #6FD6F7;
-
 }
 
 #search input[type="submit"]:hover {}
@@ -83,24 +81,93 @@ br {
 #page {
     width: 800px;
 
+    /* border: solid; */
+    border-radius: 5px;
+    /* border-style */
+
     /*background: rgba( 255, 255, 255, 0.3 );
 	border: 1px solid #ffffff;*/
-    margin: 10px auto 0px;
-    padding: 1em 2em;
+    margin: 30px auto 0px;
+    padding: 1em 1em 2em 1em;
+    background: #F7F7F7;
 }
 
 /* Post styles */
 
-.post-container {
-    padding: 10px ;
-
-    background: #F7F7F7;
+div {
+    font-size: 12px;
+    padding: 2px;
 }
 
-.post_user-pic img {
+.post {
+}
+
+/* .post */
+
+.post__body {
+    /* border-style: solid; */
+    font-size: 0px;
+    width: fit-content;
+}
+
+.post__body--left,.post__body--right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* .body div:not(.right) {
+    width: 100px;
+    height: 100px;
+    border: 1px;
+    border-style: solid;
+    display: inline-block;
+} */
+
+.post__body--pic {
+    display: inline-block;
+    /* border-color: blue; */
+    vertical-align: top;
+}
+
+.post__body--pic img {
     width: 50px;
+    height: 50px;
 }
 
-.comment-container .post_user-pic img {
+.post__body--right {
+    display: inline-block;
+}
+
+.post__body--user-name {
+    font-weight: bold;
+    color: #0279C9;
+}
+
+.post__body--content {
+    /* border-color: green; */
+}
+
+.post__comments {
+    /* add margin to post comments and comment input box enough to align them 
+       with the post's primary content */
+    margin-left: 60px;
+    background: #EDEDED;
+    /* padding: */
+}
+
+.post__comments > div + div {
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    border-color: #DCDCDC;
+}
+
+.post__add-comment input {
+    width: 100%;
+}
+
+/* Comment styles */
+
+.comment-post .post__body--pic img {
     width: 25px;
+    height: 25px;
 }

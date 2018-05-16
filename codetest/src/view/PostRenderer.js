@@ -10,48 +10,62 @@ export default class PostRenderer {
     constructor( userDataSource ) {
         this.userSource = userDataSource;
 
-        this.postTemplate = `<div class="post_content-container">
-        <div class="post_user-pic">
-        <img src="" />
-        </div>
-        <div class="post_user-name">
-        </div>
-        <div class="post_content">
-        </div>
-        </div>`;
+        this.classes = {
+            postContainer: 'post',
+            postBody: 'post__body',
+            userPicture: 'post__body--pic',
+            userName: 'post__body--user-name',
+            postContent: 'post__body--content',
+            commentSection: 'post__comments',
+            commentPostContainer: 'comment-post',
+            addCommentInput: 'post__add-comment',
+        };
+        
+        this.postBodyTemplate = `<div class="${this.classes.postBody}">
+                <div class="${this.classes.postBody + '--left'}">
+                    <div class="${this.classes.userPicture}">
+                    </div>
+                </div>
+                <div class="${this.classes.postBody + '--right'}">
+                    <div class="${this.classes.userName}">
+                    </div>
+                    <div class="${this.classes.postContent}">
+                    </div>
+                </div>
+            </div>`;
+        
+        this.postContainerTemplate = `<div class="${this.classes.postContainer}">
+                <div class="${this.classes.commentSection}">
+                    <div class="${this.classes.addCommentInput}">
+                        <input placeholder="post a comment"></input>
+                    </div>
+                </div>
+            </div>`;
 
-        this.postContainerTemplate = `<div class="post-container">
-        <div class="post_comment-container">
-        </div>
-        <div class="post_add-comment">
-        <input placeholder="post a comment"></input>
-        </div>
-        </div>`;
-
-        this.commentContainerTemplate = '<div class="comment-container"></div>';
+        this.commentContainerTemplate = `<div class="${this.classes.commentPostContainer}"></div>`;
     }
-
-    // static postTemplate = '<div class="post_user-pic">' +
-    //     '<img src="" />' +
-    //     '</div>' +
-    //     '<div class="post_user-name">' +
-    //     '</div>' +
-    //     '<div class="post_content">' +
-    //     '</div>';
 
     /**
      * Render the main content of a post into HTML. Works for posts and comments
      *
      * @param post Post object
+     * @param isComment boolean whether this post is a comment
      * @return jQuery obj
      */
-    renderPostContent( post ) {
+    renderPostBody( post ) {
         let postUser = this.userSource.loadOne( post.userId );
-        let $post = $( this.postTemplate );
-        $post.find('.post_user-pic').append('<img src="' + postUser.pic + '" />');
-            // .attr( 'src' , postUser.pic );
-        $post.find( '.post_user-name' ).append( postUser.username );
-        $post.find( '.post_content' ).append( post.content );
+        let $post = $( this.postBodyTemplate );
+
+        //no comment section if this is a comment
+        // if (isComment) {
+            // $post.find( '.' + this.classes.commentSection ).remove();
+        // }
+        
+        //FIXME doesnt like settign src attr
+        $post.find( '.' + this.classes.userPicture ).append( '<img src="' + postUser.pic + '" />' );
+        // $post.find( '.' + this.classes.userPicture ).attr( 'src', postUser.pic );
+        $post.find( '.' + this.classes.userName ).append( postUser.username );
+        $post.find( '.' + this.classes.postContent ).append( post.content );
         return $post;
     }
 
@@ -67,7 +81,7 @@ export default class PostRenderer {
         //for each comment
         comments.forEach( ( comment ) => {
             //render post into that container
-            $commentContainer.append( this.renderPostContent( comment ) );
+            $commentContainer.append( this.renderPostBody( comment, true ) );
         } );
         return $commentContainer;
     }
@@ -81,8 +95,10 @@ export default class PostRenderer {
     renderFullPost( post ) {
         let $fullPost = $( this.postContainerTemplate );
 
-        $fullPost.prepend( this.renderPostContent( post ) );
-        $fullPost.find( '.post_comment-container' ).append( this.renderAllComments( post.comments ) );
+        $fullPost.prepend( this.renderPostBody( post ) );
+        if ( post.comments.length > 0 ) {
+            $fullPost.find( '.' + this.classes.commentSection ).prepend( this.renderAllComments( post.comments ) );
+        }
 
         return $fullPost;
     }
