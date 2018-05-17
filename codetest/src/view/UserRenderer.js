@@ -8,7 +8,7 @@ export default class UserRenderer {
                     <img src="${user.pic}"></img>
                   </div>
                   <div class="user-box__name row-elem">
-                  ${user.name}
+                  ${user.username}
                   </div>`);
     }
 }

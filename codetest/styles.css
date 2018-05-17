@@ -48,19 +48,10 @@ br {
 
 /*logo in header*/
 
-#logo {
-    /* display: inline-block; */
-    /* float: left; */
-}
 
 /*search in header*/
 
 #search {
-    /* display: inline; */
-    /* float: left; */
-    /* left: 50%; */
-    /* margin-left: -25%; */
-    /* position: relative; */
     width: 300px;
     margin-top: 1em;
 }
@@ -92,40 +83,53 @@ br {
     color: white;
 }
 
+#header__controls li button {
+    background: none;
+    color: inherit;
+    border: none;
+    /* border-bottom: 1px solid #FFF; */
+    padding: 0px;
+    padding-right: 1em;
+}
+
+#user-pic {
+    height: 25px;
+    width: 25px;
+}
+
 /*page content*/
 
 .row-elem {
+    /* this is for convenience so that these dont need to be applied all over */
     display: inline-block;
     vertical-align: top;
 }
 
-#user-box {
-    background: #F7F7F7;
+#content {
+    margin-left: 15%;
 }
 
 #content > div {
-    /* width: 800px; */
+    /* should be common to the user info box and the posts section */
     border-radius: 5px;
 
-    margin-top: 30px;
-    padding: 1em 1em 2em 1em;
+    margin-top: 2em;
+    margin-left: 2em;
+    padding: 1em;
     background: #F7F7F7;
 }
 
 #user-box {
     width: 300px;
-    margin-left: 20%;
 }
 
 #user-box .user-box__name {
+    /* override the alignment to top */    
     vertical-align: bottom;
-    /* font-weight: bold; */
-    /* font-size: 16px; */
 }
 
 #page {
     width: 800px;
-    margin-left: 30px;
 }
 
 /* Post styles */
@@ -135,23 +139,19 @@ div {
     padding: 2px;
 }
 
-.post {
-}
-
 /* .post */
 
 .post__body {
     /* border-style: solid; */
     font-size: 0px;
     width: fit-content;
+    /* this makes it so the inline-block children divs don't wrap to the next line */
     white-space: nowrap;
 }
 
-.post__body--left,.post__body--right {
+.post__body > div {
+    /* since our parent had to nowrap for us, turn wrapping back on internally */
     white-space: normal;
-}
-
-.post__body--pic {
 }
 
 .post__body--pic img {
@@ -159,18 +159,9 @@ div {
     height: 50px;
 }
 
-.post__body--right {
-    /* display: inline-block; */
-}
-
 .post__body--user-name {
     font-weight: bold;
     color: #0279C9;
-}
-
-.post__body--content {
-    /* border-color: green; */
-    /* padding-left: 10px */
 }
 
 .post__comments {
@@ -181,6 +172,7 @@ div {
 }
 
 .post__comments > div + div {
+    /* only adds borders between sections, not at beginning and end */
     border-width: 1px 0px 0px 0px;
     border-style: solid;
     border-color: #DCDCDC;
@@ -195,4 +187,36 @@ div {
 .comment-post .post__body--pic img {
     width: 25px;
     height: 25px;
+}
+
+/* lightbox */
+#lightbox-background {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    background-color: rgba(0, 0, 0, 0.6);    
+    /* background-color: black; */
+    /* opacity: 0.6; */
+}
+
+#lightbox {
+    z-index: 10000;
+    /* height: 300px; */
+    /* width: 500px; */
+    width: fit-content;
+    margin: auto;
+    margin-top: 6em;
+    background-color: #DCDCDC;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+#lightbox input:not([type="submit"]) {
+/* #lightbox input { */
+    height: 3em;
+    width: 500px;
+    margin: 2em;
 }
