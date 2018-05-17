@@ -204,8 +204,6 @@ div {
 
 #lightbox {
     z-index: 10000;
-    /* height: 300px; */
-    /* width: 500px; */
     width: fit-content;
     margin: auto;
     margin-top: 6em;
@@ -214,9 +212,15 @@ div {
     border-radius: 5px;
 }
 
-#lightbox input:not([type="submit"]) {
-/* #lightbox input { */
+/* #lightbox input:not([type="submit"]) { */
+#lightbox textarea {
     height: 3em;
     width: 500px;
-    margin: 2em;
+    /* margin: 1em; */
+}
+
+#lightbox input[type="submit"] {
+    display: block;
+    margin-left: auto;
+    margin-right: 0px;
 }

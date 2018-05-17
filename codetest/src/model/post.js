@@ -93,4 +93,12 @@ export class PostStorageInterface {
     loadAll() {
         return;
     }
+
+    save(post) {
+        return;
+    }
+
+    getNextPostId() {
+        return 69;
+    }
 }

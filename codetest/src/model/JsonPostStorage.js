@@ -52,6 +52,11 @@ export class JsonPostStorage extends PostStorageInterface {
      * FIXME should have some sort of pagination
      */
     loadAll( ) {
+        debugger;
         return this.allData;
+    }
+
+    save( post ) {
+        this.allData.unshift(post);
     }
 }
