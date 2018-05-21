@@ -75,7 +75,7 @@ describe( 'Post', () => {
 
             let loadedPost = Post.fromJson( json );
             expect( loadedPost.comments.length ).toEqual( 1 );
-            expect( loadedPost.comments[ 0 ].__proto__.constructor.name ).toEqual( "Post" );
+            expect( loadedPost.comments[ 0 ] instanceof Post ).toBeTruthy();
         } );
 
         it( 'should not allow over-nesting of comments when loading from JSON', () => {

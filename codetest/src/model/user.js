@@ -12,9 +12,7 @@ export class User {
      * @about string
      */
     constructor (/*id,*/ username, pic, about) {
-        //id needs to be handled by our storage layer
         // this.id = id;
-        this.id = null;
         this.username = username;
         this.pic = pic;
         this.about = about;

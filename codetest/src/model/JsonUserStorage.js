@@ -3,48 +3,50 @@
  */
 
 import {
-    UserStorageInterface
+    UserStorageInterface,
+    User
 } from './user.js';
 
+import './../../data/users.json';
+
 export class JsonUserStorage extends UserStorageInterface {
+    /**
+     * @param jsonFile path to a json file relative to src/
+     *                 (in other words, '..' will be prepended to this arg)
+     */    
     constructor( jsonFile ) {
         super();
-        this.sourceFile = jsonFile;
-        //TODO actually load data
-        this.allData = [ {
-                "id": 1,
-                "username": "James Bond",
-                // "pic": "images/profile/Sean-Connery-as-James-Bond.jpg",
-                "pic": "https://i.imgur.com/74HtSJK.jpg",
-                "about": "Secret Agent, for MI6 code name 007, need I say more?"
-            },
-            {
-                "id": 2,
-                "username": "William Forrester",
-                "pic": "images/profile/2001_finding_forrester_008.png",
-                "about": "I make better writers out of high school kids"
-            },
-            {
-                "id": 3,
-                "username": "Jim Malone",
-                // "pic": "images/profile/sean_connery_the_untouchables.jpg",
-                "pic": "https://i.imgur.com/sjpa0Gg.jpg",
-                "about": " I picked the men out for Ness's crew from the police academy to go after Capone  "
-            },
-            {
-                "id": 4,
-                "username": "Juan Sanchez Villalobos Ramirez",
-                "pic": "images/profile/Sean-Connery-as-James-Bond.jpg",
-                "about": "Trained Connor in the art of sword fighting"
-            },
-            {
-                "id": 5,
-                "username": "Daniel Craig",
-                "pic": "images/profile/daniel-craig.jpg",
-                "about": "James Bond reloaded"
-            }
-        ];
 
+        this.nextId = 1;
+
+        this.allData = [];
+        
+        //TODO actually load data
+        if (jsonFile) {
+            this.sourceFile = jsonFile;
+
+            // let tmpData = require( jsonFile );
+            let tmpData = require(  './../../data/users.json' );
+
+            tmpData.forEach( ( post ) => {
+                this.save( User.fromJson( post ) );
+            } );
+        }
+    }
+
+    getNextId() {
+        return this.nextId++;
+    }
+
+    save( user ) {
+        if ( user.id && ( user.id > this.nextId ) ) {
+            this.nextId = user.id + 1;
+        }
+        if ( user.id === undefined ) {
+            user.id = this.getNextId();
+        }
+        this.allData.unshift( user );
+        return user.id
     }
 
     loadOne( userId ) {

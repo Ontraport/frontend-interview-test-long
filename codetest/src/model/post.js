@@ -75,7 +75,7 @@ export class Post {
         if ( this.isComment() ) {
             return;
         }
-        debugger;
+
         commentPost.comments = null;
         this.comments.unshift( commentPost );
     }

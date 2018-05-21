@@ -2,47 +2,39 @@
  * 
  */
 
-import {Post, PostStorageInterface} from './post.js';
+import {
+    Post,
+    PostStorageInterface
+} from './post.js';
+
+import './../../data/posts.json';
 
 export class JsonPostStorage extends PostStorageInterface {
+    /**
+     * @param jsonFile path to a json file relative to src/
+     *                 (in other words, '..' will be prepended to this arg)
+     */
     constructor( jsonFile ) {
         super();
 
         this.nextId = 1;
-        
-        this.sourceFile = jsonFile;
-        // this.allData = this.sourceFile;
-        // TODO load the freakin file in here
-        
-        let tmpData = [ {
-                "id": 1,
-                "userId": 1,
-                "date": "unknown",
-                "content": "Love wine? Love food? Love to win an iPad 2 with gift certificates to your favorite IA winery & Dine IA restaurant. https://bit.ly/IqT6zt",
-                "comments": [ {
-                        "id": 13,
-                        "postId": 1,
-                        "userId": 3,
-                        "date": "",
-                        "content": "Would you happen to know were Capone is? Since you are a secret agent and all"
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "userId": 3,
-                "date": "just now",
-                "content": "Day 2 of house sitting...awww my firends really do Trust me!",
-                "comments": []
-            }
-                      ];
 
         this.allData = [];
-        tmpData.forEach( (post) => {
-            this.save( Post.fromJson( post ) );
-        } );
+
+        if ( jsonFile ) {
+            this.sourceFile = jsonFile;
+
+            // let tmpData = require( '../' + this.sourceFile );
+            // let tmpData = require( this.sourceFile );
+            // let tmpData = require( './../' + jsonFile );
+            let tmpData = require('./../../data/posts.json');
+
+            tmpData.forEach( ( post ) => {
+                this.save( Post.fromJson( post ) );
+            } );
+        }
     }
-    
+
     /**
      * Load a post.
      *
@@ -60,20 +52,44 @@ export class JsonPostStorage extends PostStorageInterface {
      *
      * FIXME should have some sort of pagination
      */
-    loadAll( ) {
+    loadAll() {
         return this.allData;
     }
 
-    save( post ) {
-        debugger;
+    /**
+     * Sorts in place this.allData by date, newest (largest date) first
+     */
+    sortByDate( posts ) {
+        posts.sort( ( a, b ) => {
+            return ( b.date - a.date );
+            // return (a.date - b.date);
+        } );
+        return posts;
+    }
+
+    /**
+     * Save a post.
+     *
+     * @param post Post object to save.
+     * @param parentId optional, ID of post that this is a comment on.
+     */
+    save( post, parentId ) {
+        //if the post has an ID already, and its higher than what we'd give out next
+        //set our nextId to one more than the incoming ID
         if ( post.id && ( post.id > this.nextId ) ) {
             this.nextId = post.id + 1;
         }
         if ( post.id === undefined ) {
-            post.id = this.nextId;
-            this.nextId += 1;
+            post.id = this.getNextPostId();
         }
-        this.allData.unshift(post);
+        if ( parentId ) {
+            let parent = this.loadOne( parentId );
+            parent.comments.unshift( post );
+            parent.comments = this.sortByDate( parent.comments );
+        } else {
+            this.allData.unshift( post );
+            this.allData = this.sortByDate( this.allData );
+        }
         return post.id;
     }
 
