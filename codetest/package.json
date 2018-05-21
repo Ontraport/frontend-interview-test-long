@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": "jest",
+        "test": "jest --verbose",
         "build": "webpack",
         "dev": "webpack --mode=development --watch"
     },

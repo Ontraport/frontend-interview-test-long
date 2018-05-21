@@ -2,15 +2,19 @@
  * 
  */
 
-import {PostStorageInterface} from './post.js';
+import {Post, PostStorageInterface} from './post.js';
 
 export class JsonPostStorage extends PostStorageInterface {
     constructor( jsonFile ) {
         super();
+
+        this.nextId = 1;
+        
         this.sourceFile = jsonFile;
         // this.allData = this.sourceFile;
         // TODO load the freakin file in here
-        this.allData = [ {
+        
+        let tmpData = [ {
                 "id": 1,
                 "userId": 1,
                 "date": "unknown",
@@ -31,9 +35,14 @@ export class JsonPostStorage extends PostStorageInterface {
                 "content": "Day 2 of house sitting...awww my firends really do Trust me!",
                 "comments": []
             }
-        ];
-    }
+                      ];
 
+        this.allData = [];
+        tmpData.forEach( (post) => {
+            this.save( Post.fromJson( post ) );
+        } );
+    }
+    
     /**
      * Load a post.
      *
@@ -52,11 +61,25 @@ export class JsonPostStorage extends PostStorageInterface {
      * FIXME should have some sort of pagination
      */
     loadAll( ) {
-        debugger;
         return this.allData;
     }
 
     save( post ) {
+        debugger;
+        if ( post.id && ( post.id > this.nextId ) ) {
+            this.nextId = post.id + 1;
+        }
+        if ( post.id === undefined ) {
+            post.id = this.nextId;
+            this.nextId += 1;
+        }
         this.allData.unshift(post);
+        return post.id;
+    }
+
+    getNextPostId() {
+        let ret = this.nextId;
+        this.nextId = ret + 1;
+        return ret;
     }
 }

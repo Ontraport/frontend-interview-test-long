@@ -1,7 +1,7 @@
 /**
  * app.js - main entry point for the app
  *
- * In effect, this acts as a controller between the models and their views.
+ * This sets up all the data layers, prepares the views, and renders them into the page.
  */
 
 //some models
@@ -16,6 +16,9 @@ import {JsonUserStorage} from './model/JsonUserStorage.js';
 import PostRenderer from './view/PostRenderer.js';
 import UserRenderer from './view/UserRenderer.js';
 
+//other renderers
+import {makeLightbox} from './lightbox.js';
+
 // for purposes of this, we're always user 5. Otherwise would have another mechanism for getting this id.
 const current_user_id = 5;
 
@@ -26,73 +29,35 @@ const users_source = new JsonUserStorage( '' );
 
 const post_renderer = new PostRenderer( users_source );
 
-let lightboxTemplate = `<div id="lightbox">
-    <div class="lightbox__header">
-    Post an update:
-    </div>
-    <div class="lightbox__post-content">
-    <textarea class="lightbox__post-content__input"></textarea>
-    </div>
-    <div class="lightbox__submit-button">
-    <input type="submit"></input>
-    </div>
-</div>`;
-
-let makeLightbox = function ( submit_action ) {
-    let height = $(document).height();
-    let width = $(document).width();
-    let $background = $('<div id="lightbox-background">');
-    $background.css('width', width);
-    $background.css('height', height);
-
-    let closeLightbox = () => {
-        $( '#lightbox-background' ).remove();
-    };
-    
-    $background.on( 'click', closeLightbox);
-
-    let $lightbox = $( lightboxTemplate );
-
-    //dont let the click event propagate out, or itll close the box
-    $lightbox.on('click', (evt) => {
-        evt.stopPropagation();
-    } );
-
-    $lightbox.find( '.lightbox__submit-button' ).on('click', () => {
-        submit_action( $( '.lightbox__post-content__input' ).val() );
-        closeLightbox();
-    } );
-    
-    $background.append( $lightbox );
-
-    return $background;
-};
-
-let renderPosts = function ( posts ) {
+/**
+ * a simple page rendering function
+ */
+let doRender = function ( posts ) {
     $('#page > div').remove();
     posts_source.loadAll().forEach( ( post_data ) => {
         $( '#page' ).append( post_renderer.renderFullPost( post_data ) );
     } );    
 };
 
+// This is the main point where the content on the page is created.
 setTimeout( function() {
     // render the page
-    renderPosts();
+    doRender();
     
     let current_user = users_source.loadOne( current_user_id );
     $( '#user-box' ).append( UserRenderer.renderUser( current_user ) );
     $( '#user-pic' ).attr( 'src', current_user.pic );
 
-    let make_new_post = function( content ) {
-        posts_source.save( new Post( posts_source.getNextPostId(),
-                                     current_user_id,
-                                     'right now',
+    // a callback to use when the user is making a post
+    let makeNewPost = function( content ) {
+        posts_source.save( new Post( current_user_id,
+                                     new Date(),
                                      content ) );
         //render the posts
-        renderPosts();
+        doRender();
     };
 
     $( '#new-post' ).on( 'click', () => {
-        $( 'body' ).append( makeLightbox( make_new_post ) );
+        $( 'body' ).append( makeLightbox( makeNewPost ) );
     } );
 }, 0 );

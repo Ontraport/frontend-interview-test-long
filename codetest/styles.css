@@ -196,6 +196,9 @@ div {
     top: 0;
     left: 0;
     z-index: 9999;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
 
     background-color: rgba(0, 0, 0, 0.6);    
     /* background-color: black; */
@@ -212,11 +215,9 @@ div {
     border-radius: 5px;
 }
 
-/* #lightbox input:not([type="submit"]) { */
 #lightbox textarea {
     height: 3em;
     width: 500px;
-    /* margin: 1em; */
 }
 
 #lightbox input[type="submit"] {

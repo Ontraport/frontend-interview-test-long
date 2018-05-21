@@ -2,7 +2,7 @@
  * Test for model/post.js
  */
 
-import * as post from '../post.js';
+import {Post} from '../post.js';
 
 describe( 'Post', () => {
 
@@ -10,7 +10,7 @@ describe( 'Post', () => {
     var testPost;
 
     beforeEach( () => {
-        testPost = new post.Post( 4, 1, "whenever", "herp derp" );
+        testPost = new Post( 1, "whenever", "herp derp" );
     } );
 
     describe( 'comments', () => {
@@ -18,20 +18,21 @@ describe( 'Post', () => {
         var commentPost;
 
         beforeEach( () => {
-            commentPost = new post.Post( 5, 2, "whenever", "delet this" );
+            commentPost = new Post( 2, "whenever", "delet this" );
             testPost.addComment( commentPost );
         } );
 
         it( 'should return the newest comments first', () => {
-            testPost.addComment( new post.Post( 10, 3, new Date().toString(), "newest" ) );
+            let newerComment = new Post( 10, new Date().toString(), "newest" );
+            testPost.addComment( newerComment );
             let comments = testPost.getComments();
-            expect( comments[ 0 ].id ).toBe( 10 );
-            expect( comments[ 1 ].id ).not.toBe( 10 );
+            expect( comments[ 0 ].userId ).toBe( 10 );
+            expect( comments[ 1 ].userId ).not.toBe( 10 );
         } );
 
         it( 'cant comment on posts that are comments', () => {
             let startingCommentCount = commentPost.getComments().length;
-            commentPost.addComment( new post.Post() );
+            commentPost.addComment( new Post() );
             expect( startingCommentCount ).toBe( commentPost.getComments().length );
         } );
 
@@ -46,21 +47,62 @@ describe( 'Post', () => {
     } );
 
     describe( 'constructor', () => {
-        it( 'can be constructed', () => {
-        } );
 
         it( 'can be loaded from JSON', () => {
-            let postJsonString = JSON.stringify(new post.Post(1, 2, "whenever", "testing"));
-            
-            let loadedPost = post.Post.fromJson( postJsonString );
-            expect(loadedPost.id).toBe(1);
-            expect(loadedPost.userId).toBe(2);
-            expect(loadedPost.date).toBe('whenever');
-            expect(loadedPost.content).toBe('testing');
+            let postJsonString = JSON.stringify( new Post( 3, "whenever", "testing" ) );
+
+            let loadedPost = Post.fromJson( JSON.parse( postJsonString ) );
+            // expect(loadedPost.id).toBe(1);
+            expect( loadedPost.userId ).toBe( 3 );
+            expect( loadedPost.date ).toBe( 'whenever' );
+            expect( loadedPost.content ).toBe( 'testing' );
         } );
 
-        it( 'should load comments from JSON', () => {} );
+        it( 'should load comments from JSON', () => {
+            let json = {
+                "id": 1,
+                "userId": 1,
+                "date": "",
+                "content": "main post",
+                "comments": [ {
+                    "id": 2,
+                    "postId": 1,
+                    "userId": 2,
+                    "date": "",
+                    "content": "comment"
+                } ]
+            };
 
-        it( 'should not allow over-nesting of comments when loading from JSON', () => {} );
+            let loadedPost = Post.fromJson( json );
+            expect( loadedPost.comments.length ).toEqual( 1 );
+            expect( loadedPost.comments[ 0 ].__proto__.constructor.name ).toEqual( "Post" );
+        } );
+
+        it( 'should not allow over-nesting of comments when loading from JSON', () => {
+            let json = {
+                "id": 1,
+                "userId": 1,
+                "date": "",
+                "content": "main post",
+                "comments": [ {
+                    "id": 2,
+                    "postId": 1,
+                    "userId": 2,
+                    "date": "",
+                    "content": "level 1 comment",
+                    "comments": [ {
+                        "id": 3,
+                        "postId": 2,
+                        "userId": 3,
+                        "date": "",
+                        "content": "level 2 comment"
+                    } ]
+                } ]
+            };
+
+            let loadedPost = Post.fromJson( json );
+            expect( loadedPost.comments.length ).toEqual( 1 );
+            expect( loadedPost.comments[ 0 ].comments ).toBeNull();
+        } );
     } );
 } );

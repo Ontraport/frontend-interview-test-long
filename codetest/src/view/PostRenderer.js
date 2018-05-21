@@ -1,11 +1,12 @@
 /**
- * This renders posts and comments
+ * This renders posts and their comments
  */
 
 export default class PostRenderer {
-
     /**
-     * 
+     * construct a new PostRenderer
+     *
+     * @param userDataSource implements user.js:UserStorageInterface
      */
     constructor( userDataSource ) {
         this.userSource = userDataSource;
@@ -55,6 +56,7 @@ export default class PostRenderer {
     renderPostBody( post ) {
         let postUser = this.userSource.loadOne( post.userId );
         let $post = $( this.postBodyTemplate );
+        $post.addClass( `post-id-${ post.id }` );
 
         //no comment section if this is a comment
         // if (isComment) {
@@ -103,7 +105,9 @@ export default class PostRenderer {
         return $fullPost;
     }
 
-    renderAllPosts( posts ) {
-        
-    }
+    /**
+     * This is left for whoever is calling us to handle.
+     * They should gather and iterate over what they want rendered.
+     */
+    renderAllPosts( posts ) {}
 }

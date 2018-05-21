@@ -6,16 +6,28 @@ export class User {
     /**
      * Build a new user object
      * 
-     * @param id int
+     * @param id int 
      * @param username string
      * @param pic path-to-file as string
      * @about string
      */
-    constructor (id, username, pic, about) {
-        this.id = id;
+    constructor (/*id,*/ username, pic, about) {
+        //id needs to be handled by our storage layer
+        // this.id = id;
+        this.id = null;
         this.username = username;
         this.pic = pic;
         this.about = about;
+    }
+
+    static fromJson( jsonObject ) {
+        let user =  new User( jsonObject.username,
+                              jsonObject.pic,
+                              jsonObject.about );
+        //since the ID isnt part of the constructor, but we should
+        //have one in the JSON, set it here
+        user.id = jsonObject.id;
+        return user;
     }
 
     /**

@@ -18,10 +18,13 @@ export class Post {
      * @param date string
      * @param content string
      * @param comments [Post] || null
+     *
+     * TODO I think it would be better for this if date came after content
+     * that way you could have date and comments both be optional args.
+     * Would require changing all uses of this though.
      */
-    constructor( id, userId, date, content, comments ) {
-        //TODO should probably produce an error if you're not putting in the IDs
-        this.id = id;
+    constructor( /*id,*/ userId, date, content, comments ) {
+        // this.id = id;
         this.userId = userId;
         //FIXME use current date?
         this.date = date || "";
@@ -32,19 +35,32 @@ export class Post {
     /**
      * Load a post object from a JSON string
      *
-     * @param JSON as string
+     * @param jsonObject JSON parsed into an object
      * @return Post
      */
-    static fromJson( json_object ) {
-        // let json_object = JSON.parse( json_string );
-        
-        return new Post( json_object.id,
-            json_object.userId,
-            json_object.date,
-            json_object.content,
-            json_object.comments );
+    static fromJson( jsonObject ) {
+        //make the post, leave out comments for now
+        let post = new Post( jsonObject.userId,
+            jsonObject.date,
+            jsonObject.content );
+
+        if ( jsonObject.comments ) {
+            jsonObject.comments.forEach( ( comment ) => {
+                post.addComment( this.fromJson( comment ) );
+            } );
+        }
+
+        post.id = jsonObject.id;
+
+        return post;
     }
 
+    /**
+     * Check if this post is a comment. Used to determine whether comments
+     * can be added to this post.
+     *
+     * @return boolean
+     */
     isComment() {
         return ( this.comments === null );
     }
@@ -59,19 +75,28 @@ export class Post {
         if ( this.isComment() ) {
             return;
         }
-
+        debugger;
         commentPost.comments = null;
         this.comments.unshift( commentPost );
     }
 
     /**
      * Get the comments on a post.
+     *
+     * @return [Post]
      */
     getComments() {
         return this.comments || [];
     }
 }
 
+/**
+ * Represents the requirements for any storage layer handling posts.
+ *
+ * Extend this when implementing something that stores posts.
+ *
+ * (note to self: this is probably not a very JS way to do things)
+ */
 export class PostStorageInterface {
     /**
      * Load a post.
@@ -81,7 +106,7 @@ export class PostStorageInterface {
      */
     constructor() {}
 
-    loadOne(postId) {
+    loadOne( postId ) {
         return;
     }
 
@@ -89,16 +114,21 @@ export class PostStorageInterface {
      * Return all posts
      *
      * FIXME should have some sort of pagination
-     */    
+     */
     loadAll() {
         return;
     }
 
-    save(post) {
+    /**
+     * Save a post
+     *
+     * @return the id of the saved post
+     */
+    save( post ) {
         return;
     }
 
     getNextPostId() {
-        return 69;
+        return 0;
     }
 }
