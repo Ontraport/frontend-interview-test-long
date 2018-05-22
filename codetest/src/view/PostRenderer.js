@@ -56,7 +56,7 @@ export default class PostRenderer {
     renderPostBody( post ) {
         let postUser = this.userSource.loadOne( post.userId );
         let $post = $( this.postBodyTemplate );
-        $post.addClass( `post-id-${ post.id }` );
+        $post.attr( 'post-id', post.id );
 
         //no comment section if this is a comment
         // if (isComment) {
