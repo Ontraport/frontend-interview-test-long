@@ -8,8 +8,9 @@ export default class PostRenderer {
      *
      * @param userDataSource implements user.js:UserStorageInterface
      */
-    constructor( userDataSource ) {
+    constructor( userDataSource, addCommentHandler ) {
         this.userSource = userDataSource;
+        this.addCommentHandler = addCommentHandler;
 
         this.classes = {
             postContainer: 'post',
@@ -38,7 +39,10 @@ export default class PostRenderer {
         this.postContainerTemplate = `<div class="${this.classes.postContainer}">
                 <div class="${this.classes.commentSection}">
                     <div class="${this.classes.addCommentInput}">
-                        <input placeholder="post a comment"></input>
+                        <form>
+                            <input placeholder="post a comment"></input>
+                            <input type="hidden" name="parent-post"></input>
+                        </form>
                     </div>
                 </div>
             </div>`;
@@ -102,6 +106,19 @@ export default class PostRenderer {
             $fullPost.find( '.' + this.classes.commentSection ).prepend( this.renderAllComments( post.comments ) );
         }
 
+        $fullPost.find( '.' + this.classes.addCommentInput ).attr( 'parent-post-id', post.id );
+        $fullPost.find( '.' + this.classes.addCommentInput + ' input[name="parent-post"]' ).attr( 'value', post.id );
+        // $fullPost.find( '.' + this.classes.addCommentInput + ' form' ).submit(this.addCommentHandler);
+        $fullPost.find( '.' + this.classes.addCommentInput + ' form' ).submit( (submitEvent) => {
+            submitEvent.preventDefault();
+            let event = new Event('addComment');
+            
+            // event.parentId = post.id;
+            event.content = submitEvent.target[0].value;
+            event.parentId = Number(submitEvent.target[1].value);
+            
+            window.dispatchEvent(event);
+        } );
         return $fullPost;
     }
 
@@ -109,5 +126,5 @@ export default class PostRenderer {
      * This is left for whoever is calling us to handle.
      * They should gather and iterate over what they want rendered.
      */
-    renderAllPosts( posts ) {}
+    // renderAllPosts( posts ) {}
 }

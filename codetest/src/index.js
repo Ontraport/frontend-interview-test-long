@@ -29,6 +29,7 @@ const posts_source = new JsonPostStorage( 'posts.json' );
 const users_source = new JsonUserStorage( 'users.json' );
 // const users_source = new JsonUserStorage('data/users.json');
 
+
 const post_renderer = new PostRenderer( users_source );
 
 /**
@@ -59,7 +60,21 @@ setTimeout( function() {
         doRender();
     };
 
+    let makeNewComment = function( content, parent ) {
+        posts_source.save( new Post( current_user_id,
+                                     new Date(),
+                                     content),
+                           parent);
+    };
+
     $( '#new-post' ).on( 'click', () => {
         $( 'body' ).append( makeLightbox( makeNewPost ) );
     } );
+
+    window.addEventListener('addComment', (event) => {
+        makeNewComment(event.content, event.parentId);
+        doRender();
+    } );
+    
+    
 }, 0 );
