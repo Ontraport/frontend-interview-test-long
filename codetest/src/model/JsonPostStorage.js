@@ -59,10 +59,14 @@ export class JsonPostStorage extends PostStorageInterface {
     /**
      * Sorts in place this.allData by date, newest (largest date) first
      */
-    sortByDate( posts ) {
+    sortByDate( posts, comments ) {
         posts.sort( ( a, b ) => {
-            return ( b.date - a.date );
-            // return (a.date - b.date);
+            if( comments ) {
+                return (a.date - b.date);
+            }
+            else {
+                return ( b.date - a.date );
+            }
         } );
         return posts;
     }
@@ -107,7 +111,7 @@ export class JsonPostStorage extends PostStorageInterface {
         if ( parentId ) {
             let parent = this.loadOne( parentId );
             parent.comments.unshift( post );
-            parent.comments = this.sortByDate( parent.comments );
+            parent.comments = this.sortByDate( parent.comments, true );
         } else {
             //add to the main data source
             this.allData.unshift( post );

@@ -111,12 +111,16 @@ export default class PostRenderer {
         // $fullPost.find( '.' + this.classes.addCommentInput + ' form' ).submit(this.addCommentHandler);
         $fullPost.find( '.' + this.classes.addCommentInput + ' form' ).submit( (submitEvent) => {
             submitEvent.preventDefault();
+            // debugger;
+
             let event = new Event('addComment');
-            
-            // event.parentId = post.id;
             event.content = submitEvent.target[0].value;
             event.parentId = Number(submitEvent.target[1].value);
-            
+
+            // let event = new AddCommentEvent(submitEvent.target[0].value,
+                                            // submitEvent.target[1].value);
+
+            debugger;
             window.dispatchEvent(event);
         } );
         return $fullPost;
@@ -127,4 +131,18 @@ export default class PostRenderer {
      * They should gather and iterate over what they want rendered.
      */
     // renderAllPosts( posts ) {}
+}
+
+export class AddCommentEvent {
+    
+    consturctor( parentId, content ) {
+        
+        this.parentId = Number(parentId);
+        this.content = content;
+        return {};
+    }
+
+    static getEventName() {
+        return 'addComment';
+    }
 }

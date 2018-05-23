@@ -106,7 +106,7 @@ describe( 'JsonPostStorage', () => {
             expect( allPosts[ 2 ].content ).toEqual( 'older' );
         } );
 
-        it( 'should sort comments too', () => {
+        it( 'should sort comments oldest first', () => {
             let parentPostId = store.save( new Post( 1, new Date(), 'parent' ) );
 
             let newestComment = new Post( 1, new Date(), 'newest' );
@@ -126,9 +126,9 @@ describe( 'JsonPostStorage', () => {
             store.save( newestComment, parentPostId );
 
             let allComments = store.loadOne( parentPostId ).comments;
-            expect( allComments[ 0 ].content ).toEqual( 'newest' );
+            expect( allComments[ 0 ].content ).toEqual( 'older' );
             expect( allComments[ 1 ].content ).toEqual( 'newer' );
-            expect( allComments[ 2 ].content ).toEqual( 'older' );
+            expect( allComments[ 2 ].content ).toEqual( 'newest' );
 
         } );
     } );
