@@ -6,13 +6,11 @@ export class User {
     /**
      * Build a new user object
      * 
-     * @param id int 
      * @param username string
      * @param pic path-to-file as string
      * @about string
      */
-    constructor (/*id,*/ username, pic, about) {
-        // this.id = id;
+    constructor ( username, pic, about) {
         this.username = username;
         this.pic = pic;
         this.about = about;

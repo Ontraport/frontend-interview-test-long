@@ -69,13 +69,13 @@ describe( 'JsonPostStorage', () => {
         it( 'should be used when the post is a comment too', () => {
             let parent = new Post( 1, '', 'post' );
 
-            let comment = new Post(2, '', 'comment');
+            let comment = new Post( 2, '', 'comment' );
 
             let parentId = store.save( parent );
             let commentId = store.save( comment, parentId );
             expect( commentId ).toEqual( parentId + 1 );
 
-            let thirdPostId = store.save( new Post(1, '', '') );
+            let thirdPostId = store.save( new Post( 1, '', '' ) );
 
             expect( thirdPostId ).toEqual( commentId + 1 );
         } );

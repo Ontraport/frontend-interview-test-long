@@ -1,13 +1,14 @@
 /**
- * 
+ * JsonUserStorage.js - Store Users as JS objects
+ *
+ * FIXME abstract this and JsonPostStorage with a JsonStorage superclass.
+ * Way to much duplicate functionality.
  */
 
 import {
     UserStorageInterface,
     User
 } from './user.js';
-
-import './../../data/users.json';
 
 export class JsonUserStorage extends UserStorageInterface {
     /**
@@ -26,7 +27,7 @@ export class JsonUserStorage extends UserStorageInterface {
             this.sourceFile = jsonFile;
 
             // let tmpData = require( jsonFile );
-            let tmpData = require(  './../../data/users.json' );
+            let tmpData = require(  `./../../data/${ jsonFile }` );
 
             tmpData.forEach( ( post ) => {
                 this.save( User.fromJson( post ) );

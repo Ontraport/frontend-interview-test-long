@@ -7,7 +7,6 @@
  *
  * Comments are only allowed to go 1 level/thread deep.
  * Post#comments will be set to null if this post is a comment.
- * 
  */
 export class Post {
     /**
@@ -23,14 +22,11 @@ export class Post {
      * that way you could have date and comments both be optional args.
      * Would require changing all uses of this though.
      */
-    constructor( /*id,*/ userId, date, content, comments, postId) {
-        // this.id = id;
+    constructor( userId, date, content, comments ) {
         this.userId = userId;
-        //FIXME use current date?
         this.content = content || "";
         this.date = date || "";
         this.comments = comments || [];
-        this.postId = postId || null;
     }
 
     /**
@@ -42,8 +38,8 @@ export class Post {
     static fromJson( jsonObject ) {
         //make the post, leave out comments for now
         let post = new Post( jsonObject.userId,
-            jsonObject.date,
-            jsonObject.content );
+                             jsonObject.date,
+                             jsonObject.content );
 
         if ( jsonObject.comments ) {
             jsonObject.comments.forEach( ( comment ) => {

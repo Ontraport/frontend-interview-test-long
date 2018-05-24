@@ -36,13 +36,13 @@ const post_renderer = new PostRenderer( users_source );
  * 
  */
 let renderNewPost = function( post ) {
-    $( '#page' ).append( post_renderer.renderFullPost( post ) );
+    $( '#page' ).prepend( post_renderer.renderFullPost( post ) );
 };
 let renderNewComment = function( commentPost, parentId ) {
-    // $( `#page .post[parent-post-id="${parentId}"] .post__comments` ).append( post_renderer.renderFullPost( commentPost ) );
     $( `.post[parent-post-id="${parentId}"] .post__comment__posts` ).append( post_renderer.renderComment( commentPost ) );
     $( `.post[parent-post-id="${parentId}"] input:not([type="hidden"])` ).val( '' );
 };
+
 /**
  * a simple page rendering function
  */

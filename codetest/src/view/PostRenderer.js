@@ -1,5 +1,7 @@
 /**
  * This renders posts and their comments
+ *
+ * FIXME decouple this from the model!!! AHHHH!!!!
  */
 
 export default class PostRenderer {
@@ -8,9 +10,8 @@ export default class PostRenderer {
      *
      * @param userDataSource implements user.js:UserStorageInterface
      */
-    constructor( userDataSource, addCommentHandler ) {
+    constructor( userDataSource ) {
         this.userSource = userDataSource;
-        this.addCommentHandler = addCommentHandler;
 
         this.classes = {
             postContainer: 'post',
@@ -81,7 +82,7 @@ export default class PostRenderer {
     /**
      * Render all the comments
      *
-     * @param comments [Post]
+     * @param comment Post a single post
      * @return jQuery object
      */
     renderComment( comment ) {
@@ -108,10 +109,11 @@ export default class PostRenderer {
             } );
         }
 
+        //add an ID attr to the post, so comment handling code can find it's root
         $fullPost.attr( 'parent-post-id', post.id );
-        // $fullPost.find( '.' + this.classes.addCommentInput ).attr( 'parent-post-id', post.id );
+        //also add the paren'ts ID to a hidden field in the form, so the event can capture it
         $fullPost.find( '.' + this.classes.addCommentInput + ' input[name="parent-post"]' ).attr( 'value', post.id );
-        // $fullPost.find( '.' + this.classes.addCommentInput + ' form' ).submit(this.addCommentHandler);
+        //set up the comment submit event
         $fullPost.find( '.' + this.classes.addCommentInput + ' form' ).submit( (submitEvent) => {
             submitEvent.preventDefault();
 
@@ -119,31 +121,8 @@ export default class PostRenderer {
             event.content = submitEvent.target[0].value;
             event.parentId = Number(submitEvent.target[1].value);
 
-            // let event = new AddCommentEvent(submitEvent.target[0].value,
-                                            // submitEvent.target[1].value);
-
             window.dispatchEvent(event);
         } );
         return $fullPost;
-    }
-
-    /**
-     * This is left for whoever is calling us to handle.
-     * They should gather and iterate over what they want rendered.
-     */
-    // renderAllPosts( posts ) {}
-}
-
-export class AddCommentEvent {
-    
-    consturctor( parentId, content ) {
-        
-        this.parentId = Number(parentId);
-        this.content = content;
-        return {};
-    }
-
-    static getEventName() {
-        return 'addComment';
     }
 }
