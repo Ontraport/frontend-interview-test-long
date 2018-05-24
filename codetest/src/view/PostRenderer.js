@@ -106,12 +106,12 @@ export default class PostRenderer {
             $fullPost.find( '.' + this.classes.commentSection ).prepend( this.renderAllComments( post.comments ) );
         }
 
-        $fullPost.find( '.' + this.classes.addCommentInput ).attr( 'parent-post-id', post.id );
+        $fullPost.attr( 'parent-post-id', post.id );
+        // $fullPost.find( '.' + this.classes.addCommentInput ).attr( 'parent-post-id', post.id );
         $fullPost.find( '.' + this.classes.addCommentInput + ' input[name="parent-post"]' ).attr( 'value', post.id );
         // $fullPost.find( '.' + this.classes.addCommentInput + ' form' ).submit(this.addCommentHandler);
         $fullPost.find( '.' + this.classes.addCommentInput + ' form' ).submit( (submitEvent) => {
             submitEvent.preventDefault();
-            // debugger;
 
             let event = new Event('addComment');
             event.content = submitEvent.target[0].value;
@@ -120,7 +120,6 @@ export default class PostRenderer {
             // let event = new AddCommentEvent(submitEvent.target[0].value,
                                             // submitEvent.target[1].value);
 
-            debugger;
             window.dispatchEvent(event);
         } );
         return $fullPost;

@@ -23,13 +23,14 @@ export class Post {
      * that way you could have date and comments both be optional args.
      * Would require changing all uses of this though.
      */
-    constructor( /*id,*/ userId, date, content, comments ) {
+    constructor( /*id,*/ userId, date, content, comments, postId) {
         // this.id = id;
         this.userId = userId;
         //FIXME use current date?
-        this.date = date || "";
         this.content = content || "";
+        this.date = date || "";
         this.comments = comments || [];
+        this.postId = postId || null;
     }
 
     /**
