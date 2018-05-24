@@ -19,6 +19,7 @@ export default class PostRenderer {
             userName: 'post__body--user-name',
             postContent: 'post__body--content',
             commentSection: 'post__comments',
+            commentPostsSection: 'post__comment__posts',
             commentPostContainer: 'comment-post',
             addCommentInput: 'post__add-comment',
         };
@@ -38,6 +39,8 @@ export default class PostRenderer {
         
         this.postContainerTemplate = `<div class="${this.classes.postContainer}">
                 <div class="${this.classes.commentSection}">
+                    <div class="${this.classes.commentPostsSection}">
+                    </div>
                     <div class="${this.classes.addCommentInput}">
                         <form>
                             <input placeholder="post a comment"></input>
@@ -81,14 +84,11 @@ export default class PostRenderer {
      * @param comments [Post]
      * @return jQuery object
      */
-    renderAllComments( comments ) {
+    renderComment( comment ) {
         //create a container
         let $commentContainer = $( this.commentContainerTemplate );
-        //for each comment
-        comments.forEach( ( comment ) => {
-            //render post into that container
-            $commentContainer.append( this.renderPostBody( comment, true ) );
-        } );
+        //render post into that container
+        $commentContainer.append( this.renderPostBody( comment ) );
         return $commentContainer;
     }
 
@@ -103,7 +103,9 @@ export default class PostRenderer {
 
         $fullPost.prepend( this.renderPostBody( post ) );
         if ( post.comments.length > 0 ) {
-            $fullPost.find( '.' + this.classes.commentSection ).prepend( this.renderAllComments( post.comments ) );
+            post.comments.forEach( (comment) => {
+                $fullPost.find( '.' + this.classes.commentPostsSection ).prepend( this.renderComment( comment ) );
+            } );
         }
 
         $fullPost.attr( 'parent-post-id', post.id );
