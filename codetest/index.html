@@ -1,32 +1,55 @@
 <!DOCTYPE HTML >
 <html>
-<head>
-	<title>The network</title>
-	
-	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
-</head>
-<body>
-	
-	<div id="header">
-		<div id="logo">
-			<img src="images/logo.png" alt="the network"/>
-		</div>	
-		<div id="search">
-			<form method="get" action="#">
-				<input type="search" name="terms" placeholder="Search...."/>
-				<input type="submit" value="Go"/>
-			</form>
-		</div>
-	</div>
-	
-	<div id="page">
 
-	</div>
-	
-	<div>
-		<p>This is a footer mesage</p>
-	</div>
-		
+<head>
+    <title>The network</title>
+
+    <link rel="stylesheet" type="text/css" href="normalize.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="dist/bundle.js"></script>
+    <Script src=""></script>
+</head>
+
+<body>
+
+    <div id="header">
+        <div id="logo" class="row-elem">
+            <img src="images/logo.png" alt="the network" />
+        </div>
+        <div id="search" class="row-elem">
+            <form method="get" action="#">
+                <input type="search" name="terms" placeholder="Search...." />
+                <input type="submit" value="Go" />
+            </form>
+        </div>
+        <div id="header__controls" class="row-elem">
+            <ul>
+                <li>
+                    <button>Home</button>
+                </li>
+                <li id="new-post">
+                    <button>Post an Update</button>
+                </li>
+                <li>
+                    <img id="user-pic" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="user-box" class="row-elem">
+        </div>
+        <div id="page" class="row-elem">
+        </div>
+    </div>
+
+    <div>
+        <p>This is a footer mesage</p>
+    </div>
+
 </body>
+
 </html>
