@@ -1,13 +1,16 @@
 <!DOCTYPE HTML >
 <html>
 <head>
-	<title>The network</title>
-	
+	<title>The network</title>	
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
-	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />	
+	<script src="resources/jquery.js"></script>
+	<script src="functions.js"></script>
+	<script>
+		renderPage();		
+	</script>
 </head>
 <body>
-	
 	<div id="header">
 		<div id="logo">
 			<img src="images/logo.png" alt="the network"/>
@@ -17,16 +20,37 @@
 				<input type="search" name="terms" placeholder="Search...."/>
 				<input type="submit" value="Go"/>
 			</form>
+		</div>		
+		<div id="profile">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="javascript://" onclick="overlayOn();">Post an update</a></li>
+				<li id="profile-img"></li>
+			</ul>
 		</div>
 	</div>
-	
-	<div id="page">
-
-	</div>
-	
-	<div>
+	<div id="page">	
+		<div id="sidebar">
+			<div id="user">
+				<div id="user-image"></div>
+				<div id="user-name"></div>
+			</div>
+		</div>
+		<div id="content">
+			<div class="updates">Updates</div>		
+		</div>
+	</div>	
+	<div style="text-align:center;">
 		<p>This is a footer mesage</p>
 	</div>
-		
+	<div id="overlay">
+		<div id="post-modal">
+			<div class="modal">
+				<div class="modal-status">Status Update</div>
+				<div><textarea id="new-post" placeholder="whats on your mind" onkeypress="newPost();"></textarea></div>
+				<div>hit enter to post</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
