@@ -4,7 +4,8 @@
 	
 	function renderPage() {
 		var arr = new Array();
-		$.getJSON("https://api.myjson.com/bins/ih96w", function(data){
+		// https://api.myjson.com/bins/ih96w
+		$.getJSON("data/users.json", function(data){
 			$.each(data, function(i, post){		 
 				var temp = new Array(post.id, post.username, post.pic);
 				arr.push(temp);
@@ -51,7 +52,8 @@
 	}
   
 	function createPosts(arr) {	
-		$.getJSON("https://api.myjson.com/bins/1e5auw", function(data){
+		// https://api.myjson.com/bins/1e5auw
+		$.getJSON("data/posts.json", function(data){
 			$.each(data, function(i, post){			
 				let comment = '<div id="comment-section-' + post.id + '">';	
 				$.each(post.comments, function(j, comments){	
