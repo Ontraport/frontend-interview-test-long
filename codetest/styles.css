@@ -1,13 +1,18 @@
 /*
- * base styles 
+ * styles.css
+ * A mix of ontraport's original styles.css file with a bunch of additions.
+ * I later realized I should have written this myself from scratch when I
+ * didn't realize some of my additions were inheriting undesired styles. 
  * 
  */
 
-html{
+html
+{
 	height: 100%;
 }
 
-body{
+body
+{
 	background: rgb(167,199,220); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(167,199,220,1) 0%, rgba(133,178,211,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(167,199,220,1)), color-stop(100%,rgba(133,178,211,1))); /* Chrome,Safari4+ */
@@ -16,79 +21,387 @@ body{
 	background: -ms-linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* IE10+ */
 	background: linear-gradient(top,  rgba(167,199,220,1) 0%,rgba(133,178,211,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-9 */
-
-	
 	font-size: 13px;
 	min-width: 800px;
-	
 }
 
-br{
+br
+{
 	clear: left;
 }
 
+img
+{
+	vertical-align: middle;
+}
 
-#header{
+#header
+{
 	background: rgba( 0, 0, 0, 0.7);
 	padding: 10px 5px;
+	height: 50px;
 	box-shadow: 0px 1px 5px #fff;
 }
 
+/* div to hold the 3 items in the header (logo, account, search) */
+#header-container
+{
+	position: relative;
+	height: auto;
+	width: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	overflow: hidden;
+}
 
 /*logo in header*/
-#logo{
-	display: inline-block;
+#logo
+{
+	display: inline;
+	margin-top: auto;
+	margin-bottom: auto;
 	float: left;
 }
 
-/*search in header*/
-
-#search{
-
+/* account menu pod in header */
+#account
+{
+	height: auto;
+	width: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 20px;
 	display: inline;
-    float: left;
-    left: 50%;
-    margin-left: -25%;
-    position: relative;
-    width: 300px;
-    margin-top: 1em;
+	float: right;
+
+	/*
+	to align the account pod with the BOTTOM of the "The Network" logo
+	*/
+	position: absolute; 
+	right: 0; 
+	bottom: 0;
+	
 }
-#search input[name="terms"]{
+
+/* items inside the account menu pod */
+.infoitem
+{	
+	padding: 0px 5px;
+	display: inline;
+	cursor: hand;
+	cursor: pointer;
+}
+
+/*search container in header*/
+#search
+{
+	display: inline;
+	position: relative;
+	left: 20%;
+	margin-left: -25%;
+	width: 400px;
+	margin-top: auto;
+	margin-bottom: auto;
+	vertical-align: bottom;
+}
+
+/* Styling for search at top center */
+#search input[name="terms"]
+{
 	width: 250px;
 	padding: 2px 3px;
 	border: 2px solid #A2C4DA;
 	font-size: 1.2em;
+	
+	/* Glowing edges effect setup*/
+  	-webkit-transition: all 0.20s ease-in-out;
+  	-moz-transition: all 0.20s ease-in-out;
+  	-ms-transition: all 0.20s ease-in-out;
+  	-o-transition: all 0.20s ease-in-out;
 }
 
-#search input[type="submit"]{
-	width: 30px;
+/* result when someone clicks in or tabs over to search text field*/
+#search input[name="terms"]:focus
+{
+	/* Glowing edges effect */
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	padding: 2px 3px;
+	border: 2px solid rgba(81, 203, 238, 1);
+}
+
+/* Submit button for the search field */
+#search input[type="submit"]
+{
+	width: 40px;
 	padding: 4px;
 	vertical-align: top;
 	font-weight: bold;
 	text-shadow: 1px 1px 1px #fff;
 	border: 1px solid #6FD6F7;
-
-
-
-}
-
-#search input[type="submit"]:hover{
 	
+ 	/*Transition*/
+ 	-webkit-transition: All 0.5s ease;
+  	-moz-transition: All 0.5s ease;
+  	-o-transition: All 0.5s ease;
+  	-ms-transition: All 0.5s ease;
+  	transition: All 0.5s ease;
+  
+  	/*Gradient to make the button look less flat*/
+  	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  	background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  	background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  	background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+}	
+
+/* Search button, grows in size on hover */
+#search input[type="submit"]:hover
+{
+	width: 120px;
+}
+
+/* Text area for "update status" dialog box */
+textarea 
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid #DDDDDD;
+}
+
+/* Shadow effect on focus */
+textarea:focus 
+{
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid rgba(81, 203, 238, 1);
+}
+
+/* inputs that appear in the comments list */
+input[type="text"]
+{
+	outline: none;
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid #DDDDDD;
+}
+
+/* round everything! */
+.rounded
+{
+	/*Rounded Corners*/
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/* unordered list for displaying posts (and also comments, as a sub-unordered list */
+ul.post
+{
+	padding: 5px 0px 5px 0px;
+	margin: 0px 0px 0px 0px;
+	list-style-type: none;
+}
+
+/* the aforementioned sub-unordered list */
+ul.comment
+{
+	background: #EDEDED;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 5px 0px 60px;
+	list-style-type: none;
+}
+
+/* 
+Each <li> in the post list will contain a post object, and a comment sublist with input field. 
+in the event that there are no comments the sublist will contain 1 element that is 
+the input field.
+*/
+li.post
+{
+	margin: 5px 5px 5px 5px;
+}
+
+/* li element for comments */
+li.comment
+{
+	margin: 5px 5px 5px 5px;
+	padding: 5px;
+	display: table;
+	border-bottom: 1px solid #D0D0D0;
+}
+
+/* container for the "form" (just a text input with javascript) into which users input comments */
+li.comment-form
+{
+	margin: 0px 5px 0px 0px;
+}
+
+/* left side of a comment (this is also used by the post list) */
+.comment-left
+{
+	display: table-cell;
+	padding: 5px 0px 0px 0px;
+	vertical-align: top;
+}
+
+/* right side of a comment (this is also used by the post list) */
+.comment-right
+{
+	display: table-cell;
+	width: 100%; 
+	padding: 3px 0px 0px 5px;
+	overflow: auto;
+}
+
+/* post or comment text */
+.content
+{
+	display: inline;	
+}
+
+/* As per Ontraports specifications */
+.bold-link
+{
+	font-weight: bold;
+	color: #0297C7;
+}
+
+/* For the "Home" and "Update Status" links */
+.menu-link
+{
+	color: #FFFFFF;
+	font-size: 14px;
+}
+
+/* 
+Div to store the username of the currently logged in user in the profile pod, 
+left of the main pod for the posts
+*/
+#username
+{
+	display: inline-block;
+	vertical-align: bottom;
+	padding: 0px 5px;
+}
+
+/* div for showing user avatars */
+.avatar
+{
+	vertical-align: top;
+}
+
+/* div for shrinking down avatars to ontraport's specs */
+.mini
+{
+	height: 25px;
+	width: 25px;
+}
+
+/*overlay div to dim the screen when the lightbox is active*/
+#overlay 
+{
+	visibility: hidden;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	z-index: 200;
+	background-color: rgba(100, 100, 100, 0.7);
+}
+ 
+
+ 
+.dialog
+{
+	position: absolute;
+	text-align: left;
+	left: 0px;
+	top: 0px;
+	width: auto;
+	height: auto;
+	z-index: 301;
+	background-color: #F7F7F7;
+	padding: 15px 30px;
+}
+
+#updatetitle
+{
+	font-weight: bold;
+}
+
+.comment-input
+{
+	width: 100%;
+	display: inline;
+}
+
+.comment-input-container
+{
+	display: inline;
+}
+
+#main-content
+{
+	margin-top: 25px;
+	text-align: center;
+}
+
+/* Profile Info pod, to the left of the posts / comments */
+#profile
+{
+	border: 1px solid #6FD6F7;
+	display: inline-block;
+	background: #F7F7F7;
+	width: 200px;
+	vertical-align: top;
+	text-align: left;
+	margin: 0px 10px;
+	padding: 2px 0px 5px 5px;
+}
+
+/* Container for the profile image*/
+#profile-img-container
+{
+	display: inline-block;
 }
 
 
 
-
-
-/*page content*/
-
-#page{
-	width: 800px;
-	
-	/*background: rgba( 255, 255, 255, 0.3 );
-	border: 1px solid #ffffff;*/
-	margin: 10px auto 0px;
-	padding: 1em 2em;
+/*Container for posts*/
+#page
+{
+	display: inline-block;
+	width: 510px;
+	background: #F7F7F7;
+	border: 1px solid #6FD6F7;
+	text-align: left;
 }
 
+/* Styling for the title of the lightbox (update status dialog)*/
+#update-title
+{
+	font-weight: bold;
+	font-size: 14px;
+	padding: 5px 0px 20px 5px;
+}
 
+/* To fill up some space after the post list*/
+.footer
+{
+	text-align: center;
+}
+
+/* container for the mini image that appears when a comment input has focus */
+.comment-avatar
+{
+	display: none;
+	margin: 0px 5px 0px 5px;
+}
