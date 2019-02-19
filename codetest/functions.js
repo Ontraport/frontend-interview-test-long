@@ -138,3 +138,35 @@
 			overlayOff();
 		}
 	}
+
+
+
+
+	function modalPost(file, object) {
+		let regex = /({{)+(\w)+(}})/g;
+		let html;
+		
+		fetch(file).then(function(response) {
+			html = response.text();
+
+			let regexOutput = html.match(regex);
+			for(i = 0; i < regexOutput.length;i++) {
+				let key = regexOutput[i].replace("{{","").replace("}}","");
+				html = html.replace("{{" + key + "}}", object[key]);
+			}
+			
+			return html;
+			})
+		.catch(function(err) {  
+			console.log('Failed to fetch page: ', err);  
+		});
+
+		return html;
+		/*let regs = modal.match(regex);
+		for(i = 0; i < regs.length;i++) {
+			let key = regs[i].replace("{{","").replace("}}","");
+			let str ="{{" + key + "}}";
+			modal = modal.replace(str, object[key]);
+		}
+		return modal;*/
+	}
