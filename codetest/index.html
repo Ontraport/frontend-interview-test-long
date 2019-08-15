@@ -5,9 +5,116 @@
 	
 	<link rel="stylesheet" type="text/css" href="normalize.css" />
 	<link rel="stylesheet" type="text/css" href="styles.css" />
-</head>
-<body>
+	<script type="text/javascript" language="javascript" src="js/components/posts-page.js"></script>
+	<script type="text/javascript" language="javascript" src="js/components/user-account-panel.js"></script>
+	<script type="text/javascript" language="javascript" src="js/components/user-profile-pic.js"></script>
+	<script type="text/javascript" language="javascript" src="js/components/user-post.js"></script>
 	
+	<script type="text/javascript" language="javascript" src="data/users.json"></script> 
+	<script type="text/javascript" language="javascript" src="data/posts.json"></script> 
+	
+	 
+	<script type='text/javascript'>
+	
+		var ls = window.localStorage;
+		var Data = {};
+		const currentUserId = 5;
+	
+		window.onload = function(e){
+			LoadData();
+			Render();			
+			AttachEvents();
+		}
+		
+		function CurrentUser(){
+			return Data.Users[currentUserId];
+		}
+		
+	
+		function LoadData(){				
+			if (ls.getItem('Users') == null) {
+				ls.setItem("Users", JSON.stringify(users));
+			}
+			if (ls.getItem('Posts') == null) {
+				ls.setItem("Posts", JSON.stringify(posts));
+			}			
+			LoadTable("Users");
+			LoadTable("Posts");
+		}
+	
+	//{id: 1, username: "James Bond", pic: "images/profile/Sean-Connery-as-James-Bond.jpg", about: "Secret Agent, for MI6 code name 007, need I say more?"}	
+		function LoadTable(tableName){
+			var jsonData = JSON.parse(ls.getItem(tableName));
+			Data[tableName] = [];
+			for(var i = 0; i < jsonData.length; i++){
+				Data[tableName][jsonData[i].id] = jsonData[i];
+			}
+		}
+		
+	//{id: 1, userId: 1, date: "", content: "Love wine? Love food? Love to win an iPad 2 with g…winery & Dine IA restaurant. http://bit.ly/xQ4Ls8", comments: Array(1)}
+
+		function Render(){
+			RenderPage();
+			//RenderLoggedInUser();
+		}
+		
+		function RenderLoggedInUser(){
+			var currentUser = Data.Users[currentUserId];
+		}
+		
+		
+		function RenderPage(){
+			var page = document.querySelector("#page");
+			var elem = document.createElement("posts-page");
+			elem.setAttribute("data-user-id", CurrentUser().id);
+			elem.setAttribute("data-user-name", CurrentUser().username);
+			elem.setAttribute("data-user-pic", CurrentUser().pic);	
+			page.appendChild(elem);
+		}
+		
+		
+		
+		function AttachEvents(){
+			LoadModals();
+		}
+		
+		function LoadModals(){
+			var elements = document.getElementsByClassName("open-modal");
+			if(typeof elements != "undefined"){
+				for(var i = 0; i < elements.length; i++){
+					var triggerElement = elements[i];
+					if(typeof triggerElement != "undefined"){
+						var target = triggerElement.attributes["data-target"].value;					
+						var targetElements = document.querySelectorAll(target);					
+						if(typeof targetElements != "undefined"){
+							for(var j = 0; j < targetElements.length; j++){
+								var targetElement = targetElements[j];
+								triggerElement.addEventListener("click", function(e){
+									targetElement.classList.add("modal-active");
+								});
+								targetElement.addEventListener("click", function(e){
+									if(e.path[0] == targetElement){
+										targetElement.classList.remove("modal-active");
+									}
+								});								
+								var closeTriggers = targetElement.querySelectorAll(".close-modal");		
+								if(typeof closeTriggers != "undefined"){
+									for(var k = 0; k < closeTriggers.length; k++){
+										closeTriggers[k].addEventListener("click", function(e){
+											targetElement.classList.remove("modal-active");
+										});
+									}
+								}								
+							}
+						}
+					}
+				}
+			}
+		}
+		
+	</script>
+</head>
+<body>	
 	<div id="header">
 		<div id="logo">
 			<img src="images/logo.png" alt="the network"/>
@@ -18,15 +125,35 @@
 				<input type="submit" value="Go"/>
 			</form>
 		</div>
-	</div>
-	
+		<div id="menu">
+			<ul>
+				<li><a href='/' onclick="">Home</a></li>
+				<li><a href='javascript:void(0)' class="open-modal" data-target="#post-modal">Post an update</a></li>
+				<li><a href='javascript:void(0)' onclick=""><user-profile-pic width="25px" src="images/profile/daniel-craig.jpg" /></a></li>
+			</ul>
+		</div>
+	</div>	
 	<div id="page">
-
+		
+	</div>	
+	<footer>
+		<p>This is a footer message</p>
+	</footer>		
+	<div id="post-modal" class="modal">
+		<div class="modal-content">
+			<div class='modal-header'>
+				Post an update
+			</div>
+			<div class='modal-form'>
+				<form method="get" action="#">
+					<textarea rows="5" type="text" name="post-text" placeholder="post a comment"></textarea>
+					<br />
+					<input type="submit" class='close-modal' value="Post"/>
+				</form>
+			</div>
+		</div>
 	</div>
 	
-	<div>
-		<p>This is a footer mesage</p>
-	</div>
-		
+	
 </body>
 </html>
