@@ -31,6 +31,12 @@ hr {
 	margin: .25em;
 }
 
+h1 {
+	margin-top: 7px;
+	margin-bottom: 28px;
+	font-size: 1.2em
+}
+
 h2, h3 {
 	display: inline-block;
 	padding: 0;
@@ -80,12 +86,15 @@ footer p {
     margin-top: 1em;
 }
 #search input[name="terms"]{
+	display: inline-block;
 	width: 250px;
 	padding: 2px 3px;
-	border: 2px solid #A2C4DA;
 	font-size: 1.2em;
+	border: 2px solid #A2C4DA;
 }
-
+#search input[name="terms"]:focus {	
+	box-shadow: 0px 0px 15px rgba(255,255,255,.5);
+}
 #search input[type="submit"]{
 	width: 30px;
 	padding: 4px;
@@ -93,39 +102,15 @@ footer p {
 	font-weight: bold;
 	text-shadow: 1px 1px 1px #fff;
 	border: 1px solid #6FD6F7;
+	background: -moz-linear-gradient(top, rgba(114,215,255,1) 0%, rgba(19,155,212,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(114,215,255,1) 0%, rgba(19,155,212,1) 100%);
 }
 
 #search input[type="submit"]:hover{
-	
+	background: -moz-linear-gradient(top,  rgba(19,155,212,1) 0%, rgba(114,215,255,1) 100%);
+	background: -webkit-linear-gradient(top,  rgba(19,155,212,1) 0%,rgba(114,215,255,1) 100%);
 }
 
-#menu {
-	float: right;
-	margin: 0 24px 0 0;
-}
-
-#menu ul {	
-	list-style-type: none;
-	display: table;
-}
-
-#menu ul li {
-	display: table-cell;
-	padding: 0 10px;
-	vertical-align: middle;
-}
-
-#menu ul li a {
-	color: white;
-	text-decoration: none;
-	font-size: 1.2em;
-}
-
-#menu ul li a img {
-	border: none;
-	width: 25px;
-	height: 25px;
-}
 
 /*page content*/
 
@@ -136,60 +121,54 @@ footer p {
 	border: 1px solid #ffffff;*/
 	margin: 10px auto 0px;
 	padding: 1em 2em;
-	
-
 }
 
-
-
-/* begin modal styling */
-
-.modal {
-	display: none;
-}
-.modal.modal-active {
-	display: block;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(255, 255, 255, .5);
-}
-
-.modal .modal-content {
-	display: block;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	width: 400px;
-	height: 200px;
-	background-color: #fff;
+.panel {
+	background-color: #f7f7f7;
 	border-radius: 5px;
+	display: block;
 }
 
-.modal .modal-header {
-	font-size: 1.25em;
-	padding: 10px;
-	text-align: center;
-	border-bottom: 2px solid #ededed;
+.panel-content {
+	padding: 5px;
+}
+.profile-pic {
+	margin: 0 15px 0 0;
+	display: inline-block;
+}
+.profile-pic img {
+	width: 50px;
 }
 
-.modal .modal-form {
-	padding: 10px;
-}
-
-.modal .modal-form textarea {
-	width: 98%;
-	margin: 0 0 1em 0;
-}
-.modal .modal-form input[type=submit] {
+.floatright {
 	float: right;
 }
-/* end modal styling */
+.floatleft {
+	float: right;
+}
+.button {
+	display: inline-block;
+	margin: 5px;
+	padding: 4px;
+	vertical-align: top;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #fff;
+	border: 1px solid #aaa;
+	color: #111;
+	background-color: #ccc;
+	text-decoration: none;
+}
+
+.button.button-primary {
+	border: 1px solid #6FD6F7;
+	background: -moz-linear-gradient(top, rgba(114,215,255,1) 0%, rgba(19,155,212,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(114,215,255,1) 0%, rgba(19,155,212,1) 100%);
+}
+.button:hover {
+	background-color: #ddd;
+	
+}
+.button.button-primary:hover {
+	background: -moz-linear-gradient(top, rgba(19,155,212,1) 0%, rgba(114,215,255,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(19,155,212,1) 0%, rgba(114,215,255,1) 100%);
+}
