@@ -937,7 +937,7 @@ class PostForm extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseComp
 			console.log("submitted");
 			var content = $this.form["post-text"].value;
 			if(content.length >= 3 && content.length <= $this.maxLength){				
-				_js_PostsController_js__WEBPACK_IMPORTED_MODULE_2__["PostsController"].AddPost($this.CurrentUser.id, content);
+				_js_PostsController_js__WEBPACK_IMPORTED_MODULE_2__["postsController"].AddPost($this.CurrentUser.id, content);
 				$this.textarea.value = "";
 				var event = new Event("submit");
 				$this.dispatchEvent(new CustomEvent('form-submit', {
@@ -1074,7 +1074,7 @@ class PostsPage extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseCom
 			</style>`;
 	}
 	ReadAttributes(){
-		_js_PostsController_js__WEBPACK_IMPORTED_MODULE_1__["PostsController"].PostsPage = this;
+		_js_PostsController_js__WEBPACK_IMPORTED_MODULE_1__["postsController"].PostsPage = this;
 		this.user_id = this.getAttribute("data-user-id");
 		this.user_pic = this.getAttribute("data-user-pic");
 		this.user_name = this.getAttribute("data-user-name");		
@@ -1111,12 +1111,12 @@ class PostsPage extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseCom
 	RenderPosts(){
 		this.postArray = [];
 		this.posts = "";	
-		var PostData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_2__["DataStore"].GetTableData("Posts");
+		var PostData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_2__["dataStore"].GetTableData("Posts");
 		if(PostData != null){
 			for(var i = 0; i < PostData.length; i++){
 				var postData = PostData[i];
 				if(postData != null){
-					var userData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_2__["DataStore"].GetDataById("Users", postData.userId);
+					var userData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_2__["dataStore"].GetDataById("Users", postData.userId);
 					var newPost = document.createElement("user-post");
 					newPost.setAttribute("data-user-id", postData.userId);
 					newPost.setAttribute("data-post-id", postData.id);
@@ -1135,7 +1135,7 @@ class PostsPage extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseCom
 	}
 
 	AddPost(postData) {		
-		var userData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_2__["DataStore"].GetDataById("Users", postData.userId);
+		var userData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_2__["dataStore"].GetDataById("Users", postData.userId);
 		var newPost = document.createElement("user-post");
 		newPost.setAttribute("data-user-id", postData.userId);
 		newPost.setAttribute("data-post-id", postData.id);
@@ -1342,7 +1342,7 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 	}
 	
 	SubmitComment(comment){
-		_js_PostsController_js__WEBPACK_IMPORTED_MODULE_2__["PostsController"].AddComment(this.CurrentUser.id, this.post_id, comment);
+		_js_PostsController_js__WEBPACK_IMPORTED_MODULE_2__["postsController"].AddComment(this.CurrentUser.id, this.post_id, comment);
 	}
 
 	
@@ -1533,10 +1533,10 @@ class UserPost extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseComp
 	}
 	
 	RenderComments(){
-		var postData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_4__["DataStore"].GetDataById("Posts", this.post_id);
+		var postData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_4__["dataStore"].GetDataById("Posts", this.post_id);
 		for(var i = 0; i < postData.comments.length; i++){
 			var commentData = postData.comments[i];
-			var userData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_4__["DataStore"].GetDataById("Users",commentData.userId);
+			var userData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_4__["dataStore"].GetDataById("Users",commentData.userId);
 			var newPost = document.createElement("user-post");
 			newPost.setAttribute("data-user-id", userData.id);
 			newPost.setAttribute("data-user-name", userData.username);
@@ -1613,14 +1613,14 @@ class UserPost extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseComp
 	
 	DeletePost(){
 		if(this.comment_id == null){	
-			_js_PostsController_js__WEBPACK_IMPORTED_MODULE_5__["PostsController"].DeletePost(this.post_id, this);			
+			_js_PostsController_js__WEBPACK_IMPORTED_MODULE_5__["postsController"].DeletePost(this.post_id, this);			
 		} else {
-			_js_PostsController_js__WEBPACK_IMPORTED_MODULE_5__["PostsController"].DeleteComment(this.post_id, this.comment_id, this);					
+			_js_PostsController_js__WEBPACK_IMPORTED_MODULE_5__["postsController"].DeleteComment(this.post_id, this.comment_id, this);					
 		}
 	}
 	
 	OnCommentAdded(commentData){
-		var userData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_4__["DataStore"].GetDataById("Users", commentData.userId);
+		var userData = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_4__["dataStore"].GetDataById("Users", commentData.userId);
 		var newComment = document.createElement("user-post");
 		newComment.setAttribute("data-user-id", userData.id);
 		newComment.setAttribute("data-user-name", userData.username);
@@ -1758,82 +1758,71 @@ var _data_posts_json__WEBPACK_IMPORTED_MODULE_8___namespace = /*#__PURE__*/__web
 
 
 
-var CurrentUser = null;
+class PostsApp {
+	constructor(target){
+		this.CurrentUser = null;
+		this.targetElement = target;
+		this.LoadData();
+		this.SetUser();
+		this.Render();	
+	}
+	
+	LoadData(){		
+
+		var ls = window.localStorage;		
+		if (ls.getItem('Users') == null) {
+			ls.setItem("Users", JSON.stringify(_data_users_json__WEBPACK_IMPORTED_MODULE_7__));
+		}
+		if (ls.getItem('Posts') == null) {
+			ls.setItem("Posts", JSON.stringify(_data_posts_json__WEBPACK_IMPORTED_MODULE_8__));
+		}	
+	}
+
+	SetUser(){	
+		this.CurrentUser = Object(_js_CurrentUser_js__WEBPACK_IMPORTED_MODULE_6__["GetCurrentUser"])();
+	}
+
+	Render(){	
+		this.RenderPage();
+		this.RenderHeader();		
+	}
+
+	RenderPage(){	
+		var attributes = [];	
+		attributes["data-user-id"] = this.CurrentUser.id;	
+		attributes["data-user-name"] = this.CurrentUser.username;
+		attributes["data-user-pic"] = this.CurrentUser.pic;	
+		
+		this.RenderElement(this.targetElement, "posts-page", attributes);
+	}
+
+	RenderHeader(){		
+		var attributes = [];	
+		attributes["data-user-id"] = this.CurrentUser.id;	
+		attributes["data-user-pic"] = this.CurrentUser.pic;	
+		
+		this.RenderElement("#header", "page-menu", attributes);
+	}
+
+	RenderElement(containerSelector, elementTag, attributes){
+		var container = document.querySelector(containerSelector);
+		var elem = document.createElement(elementTag);
+
+		var keys = Object.keys(attributes);
+		for (let key of keys) {
+			elem.setAttribute(key, attributes[key]);			
+		}
+		
+		container.appendChild(elem);
+	}
+}
+
+
+
 
 window.onload = function(e){
+	var postsApp = new PostsApp("#page");
 	
-	LoadData();
-	SetUser();
-	Render();		
-}
-
-
-function LoadData(){		
-
-	var ls = window.localStorage;		
-	if (ls.getItem('Users') == null) {
-		ls.setItem("Users", JSON.stringify(_data_users_json__WEBPACK_IMPORTED_MODULE_7__));
-	}
-	if (ls.getItem('Posts') == null) {
-		ls.setItem("Posts", JSON.stringify(_data_posts_json__WEBPACK_IMPORTED_MODULE_8__));
-	}	
-}
-
-function SetUser(){	
-	CurrentUser = Object(_js_CurrentUser_js__WEBPACK_IMPORTED_MODULE_6__["GetCurrentUser"])();
-}
-
-function Render(){	
-	RenderPage();
-	RenderHeader();
-	
-}
-
-function RenderPage(){	
-	var attributes = [];	
-	attributes["data-user-id"] = CurrentUser.id;	
-	attributes["data-user-name"] = CurrentUser.username;
-	attributes["data-user-pic"] = CurrentUser.pic;	
-	
-	RenderElement("#page", "posts-page", attributes);
-}
-
-function RenderHeader(){		
-	var attributes = [];	
-	attributes["data-user-id"] = CurrentUser.id;	
-	attributes["data-user-pic"] = CurrentUser.pic;	
-	
-	RenderElement("#header", "page-menu", attributes);
-}
-
-function RenderElement(containerSelector, elementTag, attributes){
-	var container = document.querySelector(containerSelector);
-	var elem = document.createElement(elementTag);
-
-	var keys = Object.keys(attributes);
-	for (let key of keys) {
-		elem.setAttribute(key, attributes[key]);			
-	}
-	
-	container.appendChild(elem);
-}
-
-
-function loadJSON(path) {
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', path, true);
-	xhr.responseType = 'blob';
-	xhr.onload = function(e) { 
-	  if (this.status == 200) {
-		  var file = new File([this.response], 'temp');
-		  var fileReader = new FileReader();
-		  fileReader.addEventListener('load', function(){
-			   console.log(fileReader.result);
-		  });
-		  fileReader.readAsText(file);
-	  } 
-	}
-	xhr.send();
 }
 
 /***/ }),
@@ -1857,7 +1846,7 @@ const currentUserId = 5;
 
 function GetCurrentUser() {
 	if(currentUser == null) {
-		currentUser = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["DataStore"].GetDataById("Users", currentUserId);
+		currentUser = _js_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["dataStore"].GetDataById("Users", currentUserId);
 	}
 	return currentUser;			
 }
@@ -1868,16 +1857,19 @@ function GetCurrentUser() {
 /*!*****************************!*\
   !*** ./src/js/DataStore.js ***!
   \*****************************/
-/*! exports provided: DataStore */
+/*! exports provided: dataStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataStore", function() { return DataStore; });
-const DataStore = {
-	"ls" : window.localStorage,
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dataStore", function() { return dataStore; });
+class DataStore {
 	
-	"AddData" : function(table, row){
+	constructor(){
+		this.ls = window.localStorage;
+	}
+	
+	AddData(table, row){
 		var tableData = this.ls.getItem(table);
 		if (tableData == null) {	
 			row.id = 1;
@@ -1888,32 +1880,32 @@ const DataStore = {
 			tableData.push(row);
 		}		
 		this.ls.setItem(table, JSON.stringify(tableData));			
-	},
+	}
 	
-	"GetDataById" : function(table, id){
+	GetDataById(table, id){
 		var tableData = this.ls.getItem(table);
 		if (tableData != null) {		
 			tableData = JSON.parse(tableData);			
 			return tableData[id-1];
 		}
 		return null;
-	},
+	}
 	
-	"GetTableData" : function(table){
+	GetTableData(table){
 		var tableData = this.ls.getItem(table);
 		if (tableData != null) {		
 			tableData = JSON.parse(tableData);			
 			return tableData;
 		}
 		return null;
-	},
+	}
 	
-	"SaveTableData" : function(table, data){
+	SaveTableData(table, data){
 		this.ls.setItem(table, JSON.stringify(data));
-	}	
-	
+	}		
 }
 
+const dataStore = new DataStore();
 
 /***/ }),
 
@@ -1921,37 +1913,37 @@ const DataStore = {
 /*!***********************************!*\
   !*** ./src/js/PostsController.js ***!
   \***********************************/
-/*! exports provided: PostsController */
+/*! exports provided: postsController */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostsController", function() { return PostsController; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postsController", function() { return postsController; });
 /* harmony import */ var _DataStore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DataStore.js */ "./src/js/DataStore.js");
 
 
-const PostsController = {
-	"ls" : window.localStorage,
-	"PostsPage" : null,
+class PostsController {
+	constructor(){
+		this.ls = window.localStorage;
+		this.PostsPage = null;
+	}
 	
-	"AddPost" : function(userId, content) {
+	AddPost(userId, content) {
 		var post = {
 			"id" : 0,
 			"userId": userId,
 			"date" : Date.now(),
 			"content": content,
-			"comments" : []
-			
+			"comments" : []			
 		}	
 		
-		_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["DataStore"].AddData("Posts", post);
+		_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["dataStore"].AddData("Posts", post);
 		if(this.PostsPage != null) {
 			this.PostsPage.AddPost(post);
 		}				
-	},
+	}	
 	
-	
-	"AddComment" : function(userId, postId, content){
+	AddComment(userId, postId, content){
 		var comment = {
 			"id" : 0,
 			"userId": userId,
@@ -1960,28 +1952,28 @@ const PostsController = {
 			"content": content			
 		}	
 		
-		var PostsData = _DataStore_js__WEBPACK_IMPORTED_MODULE_0__["DataStore"].GetTableData("Posts");
+		var PostsData = _DataStore_js__WEBPACK_IMPORTED_MODULE_0__["dataStore"].GetTableData("Posts");
 		
 		if(PostsData != null && PostsData[postId - 1] != null){
 			comment.id = PostsData[postId - 1].comments.length;
 			PostsData[postId - 1].comments.push(comment);		
-			_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["DataStore"].SaveTableData("Posts", PostsData);			
+			_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["dataStore"].SaveTableData("Posts", PostsData);			
 			this.PostsPage.OnCommentAdded(comment);
 		}							
-	},
-	"DeletePost" : function(postId, UserPostElement){
+	}
+	DeletePost(postId, UserPostElement){
 		
-		var PostsData = _DataStore_js__WEBPACK_IMPORTED_MODULE_0__["DataStore"].GetTableData("Posts");
+		var PostsData = _DataStore_js__WEBPACK_IMPORTED_MODULE_0__["dataStore"].GetTableData("Posts");
 		
 		if(PostsData != null && PostsData[postId - 1] != null){
 			PostsData = this.DeleteFromArray(PostsData, postId - 1);
-			_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["DataStore"].SaveTableData("Posts", PostsData);			
+			_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["dataStore"].SaveTableData("Posts", PostsData);			
 			UserPostElement.OnDeleted();
 		}							
-	},
+	}
 	
-	"DeleteComment" : function(postId, commentId, UserCommentElement){
-		var PostsData = _DataStore_js__WEBPACK_IMPORTED_MODULE_0__["DataStore"].GetTableData("Posts");
+	DeleteComment(postId, commentId, UserCommentElement){
+		var PostsData = _DataStore_js__WEBPACK_IMPORTED_MODULE_0__["dataStore"].GetTableData("Posts");
 		
 		if(PostsData != null && PostsData[postId - 1] != null){
 			for(var i = 0; i < PostsData[postId-1].comments.length; i++){
@@ -1989,23 +1981,22 @@ const PostsController = {
 					PostsData[postId-1].comments.splice(i, 1);
 				}
 			}			
-			_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["DataStore"].SaveTableData("Posts", PostsData);			
+			_DataStore_js__WEBPACK_IMPORTED_MODULE_0__["dataStore"].SaveTableData("Posts", PostsData);			
 			UserCommentElement.OnDeleted();
 		}							
-	},
+	}
 	
-	"DeleteFromArray" : function(dataSet, index){
+	DeleteFromArray(dataSet, index){
 		if(index == dataSet.length - 1){
 			dataSet.splice(index, 1);
 		} else {
 			dataSet[index] = null;
 		}
 		return dataSet;
-	}
-	
-	
-	
+	}	
 }
+
+const postsController = new PostsController();
 
 /***/ }),
 

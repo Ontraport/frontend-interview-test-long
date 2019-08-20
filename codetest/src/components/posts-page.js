@@ -1,7 +1,7 @@
 
 import { BaseComponent } from './base-component.js';
-import { PostsController } from '../js/PostsController.js';
-import { DataStore } from '../js/DataStore.js';
+import { postsController } from '../js/PostsController.js';
+import { dataStore } from '../js/DataStore.js';
 import { UserAccountPanel } from './user-account-panel.js';
 import { UserPost } from './user-post.js';
 
@@ -60,7 +60,7 @@ export class PostsPage extends BaseComponent {
 			</style>`;
 	}
 	ReadAttributes(){
-		PostsController.PostsPage = this;
+		postsController.PostsPage = this;
 		this.user_id = this.getAttribute("data-user-id");
 		this.user_pic = this.getAttribute("data-user-pic");
 		this.user_name = this.getAttribute("data-user-name");		
@@ -97,12 +97,12 @@ export class PostsPage extends BaseComponent {
 	RenderPosts(){
 		this.postArray = [];
 		this.posts = "";	
-		var PostData = DataStore.GetTableData("Posts");
+		var PostData = dataStore.GetTableData("Posts");
 		if(PostData != null){
 			for(var i = 0; i < PostData.length; i++){
 				var postData = PostData[i];
 				if(postData != null){
-					var userData = DataStore.GetDataById("Users", postData.userId);
+					var userData = dataStore.GetDataById("Users", postData.userId);
 					var newPost = document.createElement("user-post");
 					newPost.setAttribute("data-user-id", postData.userId);
 					newPost.setAttribute("data-post-id", postData.id);
@@ -121,7 +121,7 @@ export class PostsPage extends BaseComponent {
 	}
 
 	AddPost(postData) {		
-		var userData = DataStore.GetDataById("Users", postData.userId);
+		var userData = dataStore.GetDataById("Users", postData.userId);
 		var newPost = document.createElement("user-post");
 		newPost.setAttribute("data-user-id", postData.userId);
 		newPost.setAttribute("data-post-id", postData.id);

@@ -1,6 +1,6 @@
 import { BaseComponent } from './base-component.js';
 import { GetCurrentUser } from'../js/CurrentUser.js'
-import { PostsController } from '../js/PostsController.js';
+import { postsController } from '../js/PostsController.js';
 
 export class PostForm extends BaseComponent {	
 	
@@ -58,7 +58,7 @@ export class PostForm extends BaseComponent {
 			console.log("submitted");
 			var content = $this.form["post-text"].value;
 			if(content.length >= 3 && content.length <= $this.maxLength){				
-				PostsController.AddPost($this.CurrentUser.id, content);
+				postsController.AddPost($this.CurrentUser.id, content);
 				$this.textarea.value = "";
 				var event = new Event("submit");
 				$this.dispatchEvent(new CustomEvent('form-submit', {

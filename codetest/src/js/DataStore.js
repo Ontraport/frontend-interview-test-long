@@ -1,7 +1,10 @@
-export const DataStore = {
-	"ls" : window.localStorage,
+class DataStore {
 	
-	"AddData" : function(table, row){
+	constructor(){
+		this.ls = window.localStorage;
+	}
+	
+	AddData(table, row){
 		var tableData = this.ls.getItem(table);
 		if (tableData == null) {	
 			row.id = 1;
@@ -12,28 +15,29 @@ export const DataStore = {
 			tableData.push(row);
 		}		
 		this.ls.setItem(table, JSON.stringify(tableData));			
-	},
+	}
 	
-	"GetDataById" : function(table, id){
+	GetDataById(table, id){
 		var tableData = this.ls.getItem(table);
 		if (tableData != null) {		
 			tableData = JSON.parse(tableData);			
 			return tableData[id-1];
 		}
 		return null;
-	},
+	}
 	
-	"GetTableData" : function(table){
+	GetTableData(table){
 		var tableData = this.ls.getItem(table);
 		if (tableData != null) {		
 			tableData = JSON.parse(tableData);			
 			return tableData;
 		}
 		return null;
-	},
+	}
 	
-	"SaveTableData" : function(table, data){
+	SaveTableData(table, data){
 		this.ls.setItem(table, JSON.stringify(data));
-	}	
-	
+	}		
 }
+
+export const dataStore = new DataStore();

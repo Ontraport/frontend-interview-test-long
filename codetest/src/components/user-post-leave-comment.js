@@ -1,6 +1,6 @@
 import { BaseComponent } from './base-component.js';
 import { UserProfilePic } from './user-profile-pic.js';
-import { PostsController } from '../js/PostsController.js';
+import { postsController } from '../js/PostsController.js';
 import { GetCurrentUser } from'../js/CurrentUser.js'
 
 export class UserPostLeaveComment extends BaseComponent {	
@@ -101,7 +101,7 @@ export class UserPostLeaveComment extends BaseComponent {
 	}
 	
 	SubmitComment(comment){
-		PostsController.AddComment(this.CurrentUser.id, this.post_id, comment);
+		postsController.AddComment(this.CurrentUser.id, this.post_id, comment);
 	}
 
 	

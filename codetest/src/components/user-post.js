@@ -2,8 +2,8 @@ import { BaseComponent } from './base-component.js';
 import { UserProfilePic } from './user-profile-pic.js';
 import { ModalConfirmContent } from './modal-confirm-content.js';
 import { PageModal } from './page-modal.js';
-import { DataStore } from '../js/DataStore.js';
-import { PostsController } from '../js/PostsController.js';
+import { dataStore } from '../js/DataStore.js';
+import { postsController } from '../js/PostsController.js';
 import { GetCurrentUser } from'../js/CurrentUser.js'
 import { UserPostLeaveComment } from'./user-post-leave-comment.js'
 
@@ -161,10 +161,10 @@ export class UserPost extends BaseComponent {
 	}
 	
 	RenderComments(){
-		var postData = DataStore.GetDataById("Posts", this.post_id);
+		var postData = dataStore.GetDataById("Posts", this.post_id);
 		for(var i = 0; i < postData.comments.length; i++){
 			var commentData = postData.comments[i];
-			var userData = DataStore.GetDataById("Users",commentData.userId);
+			var userData = dataStore.GetDataById("Users",commentData.userId);
 			var newPost = document.createElement("user-post");
 			newPost.setAttribute("data-user-id", userData.id);
 			newPost.setAttribute("data-user-name", userData.username);
@@ -241,14 +241,14 @@ export class UserPost extends BaseComponent {
 	
 	DeletePost(){
 		if(this.comment_id == null){	
-			PostsController.DeletePost(this.post_id, this);			
+			postsController.DeletePost(this.post_id, this);			
 		} else {
-			PostsController.DeleteComment(this.post_id, this.comment_id, this);					
+			postsController.DeleteComment(this.post_id, this.comment_id, this);					
 		}
 	}
 	
 	OnCommentAdded(commentData){
-		var userData = DataStore.GetDataById("Users", commentData.userId);
+		var userData = dataStore.GetDataById("Users", commentData.userId);
 		var newComment = document.createElement("user-post");
 		newComment.setAttribute("data-user-id", userData.id);
 		newComment.setAttribute("data-user-name", userData.username);
