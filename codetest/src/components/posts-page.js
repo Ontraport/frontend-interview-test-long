@@ -112,7 +112,7 @@ export class PostsPage extends BaseComponent {
 						
 					if(this.sortBy == null || this.sortBy.value == 'old'){
 						this.posts = this.posts + newPost.outerHTML;
-					} else {
+					} else if(this.sortBy.value == 'new'){
 						this.posts = newPost.outerHTML + this.posts;
 					}
 				}
@@ -128,8 +128,12 @@ export class PostsPage extends BaseComponent {
 		newPost.setAttribute("data-user-name", userData.username);
 		newPost.setAttribute("data-user-pic", userData.pic);
 		newPost.innerHTML = postData.content;
-		
-		this.postContainer.innerHTML = newPost.outerHTML + this.postContainer.innerHTML;
+		if(this.sortBy == null || this.sortBy.value == 'old'){
+			this.postContainer.appendChild(newPost);
+		} else if(this.sortBy.value == 'new'){
+			this.postContainer.insertBefore(newPost,this.postContainer.firstChild);
+		}
+		this.SetPostArray();
 	}
 	
 	OnCommentAdded(commentData){

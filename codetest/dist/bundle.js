@@ -1126,7 +1126,7 @@ class PostsPage extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseCom
 						
 					if(this.sortBy == null || this.sortBy.value == 'old'){
 						this.posts = this.posts + newPost.outerHTML;
-					} else {
+					} else if(this.sortBy.value == 'new'){
 						this.posts = newPost.outerHTML + this.posts;
 					}
 				}
@@ -1142,8 +1142,12 @@ class PostsPage extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseCom
 		newPost.setAttribute("data-user-name", userData.username);
 		newPost.setAttribute("data-user-pic", userData.pic);
 		newPost.innerHTML = postData.content;
-		
-		this.postContainer.innerHTML = newPost.outerHTML + this.postContainer.innerHTML;
+		if(this.sortBy == null || this.sortBy.value == 'old'){
+			this.postContainer.appendChild(newPost);
+		} else if(this.sortBy.value == 'new'){
+			this.postContainer.insertBefore(newPost,this.postContainer.firstChild);
+		}
+		this.SetPostArray();
 	}
 	
 	OnCommentAdded(commentData){
