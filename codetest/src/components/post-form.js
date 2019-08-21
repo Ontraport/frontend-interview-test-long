@@ -57,7 +57,7 @@ export class PostForm extends BaseComponent {
 			e.preventDefault();	
 			console.log("submitted");
 			var content = $this.form["post-text"].value;
-			if(content.length >= 3 && content.length <= $this.maxLength){				
+			if(content.length >= $this.minLength && content.length <= $this.maxLength){				
 				postsController.AddPost($this.CurrentUser.id, content);
 				$this.textarea.value = "";
 				var event = new Event("submit");
