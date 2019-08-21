@@ -1252,7 +1252,7 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 
 	get html(){
 		return `
-			<div class="leave-comment">
+			<div id="wrapper">
 				<div id='profilePicWrap'>
 					<user-profile-pic width="25px" src="${this.CurrentUser.pic}"></user-profile-pic>
 				</div>
@@ -1264,10 +1264,10 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 	get style(){
 		return `
 			<style>					
-				.leave-comment {
+				#wrapper {
 					padding: 2px;
 				}
-				.leave-comment input {
+				#wrapper input {
 					width: 453px;
 					display: inline-block;
 					vertical-align: top;
@@ -1276,9 +1276,14 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 					padding: 3px 2px;
 					border-radius: 3px;
 				}	
-				.leave-comment input:focus {
+				#wrapper input:focus {
 					width: 414px;
-					border: 1px solid #ddd;
+				}
+				#wrapper input.valid {
+					outline-color: green;
+				}
+				#wrapper input.invalid {
+					outline-color: red;
 				}
 				#profilePicWrap {
 					display:none;					
@@ -1304,6 +1309,8 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 	ReadAttributes(){
 		this.CurrentUser = Object(_js_CurrentUser_js__WEBPACK_IMPORTED_MODULE_3__["GetCurrentUser"])();		
 		this.post_id = this.getAttribute("data-post-id");
+		this.minLength = 1;
+		this.maxLength = 256;
 	}
 	
 	Render(){	
@@ -1317,6 +1324,7 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 	AttachEvents(){
 		var $this = this;
 		//leave-a-comment text input
+		this.wrapper = this.shadowRoot.querySelector("#wrapper");	
 		this.commentInput = this.shadowRoot.querySelector("#commentInput");	
 		//popup profile pic when typing comment		
 		this.commentInputProfilePic = this.shadowRoot.querySelector("#profilePicWrap");	
@@ -1325,9 +1333,11 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 		//Attach Events to controls
 		if(this.commentInput != null){
 			this.commentInput.addEventListener("keyup", function(e){
-				if(e.code == "Enter" || e.code == "NumpadEnter"){
-					$this.SubmitComment(this.value);
-					this.value = "";
+				if($this.Validate(this)){
+					if(e.code == "Enter" || e.code == "NumpadEnter"){
+						$this.SubmitComment(this.value);
+						this.value = "";
+					}
 				}
 			});
 			
@@ -1343,6 +1353,27 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 		
 		
 		
+	}
+	
+	Validate(input){
+		let result = false;		 
+		if(input.value.length < this.minLength){
+			input.classList.remove("valid");
+			input.classList.add("invalid");
+		} else if(input.value.length > this.maxLength){
+			input.classList.remove("valid");	
+			input.classList.add("invalid");
+			input.value = input.value.substr(0, this.maxLength);
+		} else {	
+			result = true;
+			input.classList.add("valid");
+			input.classList.remove("invalid");	
+		}
+		if(input.value.length == 0){			
+			input.classList.remove("valid");	
+			input.classList.remove("invalid");	
+		}
+		return result;
 	}
 	
 	SubmitComment(comment){
