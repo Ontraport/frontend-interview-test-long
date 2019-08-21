@@ -24,7 +24,7 @@ export class PageModal extends BaseComponent {
 			}
 			.modal.modal-active {
 				display: block;
-				position: absolute;
+				position: fixed;
 				left: 0;
 				right: 0;
 				top: 0;
@@ -38,11 +38,11 @@ export class PageModal extends BaseComponent {
 
 			.modal .modal-wrapper {
 				display: block;
-				position: absolute;
+				position: fixed;
 				left: 0;
 				right: 0;
 				top: 0;
-				bottom: 0;
+				bottom: 0;		
 				margin: auto;
 				width: 400px;
 				height: 200px;

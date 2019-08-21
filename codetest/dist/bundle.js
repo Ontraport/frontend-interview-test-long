@@ -608,6 +608,10 @@ class ModalConfirmContent extends _base_component_js__WEBPACK_IMPORTED_MODULE_0_
 		this.content = this.getAttribute("data-content");
 		this.confirmText = this.getAttribute("data-confirm-text");
 		this.cancelText = this.getAttribute("data-cancel-text");
+		
+		if(this.content.length > 100){
+			this.content = this.content.substr(0, 100) + "...";
+		}
 	}
 	
 	Render(){
@@ -764,7 +768,7 @@ class PageModal extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseCom
 			}
 			.modal.modal-active {
 				display: block;
-				position: absolute;
+				position: fixed;
 				left: 0;
 				right: 0;
 				top: 0;
@@ -778,11 +782,11 @@ class PageModal extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseCom
 
 			.modal .modal-wrapper {
 				display: block;
-				position: absolute;
+				position: fixed;
 				left: 0;
 				right: 0;
 				top: 0;
-				bottom: 0;
+				bottom: 0;		
 				margin: auto;
 				width: 400px;
 				height: 200px;
@@ -936,7 +940,7 @@ class PostForm extends _base_component_js__WEBPACK_IMPORTED_MODULE_0__["BaseComp
 			e.preventDefault();	
 			console.log("submitted");
 			var content = $this.form["post-text"].value;
-			if(content.length >= 3 && content.length <= $this.maxLength){				
+			if(content.length >= $this.minLength && content.length <= $this.maxLength){				
 				_js_PostsController_js__WEBPACK_IMPORTED_MODULE_2__["postsController"].AddPost($this.CurrentUser.id, content);
 				$this.textarea.value = "";
 				var event = new Event("submit");

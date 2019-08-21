@@ -31,6 +31,10 @@ export class ModalConfirmContent extends BaseComponent {
 		this.content = this.getAttribute("data-content");
 		this.confirmText = this.getAttribute("data-confirm-text");
 		this.cancelText = this.getAttribute("data-cancel-text");
+		
+		if(this.content.length > 100){
+			this.content = this.content.substr(0, 100) + "...";
+		}
 	}
 	
 	Render(){
