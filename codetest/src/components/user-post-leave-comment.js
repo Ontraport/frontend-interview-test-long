@@ -32,7 +32,7 @@ export class UserPostLeaveComment extends BaseComponent {
 					border-radius: 3px;
 				}	
 				#wrapper input:focus {
-					width: 414px;
+					width: 425px;
 				}
 				#wrapper input.valid {
 					outline-color: green;

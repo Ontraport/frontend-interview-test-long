@@ -1277,7 +1277,7 @@ class UserPostLeaveComment extends _base_component_js__WEBPACK_IMPORTED_MODULE_0
 					border-radius: 3px;
 				}	
 				#wrapper input:focus {
-					width: 414px;
+					width: 425px;
 				}
 				#wrapper input.valid {
 					outline-color: green;
