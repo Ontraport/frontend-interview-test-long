@@ -1,2 +1,2 @@
-codetest/node_modules/*
-codetest/dist/*
+codetest/node_modules/
+codetest/dist/
