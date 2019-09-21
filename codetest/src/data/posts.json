@@ -11,18 +11,15 @@
 				"userId": 3,
 				"date": "",
 				"content": "Would you happen to know were Capone is? Since you are a secret agent and all"
-			}
-		
-		]
-	
+			}		
+		]	
 	},
 	{
 		"id": 2,
 		"userId": 3,
 		"date": "",
 		"content":"Day 2 of house sitting...awww my firends really do Trust me!",
-		"comments": []
-	
+		"comments": []	
 	},
 	{
 		"id": 3,
@@ -43,26 +40,22 @@
 				"userId": 4,
 				"date": "",
 				"content": "sure thing"
-			}
-		
-		]
-	
+			}		
+		]	
 	},
 	{
 		"id": 4,
 		"userId": 2,
 		"date": "",
 		"content":"How do I even have friends?! Oh wait.... I don't. Glad I have internet firends! I'd be screwed without them... #LameTweetIsLame #hobit #somereallylonghashtag #longcomment #eggs #stuff",
-		"comments": []
-	
+		"comments": []	
 	},
 	{
 		"id": 5,
 		"userId": 3,
 		"date": "",
 		"content":"I want to thank ALL MY FIRENDS BOTH OLD AND NEW FOR THE ENCOURAGING WORDS....LOVE YOU GUYS!!!!!",
-		"comments": []
-	
+		"comments": []	
 	},
 	{
 		"id": 6,
@@ -76,11 +69,7 @@
 				"userId": 2,
 				"date": "",
 				"content": "Hey, what else was there? I want to write a book on it"
-			}
-		
-		]
-	
+			}		
+		]	
 	}
-
-
 ]
