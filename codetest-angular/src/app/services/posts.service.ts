@@ -40,6 +40,8 @@ export class PostsService {
   }
 
   public addPost(postContent: string): void {
+    // hardcoding author username/id/pic for now
+    // in a real app we might call some UserService to get this info
     const newPost = {
       id: this.getNewPostId(),
       userId: 5,
@@ -123,12 +125,12 @@ export class PostsService {
 
   private getNewCommentId(postId): number {
     const post = this.posts.find(post => post.id === postId);
-    // kinda hacky but again wouldn't normally implement this on the frontend
+    // super hacky** but again wouldn't normally implement this on the frontend
     // I generally prefer UUIDs for this kinda thing anyway, any sorting should probably be done by date
     return Math.max.apply(
       Math,
       post.comments.map(function(o) {
-        return postId * 10 + o.id + 1;
+        return postId * 100 + o.id + 1;
       })
     );
   }
