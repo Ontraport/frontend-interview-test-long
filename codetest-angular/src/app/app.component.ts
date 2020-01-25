@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'codetest-angular';
+
+  clearLocalStorage($event): void {
+    $event.preventDefault();
+    window.localStorage.removeItem('saved-posts');
+    window.localStorage.removeItem('saved-comments');
+  }
 }

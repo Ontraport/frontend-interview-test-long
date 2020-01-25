@@ -14,7 +14,7 @@ export class PostsService {
 
   constructor(private http: HttpClient) {
     // nested foreach and nested subscribes not ideal, but didn't want to dig in too deep to rxjs right now
-    // could also use a .map instead
+    // could also use a .map instead, would be more functional
     this.loadUsers().subscribe((users: User[]) => {
       this.loadPosts().subscribe((posts: Post[]) => {
         // add author data into posts & comments
@@ -33,13 +33,14 @@ export class PostsService {
         });
 
         this.posts = posts;
+        this.loadSavedDataFromLocalStorage();
         this.postsUpdated.emit(this.posts);
       });
     });
   }
 
   public addPost(postContent: string): void {
-    this.posts.push({
+    const newPost = {
       id: this.getNewPostId(),
       userId: 5,
       username: "Daniel Craig",
@@ -47,14 +48,17 @@ export class PostsService {
       content: postContent,
       date: "",
       comments: []
-    });
+    };
+
+    this.posts.push(newPost);
+    this.saveToLocalStorage('post', newPost);
   }
 
   public addComment(postId: number, postContent: string): void {
     const post: Post = this.posts.find(post => post.id === postId);
     // hardcoding author username/id/pic for now
     // in a real app we might call some UserService to get this info
-    post.comments.push({
+    const newComment = {
       postId,
       id: this.getNewCommentId(postId),
       userId: 5,
@@ -62,7 +66,10 @@ export class PostsService {
       pic: "assets/images/profile/daniel-craig.jpg",
       date: "",
       content: postContent
-    });
+    };
+
+    post.comments.push(newComment);
+    this.saveToLocalStorage('comment', newComment);
 
     this.postsUpdated.emit(this.posts);
   }
@@ -73,6 +80,35 @@ export class PostsService {
 
   private loadUsers(): Observable<User[]> {
     return this.http.get<User[]>("assets/data/users.json");
+  }
+
+  private saveToLocalStorage(type: 'post'|'comment', data: Post | Comment): void {
+    const key = `saved-${type}s`;
+    let savedItems = JSON.parse(window.localStorage.getItem(key));
+    if (savedItems) {
+      savedItems.push(data);
+    } else {
+      savedItems = [data];
+    }
+    window.localStorage.setItem(key, JSON.stringify(savedItems));
+  }
+
+  private loadSavedDataFromLocalStorage(): void {
+    const savedPosts: Post[] = JSON.parse(window.localStorage.getItem('saved-posts'));
+    const savedComments: Comment[] = JSON.parse(window.localStorage.getItem('saved-comments'));
+    
+    if (savedPosts) {
+      savedPosts.forEach((post: Post) => {
+        this.posts.push(post);
+      });
+    }
+
+    if (savedComments) {
+      savedComments.forEach((comment: Comment) => {
+        const post = this.posts.find(post => post.id === comment.postId);
+        post.comments.push(comment);
+      });
+    }
   }
 
   // this functionality should be handled on the backend or automatically by the database in a normal app
