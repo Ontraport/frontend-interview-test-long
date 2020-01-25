@@ -3,8 +3,12 @@
  * 
  */
 
-html {
-  height: 100%;
+ * {
+   box-sizing: border-box;
+ }
+
+body,html {
+  min-height: 100%;
 }
 
 body {
@@ -55,4 +59,8 @@ body {
 
 #page .posts-container {
   flex: 1;
+}
+
+p {
+  margin: 0;
 }

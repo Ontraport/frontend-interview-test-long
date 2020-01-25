@@ -7,11 +7,6 @@
   align-items: center;
 }
 
-
-#logo {
-
-}
-
 #search {
   width: 300px;
 }
@@ -34,10 +29,10 @@
   font-weight: bold;
   text-shadow: 1px 1px 1px #fff;
   border: 1px solid #6fd6f7;
-  background: linear-gradient(top,  #7FDAFA 0%,#06ACE0 100%);
+  background: linear-gradient(to bottom,  #7FDAFA 0%,#06ACE0 100%);
 
   &:hover {
-    background: linear-gradient(bottom,  #7FDAFA 0%,#06ACE0 100%);
+    background: linear-gradient(to top,  #7FDAFA 0%,#06ACE0 100%);
   }
 }
 

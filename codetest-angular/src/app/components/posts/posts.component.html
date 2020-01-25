@@ -1,3 +1,20 @@
 <div class="posts">
   <h2>Updates</h2>
+  <div class="post-container" *ngFor="let post of posts">
+    <img class="post-author-image" src="{{ post.pic }}" />
+    <div class="post-wrap">
+      <p class="post-username">{{ post.username }}</p>
+      <p class="post-content">{{ post.content }}</p>
+      <div class="post-comments">
+        <div class="comment" *ngFor="let comment of post.comments">
+          <img src="{{ comment.pic }}" />
+          <div class="comment-wrap">
+            <p class="comment-username">{{ comment.username }}</p>
+            <p class="comment-content">{{ comment.content }}</p>
+          </div>
+        </div>
+        <input type="text" class="add-comment-input" placeholder="post a comment" />
+      </div>
+    </div>
+  </div>
 </div>
