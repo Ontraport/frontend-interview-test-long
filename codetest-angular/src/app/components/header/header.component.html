@@ -1,0 +1,18 @@
+<div id="header">
+  <div id="logo">
+    <img src="assets/images/logo.png" alt="the network" />
+  </div>
+  <div id="search">
+    <form method="get" action="#">
+      <input type="search" name="terms" placeholder="Search...." />
+      <input type="submit" value="Go" />
+    </form>
+  </div>
+  <div id="nav">
+    <a href="#">Home</a>
+    <a href="#" (click)="showModal($event)">Post an update</a>
+    <img class="user-image" src="assets/images/profile/daniel-craig.jpg" />
+  </div>
+</div>
+
+<app-new-post-dialog *ngIf="showAddPostDialog" (dialogClosed)="hideModal()"></app-new-post-dialog>
