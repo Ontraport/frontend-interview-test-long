@@ -10,7 +10,9 @@
   </div>
   <div id="nav">
     <a href="#">Home</a>
-    <a href="#">Post an update</a>
+    <a href="#" (click)="showModal($event)">Post an update</a>
     <img class="user-image" src="assets/images/profile/daniel-craig.jpg" />
   </div>
 </div>
+
+<app-new-post-dialog *ngIf="showAddPostDialog" (dialogClosed)="hideModal()"></app-new-post-dialog>
