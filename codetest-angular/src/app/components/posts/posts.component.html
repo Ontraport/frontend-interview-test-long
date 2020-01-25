@@ -13,7 +13,7 @@
             <p class="comment-content">{{ comment.content }}</p>
           </div>
         </div>
-        <input type="text" class="add-comment-input" placeholder="post a comment" />
+        <input type="text" class="add-comment-input" placeholder="post a comment" (keyup.enter)="addComment($event, post.id)" />
       </div>
     </div>
   </div>

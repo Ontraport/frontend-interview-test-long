@@ -13,9 +13,15 @@ export class PostsComponent implements OnInit {
   constructor(private postsService: PostsService) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.posts = this.postsService.getPosts();
-    }, 100);
+    this.postsService.postsUpdated.subscribe((posts: Post[]) => {
+      this.posts = posts;
+    });
+  }
+
+  public addComment(event: any, postId: number) {
+    const postContent: string = event.target.value;
+    this.postsService.addComment(postId, postContent);
+    event.target.value = '';
   }
 
 }
