@@ -51,6 +51,10 @@
     font-size: 16px;
     text-decoration: none;
     margin-right: 1em;
+
+    &:hover {
+      color: #fff;
+    }
   }
   img.user-image {
     width: 25px;
